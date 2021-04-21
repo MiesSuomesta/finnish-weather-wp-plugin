@@ -1,0 +1,1 @@
+finnish-weather-wp-plugin
