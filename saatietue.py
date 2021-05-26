@@ -15,7 +15,8 @@ class Saatietue:
 				pcloudamountvalue, pcloudamountunits,
 				recnro,
 				rects):
-		# Set it all 
+
+		# Set it all, witch is nice.
 		self.set_rec_nro (recnro)
 		self.set_rec_ts (rects)
 		self.set_airtempvalue (pairtempvalue)
