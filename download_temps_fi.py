@@ -39,6 +39,40 @@ name2data = parse_name_data(obs.data)
 
 pp(loc2name)
 
+
+def plot(fig, latlon, info, zoom=10, map_type='ROADMAP'):
+    information_box_template = """
+<table>
+    <tr>
+        <td colspan="3">{name}</td>
+    </tr>
+    <tr>
+        <td>{temp} C</td>
+        <td>;nbsp&</td>
+        <td>{windSpeed} m/s ({windDirection} deg)</td>
+    </tr>
+    <tr>
+        <td><img src="{tempUrl}" /></td>
+        <td>;nbsp&</td>
+        <td><img src="{windDirectionUrl}" /></td>
+    </tr>
+</table>
+"""
+    marker_info = information_box_template.format(**info)
+
+    loc = [ info['location'], ]
+
+    pp(loc)
+
+    marker_layer = gmaps.marker_layer(loc, info_box_content=marker_info)
+
+    fig.add_layer(marker_layer)
+
+gmaps.configure(api_key=os.environ["GMAPS_API_KEY"])
+fig = gmaps.figure()
+
+
+
 for locItem in loc2name:
     locName = loc2name[locItem]
     currentdata = name2data[locName]
@@ -52,20 +86,24 @@ for locItem in loc2name:
     windDirectionID = 'Wind direction'
     windDirection = currentdata[windSPDID]
     
+        
     n2dobj = { 'name': locName, 'location': locItem, 'temp': temp, 
-            'windSpeed': windSpeed, 'windDirection': windDirection }
+            'windSpeed': windSpeed, 'windDirection': windDirection,
+            'tempUrl': None, 'windDirectionUrl': None }
     
     name2loc[locName] = locItem
     name2mapdata[locName] = n2dobj
     
+    plot(fig, locItem, n2dobj)
+    
+
 
 pp(name2loc)
+
+fig
+
 #pp(name2data)
 
-gmaps.configure(api_key=os.environ["GMAPS_API_KEY"])
-
-
-
-
 #meta = obs.location_metadata
+
 #pp(meta)
