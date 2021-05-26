@@ -1,0 +1,12 @@
+{
+	"kauppalehti": {
+		"username": "kauppalehden tunnus",
+		"password": "kauppalehden salasana"
+	},
+	"mysql": { 
+		"hostname": "lokaalimysqlserverinhostname",
+		"databasename": "kauppalehti",
+		"username": "kauppalehti",
+		"password": "kauppalehtilokaalimysqlserverinsalasana"
+	}
+}

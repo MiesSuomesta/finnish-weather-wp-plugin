@@ -37,7 +37,7 @@ name2loc = {}     # nimi -> lokaatio tieto
 loc2name = obs._location2name
 name2data = parse_name_data(obs.data)
 
-pp(loc2name)
+#pp(loc2name)
 
 
 def plot(fig, latlon, info, zoom=10, map_type='ROADMAP'):
