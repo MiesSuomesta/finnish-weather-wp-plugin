@@ -4,6 +4,7 @@ import datetime as dt
 from pprint import pprint as pp
 
 from fmiopendata.wfs import download_stored_query
+import saatietue
 
 # Retrieve the latest hour of data from a bounding box
 end_time = dt.datetime.utcnow()
@@ -76,25 +77,24 @@ fig = gmaps.figure()
 for locItem in loc2name:
     locName = loc2name[locItem]
     currentdata = name2data[locName]
-    
-    tempID = 'Air temperature'
-    temp = currentdata[tempID]
 
-    windSPDID = 'Wind speed'
-    windSpeed = currentdata[windSPDID]
+    pp(currentdata)
+#    tempID = 'Air temperature'
+#    temp = currentdata[tempID]
 
-    windDirectionID = 'Wind direction'
-    windDirection = currentdata[windSPDID]
+#    windSPDID = 'Wind speed'
+#    windSpeed = currentdata[windSPDID]
+
+#    windDirectionID = 'Wind direction'
+#    windDirection = currentdata[windSPDID]
     
         
-    n2dobj = { 'name': locName, 'location': locItem, 'temp': temp, 
-            'windSpeed': windSpeed, 'windDirection': windDirection,
-            'tempUrl': None, 'windDirectionUrl': None }
+#    n2dobj = { 'name': locName, 'location': locItem, 'temp': temp, 
+#            'windSpeed': windSpeed, 'windDirection': windDirection,
+#            'tempUrl': None, 'windDirectionUrl': None }
     
-    name2loc[locName] = locItem
-    name2mapdata[locName] = n2dobj
-    
-    plot(fig, locItem, n2dobj)
+#    name2loc[locName] = locItem
+#    name2mapdata[locName] = n2dobj
     
 
 
