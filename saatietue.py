@@ -1,24 +1,72 @@
+from pprint import pprint as pp
+import datetime as dt
 
 class Saatietue:
 
-	def __init__(self, 	pairtempvalue, pairtempunits,
-				pwindspeedvalue, pwindspeedunits,
-				pwinddirectionvalue, pwinddirectionunits,
-				pgustspeedvalue,  pgustspeedunits,
-				prelhumvalue, prelhumunits,
-				pdewpointvalue, pdewpointunits,
-				pprecipitationamountvalue, pprecipitationamountunits,
-				pprecipitationintensityvalue, pprecipitationintensityunits,
-				psnowdepthvalue, psnowdepthunits,
-				ppressurevalue, ppressureunits,
-				phorizvisibvalue, phorizvisibunits,
-				pcloudamountvalue, pcloudamountunits,
-				recnro,
-				rects):
+	def __init__(	self,
+			pstationid, pstationname,
+			platitude, plongitude,
+		 	pairtempvalue, pairtempunits,
+			pwindspeedvalue, pwindspeedunits,
+			pwinddirectionvalue, pwinddirectionunits,
+			pgustspeedvalue,  pgustspeedunits,
+			prelhumvalue, prelhumunits,
+			pdewpointvalue, pdewpointunits,
+			pprecipitationamountvalue, pprecipitationamountunits,
+			pprecipitationintensityvalue, pprecipitationintensityunits,
+			psnowdepthvalue, psnowdepthunits,
+			ppressurevalue, ppressureunits,
+			phorizvisibvalue, phorizvisibunits,
+			pcloudamountvalue, pcloudamountunits,
+			recnro,
+			rects = None
+			):
+
+		if rects == None:
+			print("Using default TS\n")
+			rects = dt.datetime.now()
+
+		print("Saatietueen tiedot:\n")
+		pp( pstationid                          )
+		pp( pstationname                        ) #
+		pp( platitude                           )
+		pp( plongitude                          )
+		pp( pairtempvalue                       )
+		pp( pairtempunits                       )
+		pp( pwindspeedvalue                     )
+		pp( pwindspeedunits                     )
+		pp( pwinddirectionvalue                 )
+		pp( pwinddirectionunits                 )
+		pp( pgustspeedvalue                     )
+		pp( pgustspeedunits                     )
+		pp( prelhumvalue                        )
+		pp( prelhumunits                        )
+		pp( pdewpointvalue                      )
+		pp( pdewpointunits                      )
+		pp( pprecipitationamountvalue           )
+		pp( pprecipitationamountunits           )
+		pp( pprecipitationintensityvalue        )
+		pp( pprecipitationintensityunits        )
+		pp( psnowdepthvalue                     )
+		pp( psnowdepthunits                     )
+		pp( ppressurevalue                      )
+		pp( ppressureunits                      )
+		pp( phorizvisibvalue                    )
+		pp( phorizvisibunits                    )
+		pp( pcloudamountvalue                   )
+		pp( pcloudamountunits                   )
+		pp( recnro                              )
+		pp( rects                               )
 
 		# Set it all, witch is nice.
 		self.set_rec_nro (recnro)
 		self.set_rec_ts (rects)
+
+		self.set_stationid (pstationid)
+		self.set_stationname (pstationname)
+		self.set_latitude(platitude)
+		self.set_longitude(plongitude)
+
 		self.set_airtempvalue (pairtempvalue)
 		self.set_airtempunits (pairtempunits)
 		self.set_windspeedvalue (pwindspeedvalue)
@@ -43,8 +91,6 @@ class Saatietue:
 		self.set_horizvisibunits (phorizvisibunits)
 		self.set_cloudamountvalue (pcloudamountvalue)
 		self.set_cloudamountunits (pcloudamountunits)
-		self.set_rec_nro (recnro)
-		self.set_rec_ts (rects)
 
 
 	def set_rec_nro (self, val):
@@ -53,10 +99,53 @@ class Saatietue:
 	def get_rec_nro (self):
 		return self.rec_nro
 
+	def get_str_rec_nro (self):
+		return str(self.rec_nro)
+
+	def set_stationid (self, val):
+		self.stationid = val
+
+	def get_stationid (self):
+		return self.stationid
+
+	def get_str_stationid (self):
+		return str(self.stationid)
+
+	def set_stationname (self, val):
+		self.stationname = val
+
+	def get_stationname (self):
+		return self.stationname
+
+	def get_str_stationname (self):
+		return str(self.stationname)
+
+	def set_latitude (self, val):
+		self.latitude = val
+
+	def get_latitude (self):
+		return self.latitude
+
+	def get_str_latitude (self):
+		return str(self.latitude)
+
+	def set_longitude (self, val):
+		self.longitude = val
+
+	def get_longitude (self):
+		return self.longitude
+
+	def get_str_longitude (self):
+		return str(self.longitude)
+
 	def set_rec_ts (self, val):
 		self.rec_ts = val
+
 	def get_rec_ts (self):
 		return self.rec_ts
+
+	def get_rec_ts (self):
+		return str(self.rec_ts)
 
 	def set_airtempvalue (self, val):
 		self.airtempvalue = val
@@ -181,9 +270,13 @@ class Saatietue:
 
 	def get_str_rec_nro (self):
 		return str(self.rec_nro)
-
 	def get_str_rec_ts (self):
 		return str(self.rec_ts)
+
+	def get_str_latitude (self):
+		return str(self.latitude)
+	def get_str_longitude (self):
+		return str(self.longitude)
 
 	def get_str_airtempvalue (self):
 		return str(self.airtempvalue)

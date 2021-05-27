@@ -38,7 +38,7 @@ def config_get_data(mainUse):
 		traceback.print_exc(file=sys.stdout)
 
 
-	#print("Login data: {} ".format(data))
+	print("Login data: {} ".format(data))
 	return data
 
 
