@@ -86,7 +86,7 @@ for locItem in loc2name:
     locName = loc2name[locItem]
     currentdata = name2data[locName]
 
-    print("Loop: ")
+    print("Loop: -------------------------------------")
     pp(recordset)
     pp(recordtimestamp)
     pp(locName)
@@ -127,30 +127,5 @@ for locItem in loc2name:
                 recordtimestamp,						# 30
         )
 
-#    pp(st)
-
     sql.lisaa_osake_kantaan(st)
 
-#    exit()
-
-#    saatietueet += (st , );
-
-        
-#    n2dobj = { 'name': locName, 'location': locItem, 'temp': temp, 
-#            'windSpeed': windSpeed, 'windDirection': windDirection,
-#            'tempUrl': None, 'windDirectionUrl': None }
-    
-#    name2loc[locName] = locItem
-#    name2mapdata[locName] = n2dobj
-    
-
-
-#pp(saatietueet)
-
-#fig
-
-#pp(name2data)
-
-#meta = obs.location_metadata
-
-#pp(meta)
