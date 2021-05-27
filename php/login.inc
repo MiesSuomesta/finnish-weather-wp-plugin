@@ -1,8 +1,10 @@
+<?php
 
-$GLOBAL_hostname         = "db";
-$GLOBAL_databasename     = "fmidb";
-$GLOBAL_weatherinfotable = "saatieto";
-$GLOBAL_username         = "saajamppa",
-$GLOBAL_password         = "fmidatasalasana12345"
+$mysql_hostname         = "db";
+$mysql_databasename     = "fmidb";
+$mysql_weatherinfotable = "saatieto";
+$mysql_username         = "saajamppa";
+$mysql_password         = "fmidatasalasana12345";
 
+?>
 
