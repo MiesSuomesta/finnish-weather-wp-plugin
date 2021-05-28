@@ -175,6 +175,7 @@ function mkMarker($obj)
 			infowin = new google.maps.InfoWindow();
 			bounds = new google.maps.LatLngBounds();
 			myMap = new google.maps.Map(document.getElementById("googleMap"), {
+						center: new google.maps.LatLng(64.280601, 26.876078), /* Keskelle suomee */
 						zoom: 8,
 					});
 
