@@ -20,7 +20,7 @@ obs = download_stored_query("fmi::observations::weather::multipointcoverage",
                             args=["bbox=18,55,35,75",
                                   "starttime=" + start_time,
                                   "endtime=" + end_time])
-pp(obs)
+#pp(obs)
 
 def parse_name_data(dataIN):
     dataOUT = {}
@@ -72,7 +72,6 @@ def plot(fig, latlon, info, zoom=10, map_type='ROADMAP'):
     fig.add_layer(marker_layer)
 
 gmaps.configure(api_key=os.environ["GMAPS_API_KEY"])
-fig = gmaps.figure()
 
 sql = MySQLBackend()
 
@@ -86,14 +85,15 @@ for locItem in loc2name:
     locName = loc2name[locItem]
     currentdata = name2data[locName]
 
-    print("Loop: -------------------------------------")
-    pp(recordset)
-    pp(recordtimestamp)
-    pp(locName)
-    pp(locItem[0])
-    pp(locItem[1])
-    pp(currentdata)
-
+# 
+#   print("Loop: -------------------------------------")
+#   pp(recordset)
+#   pp(recordtimestamp)
+#   pp(locName)
+#   pp(locItem[0])
+#   pp(locItem[1])
+#   pp(currentdata)
+# 
     st = saatietue.Saatietue(
                 "KORVAA SID:llä",						# 1
                 locName,							# 

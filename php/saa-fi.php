@@ -1,6 +1,7 @@
 <html>
 <head>
 <?php
+
 /* Login details */
 include("login.inc");
 

@@ -20,10 +20,10 @@ class MySQLBackend:
 		self.mysql_conn = None
 		time.sleep(0.2)
 		try:
-			self.mysql_conn = MYCN.connect(host=self.login['hostname'],
-						database=self.login['databasename'],
-						user=self.login['username'],
-						password=self.login['password'])
+			self.mysql_conn = MYCN.connect( host=self.login['hostname'],
+                                            database=self.login['databasename'],
+                                            user=self.login['username'],
+                                            password=self.login['password'])
 
 		except Exception as e:
 			if self.mysql_conn is not None and self.mysql_conn.is_connected():
@@ -46,8 +46,8 @@ class MySQLBackend:
 			cursor.execute(query, ())
 			record = cursor.fetchall()
 
-			print("query", query )
-			print("recordit", record )
+		#	print("query", query )
+		#	print("recordit", record )
 
 			self.post_mysql(cursor)
 
@@ -73,8 +73,8 @@ class MySQLBackend:
 
 		recnro = 0
 
-		print("Record: ")
-		pp(record)
+	#	print("Record: ")
+	#	pp(record)
 
 		if record:
 			if record[0]:
@@ -184,8 +184,8 @@ class MySQLBackend:
 			values = ();
 			count = 0;
 			for msa in mysqlargs:
-				print("{} msa: ".format(count))
-				pp(msa)
+			#	print("{} msa: ".format(count))
+			#	pp(msa)
 
 				m  = msa[0]
 				fo = msa[1]
@@ -201,15 +201,15 @@ class MySQLBackend:
 				formats = formats + fo + delim
 				values  = values + (va,)
 			
-			print("Count: {}\n".format(count))
-			print("Fields : {}\n".format(fields))
-			print("Formats: {}\n".format(formats))
-			print("Values : {} / {}\n".format(len(values),values))
+			#print("Count: {}\n".format(count))
+			#print("Fields : {}\n".format(fields))
+			#print("Formats: {}\n".format(formats))
+			#print("Values : {} / {}\n".format(len(values),values))
 				
 			query_start = 'INSERT INTO {} '.format(self.login['weatherinfotable'])
 			query = query_start + "(" + fields + ') VALUES('+ formats +')'
 
-			print("Query  : " + query + "\n");
+			#print("Query  : " + query + "\n");
 
 			cursor.execute(query, values)
 

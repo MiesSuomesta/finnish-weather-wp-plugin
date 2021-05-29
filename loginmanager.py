@@ -16,10 +16,10 @@ def config_get_config_file_path():
 		datasAt=HOME
 		datasAt = os.path.join(datasAt, datafilename)
 
-	global FILEPATH_SHOWN
-	if not FILEPATH_SHOWN:
-		print("login datas at: {}".format(datasAt))
-		FILEPATH_SHOWN=True
+#	global FILEPATH_SHOWN
+#	if not FILEPATH_SHOWN:
+#		print("login datas at: {}".format(datasAt))
+#		FILEPATH_SHOWN=True
 
 	return datasAt
 
@@ -38,7 +38,7 @@ def config_get_data(mainUse):
 		traceback.print_exc(file=sys.stdout)
 
 
-	print("Login data: {} ".format(data))
+#	print("Login data: {} ".format(data))
 	return data
 
 
