@@ -183,9 +183,7 @@ function comment($txt)
 			var closer = document.getElementById('osmPop-closer');
 			
 			var overlay = new ol.Overlay({
-							element: container,
-							autoPan: true,
-							autoPanAnimation: { duration:250 }
+							element: container
 						});
 
 			pMap.addOverlay(overlay);
@@ -200,9 +198,13 @@ function comment($txt)
 						if (pMap.hasFeatureAtPixel(event.pixel) === true)
 						{
 							var coords = event.coordinate;
-
+							var lat = coords[0];
+							var lng = coords[1] + 1;
+							var coordsTF = ol.proj.transform([lat, lng],'EPSG:3857', 'EPSG:3857');
+							console.log("EN" + coords);
+							console.log("TF" + coordsTF);
 							content.innerHTML = makeMarkerContent(jObj);
-							overlay.setPosition(coords);
+							overlay.setPosition(coordsTF);
 
 						} else {
 							overlay.setPosition(undefined);
