@@ -150,7 +150,7 @@ function comment($txt)
 			var tr_air = makeTRSet("Lämpötila", 		airtemp,	"Ilmankosteus",		relhumval);
 			var tr_wind = makeTRSet("Tuulen nopeus",	windspeed,	"Tuulen suunta",	winddir);
 			
-			var out="<table>" + 
+			var out="<table style='bgcolor:#FFFFFF;'>" + 
 					"<tr><td colspan='5'>"+ locstr + "</td></tr>" +
 						tr_air +
 						tr_wind +
@@ -164,7 +164,7 @@ function comment($txt)
 			var jObj = JSON.parse(jsn);
 			var lat = parseFloat(jObj[2]);
 			var lng = parseFloat(jObj[3]);
-			var point = new ol.geom.Point(ol.proj.transform([lng, lat], 'EPSG:4326', 'EPSG:3857'));
+			var point = new ol.geom.Point(ol.proj.fromLonLat([lng, lat]));
 			
 			var layeri = new ol.layer.Vector({
 					source: new ol.source.Vector({
@@ -177,6 +177,38 @@ function comment($txt)
 				});
 
 			pMap.addLayer(layeri);
+			
+			var container = document.getElementById('osmPop');
+			var content = document.getElementById('osmPop-content');
+			var closer = document.getElementById('osmPop-closer');
+			
+			var overlay = new ol.Overlay({
+							element: container,
+							autoPan: true,
+							autoPanAnimation: { duration:250 }
+						});
+
+			pMap.addOverlay(overlay);
+
+			closer.onclick = function() {
+						overlay.setPosition(undefined);
+						closer.blur();
+						return false;
+					};
+					
+			pMap.on('singleclick', function (event) {
+						if (pMap.hasFeatureAtPixel(event.pixel) === true)
+						{
+
+							var coords = event.coordinate;
+							content.innerHTML = makeMarkerContent(jObj);
+							overlay.setPosition(coords);
+
+						} else {
+							overlay.setPosition(undefined);
+							closer.blur();
+						}		
+					});
 		}
 
 		function initMap() {
@@ -189,7 +221,7 @@ function comment($txt)
 						],
 						view: new ol.View({ 
 								center: new ol.proj.fromLonLat([26.876078, 64.280601]),
-								zoom: 10
+								zoom: 5
 							})
 					});
 
@@ -215,11 +247,11 @@ function comment($txt)
 					foreach ($fv as $selectedStation) {
 						$stationData = $stations[$selectedStation];
 						comment("Marker $selectedStation");
-	/*
+					/*
 						echo "<!---\n";
 						print_r($stationData);
 						echo "--->\n";
-	*/
+					*/
 						mkMarker($stationData);
 					}
 				}
@@ -275,9 +307,9 @@ foreach ($stations as $station) {
 			</td>
 			<td>
 				    <div id="osmMap" style="width:450px;height:550px;"></div>
-				    <div id="osmPop" class="ol-popup">
-						<a href="#" id="popup-closer" class="ol-popup-closer"></a>
-						<div id="popup-content"></div>
+				    <div id="osmPop"  style="bgcolor:#FFFFFF;" >
+						<a href="#" id="osmPop-closer"></a>
+						<div id="osmPop-content" style="bgcolor:#FFFFFF;"></div>
 					</div>
 
 				<script language="javascript">
