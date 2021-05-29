@@ -103,14 +103,22 @@ function mkMarker($obj)
 {
 	$jsn = json_encode($obj);
 	echo "json='" . $jsn . "';\n";
-	echo "makeMarker(infowin, bounds, myMap, json);\n";
+	echo "makeMarker(myMap, json);\n";
 }
+
+function comment($txt)
+{
+	echo "<!--- $txt --->\n";
+}
+
 ?>
-	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+	<link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+	<script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
 	<script>
 		let myMap;
-		let bounds;
-		let infowin;
+		let firstOpeningWindow = true;
+		//let bounds;
+		//let infowin;
 
 		function makeTRSet(varAT, varAV, varBT, varBV)
 		{
@@ -139,7 +147,7 @@ function mkMarker($obj)
 			var relhumval	= jObj[12];
 
 			var locstr = "<h1>" + location + "</h1>";
-			var tr_air = makeTRSet("Lämpötila", 	airtemp,	"Ilmankosteus",		relhumval);
+			var tr_air = makeTRSet("Lämpötila", 		airtemp,	"Ilmankosteus",		relhumval);
 			var tr_wind = makeTRSet("Tuulen nopeus",	windspeed,	"Tuulen suunta",	winddir);
 			
 			var out="<table>" + 
@@ -151,33 +159,38 @@ function mkMarker($obj)
 			return out;
 		}
 
-		function makeMarker(pinfowin, pbounds, theMap, jsn)
+		function makeMarker(pMap, jsn)
 		{
 			var jObj = JSON.parse(jsn);
 			var lat = parseFloat(jObj[2]);
 			var lng = parseFloat(jObj[3]);
-			var point = new google.maps.LatLng(lat, lng);
-			var marker = new google.maps.Marker({position: point});
-			marker.setMap(theMap); 
-			pbounds.extend(point);
+			var point = new ol.geom.Point(ol.proj.transform([lng, lat], 'EPSG:4326', 'EPSG:3857'));
 			
-			google.maps.event.addListener(marker, 'click', (
-						function(marker, jObj) {
-							return function() {
-								infowin.setContent(makeMarkerContent(jObj));
-								infowin.open(theMap, marker);
-							}
-						}
-					)(marker, jObj));
+			var layeri = new ol.layer.Vector({
+					source: new ol.source.Vector({
+						features: [
+							new ol.Feature({
+								geometry: point
+							})
+						]
+					})
+				});
+
+			pMap.addLayer(layeri);
 		}
 
 		function initMap() {
-
-			infowin = new google.maps.InfoWindow();
-			bounds = new google.maps.LatLngBounds();
-			myMap = new google.maps.Map(document.getElementById("googleMap"), {
-						center: new google.maps.LatLng(64.280601, 26.876078), /* Keskelle suomee */
-						zoom: 8,
+			myMap = new ol.Map({
+						target: 'osmMap',
+						layers: [
+							new ol.layer.Tile({
+								source: new ol.source.OSM()
+							})
+						],
+						view: new ol.View({ 
+								center: new ol.proj.fromLonLat([26.876078, 64.280601]),
+								zoom: 10
+							})
 					});
 
 			<?php
@@ -190,21 +203,45 @@ function mkMarker($obj)
 					echo "Stations:";
 					print_r($stations);
 					echo "<br>";
+	
+					comment("Stations got:");
+					echo "<!---\n";
+					print_r($_GET['stations']);
+					echo "--->\n";
 				*/
 
 				if ( $fv = $_GET['stations'] )
 				{
 					foreach ($fv as $selectedStation) {
 						$stationData = $stations[$selectedStation];
+						comment("Marker $selectedStation");
+	/*
+						echo "<!---\n";
+						print_r($stationData);
+						echo "--->\n";
+	*/
 						mkMarker($stationData);
 					}
 				}
 			
 			?>
 			
-			myMap.fitBounds(bounds);
+//			myMap.fitBounds(bounds);
 			
 		}
+		
+		function cb_onLoadDocument(event, after) 
+		{
+			if (firstOpeningWindow)
+			{
+					initMap();
+			}
+			
+			after();
+		}
+
+		function cb_after(){ firstOpeningWindow = false; }
+		
 	</script>
 </head>
 
@@ -218,7 +255,7 @@ function mkMarker($obj)
 		<tr>
 			<td>
 
-				<form action="saa-fi.php" method="get">
+				<form action="saa-osm-fi.php" method="get">
 				<label for="stations">Valitse sääasemat</label>
 				<br>
 				<select name="stations[]" id="stations" multiple size = 10>
@@ -237,14 +274,15 @@ foreach ($stations as $station) {
 				</form>
 			</td>
 			<td>
-				    <div id="googleMap" style="width:450px;height:550px;"></div>
+				    <div id="osmMap" style="width:450px;height:550px;"></div>
+				    <div id="osmPop" class="ol-popup">
+						<a href="#" id="popup-closer" class="ol-popup-closer"></a>
+						<div id="popup-content"></div>
+					</div>
 
-
-					<!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-					<script
-					  src="https://maps.googleapis.com/maps/api/js?key=<?php echo $gmap_api_key; ?>&callback=initMap"
-					  async
-					></script>
+				<script language="javascript">
+					window.document.onload = cb_onLoadDocument(event, cb_after);
+				</script>
 
 			</td>
 		</tr>
