@@ -150,7 +150,7 @@ function comment($txt)
 			var tr_air = makeTRSet("Lämpötila", 		airtemp,	"Ilmankosteus",		relhumval);
 			var tr_wind = makeTRSet("Tuulen nopeus",	windspeed,	"Tuulen suunta",	winddir);
 			
-			var out="<table style='bgcolor:#FFFFFF;'>" + 
+			var out="<table bgcolor='#AAAAFF' width='120'>" + 
 					"<tr><td colspan='5'>"+ locstr + "</td></tr>" +
 						tr_air +
 						tr_wind +
@@ -199,8 +199,8 @@ function comment($txt)
 			pMap.on('singleclick', function (event) {
 						if (pMap.hasFeatureAtPixel(event.pixel) === true)
 						{
-
 							var coords = event.coordinate;
+
 							content.innerHTML = makeMarkerContent(jObj);
 							overlay.setPosition(coords);
 
@@ -307,9 +307,9 @@ foreach ($stations as $station) {
 			</td>
 			<td>
 				    <div id="osmMap" style="width:450px;height:550px;"></div>
-				    <div id="osmPop"  style="bgcolor:#FFFFFF;" >
+				    <div id="osmPop" id="osmPop-popup">
 						<a href="#" id="osmPop-closer"></a>
-						<div id="osmPop-content" style="bgcolor:#FFFFFF;"></div>
+						<div id="osmPop-content"></div>
 					</div>
 
 				<script language="javascript">
