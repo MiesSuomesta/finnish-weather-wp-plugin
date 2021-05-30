@@ -102,8 +102,7 @@ function weather_get_mysql_record_number_field($rnro, $field, $orderby = "")
 function mkMarker($obj)
 {
 	$jsn = json_encode($obj);
-	echo "json='" . $jsn . "';\n";
-	echo "makeMarker(myMap, json);\n";
+	echo "makeMarker(myMap, '" . $jsn ."');\n";
 }
 
 function comment($txt)
@@ -117,6 +116,7 @@ function comment($txt)
 	<script>
 		let myMap;
 		let firstOpeningWindow = true;
+		let coordsToJSON = Array();
 		//let bounds;
 		//let infowin;
 
@@ -159,12 +159,78 @@ function comment($txt)
 			return out;
 		}
 
+		function findLayerJsonDebug(pMap)
+		{
+			console.log("findLayerJsonDebug start -----------------------------------------");
+			cdata = myMap.get("customdata");
+			console.log("findLayerJsonDebug: cdata: ", cdata);
+			layers = myMap.getLayers()['a'];
+			console.log("findLayerJsonDebug: layers: ", layers);
+
+			for (var cdjson in cdata)
+			{
+				console.log("findLayerJsonDebug: cdjson:", cdjson);
+				
+				for (var lyr in layers)
+				{
+					console.log("findLayerJsonDebug: lyr:", lyr);
+					cdataname = layers[lyr].get("customdataname");
+					console.log("findLayerJsonDebug: cdataname:", cdataname);
+
+					var jObj = cdata[cdataname];
+					console.log("findLayerJsonDebug: jObj:", jObj);
+				}
+			}
+			console.log("findLayerJsonDebug end -----------------------------------------");
+		}
+		
+		function findLayerJson(pMap)
+		{
+			findLayerJsonDebug(myMap);
+
+			console.log("findLayerJson start -----------------------------------------");
+			cdata = myMap.get("customdata");
+			console.log("findLayerJson: cdata: ", cdata);
+			layers = myMap.getLayers()['a'];
+			console.log("findLayerJson: layers: ", layers);
+
+			for (var cdjson in cdata)
+			{
+				console.log("findLayerJson: cdjson:", cdjson);
+				
+				for (var lyr in layers)
+				{
+					console.log("findLayerJson: lyr:", lyr);
+					cdataname = layers[lyr].get("customdataname");
+					console.log("findLayerJson: cdataname:", cdataname);
+
+					var jObj = cdata[cdataname] || false;
+					var layername = jObj[1] || false;
+					console.log("findLayerJson: jObj:", jObj);
+
+					if (cdataname !== cdjson)
+						continue;
+					else
+						return jObj;
+				}
+			}
+			console.log("findLayerJson end -----------------------------------------");
+			return false;
+		}
+
+		let overlays = 0;
 		function makeMarker(pMap, jsn)
 		{
 			var jObj = JSON.parse(jsn);
-			var lat = parseFloat(jObj[2]);
-			var lng = parseFloat(jObj[3]);
+			var name = jObj[1];
+			var lat = parseFloat( jObj[2] );
+			var lng = parseFloat( jObj[3] );
 			var point = new ol.geom.Point(ol.proj.fromLonLat([lng, lat]));
+			
+			
+			var container = document.getElementById('osmPop');
+			var content = document.getElementById('osmPop-content');
+			var closer = document.getElementById('osmPop-closer');
 			
 			var layeri = new ol.layer.Vector({
 					source: new ol.source.Vector({
@@ -176,19 +242,36 @@ function comment($txt)
 					})
 				});
 
-			pMap.addLayer(layeri);
-			
-			var container = document.getElementById('osmPop');
-			var content = document.getElementById('osmPop-content');
-			var closer = document.getElementById('osmPop-closer');
-			
-			var overlay = new ol.Overlay({
-							element: container,
-							autoPan: true,
-							autoPanAnimation: { duration:250 }
-						});
+			console.log("layeri " ,layeri);
+			layeri.set("customdataname", name);
+			myMap.addLayer(layeri);
 
-			pMap.addOverlay(overlay);
+			var overlay = new ol.Overlay({
+							element: container
+						});
+			
+			myMap.addOverlay(overlay);
+		
+			coordsToJSON[name] = jsn;
+			console.log("-----------------------------------------");
+			console.log("name: ", name, "set jsn: " , coordsToJSON[name]);
+			myMap.set("customdata", coordsToJSON);
+			pMap.on('singleclick', function (event) {
+						
+						console.log("singleclick start -----------------------------------------");
+						if (pMap.hasFeatureAtPixel(event.pixel) === true)
+						{
+							var coords = event.coordinate;
+							var jObj = findLayerJson(myMap);
+							console.log("Found jObj:", jObj);
+							content.innerHTML = makeMarkerContent(jObj);
+							overlay.setPosition(coords);
+						} else {
+							overlay.setPosition(undefined);
+							closer.blur();
+						}		
+						console.log("singleclick end -----------------------------------------");
+					});
 
 			closer.onclick = function() {
 						overlay.setPosition(undefined);
@@ -196,22 +279,10 @@ function comment($txt)
 						return false;
 					};
 					
-			pMap.on('singleclick', function (event) {
-						if (pMap.hasFeatureAtPixel(event.pixel) === true)
-						{
-							var coords = event.coordinate;
-
-							content.innerHTML = makeMarkerContent(jObj);
-							overlay.setPosition(coords);
-
-						} else {
-							overlay.setPosition(undefined);
-							closer.blur();
-						}		
-					});
 		}
 
 		function initMap() {
+			
 			myMap = new ol.Map({
 						target: 'osmMap',
 						layers: [
@@ -307,8 +378,8 @@ foreach ($stations as $station) {
 			</td>
 			<td>
 				    <div id="osmMap" style="width:450px;height:550px;"></div>
-				    <div id="osmPop" id="osmPop-popup">
-						<a href="#" id="osmPop-closer"></a>
+				    <div id="osmPop" id="osmPop-popup" class="ol-popup">
+						<a href="#" id="osmPop-closer" class="ol-popup-closer"></a>
 						<div id="osmPop-content"></div>
 					</div>
 
