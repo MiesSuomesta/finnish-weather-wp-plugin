@@ -199,6 +199,8 @@ function comment($txt)
 								geometry: point
 							});
 				fea.set("name", name);
+				fea.set("json", jObj);
+				fea.set("cont", content);
 				
 			var layeri = new ol.layer.Vector({
 					source: new ol.source.Vector({
@@ -235,15 +237,15 @@ function comment($txt)
 						var rv = true;
 						if (feats)
 						{
-							console.log("Found event:", event);
-							console.log("Found event.map:", event.map);
-							name = feats.get("name");
-							console.log("name:", name);
 							var coords = event.coordinate;
-							var jObj   = findLayerJson(myMap, name);
-							console.log("Found jObj:", jObj);
-							content.innerHTML = makeMarkerContent(jObj);
-							console.log("content:", content);
+							console.log("Found event:", event);
+							var name = feats.get("name");
+							var jObj = feats.get("json");
+							var cont = feats.get("cont");
+							console.log("name:", name);
+							console.log("json:", jObj);
+							cont.innerHTML = makeMarkerContent(jObj);
+							console.log("content:", cont);
 							overlay.setPosition(coords);
 							rv = false; /* Stop propagation */
 						} else {
