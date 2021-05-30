@@ -146,6 +146,8 @@ function comment($txt)
 			var gustspeed 	= jObj[6];
 			var relhumval	= jObj[12];
 
+			console.log("locat: ", location, "airtemp: ", airtemp, "windspeed: ", windspeed, "winddir: ", winddir, "gustspeed: ", gustspeed);
+
 			var locstr = "<h1>" + location + "</h1>";
 			var tr_air = makeTRSet("Lämpötila", 		airtemp,	"Ilmankosteus",		relhumval);
 			var tr_wind = makeTRSet("Tuulen nopeus",	windspeed,	"Tuulen suunta",	winddir);
@@ -252,7 +254,7 @@ function comment($txt)
 			
 			myMap.addOverlay(overlay);
 		
-			coordsToJSON[name] = jsn;
+			coordsToJSON[name] = jObj;
 			console.log("-----------------------------------------");
 			console.log("name: ", name, "set jsn: " , coordsToJSON[name]);
 			myMap.set("customdata", coordsToJSON);
