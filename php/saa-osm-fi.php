@@ -116,6 +116,7 @@ function comment($txt)
 	<script>
 		let myMap;
 		let firstOpeningWindow = true;
+		let names = Array();
 		let coordsToJSON = Array();
 		//let bounds;
 		//let infowin;
@@ -160,63 +161,24 @@ function comment($txt)
 
 			return out;
 		}
-
-		function findLayerJsonDebug(pMap)
-		{
-			console.log("findLayerJsonDebug start -----------------------------------------");
-			cdata = myMap.get("customdata");
-			console.log("findLayerJsonDebug: cdata: ", cdata);
-			layers = myMap.getLayers()['a'];
-			console.log("findLayerJsonDebug: layers: ", layers);
-
-			for (var cdjson in cdata)
-			{
-				console.log("findLayerJsonDebug: cdjson:", cdjson);
-				
-				for (var lyr in layers)
-				{
-					console.log("findLayerJsonDebug: lyr:", lyr);
-					cdataname = layers[lyr].get("customdataname");
-					console.log("findLayerJsonDebug: cdataname:", cdataname);
-
-					var jObj = cdata[cdataname];
-					console.log("findLayerJsonDebug: jObj:", jObj);
-				}
-			}
-			console.log("findLayerJsonDebug end -----------------------------------------");
-		}
 		
-		function findLayerJson(pMap)
+		function findLayerJson(pMap, name)
 		{
-			findLayerJsonDebug(myMap);
-
 			console.log("findLayerJson start -----------------------------------------");
 			cdata = myMap.get("customdata");
 			console.log("findLayerJson: cdata: ", cdata);
-			layers = myMap.getLayers()['a'];
-			console.log("findLayerJson: layers: ", layers);
-
+			layername = name;
+			console.log("findLayerJson: layername:", layername);
 			for (var cdjson in cdata)
 			{
-				console.log("findLayerJson: cdjson:", cdjson);
-				
-				for (var lyr in layers)
-				{
-					console.log("findLayerJson: lyr:", lyr);
-					cdataname = layers[lyr].get("customdataname");
-					console.log("findLayerJson: cdataname:", cdataname);
-
-					var jObj = cdata[cdataname] || false;
-					var layername = jObj[1] || false;
-					console.log("findLayerJson: jObj:", jObj);
-
-					if (cdataname !== cdjson)
-						continue;
-					else
-						return jObj;
-				}
+				console.log("findLayerJsonDebug: cdjson:", cdjson, "layername:", layername);
+				if (cdjson == layername)
+					return cdata[cdjson];
+				else
+					continue;
 			}
 			console.log("findLayerJson end -----------------------------------------");
+
 			return false;
 		}
 
@@ -228,23 +190,23 @@ function comment($txt)
 			var lat = parseFloat( jObj[2] );
 			var lng = parseFloat( jObj[3] );
 			var point = new ol.geom.Point(ol.proj.fromLonLat([lng, lat]));
-			
+
 			
 			var container = document.getElementById('osmPop');
 			var content = document.getElementById('osmPop-content');
 			var closer = document.getElementById('osmPop-closer');
-			
+			var fea = new ol.Feature({
+								geometry: point
+							});
+				fea.set("name", name);
+				
 			var layeri = new ol.layer.Vector({
 					source: new ol.source.Vector({
-						features: [
-							new ol.Feature({
-								geometry: point
-							})
-						]
+						features: [ fea ]
 					})
 				});
 
-			console.log("layeri " ,layeri);
+
 			layeri.set("customdataname", name);
 			myMap.addLayer(layeri);
 
@@ -256,23 +218,40 @@ function comment($txt)
 		
 			coordsToJSON[name] = jObj;
 			console.log("-----------------------------------------");
-			console.log("name: ", name, "set jsn: " , coordsToJSON[name]);
+
+			myMap.unset("customdata");
 			myMap.set("customdata", coordsToJSON);
+
+			console.log("name: ", name, "set jsn: " , myMap.get("customdata")[name]);
+			
 			pMap.on('singleclick', function (event) {
-						
-						console.log("singleclick start -----------------------------------------");
-						if (pMap.hasFeatureAtPixel(event.pixel) === true)
+				
+						var feats = myMap.forEachFeatureAtPixel(
+										event.pixel,
+										function(f) { return f; }
+									);
+				
+						console.log("singleclick start - "+ name +" ----------------------------------------");
+						var rv = true;
+						if (feats)
 						{
+							console.log("Found event:", event);
+							console.log("Found event.map:", event.map);
+							name = feats.get("name");
+							console.log("name:", name);
 							var coords = event.coordinate;
-							var jObj = findLayerJson(myMap);
+							var jObj   = findLayerJson(myMap, name);
 							console.log("Found jObj:", jObj);
 							content.innerHTML = makeMarkerContent(jObj);
+							console.log("content:", content);
 							overlay.setPosition(coords);
+							rv = false; /* Stop propagation */
 						} else {
 							overlay.setPosition(undefined);
 							closer.blur();
 						}		
 						console.log("singleclick end -----------------------------------------");
+						return rv;
 					});
 
 			closer.onclick = function() {
