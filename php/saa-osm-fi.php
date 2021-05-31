@@ -342,7 +342,8 @@ function comment($txt)
 							
 							
 							htmlcontent = makeMarkerContent(jObj);
-							
+
+							content.innerHTML = "";
 							content.appendChild(htmlcontent);
 							
 							console.log("cont: ", content.innerHTML);
