@@ -222,6 +222,13 @@ function comment($txt)
 			
 			return out;
 		}
+
+		var saved_overlay = Array();
+		var saved_fea = Array();
+		var saved_layer = Array();
+		var container;
+		var content;
+		var closer;
 		
 		function makeMarker(pMap, jsn)
 		{
@@ -231,30 +238,55 @@ function comment($txt)
 			var lng = parseFloat( jObj[3] );
 			var point = new ol.geom.Point(ol.proj.fromLonLat([lng, lat]));
 			
-			var container 	= document.getElementById('osmPop');
-			var content 	= document.getElementById('osmPop-content');
-			var closer 		= document.getElementById('osmPop-closer');
-
 			content.isContentEditable = true;
 
-
-			var overlay = new ol.Overlay({
-							element: container
-						});
-
-
-			var fea = new ol.Feature({
-								geometry: point
+			if (saved_overlay[name] == null) {
+				var o = new ol.Overlay({
+								id: name,
+								element: container
 							});
 
-				fea.set("name",  name);
-				fea.set("json",  jObj);
+				saved_overlay[name] = o;
 				
-			var layeri = new ol.layer.Vector({
-					source: new ol.source.Vector({
-						features: [ fea ]
-					})
-				});
+				console.log("Init ", name, " overlay:", o);
+											
+			} 
+
+			overlay 	= saved_overlay[name];
+			
+			if (saved_fea[name] == null) {
+				var sfea = new ol.Feature({
+										geometry: point
+									});
+
+				sfea.set("name",  name);
+				sfea.set("json",  jObj);
+
+				saved_fea[name] = sfea;
+
+				console.log("Init ", name, " sfea:", sfea);
+			} 
+
+			fea 		= saved_fea[name];
+
+
+			if (saved_layer[name] == null) {
+				var o = new ol.layer.Vector({
+								source: new ol.source.Vector({
+									features: [ fea ]
+								})
+							});
+
+				saved_layer[name] = o;
+				console.log("Init ", name, " layer:", o);
+			} 
+			
+			layer = saved_layer[name];
+	
+			console.log("overlay:", overlay);
+			console.log("fea    :", fea);
+			console.log("layer  :", layer);
+	
 
 /*
 			var nToL  = myMap.get("nameToLayer") || nameToLayer;
@@ -264,25 +296,19 @@ function comment($txt)
 
 			nToO  = myMap.get("nameToOverlay") || nameToOverlay;
 			nToO[name] = overlay;
-			content.setAttribute("contname", name);
 			myMap.set("nameToOverlay", nToO);
 
 
-			myMap.addLayer(layeri);
+			myMap.addLayer(layer);
 			myMap.addOverlay(overlay);
 		
 			console.log("name: ", name, "set jsn: ", jObj);
 			
 			pMap.on('singleclick', function (event) {
-						var cntner  = document.getElementById('osmPop');
-						var cntent 	= document.getElementById('osmPop-content');
-						var closer 	= document.getElementById('osmPop-closer');
-						var cname 	= cntent.getAttribute("contname");
+						var cname 	= content.getAttribute("contname");
 						var nToO    = myMap.get("nameToOverlay");
 						var over    = nToO[cname];
 						
-							
-
 						var feats = myMap.forEachFeatureAtPixel(
 												event.pixel,
 												function(f) { 
@@ -292,38 +318,40 @@ function comment($txt)
 											);
 				
 						console.log("singleclick start -----------------------------------------");
+						console.log("cname: ", cname);
+						console.log("over : ", over);
+						console.log("nToO : ", nToO);
 						console.log("feats: ", feats);
 						var rv = true;
 						if (feats)
 						{
 							var coords = event.coordinate;
-							console.log("Found event:", event);
+							console.log("Found event: ", event);
 							
 							/* get data from feature */
-							var name 	= feats.get("name");
+							var name 	= cname;
 							var jObj 	= feats.get("json");
 							var nToO    = myMap.get("nameToOverlay");
 							var over    = nToO[name];
 
 							console.log("name:", 		name);
 							console.log("json:", 		jObj);
-							console.log("over:", 		over);
-							console.log("cont ID:", 	cntent.id);
-							console.log("cont:", 		cntent);
+							console.log("over:", 		overlay);
+							console.log("cont ID:", 	content.id);
+							console.log("cont:", 		content);
 							
 							
 							htmlcontent = makeMarkerContent(jObj);
 							
-							cntent.innerHTML = "";
-							cntent.appendChild(htmlcontent);
+							content.appendChild(htmlcontent);
 							
-							console.log("cont: ", cntent.innerHTML);
+							console.log("cont: ", content.innerHTML);
 							console.log("this: ", this);
-							over.setPosition(coords);
+							overlay.setPosition(coords);
 		
 							rv = false; /* Stop propagation */
 						} else {
-							over.setPosition(undefined);
+							overlay.setPosition(undefined);
 							closer.blur();
 						}		
 						console.log("singleclick end -----------------------------------------");
@@ -352,6 +380,10 @@ function comment($txt)
 								zoom: 5
 							})
 					});
+
+			container 	= document.getElementById('osmPop');
+			content 	= document.getElementById('osmPop-content');
+			closer 		= document.getElementById('osmPop-closer');
 
 			<?php
 			
