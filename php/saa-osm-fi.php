@@ -201,7 +201,8 @@ function comment($txt)
 			console.log("locat: ", location, "airtemp: ", airtemp, "windspeed: ", windspeed, "winddir: ", winddir, "gustspeed: ", gustspeed);
 			var tableattrs=	[
 								["bgcolor",'#AAAAFF'],
-								["width", '120']
+								["width", '160'],
+								["onclick", 'close_popup();']
 							];
 
 			var headertdattrs=	[
@@ -229,6 +230,12 @@ function comment($txt)
 		var container;
 		var content;
 		var closer;
+		
+		function close_popup()
+		{
+			overlay.setPosition(undefined);
+			closer.blur();
+		}
 		
 		function makeMarker(pMap, jsn)
 		{
