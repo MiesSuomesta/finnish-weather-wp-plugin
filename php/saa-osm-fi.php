@@ -120,20 +120,69 @@ function comment($txt)
 		let coordsToJSON = Array();
 		//let bounds;
 		//let infowin;
-
-		function makeTRSet(varAT, varAV, varBT, varBV)
+		
+		function escapeHtml(usstr)
 		{
-			var outA = "<tr> <td colspan='2'>"+ varAT +"</td>" + 
-						"<td width='5px'>&nbsp;</td>" +
-						"<td colspan='2'>"+ varBT +"</td>" +
-						"</tr>";
+			if (usstr != null) 
+				usstr.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+			else
+				usstr = "";
+			
+			return usstr;
+		}
 
-			var outB = "<tr> <td colspan='2'>"+ varAV +"</td>" + 
-						"<td width='5px'>&nbsp;</td>" +
-						"<td colspan='2'>"+ varBV +"</td>" +
-						"</tr>";
-						
-			return outA + outB;
+		function createTag(prnt, tag, pHtml, attr)
+		{
+			
+			var html = document.createElement(tag);
+
+			console.log("Attr: ", attr);
+			if (attr != null) {
+				for (var a in attr)
+				{
+
+					var an = attr[a][0];
+					var av = attr[a][1];
+					console.log("A: ", a, "T: ", an, "V: ", av);
+					html.setAttribute(an, av);
+				}
+			}
+			
+			if (pHtml != null) {
+				html.innerHTML = pHtml;
+			}
+			
+			var out = html;
+			console.log("html out: ", out.toString());
+			
+			if (prnt != null)
+				prnt.appendChild(out);
+			
+			return out;
+		}
+
+		function makeTRSet(pParent, varAT, varAV, varBT, varBV)
+		{
+			var outH   = createTag(null, "tr", null, null);
+			var outEAH = createTag(outH, "td", escapeHtml(varAT), 	[ [ "colspan",	2 ]		]);
+			var outEBH = createTag(outH, "td", "&nbsp;",			[ [ "width",	"5px"] 	]);
+			var outECH = createTag(outH, "td", escapeHtml(varBT), 	[ [ "colspan",	2 ]		]);
+			
+
+			var outC   = createTag(null, "tr", null, null);
+			var outEAC = createTag(outC, "td", escapeHtml(varAV), 	[ [ "colspan",	2 ]		]);
+			var outEBC = createTag(outC, "td", "&nbsp;",			[ [ "width",	"5px"] 	]);
+			var outECC = createTag(outC, "td", escapeHtml(varBV), 	[ [ "colspan",	2 ]		]);
+
+			var outC   = createTag(null, "tr", null, null);
+			var outEAC = createTag(outC, "td", escapeHtml(varAV),   [ [ "colspan",	2]		]);
+			var outEBC = createTag(outC, "td", "&nbsp;", 			[ [ "width",	"5px"] 	]);
+			var outECC = createTag(outC, "td", escapeHtml(varBV),   [ [ "colspan",	2]		]);
+			
+			pParent.appendChild(outH);
+			pParent.appendChild(outC);
+
+			return pParent;
 		}
 
 		function makeMarkerContent(jObj)
@@ -148,41 +197,30 @@ function comment($txt)
 			var relhumval	= jObj[12];
 
 			console.log("locat: ", location, "airtemp: ", airtemp, "windspeed: ", windspeed, "winddir: ", winddir, "gustspeed: ", gustspeed);
+			var tableattrs=	[
+								["bgcolor",'#AAAAFF'],
+								["width", '120']
+							];
 
-			var locstr = "<h1>" + location + "</h1>";
-			var tr_air = makeTRSet("Lämpötila", 		airtemp,	"Ilmankosteus",		relhumval);
-			var tr_wind = makeTRSet("Tuulen nopeus",	windspeed,	"Tuulen suunta",	winddir);
+			var headertdattrs=	[
+									["colspan", 5]
+								];
 			
-			var out="<table bgcolor='#AAAAFF' width='120'>" + 
-					"<tr><td colspan='5'>"+ locstr + "</td></tr>" +
-						tr_air +
-						tr_wind +
-						"</table>";
+			var out=createTag(null, "table", null, tableattrs);
+			var outHDRpaikkaTR = createTag(out, "tr", null, null);
 
+			var outHDRpaikkaTD  = createTag(outHDRpaikkaTR,  "td", null, headertdattrs);
+
+			var outHDRpaikkaHTML  = createTag(outHDRpaikkaTD,  "h1", location, null);
+
+			var outHDRarvotHTMLair  = makeTRSet(out, "Lämpötila", 		airtemp,	"Ilmankosteus",		relhumval);
+			var outHDRarvotHTMLwind = makeTRSet(out, "Tuulen nopeus",	windspeed,	"Tuulen suunta",	winddir);
+			
+
+			
 			return out;
 		}
 		
-		function findLayerJson(pMap, name)
-		{
-			console.log("findLayerJson start -----------------------------------------");
-			cdata = myMap.get("customdata");
-			console.log("findLayerJson: cdata: ", cdata);
-			layername = name;
-			console.log("findLayerJson: layername:", layername);
-			for (var cdjson in cdata)
-			{
-				console.log("findLayerJsonDebug: cdjson:", cdjson, "layername:", layername);
-				if (cdjson == layername)
-					return cdata[cdjson];
-				else
-					continue;
-			}
-			console.log("findLayerJson end -----------------------------------------");
-
-			return false;
-		}
-
-		let overlays = 0;
 		function makeMarker(pMap, jsn)
 		{
 			var jObj = JSON.parse(jsn);
@@ -190,17 +228,25 @@ function comment($txt)
 			var lat = parseFloat( jObj[2] );
 			var lng = parseFloat( jObj[3] );
 			var point = new ol.geom.Point(ol.proj.fromLonLat([lng, lat]));
-
 			
-			var container = document.getElementById('osmPop');
-			var content = document.getElementById('osmPop-content');
-			var closer = document.getElementById('osmPop-closer');
+			var container 	= document.getElementById('osmPop');
+			var content 	= document.getElementById('osmPop-content');
+			var closer 		= document.getElementById('osmPop-closer');
+
+			content.isContentEditable = true;
+
+			var overlay = new ol.Overlay({
+							element: container
+						});
+
 			var fea = new ol.Feature({
 								geometry: point
 							});
-				fea.set("name", name);
-				fea.set("json", jObj);
-				fea.set("cont", content);
+
+				fea.set("name",  name);
+				fea.set("json",  jObj);
+				fea.set("cont",  content);
+				fea.set("over",  overlay);
 				
 			var layeri = new ol.layer.Vector({
 					source: new ol.source.Vector({
@@ -208,45 +254,53 @@ function comment($txt)
 					})
 				});
 
-
-			layeri.set("customdataname", name);
 			myMap.addLayer(layeri);
-
-			var overlay = new ol.Overlay({
-							element: container
-						});
-			
 			myMap.addOverlay(overlay);
 		
-			coordsToJSON[name] = jObj;
-			console.log("-----------------------------------------");
-
-			myMap.unset("customdata");
-			myMap.set("customdata", coordsToJSON);
-
-			console.log("name: ", name, "set jsn: " , myMap.get("customdata")[name]);
+			console.log("name: ", name, "set jsn: ", jObj);
 			
 			pMap.on('singleclick', function (event) {
-				
+						var contner = document.getElementById('osmPop');
+						var contnt 	= document.getElementById('osmPop-content');
+						var closer 	= document.getElementById('osmPop-closer');
+
 						var feats = myMap.forEachFeatureAtPixel(
-										event.pixel,
-										function(f) { return f; }
-									);
+												event.pixel,
+												function(f) { 
+													console.log("Feature: ", f);
+													return f;
+												}
+											);
 				
-						console.log("singleclick start - "+ name +" ----------------------------------------");
+						console.log("singleclick start -----------------------------------------");
+						console.log("feats: ", feats);
 						var rv = true;
 						if (feats)
 						{
 							var coords = event.coordinate;
 							console.log("Found event:", event);
+							/* get data from feature */
 							var name = feats.get("name");
 							var jObj = feats.get("json");
 							var cont = feats.get("cont");
-							console.log("name:", name);
-							console.log("json:", jObj);
-							cont.innerHTML = makeMarkerContent(jObj);
-							console.log("content:", cont);
-							overlay.setPosition(coords);
+							var over = feats.get("over");
+							
+							console.log("name:", 		name);
+							console.log("json:", 		jObj);
+							console.log("over:", 		over);
+							console.log("cont ID:", 	cont.id);
+							console.log("cont:", 		cont);
+							
+							
+							htmlcontent = makeMarkerContent(jObj);
+							
+							cont.innerHTML = "";
+							cont.appendChild(htmlcontent);
+							
+							console.log("cont: ", cont.innerHTML);
+							console.log("this: ", this);
+							over.setPosition(coords);
+		
 							rv = false; /* Stop propagation */
 						} else {
 							overlay.setPosition(undefined);
@@ -256,11 +310,11 @@ function comment($txt)
 						return rv;
 					});
 
-			closer.onclick = function() {
-						overlay.setPosition(undefined);
-						closer.blur();
-						return false;
-					};
+					closer.onclick = function() {
+								overlay.setPosition(undefined);
+								closer.blur();
+								return false;
+							};
 					
 		}
 
@@ -344,7 +398,7 @@ function comment($txt)
 				<form action="saa-osm-fi.php" method="get">
 				<label for="stations">Valitse sääasemat</label>
 				<br>
-				<select name="stations[]" id="stations" multiple size = 10>
+				<select name="stations[]" id="stations" multiple size=10>
 				<br>
 
 <?php
@@ -361,18 +415,17 @@ foreach ($stations as $station) {
 			</td>
 			<td>
 				    <div id="osmMap" style="width:450px;height:550px;"></div>
-				    <div id="osmPop" id="osmPop-popup" class="ol-popup">
-						<a href="#" id="osmPop-closer" class="ol-popup-closer"></a>
-						<div id="osmPop-content"></div>
+				    <div id="osmPop" style="visibility: visible; display: block;">
+						<a href="#" id="osmPop-closer"></a>
+						<div id="osmPop-content" style="visibility: visible; display: block;"></div>
 					</div>
-
-				<script language="javascript">
-					window.document.onload = cb_onLoadDocument(event, cb_after);
-				</script>
-
 			</td>
 		</tr>
 	</table>
+
+	<script language="javascript">
+		window.document.onload = cb_onLoadDocument(event, cb_after);
+	</script>
 </html>
 
 
