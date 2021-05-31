@@ -118,6 +118,8 @@ function comment($txt)
 		let firstOpeningWindow = true;
 		let names = Array();
 		let coordsToJSON = Array();
+		let nameToOverlay = Array();
+		let nameToLayer = Array();
 		//let bounds;
 		//let infowin;
 		
@@ -235,9 +237,11 @@ function comment($txt)
 
 			content.isContentEditable = true;
 
+
 			var overlay = new ol.Overlay({
 							element: container
 						});
+
 
 			var fea = new ol.Feature({
 								geometry: point
@@ -245,8 +249,6 @@ function comment($txt)
 
 				fea.set("name",  name);
 				fea.set("json",  jObj);
-				fea.set("cont",  content);
-				fea.set("over",  overlay);
 				
 			var layeri = new ol.layer.Vector({
 					source: new ol.source.Vector({
@@ -254,15 +256,32 @@ function comment($txt)
 					})
 				});
 
+/*
+			var nToL  = myMap.get("nameToLayer") || nameToLayer;
+			nToL[name] = overlay;
+			myMap.set("nameToLayer", nToL);
+*/
+
+			nToO  = myMap.get("nameToOverlay") || nameToOverlay;
+			nToO[name] = overlay;
+			content.setAttribute("contname", name);
+			myMap.set("nameToOverlay", nToO);
+
+
 			myMap.addLayer(layeri);
 			myMap.addOverlay(overlay);
 		
 			console.log("name: ", name, "set jsn: ", jObj);
 			
 			pMap.on('singleclick', function (event) {
-						var contner = document.getElementById('osmPop');
-						var contnt 	= document.getElementById('osmPop-content');
+						var cntner  = document.getElementById('osmPop');
+						var cntent 	= document.getElementById('osmPop-content');
 						var closer 	= document.getElementById('osmPop-closer');
+						var cname 	= cntent.getAttribute("contname");
+						var nToO    = myMap.get("nameToOverlay");
+						var over    = nToO[cname];
+						
+							
 
 						var feats = myMap.forEachFeatureAtPixel(
 												event.pixel,
@@ -279,31 +298,32 @@ function comment($txt)
 						{
 							var coords = event.coordinate;
 							console.log("Found event:", event);
-							/* get data from feature */
-							var name = feats.get("name");
-							var jObj = feats.get("json");
-							var cont = feats.get("cont");
-							var over = feats.get("over");
 							
+							/* get data from feature */
+							var name 	= feats.get("name");
+							var jObj 	= feats.get("json");
+							var nToO    = myMap.get("nameToOverlay");
+							var over    = nToO[name];
+
 							console.log("name:", 		name);
 							console.log("json:", 		jObj);
 							console.log("over:", 		over);
-							console.log("cont ID:", 	cont.id);
-							console.log("cont:", 		cont);
+							console.log("cont ID:", 	cntent.id);
+							console.log("cont:", 		cntent);
 							
 							
 							htmlcontent = makeMarkerContent(jObj);
 							
-							cont.innerHTML = "";
-							cont.appendChild(htmlcontent);
+							cntent.innerHTML = "";
+							cntent.appendChild(htmlcontent);
 							
-							console.log("cont: ", cont.innerHTML);
+							console.log("cont: ", cntent.innerHTML);
 							console.log("this: ", this);
 							over.setPosition(coords);
 		
 							rv = false; /* Stop propagation */
 						} else {
-							overlay.setPosition(undefined);
+							over.setPosition(undefined);
 							closer.blur();
 						}		
 						console.log("singleclick end -----------------------------------------");
@@ -311,7 +331,7 @@ function comment($txt)
 					});
 
 					closer.onclick = function() {
-								overlay.setPosition(undefined);
+								over.setPosition(undefined);
 								closer.blur();
 								return false;
 							};
