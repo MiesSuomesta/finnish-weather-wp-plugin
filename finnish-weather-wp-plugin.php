@@ -24,7 +24,7 @@ function finnish_weather_wp_plugin_header()
 	global $FINWEATHER_PLUGIN_DIR;
 
 	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-header.inc"); 
-	$thehtml = 	"<head>\n" . $contents . "</head>\n";
+	$thehtml = "";//"<head>\n" . $contents . "</head>\n";
 
 	return $thehtml;
 }
@@ -46,9 +46,9 @@ function finnish_weather_wp_plugin_shortcode()
 
 	global $FINWEATHER_PLUGIN_DIR;
 
-//	$theH = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-header.inc");
 	$theB = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-body.inc");
 
+	
 //	return $theH . $theB;
 	return $theB;
 }
