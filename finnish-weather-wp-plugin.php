@@ -49,7 +49,7 @@ function finnish_weather_wp_plugin_shortcode()
 	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-header.inc"); 
 	$theB = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-body.inc");
 	
-	return $contents + $theB;
+	return $contents . $theB;
 }
 
 
