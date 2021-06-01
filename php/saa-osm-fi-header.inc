@@ -431,5 +431,3 @@ function comment($txt)
 		function cb_after(){ firstOpeningWindow = false; }
 		
 	</script>
-</head>
-<body>
