@@ -1,7 +1,15 @@
 <html>
-include("saa-osm-fi-header.inc");
+	<head>
+	
+		<?php include("./saa-osm-fi-header.inc"); ?>
 
-include("saa-osm-fi-body.inc");
+	</head>
+	
+	<body>
+
+		<?php include("./saa-osm-fi-body.inc"); ?>
+
+	</body>
 
 </html>
 
