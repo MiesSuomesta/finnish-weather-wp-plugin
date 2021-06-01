@@ -1,10 +1,5 @@
 <?php
 
-?>
-		
-	
-<?php
-
 	function createImgTag($from)
 	{
 		$tag = "<img src='data:image/png;base64," . btoa($from) . "' />";
@@ -44,4 +39,5 @@
 
 		return createImgTag($rawData);
 	}
+
 ?>
