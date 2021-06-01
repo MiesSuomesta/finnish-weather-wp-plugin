@@ -1,3 +1,4 @@
+
 <?php
 	$stations = weather_get_mysql_record_number_field($LatestID, 1, "stationname ASC");
 	$FID = 0;
