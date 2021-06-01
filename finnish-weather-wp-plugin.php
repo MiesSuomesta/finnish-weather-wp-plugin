@@ -24,7 +24,7 @@ function finnish_weather_wp_plugin_header()
 	global $FINWEATHER_PLUGIN_DIR;
 
 	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-header.inc"); 
-	$thehtml = "";//"<head>\n" . $contents . "</head>\n";
+	$thehtml = "<head>\n" . $contents . "</head>\n";
 
 	return $thehtml;
 }
@@ -37,7 +37,7 @@ function finnish_weather_wp_plugin_body()
 	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-body.inc"); 
 	$thehtml = 	"<body>\n" . $contents . "</body>\n";
 
-	return $thehtml;
+	return "" ; //$thehtml;
 }
 
 // This just echoes the chosen line, we'll position it later.
