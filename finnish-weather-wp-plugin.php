@@ -23,7 +23,7 @@ function finnish_weather_wp_plugin_header()
 
 	global $FINWEATHER_PLUGIN_DIR;
 
-	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-map-functions.inc"); 
+	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/osm-map-functions.inc"); 
 	$thehtml  = $contents;
 
 //	return "LJA FOOBAR HEEED";
@@ -35,7 +35,7 @@ function finnish_weather_wp_plugin_body()
 
 	global $FINWEATHER_PLUGIN_DIR;
 
-	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-map-body.inc"); 
+	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/osm-map-body.inc"); 
 	$thehtml  = $contents;
 
 //	return "LJA FOOBAR BEAT";
@@ -48,8 +48,8 @@ function finnish_weather_wp_plugin_shortcode()
 
 	global $FINWEATHER_PLUGIN_DIR;
 
-	$theH = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-map-functions.inc"); 
-	$theB = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-map-body.inc"); 
+	$theH = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/osm-map-functions.inc"); 
+	$theB = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/osm-map-body.inc"); 
 
 //	return "<H1>LJA FOOBAR</H1> <H4>BÄT</H4>";
 	return $theH . $theB;
