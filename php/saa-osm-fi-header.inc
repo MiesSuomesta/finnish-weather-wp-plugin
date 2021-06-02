@@ -100,7 +100,7 @@ function mkMarker($obj)
 
 function comment($txt)
 {
-	:
+
 }
 
 ?>
