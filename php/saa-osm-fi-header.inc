@@ -8,14 +8,13 @@ function weather_get_weather_info_table_name()
 function weather_do_mysql_query($query)
 {
 	global $GLOBALS;
-	$q = $query . ";";
+	$q = $query . ';';
 
 	$mysqli = new mysqli(	$GLOBALS['mysql_hostname'],
 							$GLOBALS['mysql_username'],
 							$GLOBALS['mysql_password'],
 							$GLOBALS['mysql_databasename']);
 
-	// Check connection
 	if ($mysqli->connect_errno) {
 		echo "Failed to connect to MySQL: " . $mysqli->connect_error;
 		exit();
@@ -23,7 +22,6 @@ function weather_do_mysql_query($query)
 
 	$result = $mysqli->query($q);
 
-	// Check connection
 	if ($mysqli->connect_errno) {
 		echo "Failed to request from MySQL: " . $mysqli->connect_error;
 		exit();
@@ -64,9 +62,7 @@ function weather_get_mysql_record_number_datas($rnro, $orderby = "")
 	$rows = array();
 
 	while ($row = $result->fetch_row())
-	{
 		$rows[] = $row;
-	}
 
 	$result -> free();
 	
@@ -104,7 +100,7 @@ function mkMarker($obj)
 
 function comment($txt)
 {
-	echo "<!--- $txt --->\n";
+	:
 }
 
 ?>
@@ -428,5 +424,4 @@ function comment($txt)
 		function cb_after(){ firstOpeningWindow = false; }
 		
 	</script>
-</head>
 
