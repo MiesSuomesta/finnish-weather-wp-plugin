@@ -27,7 +27,7 @@ function finnish_weather_wp_plugin_header()
 	$thehtml = 	"<head>\n" . $contents . "</head>\n";
 
 	return "LJA FOOBAR HEEED";
-	return $thehtml;
+//	return $thehtml;
 }
 
 function finnish_weather_wp_plugin_body()
@@ -39,7 +39,7 @@ function finnish_weather_wp_plugin_body()
 	$thehtml = 	"<body>\n" . $contents . "</body>\n";
 
 	return "LJA FOOBAR BEAT";
-	return $thehtml;
+//	return $thehtml;
 }
 
 // This just echoes the chosen line, we'll position it later.
@@ -51,7 +51,7 @@ function finnish_weather_wp_plugin_shortcode()
 	$theH = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-header.inc");
 	$theB = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-body.inc");
 
-	return "LJA FOOBAR BÄT";
+	return "<H1>LJA FOOBAR</H1> <H4>BÄT</H4>";
 //	return $theH . $theB;
 }
 
