@@ -429,12 +429,3 @@ function comment($txt)
 		
 	</script>
 </head>
-<body>
-
-<?php
-	echo "mysql_hostname "     . $GLOBALS['mysql_hostname'] . "\n<br>";
-	echo "mysql_username "     . $GLOBALS['mysql_username'] . "\n<br>";
-	echo "mysql_password "     . $GLOBALS['mysql_password'] . "\n<br>";
-	echo "mysql_databasename " . $GLOBALS['mysql_databasename'] . "\n<br>";
-?>
-
