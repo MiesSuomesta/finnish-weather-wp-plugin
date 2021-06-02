@@ -23,8 +23,8 @@ function finnish_weather_wp_plugin_header()
 
 	global $FINWEATHER_PLUGIN_DIR;
 
-	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-header.inc"); 
-	$thehtml = 	$contents;
+	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-map-functions.inc"); 
+	$thehtml  = $contents;
 
 //	return "LJA FOOBAR HEEED";
 	return $thehtml;
@@ -35,8 +35,8 @@ function finnish_weather_wp_plugin_body()
 
 	global $FINWEATHER_PLUGIN_DIR;
 
-	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-body.inc"); 
-	$thehtml = 	$contents;
+	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-map-body.inc"); 
+	$thehtml  = $contents;
 
 //	return "LJA FOOBAR BEAT";
 	return $thehtml;
