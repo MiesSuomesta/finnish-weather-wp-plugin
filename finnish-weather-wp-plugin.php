@@ -52,7 +52,7 @@ function finnish_weather_wp_plugin_shortcode()
 	$theB = finnish_weather_wp_plugin_body();
 
 //	return "<H1>LJA FOOBAR</H1> <H4>BÄT</H4>";
-	echo $theH + $theB;
+	echo $theH . $theB;
 }
 
 // Now we set that function up to execute when the admin_notices action is called.
