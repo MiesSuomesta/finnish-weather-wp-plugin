@@ -48,11 +48,11 @@ function finnish_weather_wp_plugin_shortcode()
 
 	global $FINWEATHER_PLUGIN_DIR;
 
-//	$theH = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/osm-map-functions.inc"); 
-	$theB = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/osm-map-body.inc"); 
+	$theH = finnish_weather_wp_plugin_head();
+	$theB = finnish_weather_wp_plugin_body();
 
 //	return "<H1>LJA FOOBAR</H1> <H4>BÄT</H4>";
-	echo $theB;
+	echo $theH + $theB;
 }
 
 // Now we set that function up to execute when the admin_notices action is called.
