@@ -1,3 +1,7 @@
+
+	<link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+	<script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
+
 <?php
 
 function weather_get_weather_info_table_name()
@@ -104,8 +108,6 @@ function comment($txt)
 }
 
 ?>
-	<link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
-	<script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
 	<script>
 		let myMap;
 		let firstOpeningWindow = true;
@@ -203,9 +205,9 @@ function comment($txt)
 								];
 			
 			var out=createTag(null, "table", null, tableattrs);
-			var outHDRpaikkaTR = createTag(out, "tr", null, null);
+			var outHDRpaikkaTR    = createTag(out, "tr", null, null);
 
-			var outHDRpaikkaTD  = createTag(outHDRpaikkaTR,  "td", null, headertdattrs);
+			var outHDRpaikkaTD    = createTag(outHDRpaikkaTR,  "td", null, headertdattrs);
 
 			var outHDRpaikkaHTML  = createTag(outHDRpaikkaTD,  "h1", location, null);
 
@@ -382,27 +384,28 @@ function comment($txt)
 
 				$stations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 
-				/*
-					echo "Stations:";
-					print_r($stations);
-					echo "<br>";
-	
-					comment("Stations got:");
-					echo "<!---\n";
-					print_r($_GET['stations']);
-					echo "--->\n";
-				*/
+				// echo "Stations:";
+				// print_r($stations);
+				// echo "<br>";
+				// 
+				// comment("Stations got:");
+				// echo "<!---\n";
+				// print_r($_GET['stations']);
+				// echo "--->\n";
 
 				if ( $fv = $_GET['stations'] )
 				{
-					foreach ($fv as $selectedStation) {
+					foreach ($fv as $selectedStation)
+					{
 						$stationData = $stations[$selectedStation];
-						comment("Marker $selectedStation");
-					/*
-						echo "<!---\n";
-						print_r($stationData);
-						echo "--->\n";
-					*/
+
+						/*
+							comment("Marker $selectedStation");
+							echo "<!---\n";
+							print_r($stationData);
+							echo "--->\n";
+						*/
+
 						mkMarker($stationData);
 					}
 				}
