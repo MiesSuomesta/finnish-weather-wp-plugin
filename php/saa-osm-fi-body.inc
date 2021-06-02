@@ -22,7 +22,7 @@
 					?>
 				</select>
 				<br>
-				<input type="submit" value="Valitse">
+					<input type="submit" value="Valitse">
 				</form>
 			</td>
 			<td>

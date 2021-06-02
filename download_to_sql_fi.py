@@ -19,7 +19,8 @@ end_time = end_time.isoformat(timespec="seconds") + "Z"
 obs = download_stored_query("fmi::observations::weather::multipointcoverage",
                             args=["bbox=18,55,35,75",
                                   "starttime=" + start_time,
-                                  "endtime=" + end_time])
+                                  "endtime=" + end_time,
+                                  "WeatherSymbol3=" + true])
 #pp(obs)
 
 def parse_name_data(dataIN):
@@ -31,7 +32,7 @@ def parse_name_data(dataIN):
         for dataLoc in ddval:
             dataMeasurements = ddval[dataLoc]
             dataOUT[dataLoc] = dataMeasurements
- #           print("Paikka: {} -> {}\n".format(dataLoc, dataMeasurements))
+    #        print("Paikka: {} -> {}\n".format(dataLoc, dataMeasurements))
 
     return dataOUT
 
@@ -95,36 +96,36 @@ for locItem in loc2name:
 #   pp(currentdata)
 # 
     st = saatietue.Saatietue(
-                "KORVAA SID:llä",						# 1
-                locName,							# 
-                locItem[0],							#
-                locItem[1],							#
+                "KORVAA SID:llä",			            			# 1
+                locName,	                						#
+                locItem[0],				                			#
+                locItem[1],				                			#
                 currentdata['Air temperature']['value'],			# 5
                 currentdata['Air temperature']['units'],			# 
-                currentdata['Wind speed']['value'],				#
-                currentdata['Wind speed']['units'],				#
+                currentdata['Wind speed']['value'],		        	#
+                currentdata['Wind speed']['units'],		        	#
                 currentdata['Wind direction']['value'],				#
                 currentdata['Wind direction']['units'],				# 10
-                currentdata['Gust speed']['value'],				#
-                currentdata['Gust speed']['units'],				#
+                currentdata['Gust speed']['value'],			    	#
+                currentdata['Gust speed']['units'],			    	#
                 currentdata['Relative humidity']['value'],			#
                 currentdata['Relative humidity']['units'],			#
-                currentdata['Dew-point temperature']['value'],			# 15
-                currentdata['Dew-point temperature']['units'],			#
-                currentdata['Precipitation amount']['value'],			#
-                currentdata['Precipitation amount']['units'],			#
-                currentdata['Precipitation intensity']['value'],		#
-                currentdata['Precipitation intensity']['units'],		# 20
-                currentdata['Snow depth']['value'],				# 
-                currentdata['Snow depth']['units'],				#
+                currentdata['Dew-point temperature']['value'],		# 15
+                currentdata['Dew-point temperature']['units'],		#
+                currentdata['Precipitation amount']['value'],		#
+                currentdata['Precipitation amount']['units'],		#
+                currentdata['Precipitation intensity']['value'],	#
+                currentdata['Precipitation intensity']['units'],	# 20
+                currentdata['Snow depth']['value'],				    # 
+                currentdata['Snow depth']['units'],				    #
                 currentdata['Pressure (msl)']['value'],				#
                 currentdata['Pressure (msl)']['units'],				#
-                currentdata['Horizontal visibility']['value'],			# 25
-                currentdata['Horizontal visibility']['units'],			#
+                currentdata['Horizontal visibility']['value'],		# 25
+                currentdata['Horizontal visibility']['units'],		#
                 currentdata['Cloud amount']['value'],				#
                 currentdata['Cloud amount']['units'],				#
-                recordset,							#
-                recordtimestamp,						# 30
+                recordset,		                                    #
+                recordtimestamp,						            # 30
         )
 
     sql.lisaa_osake_kantaan(st)
