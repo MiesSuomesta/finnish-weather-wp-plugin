@@ -48,7 +48,7 @@ function finnish_weather_wp_plugin_shortcode()
 
 	global $FINWEATHER_PLUGIN_DIR;
 
-	$theH = finnish_weather_wp_plugin_head();
+	$theH = finnish_weather_wp_plugin_header();
 	$theB = finnish_weather_wp_plugin_body();
 
 //	return "<H1>LJA FOOBAR</H1> <H4>BÄT</H4>";
