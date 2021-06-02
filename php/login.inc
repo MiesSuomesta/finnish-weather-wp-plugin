@@ -1,5 +1,5 @@
 <?php
-
+ 
 $mysql_hostname         = "db";
 $mysql_databasename     = "fmidb";
 $mysql_weatherinfotable = "saatieto";

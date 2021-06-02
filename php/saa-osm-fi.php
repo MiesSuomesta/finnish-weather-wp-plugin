@@ -7,7 +7,7 @@
 	</head>
 
 	<body>
-		<?php
+		<?php 
 			include("saa-osm-fi-body.inc");
 		?>
 	</body>

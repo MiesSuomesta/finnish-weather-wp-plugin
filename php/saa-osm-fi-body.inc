@@ -15,11 +15,11 @@
 				<br>
 
 <?php
-foreach ($stations as $station) {
-	$htmlIP = '					<option value="' . $FID . '">' . $station . "</option>";
-	echo $htmlIP . $htmlEndln;
-	$FID++;
-}
+				foreach ($stations as $station) {
+					$htmlIP = '					<option value="' . $FID . '">' . $station . "</option>";
+					echo $htmlIP . $htmlEndln;
+					$FID++;
+				}
 ?>
 				</select>
 				<br>
