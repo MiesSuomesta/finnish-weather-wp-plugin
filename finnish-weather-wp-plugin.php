@@ -46,15 +46,12 @@ function finnish_weather_wp_plugin_shortcode()
 
 	global $FINWEATHER_PLUGIN_DIR;
 
-//	$theH = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-header.inc");
+	$theH = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-header.inc");
 	$theB = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-body.inc");
 
-//	return $theH . $theB;
-	return $theB;
+//	return $theB;
+	return $theH . $theB;
 }
-
-
-$WP_DEBUG=True;
 
 // Now we set that function up to execute when the admin_notices action is called.
 add_action( 'wp_head ', 'finnish_weather_wp_plugin_header' );
