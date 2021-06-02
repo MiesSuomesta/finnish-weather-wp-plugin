@@ -13,14 +13,13 @@
 				<br>
 				<select name="stations[]" id="stations" multiple size=10>
 				<br>
-
-<?php
-				foreach ($stations as $station) {
-					$htmlIP = '					<option value="' . $FID . '">' . $station . "</option>";
-					echo $htmlIP . $htmlEndln;
-					$FID++;
-				}
-?>
+					<?php
+						foreach ($stations as $station) {
+							$htmlIP = '					<option value="' . $FID . '">' . $station . "</option>";
+							echo $htmlIP . $htmlEndln;
+							$FID++;
+						}
+					?>
 				</select>
 				<br>
 				<input type="submit" value="Valitse">
