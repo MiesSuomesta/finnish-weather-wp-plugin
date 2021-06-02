@@ -24,7 +24,7 @@ function finnish_weather_wp_plugin_header()
 	global $FINWEATHER_PLUGIN_DIR;
 
 	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-header.inc"); 
-	$thehtml = 	"<head>\n" . $contents . "</head>\n";
+	$thehtml = 	$contents;
 
 	return "LJA FOOBAR HEEED";
 //	return $thehtml;
@@ -36,7 +36,7 @@ function finnish_weather_wp_plugin_body()
 	global $FINWEATHER_PLUGIN_DIR;
 
 	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-body.inc"); 
-	$thehtml = 	"<body>\n" . $contents . "</body>\n";
+	$thehtml = 	$contents;
 
 	return "LJA FOOBAR BEAT";
 //	return $thehtml;
@@ -52,7 +52,7 @@ function finnish_weather_wp_plugin_shortcode()
 	$theB = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/saa-osm-fi-body.inc");
 
 //	return "<H1>LJA FOOBAR</H1> <H4>BÄT</H4>";
-	return $theH . $theB;
+	return $theB;
 }
 
 // Now we set that function up to execute when the admin_notices action is called.
