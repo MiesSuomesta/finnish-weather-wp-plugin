@@ -240,16 +240,14 @@ function comment($txt)
 			
 			content.isContentEditable = true;
 
-			if (saved_overlay[name] == null) {
+			if (saved_overlay[name] == null)
+			{
 				var o = new ol.Overlay({
 								id: name,
 								element: container
 							});
-
 				saved_overlay[name] = o;
-				
 				console.log("Init ", name, " overlay:", o);
-											
 			} 
 
 			overlay 	= saved_overlay[name];
