@@ -1,25 +1,3 @@
-<?php 
-
-	include("saa-map-php-functions.inc");
-
-	include("saa-map-java-functions.inc");
-	$stations = weather_get_mysql_record_number_field($LatestID, 1, "stationname ASC");
-	$FID = 0;
-
-	function output_station($station) {
-
-			global $stations;
-			global $FID;
-			$htmlEndln = "<br>\n";
-			$htmlIP = '					<option value="' . $FID . '">' . $station . "</option>";
-			return $htmlIP . $htmlEndln;
-
-	}
-	
-	function output_saatable() {
-			global $stations;
-			global $FID;
-?>
 
 	<table>
 		<tr>
@@ -30,11 +8,32 @@
 				<br>
 				<select name="stations[]" id="stations" multiple size=10>
 
-<?php
-					foreach ($stations as $station) {
-						echo output_station($station);
-						$FID++;
-					};
+<?php 
+
+	include("saa-map-php-functions.inc");
+
+	include("saa-map-java-functions.inc");
+	
+	$stations = weather_get_mysql_record_number_field($LatestID, 1, 'stationname ASC');
+	$FID = 0; 
+
+	function output_station($station) {
+
+			global $stations;
+			global $FID;
+			$htmlIP = "<option value='$FID'>$station</option>\n";
+			return $htmlIP;
+
+	}
+	
+	function output_saatable() {
+			global $stations;
+			global $FID;
+			foreach ($stations as $station) {
+				echo output_station($station);
+				$FID++;
+			};
+	}
 ?>
 
 				</select>
