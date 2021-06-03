@@ -3,12 +3,12 @@
 <?php
 
 	/* Login details */
-	include("login.inc");
+	include_once("login.inc");
 	/* SQL details */
-	include("mysql.inc");
+	include_once("mysql.inc");
 
 	/* SQL details */
-	include("output_selection_set.inc");
+	include_once("output_selection_set.inc");
 
 	function mkMarker($obj)
 	{
