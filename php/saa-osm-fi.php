@@ -2,13 +2,13 @@
 	<head>
 		<?php
 			include("login.inc");
-			include("saa-osm-fi-header.inc");
+			include("header.inc");
 		?>
 	</head>
 
 	<body>
 		<?php 
-			include("saa-osm-fi-body.inc");
+			include("body.inc");
 		?>
 	</body>
 
