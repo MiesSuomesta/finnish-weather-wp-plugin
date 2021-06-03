@@ -23,11 +23,12 @@ function finnish_weather_wp_plugin_header()
 
 	global $FINWEATHER_PLUGIN_DIR;
 
-	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/osm-map-functions.inc"); 
+	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/header.inc"); 
 	$thehtml  = $contents;
 
-	return "<meta foo='LJA FOOBAR HEEED' />";
-//	return $thehtml;
+
+//	return "<meta foo='LJA FOOBAR HEEED' />";
+	return $thehtml;
 }
 
 function finnish_weather_wp_plugin_body()
@@ -35,10 +36,9 @@ function finnish_weather_wp_plugin_body()
 
 	global $FINWEATHER_PLUGIN_DIR;
 
-	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/osm-map-body.inc"); 
+	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/body.inc"); 
 	$thehtml  = $contents;
 
-//	return "LJA FOOBAR BEAT";
 	return $thehtml;
 }
 
@@ -48,11 +48,11 @@ function finnish_weather_wp_plugin_shortcode()
 
 	global $FINWEATHER_PLUGIN_DIR;
 
-	$theH = finnish_weather_wp_plugin_header();
+//	$theH = finnish_weather_wp_plugin_header();
 	$theB = finnish_weather_wp_plugin_body();
 
 //	return "<H1>LJA FOOBAR</H1> <H4>BÄT</H4>";
-	echo $theH . $theB;
+	echo $theB;
 }
 
 // Now we set that function up to execute when the admin_notices action is called.
