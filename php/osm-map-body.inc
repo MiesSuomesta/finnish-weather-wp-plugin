@@ -37,7 +37,8 @@
 	</table>
 
 	<script language="javascript">
-			
+		let firstOpeningWindow = true;
+		
 		function cb_onLoadDocument(event, after) 
 		{
 			if (firstOpeningWindow)
