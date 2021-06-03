@@ -17,27 +17,17 @@
 	$stations = weather_get_mysql_record_number_field($LatestID, 1, 'stationname ASC');
 	$FID = 0; 
 
-	function output_station($station) {
+	function output_station($st, $ID) {
 
-			global $stations;
-			global $FID;
-			$htmlIP = "<option value='$FID'>$station</option>\n";
+			$htmlIP = "<option value='$ID'>$st</option>\n";
 			return $htmlIP;
 
 	}
-	
-	function output_saatable() {
-			global $stations;
-			global $FID;
-			foreach ($stations as $station) {
-				echo output_station($station);
-				$FID++;
-			};
-	}
 
-	echo "<br>LJA S ---------------------------<br>";
-	output_saatable();
-	echo "<br>LJA E ---------------------------<br>";
+	foreach ($stations as $station) {
+		print(output_station($station, $FID));
+		$FID++;
+	};
 ?>
 
 
