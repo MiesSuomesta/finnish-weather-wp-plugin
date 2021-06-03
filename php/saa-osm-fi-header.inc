@@ -110,7 +110,6 @@
 ?>
 	<script>
 		let myMap;
-		let firstOpeningWindow = true;
 		let names = Array();
 		let coordsToJSON = Array();
 		let nameToOverlay = Array();
@@ -418,7 +417,7 @@
 			if (firstOpeningWindow)
 			{
 					initMap();
-			}
+			} 
 			
 			after();
 		}
