@@ -4,14 +4,13 @@
 
 	include_once("saa-map-java-functions.inc");
 
-?>
-
-<?php
 	$stations = weather_get_mysql_record_number_field($LatestID, 1, "stationname ASC");
 	$FID = 0;
 	$htmlEndln = "<br>\n";
-?>
 
+	function output_saatable() {
+	
+?>
 
 
 	<table>
@@ -49,3 +48,10 @@
 		window.document.onload = cb_onLoadDocument(event, cb_after);
 	</script>
 
+<?php }; 
+
+	echo "\n<br>LJA S ---------------------------\n<br>";
+	output_saatable();
+	echo "\n<br>LJA E ---------------------------\n<br>";
+
+?>
