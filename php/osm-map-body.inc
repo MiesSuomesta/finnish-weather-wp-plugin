@@ -37,6 +37,19 @@
 	</table>
 
 	<script language="javascript">
+			
+		function cb_onLoadDocument(event, after) 
+		{
+			if (firstOpeningWindow)
+			{
+					initMap();
+			}
+			
+			after();
+		}
+
+		function cb_after(){ firstOpeningWindow = false; }
+
 		window.document.onload = cb_onLoadDocument(event, cb_after);
 	</script>
 
