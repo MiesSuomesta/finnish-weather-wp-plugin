@@ -412,18 +412,6 @@ function comment($txt)
 			
 		}
 		
-		function cb_onLoadDocument(event, after) 
-		{
-			if (firstOpeningWindow)
-			{
-					initMap();
-			}
-			
-			after();
-		}
-
-		function cb_after(){ firstOpeningWindow = false; }
-		
 	</script>
 
  
