@@ -376,8 +376,6 @@ function comment($txt)
 			content 	= document.getElementById('osmPop-content');
 			closer 		= document.getElementById('osmPop-closer');
 
-			container 	= document.getElementById('LJALJA');
-
 			<?php
 			
 				$LatestID = weather_get_mysql_data_last_record_number();
