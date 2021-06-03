@@ -1,121 +1,23 @@
 
-	<link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
-	<script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
-
 <?php
-
-function weather_get_weather_info_table_name()
-{
-	return $GLOBALS['mysql_weatherinfotable'];
-}
-
-function weather_do_mysql_query($query)
-{
-	global $GLOBALS;
-	$q = $query . ';';
-
-	$mysqli = new mysqli(	$GLOBALS['mysql_hostname'],
-							$GLOBALS['mysql_username'],
-							$GLOBALS['mysql_password'],
-							$GLOBALS['mysql_databasename']);
-
-	if ($mysqli->connect_errno) {
-		echo "Failed to connect to MySQL: " . $mysqli->connect_error;
-		exit();
-	}
-
-	$result = $mysqli->query($q);
-
-	if ($mysqli->connect_errno) {
-		echo "Failed to request from MySQL: " . $mysqli->connect_error;
-		exit();
-	}
-
-	$mysqli->close();
-
-	return $result;
-}
-
-function weather_get_mysql_data_last_record_number()
-{
-	$q = "select max(recordnro) from " . weather_get_weather_info_table_name();	
-
-	$result = weather_do_mysql_query($q);
-
-	$row = $result->fetch_row();
-	$res = 0;
-	
-	if ($row)
-		$res = $row[0];
-
-	$result -> free();
-	
-	return $res;
-}
-
-function weather_get_mysql_record_number_datas($rnro, $orderby = "")
-{
-	$q = "select * from " . weather_get_weather_info_table_name();
-	$q = $q . " where recordnro = " . $rnro;	
-	
-	if ($orderby != "")
-		$q = $q . " order by $orderby ";
-
-	$result = weather_do_mysql_query($q);
-
-	$rows = array();
-
-	while ($row = $result->fetch_row())
-		$rows[] = $row;
-
-	$result -> free();
-	
-	return $rows;
-}
-
-function weather_get_mysql_record_number_field($rnro, $field, $orderby = "")
-{
-	$q = "select * from " . weather_get_weather_info_table_name();
-	$q = $q . " where recordnro = " . $rnro;	
-	
-	if ($orderby != "")
-		$q = $q . " order by $orderby ";
-	
-
-	$result = weather_do_mysql_query($q);
-
-	$rows = array();
-
-	while ($row = $result->fetch_row())
-	{
-		$rows[] = $row[$field];
-	}
-
-	$result -> free();
-	
-	return $rows;
-}
-
-function mkMarker($obj)
-{
-	$jsn = json_encode($obj);
-	echo "makeMarker(myMap, '" . $jsn ."');\n";
-}
-
-function comment($txt)
-{
-
-}
-
+	include_once("saa-map-php-functions.inc");
 ?>
-	<script>
+
+	<script type="text/javascript">
+	
 		let myMap;
 		let names = Array();
 		let coordsToJSON = Array();
 		let nameToOverlay = Array();
 		let nameToLayer = Array();
-		//let bounds;
-		//let infowin;
+		
+		var saved_overlay = Array();
+		var saved_fea = Array();
+		var saved_layer = Array();
+		
+		var container;
+		var content;
+		var closer;
 		
 		function escapeHtml(usstr)
 		{
@@ -133,13 +35,13 @@ function comment($txt)
 			var html = document.createElement(tag);
 
 			//console.log("Attr: ", attr);
-			if (attr != null) {
+			if (attr != null)
+			{
 				for (var a in attr)
 				{
-
 					var an = attr[a][0];
 					var av = attr[a][1];
-					console.log("A: ", a, "T: ", an, "V: ", av);
+					console.log("A: ", a, " T: ", an, " V: ", av);
 					html.setAttribute(an, av);
 				}
 			}
@@ -215,13 +117,6 @@ function comment($txt)
 			
 			return out;
 		}
-
-		var saved_overlay = Array();
-		var saved_fea = Array();
-		var saved_layer = Array();
-		var container;
-		var content;
-		var closer;
 		
 		function close_popup()
 		{
@@ -307,11 +202,11 @@ function comment($txt)
 													}
 												);
 						/*
-						console.log("singleclick start -----------------------------------------");
-						console.log("cname: ", cname);
-						console.log("over : ", over);
-						console.log("nToO : ", nToO);
-						console.log("feats: ", feats);
+							console.log("singleclick start -----------------------------------------");
+							console.log("cname: ", cname);
+							console.log("over : ", over);
+							console.log("nToO : ", nToO);
+							console.log("feats: ", feats);
 						*/
 						var rv = true;
 						if (feats)
@@ -325,11 +220,11 @@ function comment($txt)
 							var nToO    = myMap.get("nameToOverlay");
 							var over    = nToO[name];
 							/*
-							console.log("name:", 		name);
-							console.log("json:", 		jObj);
-							console.log("over:", 		overlay);
-							console.log("cont ID:", 	content.id);
-							console.log("cont:", 		content);
+								console.log("name:", 		name);
+								console.log("json:", 		jObj);
+								console.log("over:", 		overlay);
+								console.log("cont ID:", 	content.id);
+								console.log("cont:", 		content);
 							*/
 							
 							htmlcontent = makeMarkerContent(jObj);
