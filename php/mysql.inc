@@ -1,7 +1,10 @@
 <?php
+
+/* Login details */
+include_once("login.inc");
  
 /* MYSQL stuff */
-function weather_get_weather_info_table_name()
+function weather_get_weather_info_table_name() 
 {
 	return $GLOBALS['mysql_weatherinfotable'];
 }

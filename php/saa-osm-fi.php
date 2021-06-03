@@ -7,9 +7,6 @@
 	/* SQL details */
 	include_once("mysql.inc");
 
-	/* SQL details */
-	include_once("output_selection_set.inc");
-
 	function mkMarker($obj)
 	{
 		$jsn = json_encode($obj);
@@ -305,8 +302,15 @@
 			content 	= document.getElementById('osmPop-content');
 			closer 		= document.getElementById('osmPop-closer');
 
-			<?php output_to_select_all_stations(); ?>
+			<?php 
 			
+				include_once("output_selection_set.inc");
+
+
+				output_to_select_all_stations(); 
+				
+			?>
+
 		}
 		
 		function cb_onLoadDocument(event, after) 
