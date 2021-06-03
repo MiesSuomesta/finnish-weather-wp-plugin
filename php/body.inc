@@ -1,18 +1,25 @@
 <?php 
 
-	include_once("saa-map-php-functions.inc");
+	include("saa-map-php-functions.inc");
 
-	include_once("saa-map-java-functions.inc");
+	include("saa-map-java-functions.inc");
+	$stations = weather_get_mysql_record_number_field($LatestID, 1, "stationname ASC");
+	$FID = 0;
 
+	function output_station($station) {
 
-	function output_saatable() {
-
-			$stations = weather_get_mysql_record_number_field($LatestID, 1, "stationname ASC");
-			$FID = 0;
+			global $stations;
+			global $FID;
 			$htmlEndln = "<br>\n";
-	
-?>
+			$htmlIP = '					<option value="' . $FID . '">' . $station . "</option>";
+			return $htmlIP . $htmlEndln;
 
+	}
+	
+	function output_saatable() {
+			global $stations;
+			global $FID;
+?>
 
 	<table>
 		<tr>
@@ -22,14 +29,14 @@
 				<label for="stations">Valitse sääasemat</label>
 				<br>
 				<select name="stations[]" id="stations" multiple size=10>
-				<br>
-					<?php
-						foreach ($stations as $station) {
-							$htmlIP = '					<option value="' . $FID . '">' . $station . "</option>";
-							echo $htmlIP . $htmlEndln;
-							$FID++;
-						}
-					?>
+
+<?php
+					foreach ($stations as $station) {
+						echo output_station($station);
+						$FID++;
+					};
+?>
+
 				</select>
 				<br>
 					<input type="submit" value="Valitse">
