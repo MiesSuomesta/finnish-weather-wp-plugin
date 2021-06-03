@@ -2,23 +2,24 @@
 <head>
 <?php
 
-/* Login details */
-include("login.inc");
-/* SQL details */
-include("mysql.inc");
+	/* Login details */
+	include("login.inc");
+	/* SQL details */
+	include("mysql.inc");
 
-function mkMarker($obj)
-{
-	$jsn = json_encode($obj);
-	echo "makeMarker(myMap, '" . $jsn ."');\n";
-}
+	function mkMarker($obj)
+	{
+		$jsn = json_encode($obj);
+		echo "makeMarker(myMap, '" . $jsn ."');\n";
+	}
 
-function comment($txt)
-{
-	echo "<!--- $txt --->\n";
-}
+	function comment($txt)
+	{
+		echo "<!--- $txt --->\n";
+	}
 
 ?>
+
 	<link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
 	<script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
 	<script>
@@ -301,40 +302,7 @@ function comment($txt)
 			content 	= document.getElementById('osmPop-content');
 			closer 		= document.getElementById('osmPop-closer');
 
-			<?php
-			
-				$LatestID = weather_get_mysql_data_last_record_number();
-
-				$stations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
-
-				/*
-					echo "Stations:";
-					print_r($stations);
-					echo "<br>";
-	
-					comment("Stations got:");
-					echo "<!---\n";
-					print_r($_GET['stations']);
-					echo "--->\n";
-				*/
-
-				if ( $fv = $_GET['stations'] )
-				{
-					foreach ($fv as $selectedStation) {
-						$stationData = $stations[$selectedStation];
-						comment("Marker $selectedStation");
-					/*
-						echo "<!---\n";
-						print_r($stationData);
-						echo "--->\n";
-					*/
-						mkMarker($stationData);
-					}
-				}
-			
-			?>
-			
-//			myMap.fitBounds(bounds);
+			<?php output_to_select_all_stations(); ?>
 			
 		}
 		

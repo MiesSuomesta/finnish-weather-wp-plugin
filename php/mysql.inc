@@ -1,5 +1,5 @@
 <?php
-
+ 
 /* MYSQL stuff */
 function weather_get_weather_info_table_name()
 {
