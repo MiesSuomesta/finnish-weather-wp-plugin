@@ -7,6 +7,9 @@
 	/* SQL details */
 	include("mysql.inc");
 
+	/* SQL details */
+	include("output_selection_set.inc");
+
 	function mkMarker($obj)
 	{
 		$jsn = json_encode($obj);
