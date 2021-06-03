@@ -34,7 +34,12 @@
 				$FID++;
 			};
 	}
+
+	echo "<br>LJA S ---------------------------<br>";
+	output_saatable();
+	echo "<br>LJA E ---------------------------<br>";
 ?>
+
 
 				</select>
 				<br>
@@ -55,10 +60,3 @@
 		window.document.onload = cb_onLoadDocument(event, cb_after);
 	</script>
 
-<?php }; 
-
-	echo "\n<br>LJA S ---------------------------\n<br>";
-	output_saatable();
-	echo "\n<br>LJA E ---------------------------\n<br>";
-
-?>
