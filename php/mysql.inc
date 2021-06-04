@@ -1,10 +1,7 @@
 <?php
 
-/* Login details */
-include_once("login.inc");
- 
 /* MYSQL stuff */
-function weather_get_weather_info_table_name() 
+function weather_get_weather_info_table_name()
 {
 	return $GLOBALS['mysql_weatherinfotable'];
 }
@@ -34,7 +31,7 @@ function weather_do_mysql_query($query)
 	$mysqli->close();
 
 	return $result;
-} 
+}
 
 function weather_get_mysql_data_last_record_number()
 {
