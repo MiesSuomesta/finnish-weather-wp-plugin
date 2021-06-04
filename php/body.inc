@@ -15,6 +15,12 @@
 		echo "<!--- $txt --->\n";
 	}
 
+	$LatestID = weather_get_mysql_data_last_record_number();
+
+	$stations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
+
+	//print_r($stations);
+
 ?>
 	<script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
 	 
@@ -299,11 +305,6 @@
 			closer 		= document.getElementById('osmPop-closer');
 
 			<?php
-			
-				$LatestID = weather_get_mysql_data_last_record_number();
-
-				$stations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
-
 				/*
 					echo "Stations:";
 					print_r($stations);
@@ -362,17 +363,12 @@
 				<br>
 
 <?php
-				/* Login details */
-				include_once("login.inc");
-				/* SQL details */
-				include_once("mysql.inc");
-
-				$stations = weather_get_mysql_record_number_field($LatestID, 1, 'stationname ASC');
 				$FID = 0;
-				$htmlEndln = '<br>\n';
-				foreach ($stations as $station) {
+				$htmlEndln = "<br>\n";
+				foreach ($stations as $stationi) {
+					$station = $stationi[1];
 					$htmlIP = "<option value=\"$FID\">$station</option>";
-					print($htmlIP . $htmlEndln);
+					echo $htmlIP . $htmlEndln;
 					$FID++;
 				}
 ?>
