@@ -1,4 +1,4 @@
-<script type="text/javascript">
+<script>
 	let myMap;
 	let firstOpeningWindow = true;
 	let names = Array();
