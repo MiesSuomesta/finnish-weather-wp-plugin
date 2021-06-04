@@ -45,9 +45,9 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		echo '<meta shortti="lja alkaa" />\n';
+		echo '<meta shortti="lja alkaa" />';
 		include($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-		echo '<meta shortti="lja stoppaa" />\n';
+		echo '<meta shortti="lja stoppaa" />';
 
 	}
 
@@ -55,7 +55,7 @@
 //	add_action( 'wp_head', 			'finnish_weather_wp_plugin_header' 	);
 	add_action( 'body_open',		'finnish_weather_wp_plugin_body' 	);
 
-	add_shortcode('finweather', 'finnish_weather_wp_plugin_shortcode'	);
+//	add_shortcode('finweather', 'finnish_weather_wp_plugin_shortcode'	);
 
 ?>
  
