@@ -1,11 +1,8 @@
-
-	<!--- LJA BODY START --->
-
 <?php
 	/* Login details */
-	include_once("login.inc");
+	include("login.inc");
 	/* SQL details */
-	include_once("mysql.inc");	
+	include("mysql.inc");	
 
 	function mkMarker($obj)
 	{
@@ -400,4 +397,3 @@
 	<script language="javascript">
 		window.document.onload = cb_onLoadDocument(event, cb_after);
 	</script>
-	<!--- LJA BODY END --->
