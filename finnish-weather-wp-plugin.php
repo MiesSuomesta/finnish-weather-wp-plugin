@@ -26,7 +26,7 @@
 
 		global $FINWEATHER_PLUGIN_DIR;
 
-		include($FINWEATHER_PLUGIN_DIR . "php/header.inc"); 
+		include($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
 	}
 
 	function finnish_weather_wp_plugin_body()
@@ -34,7 +34,7 @@
 
 		global $FINWEATHER_PLUGIN_DIR;
 
-		include($FINWEATHER_PLUGIN_DIR . "php/body.inc"); 
+		include($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
 	}
 
 	// This just echoes the chosen line, we'll position it later.
