@@ -45,7 +45,7 @@
 
 		echo "BODY start";
 		$thestr = file_get_contents($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-		eval ($thestr);
+		echo $thestr;
 		
 		echo "BODY end";
 
