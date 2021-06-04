@@ -12,7 +12,7 @@
 
 	function comment($txt)
 	{
-		echo "<!--- $txt --->\n";
+//		echo "<!--- $txt --->\n";
 	}
 
 	$LatestID = weather_get_mysql_data_last_record_number();
