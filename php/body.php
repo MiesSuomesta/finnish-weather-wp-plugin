@@ -94,9 +94,10 @@
 			</td>
 			<td>
 				    <div id="osmMap" style="width:450px;height:550px;"></div>
-				    <div id="osmPop" style="visibility: visible; display: block;">
-						<a href="#" id="osmPop-closer"></a>
-						<div id="osmPop-content" style="visibility: visible; display: block;"></div>
+						<div id="osmPop" style="visibility: visible; display: block;">
+							<a href="#" id="osmPop-closer"></a>
+							<div id="osmPop-content" style="visibility: visible; display: block;"></div>
+						</div>
 					</div>
 
 					<script>
