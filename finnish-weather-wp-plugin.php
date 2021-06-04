@@ -24,23 +24,30 @@
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_header()
 	{
-
 		global $FINWEATHER_PLUGIN_DIR;
 
 		include_once($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
 	}
 
 	// This just echoes the chosen line, we'll position it later.
-	function finnish_weather_wp_plugin_shortcode()
+	function finnish_weather_wp_plugin_body()
 	{
-
 		global $FINWEATHER_PLUGIN_DIR;
 
+		include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
+	}
 
+	// This just echoes the chosen line, we'll position it later.
+	function finnish_weather_wp_plugin_shortcode()
+	{
+		global $FINWEATHER_PLUGIN_DIR;
+
+		finnish_weather_wp_plugin_body();
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
 	add_action( 'wp_head', 		'finnish_weather_wp_plugin_header' 	);
+	add_action( 'wp_body_open',	'finnish_weather_wp_plugin_body' 	);
 
 	add_shortcode('finweather', 'finnish_weather_wp_plugin_shortcode');
 
