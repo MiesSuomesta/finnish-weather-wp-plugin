@@ -44,7 +44,9 @@
 		global $FINWEATHER_PLUGIN_DIR;
 
 		echo "BODY start";
-		eval file_get_contents($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
+		$thestr = file_get_contents($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
+		eval ($thestr);
+		
 		echo "BODY end";
 
 	}
