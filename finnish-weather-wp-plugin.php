@@ -26,7 +26,7 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		include_once($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
+		include($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
 	}
 
 	// This just echoes the chosen line, we'll position it later.
@@ -35,7 +35,7 @@
 		global $FINWEATHER_PLUGIN_DIR;
 
 		echo '<meta startti="lja" />\n';
-		include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
+		include($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
 		echo '<meta stoppi="lja" />\n';
 
 	}
@@ -46,7 +46,7 @@
 		global $FINWEATHER_PLUGIN_DIR;
 
 		echo '<meta shortti="lja alkaa" />\n';
-		include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
+		include_once($FINWEATHER_PLUGIN_DIR . "php/short.php"); 
 		echo '<meta shortti="lja stoppaa" />\n';
 
 	}
