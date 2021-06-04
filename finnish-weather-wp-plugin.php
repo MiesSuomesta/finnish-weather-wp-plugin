@@ -34,7 +34,8 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
+		//include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
+		echo '<meta foofoo="lja" />';
 
 	}
 
@@ -46,10 +47,10 @@
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
-//	add_action( 'wp_head', 		'finnish_weather_wp_plugin_header' 	);
-	add_action( 'wp_body',		'finnish_weather_wp_plugin_body' 	);
+//	add_action( 'wp_head', 			'finnish_weather_wp_plugin_header' 	);
+	add_action( 'wp_body_open',		'finnish_weather_wp_plugin_body' 	);
 
-	add_shortcode('finweather', 'finnish_weather_wp_plugin_body'	);
+//	add_shortcode('finweather', 'finnish_weather_wp_plugin_body'	);
 
 ?>
  

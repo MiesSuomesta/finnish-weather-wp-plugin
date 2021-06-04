@@ -1,4 +1,3 @@
-FOOBAR
 <?php
 
 	/* Login details */
