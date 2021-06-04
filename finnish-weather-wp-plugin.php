@@ -26,7 +26,7 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		include_once($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
+		echo file_get_contents($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
 	}
 
 	// This just echoes the chosen line, we'll position it later.
@@ -46,13 +46,12 @@
 		global $FINWEATHER_PLUGIN_DIR;
 
 		echo '<meta shortti="lja alkaa" />';
-		include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
+		echo file_get_contents($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
 		echo '<meta shortti="lja stoppaa" />';
-
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
-//	add_action( 'wp_head', 			'finnish_weather_wp_plugin_header' 	);
+	add_action( 'wp_head', 			'finnish_weather_wp_plugin_header' 	);
 //	add_action( 'wp_body_open',		'finnish_weather_wp_plugin_body' 	);
 
 	add_shortcode('finweather', 'finnish_weather_wp_plugin_shortcode'	);
