@@ -98,7 +98,7 @@
 							<a href="#" id="osmPop-closer"></a>
 							<div id="osmPop-content" style="visibility: visible; display: block;"></div>
 						</div>
-					</div>
+					</div> 
 
 					<script>
 						window.document.onload = cb_onLoadDocument(event, cb_after);
