@@ -1,3 +1,6 @@
+
+	<!--- LJA BODY START --->
+
 <?php
 	/* Login details */
 	include("login.inc");
@@ -397,3 +400,4 @@
 	<script language="javascript">
 		window.document.onload = cb_onLoadDocument(event, cb_after);
 	</script>
+	<!--- LJA BODY END --->
