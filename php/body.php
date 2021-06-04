@@ -57,9 +57,26 @@
 			}
 		}
 	}
+
+	function generate_station_selectiors($stations) {
+		$FID = 0;
+		$htmlEndln = "<br>\n";
+		foreach ($stations as $stationi) {
+			$station = $stationi[1];
+			$htmlIP = "<option value=";
+			$htmlIP = $htmlIP . $FID . ">";
+			$htmlIP = $htmlIP . $station;
+			$htmlIP = $htmlIP . "</option>";
+			echo $htmlIP . $htmlEndln;
+			$FID++;
+		}
+	}
+
+	include("body_selection_generate.inc");
+
+
 ?>
 
-	<?php include("body_selection_generate.inc"); ?>
 
 	<table>
 		<tr>
@@ -69,21 +86,9 @@
 				<label for="stations">Valitse sääasemat</label>
 				<br>
 				<select name="stations[]" id="stations" multiple size=10>
-				<br>
 
-				<?php
-					$FID = 0;
-					$htmlEndln = "<br>\n";
-					foreach ($stations as $stationi) {
-						$station = $stationi[1];
-						$htmlIP = "<option value=";
-						$htmlIP = $htmlIP . $FID . ">";
-						$htmlIP = $htmlIP . $station;
-						$htmlIP = $htmlIP . "</option>";
-						echo $htmlIP . $htmlEndln;
-						$FID++;
-					}
-				?>
+				<?php generate_station_selectiors($stations); ?>
+
 				</select>
 				<br>
 				<input type="submit" value="Valitse">

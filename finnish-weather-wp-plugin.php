@@ -36,9 +36,6 @@
 
 		global $FINWEATHER_PLUGIN_DIR;
 
-		echo "<p>BODY start</p>";
-		include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-		echo "<p>BODY end</p>";
 
 	}
 
