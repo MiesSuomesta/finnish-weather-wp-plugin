@@ -39,7 +39,7 @@
 		echo "BODY start";
 		$thefilestr = file_get_contents($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
 		$thestr = "?>" . $thestr . "<?php";
-		
+		echo $thestr;
 		echo "BODY end";
 
 	}
