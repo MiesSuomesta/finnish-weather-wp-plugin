@@ -7,12 +7,22 @@
 	function mkMarker($obj)
 	{
 		$jsn = json_encode($obj);
-		echo "makeMarker(myMap, '" . $jsn ."');\n";
+		$quot= "'";
+
+		$stout = "makeMarker(myMap," . $quot . $jsn . $quot . ");";
+
+		echo $stout;
 	}
 
 	function comment($txt)
 	{
-//		echo "<!--- $txt --->\n";
+		$jsn = json_encode($obj);
+		$ss = "<!--- ";
+		$se = " --->\n";
+
+		$stout = $ss . $txt . $se;
+
+		echo $stout;
 	}
 
 	$LatestID = weather_get_mysql_data_last_record_number();
