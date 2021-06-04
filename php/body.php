@@ -1,8 +1,8 @@
 <?php
 	/* Login details */
-	include("login.inc");
+	include_once("login.inc");
 	/* SQL details */
-	include("mysql.inc");	
+	include_once("mysql.inc");	
 
 	function mkMarker($obj)
 	{
