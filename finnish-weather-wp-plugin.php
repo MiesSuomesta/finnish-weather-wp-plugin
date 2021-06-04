@@ -26,10 +26,7 @@
 
 		global $FINWEATHER_PLUGIN_DIR;
 
-		$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/header.inc"); 
-		$thehtml  = $contents;
-		echo "<script> console.log(HEAD: '" . $thehtml . "'); </script>";
-		return $thehtml;
+		include($FINWEATHER_PLUGIN_DIR . "php/header.inc"); 
 	}
 
 	function finnish_weather_wp_plugin_body()
@@ -37,20 +34,15 @@
 
 		global $FINWEATHER_PLUGIN_DIR;
 
-		$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/body.inc"); 
-		$thehtml  = $contents;
-		echo "<script> console.log(BODY: '" . $thehtml . "'); </script>";
-
-		return $thehtml;
+		include($FINWEATHER_PLUGIN_DIR . "php/body.inc"); 
 	}
 
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_shortcode()
 	{
 
-		$theB = finnish_weather_wp_plugin_body();
+		finnish_weather_wp_plugin_body();
 
-		echo $theB;
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
