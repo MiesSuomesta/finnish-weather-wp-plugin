@@ -20,6 +20,7 @@
 	/* MYSQL stuff */
 	include_once ($FINWEATHER_PLUGIN_DIR . "php/mysql.inc");
 
+
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_header()
 	{
@@ -29,14 +30,6 @@
 		include_once($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
 	}
 
-	function finnish_weather_wp_plugin_body()
-	{
-
-		global $FINWEATHER_PLUGIN_DIR;
-
-		include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-	}
-
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_shortcode()
 	{
@@ -44,8 +37,8 @@
 		global $FINWEATHER_PLUGIN_DIR;
 
 		echo "BODY start";
-		$thestr = file_get_contents($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-		echo $thestr;
+		$thefilestr = file_get_contents($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
+		$thestr = "?>" . $thestr . "<?php";
 		
 		echo "BODY end";
 
@@ -53,7 +46,6 @@
 
 	// Now we set that function up to execute when the admin_notices action is called.
 	add_action( 'wp_head', 		'finnish_weather_wp_plugin_header' 	);
-//	add_action( 'wp_body_open',	'finnish_weather_wp_plugin_body' 	);
 
 	add_shortcode('finweather', 'finnish_weather_wp_plugin_shortcode');
 
