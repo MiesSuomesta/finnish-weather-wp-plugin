@@ -30,7 +30,7 @@ function weather_do_mysql_query($query)
 
 	$mysqli->close();
 
-	print_r($result);
+//	print_r($result);
 	return $result;
 }
 
