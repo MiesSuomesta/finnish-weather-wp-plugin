@@ -34,9 +34,9 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		echo '<meta startti="lja" />';
+		echo '<meta startti="lja" />\n';
 		include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-		echo '<meta stoppi="lja" />';
+		echo '<meta stoppi="lja" />\n';
 
 	}
 
@@ -51,7 +51,7 @@
 //	add_action( 'wp_head', 			'finnish_weather_wp_plugin_header' 	);
 //	add_action( 'wp_body_open',		'finnish_weather_wp_plugin_body' 	);
 
-	add_shortcode('finweather', 'finnish_weather_wp_plugin_body'	);
+	add_shortcode('finweather', 'finnish_weather_wp_plugin_shortcode'	);
 
 ?>
  
