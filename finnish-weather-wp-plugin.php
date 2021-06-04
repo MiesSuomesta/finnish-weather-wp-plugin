@@ -37,8 +37,7 @@
 		global $FINWEATHER_PLUGIN_DIR;
 
 		echo "<p>BODY start</p>";
-		$foo = file_get_contents($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-		eval echo $foo;
+		include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
 		echo "<p>BODY end</p>";
 
 	}
