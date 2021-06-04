@@ -371,7 +371,10 @@
 				$htmlEndln = "<br>\n";
 				foreach ($stations as $stationi) {
 					$station = $stationi[1];
-					$htmlIP = "<option value='" . $FID . "'>" . $station . "</option>";
+					$htmlIP = "<option value=";
+					$htmlIP = $htmlIP . $FID . ">";
+					$htmlIP = $htmlIP . $station;
+					$htmlIP = $htmlIP . "</option>";
 					echo $htmlIP . $htmlEndln;
 					$FID++;
 				}
