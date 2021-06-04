@@ -41,7 +41,9 @@
 	function finnish_weather_wp_plugin_shortcode()
 	{
 
+		echo "SHORT LJA Start";
 		finnish_weather_wp_plugin_body();
+		echo "SHORT LJA END";
 
 	}
 
