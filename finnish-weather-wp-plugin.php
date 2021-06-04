@@ -34,8 +34,9 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		//include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-		echo '<meta foofoo="lja" />';
+		echo '<meta startti="lja" />';
+		include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
+		echo '<meta stoppi="lja" />';
 
 	}
 
