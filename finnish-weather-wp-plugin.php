@@ -34,7 +34,7 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
+		//include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
 	}
 
 	// This just echoes the chosen line, we'll position it later.
