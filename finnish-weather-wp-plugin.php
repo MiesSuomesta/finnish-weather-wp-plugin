@@ -37,11 +37,7 @@
 		global $FINWEATHER_PLUGIN_DIR;
 
 		echo "<p>BODY start</p>";
-		ob_start()
 		include($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-		$thestr = ob_get_clean();
-		ob_end_clean();
-		echo $thestr;
 		echo "<p>BODY end</p>";
 
 	}
