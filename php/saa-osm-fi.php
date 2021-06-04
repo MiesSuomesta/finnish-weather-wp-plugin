@@ -1,10 +1,10 @@
 <html>
 <head>
-	<?php include("header.inc"); ?>
+	<?php include("header.php"); ?>
 </head>
 
 <body>
-	<?php include("body.inc"); ?>
+	<?php include("body.php"); ?>
 </body>
 </html> 
 
