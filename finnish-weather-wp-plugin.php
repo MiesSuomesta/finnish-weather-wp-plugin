@@ -15,10 +15,10 @@
 	$FINWEATHER_PLUGIN_DIR = dirname( __FILE__ ) . "/";
 
 	/* Login details */
-	include ($FINWEATHER_PLUGIN_DIR . "php/login.inc");
+	include_once ($FINWEATHER_PLUGIN_DIR . "php/login.inc");
 
 	/* MYSQL stuff */
-	include ($FINWEATHER_PLUGIN_DIR . "php/mysql.inc");
+	include_once ($FINWEATHER_PLUGIN_DIR . "php/mysql.inc");
 
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_header()
@@ -26,7 +26,7 @@
 
 		global $FINWEATHER_PLUGIN_DIR;
 
-		include($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
+		include_once($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
 	}
 
 	function finnish_weather_wp_plugin_body()
@@ -34,7 +34,7 @@
 
 		global $FINWEATHER_PLUGIN_DIR;
 
-		include($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
+		include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
 	}
 
 	// This just echoes the chosen line, we'll position it later.
