@@ -27,9 +27,9 @@
 
 	//print_r($stations);
 
-	function generate_markers()
+	function generate_markers($stations)
 	{
-		global $stations;
+
 /*		
 		echo "Stations:";
 		print_r($stations);

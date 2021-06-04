@@ -279,7 +279,7 @@
 		closer 		= document.getElementById('osmPop-closer');
 
 		// Marker generation start
-		<?php generate_markers(); ?>
+		<?php generate_markers($stations); ?>
 		// Marker generation ends
 		
 	}
