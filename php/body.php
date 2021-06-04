@@ -79,10 +79,10 @@
 		<tr>
 			<td>
 
-				<form action="saa-osm-fi.php" method="get">
+				<form action="<?php echo $SELF; ?>" method="get">
 					<label for="stations">Valitse sääasemat</label>
 					<br>
-					<select name="stations[]" id="stations" multiple size=10>
+					<select name="stations[]" id="stations" multiple size="10">
 					<br>
 					
 					<?php generate_station_selectiors($stations); ?>
