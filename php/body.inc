@@ -16,14 +16,7 @@
 
 	function comment($txt)
 	{
-		$jsn = json_encode($obj);
-		$ssa = "<!";
-		$ssb = "--- ";
-		$se = " --->\n";
 
-		$stout = $ssa . $ssb . $txt . $se;
-
-		echo $stout;
 	}
 
 	$LatestID = weather_get_mysql_data_last_record_number();
