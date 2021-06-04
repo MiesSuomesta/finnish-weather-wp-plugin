@@ -38,7 +38,7 @@
 
 		echo "<p>BODY start</p>";
 		$foo = file_get_contents($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-		echo $foo;
+		eval echo $foo;
 		echo "<p>BODY end</p>";
 
 	}
