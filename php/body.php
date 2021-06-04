@@ -1,6 +1,8 @@
 <?php
+
 	/* Login details */
 	include_once("login.inc");
+
 	/* SQL details */
 	include_once("mysql.inc");	
 
