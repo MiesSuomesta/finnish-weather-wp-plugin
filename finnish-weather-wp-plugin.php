@@ -36,11 +36,11 @@
 
 		global $FINWEATHER_PLUGIN_DIR;
 
-		echo "BODY start";
+		echo "<p>BODY start</p>";
 		$thefilestr = file_get_contents($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-		$thestr = "?>" . $thefilestr;
+		$thestr = $thefilestr;
 		echo $thestr;
-		echo "BODY end";
+		echo "<p>BODY end</p>";
 
 	}
 
