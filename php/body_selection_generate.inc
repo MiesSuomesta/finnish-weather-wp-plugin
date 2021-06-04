@@ -278,7 +278,9 @@
 		content 	= document.getElementById('osmPop-content');
 		closer 		= document.getElementById('osmPop-closer');
 
+		// Marker generation start
 		<?php generate_markers(); ?>
+		// Marker generation ends
 		
 	}
 	

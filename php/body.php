@@ -13,7 +13,7 @@
 
 		$stout = "makeMarker(myMap," . $quot . $jsn . $quot . ");";
 
-		echo $stout;
+		echo $stout . "\n";
 	}
 
 	function comment($txt)
@@ -80,15 +80,16 @@
 			<td>
 
 				<form action="saa-osm-fi.php" method="get">
-				<label for="stations">Valitse sääasemat</label>
-				<br>
-				<select name="stations[]" id="stations" multiple size=10>
+					<label for="stations">Valitse sääasemat</label>
+					<br>
+					<select name="stations[]" id="stations" multiple size=10>
+					<br>
+					
+					<?php generate_station_selectiors($stations); ?>
 
-				<?php generate_station_selectiors($stations); ?>
-
-				</select>
-				<br>
-				<input type="submit" value="Valitse">
+					</select>
+					<br>
+					<input type="submit" value="Valitse">
 				</form>
 			</td>
 			<td>
