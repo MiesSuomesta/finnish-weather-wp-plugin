@@ -28,7 +28,7 @@
 
 		$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/header.inc"); 
 		$thehtml  = $contents;
-		echo "<script> console.log("HEAD: $thehtml"); </script>";
+		echo "<script> console.log(HEAD: '$thehtml'); </script>";
 		return $thehtml;
 	}
 
@@ -39,7 +39,7 @@
 
 		$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/body.inc"); 
 		$thehtml  = $contents;
-		echo "<script> console.log("BODY: $thehtml"); </script>";
+		echo "<script> console.log(BODY: '$thehtml'); </script>";
 
 		return $thehtml;
 	}
