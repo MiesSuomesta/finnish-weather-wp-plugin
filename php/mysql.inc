@@ -8,7 +8,7 @@ function weather_get_weather_info_table_name()
 
 function weather_do_mysql_query($query)
 {
-	$q = $query . ";";
+	$q = $query . ';';
 
 	$mysqli = new mysqli(	$GLOBALS['mysql_hostname'],
 							$GLOBALS['mysql_username'],
@@ -30,6 +30,7 @@ function weather_do_mysql_query($query)
 
 	$mysqli->close();
 
+	print_r($result);
 	return $result;
 }
 

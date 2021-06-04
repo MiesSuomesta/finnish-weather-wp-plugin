@@ -1,64 +1,64 @@
 <?php
-/**
- * @package finnish-weather-wp-plugin$
- * @version 0.0.1a
- */
-/*
-Plugin Name: finnish_weather_wp_plugin
-Plugin URI: http://paxsudos.fi/wp/finnish-weather-wp-plugin/
-Description: weather information plugin, at alfa state
-Author: Lauri Jakku
-Version: 0.0.1a
-Author URI: http://paxsudos.fi/
-*/
+	/**
+	 * @package finnish-weather-wp-plugin$
+	 * @version 0.0.1a
+	 */
+	/*
+	Plugin Name: finnish_weather_wp_plugin
+	Plugin URI: http://paxsudos.fi/wp/finnish-weather-wp-plugin/
+	Description: weather information plugin, at alfa state
+	Author: Lauri Jakku
+	Version: 0.0.1a
+	Author URI: http://paxsudos.fi/
+	*/
 
-$FINWEATHER_PLUGIN_DIR = dirname( __FILE__ ) . "/";
+	$FINWEATHER_PLUGIN_DIR = dirname( __FILE__ ) . "/";
 
-/* Login details */
-include ($FINWEATHER_PLUGIN_DIR . "php/login.inc");
+	/* Login details */
+	include_once ($FINWEATHER_PLUGIN_DIR . "php/login.inc");
 
-// This just echoes the chosen line, we'll position it later.
-function finnish_weather_wp_plugin_header()
-{
+	/* MYSQL stuff */
+	include_once ($FINWEATHER_PLUGIN_DIR . "php/mysql.inc");
 
-	global $FINWEATHER_PLUGIN_DIR;
+	// This just echoes the chosen line, we'll position it later.
+	function finnish_weather_wp_plugin_header()
+	{
 
-	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/header.inc"); 
-	$thehtml  = $contents;
+		global $FINWEATHER_PLUGIN_DIR;
 
+		$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/header.inc"); 
+		$thehtml  = $contents . "<meta foo='LJA FOOBAR HEEED' />";
 
-//	return "<meta foo='LJA FOOBAR HEEED' />";
-	return $thehtml;
-}
+		return $thehtml;
+	}
 
-function finnish_weather_wp_plugin_body()
-{
+	function finnish_weather_wp_plugin_body()
+	{
 
-	global $FINWEATHER_PLUGIN_DIR;
+		global $FINWEATHER_PLUGIN_DIR;
 
-	$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/body.inc"); 
-	$thehtml  = $contents;
+		$contents = file_get_contents ($FINWEATHER_PLUGIN_DIR . "php/body.inc"); 
+		$thehtml  = $contents . "<meta foo='LJA FOOBAR BODY' />";
 
-	return $thehtml;
-}
+		return $thehtml;
+	}
 
-// This just echoes the chosen line, we'll position it later.
-function finnish_weather_wp_plugin_shortcode()
-{
+	// This just echoes the chosen line, we'll position it later.
+	function finnish_weather_wp_plugin_shortcode()
+	{
 
-	global $FINWEATHER_PLUGIN_DIR;
+		global $FINWEATHER_PLUGIN_DIR;
 
-//	$theH = finnish_weather_wp_plugin_header();
-	$theB = finnish_weather_wp_plugin_body();
+	//	$theH = finnish_weather_wp_plugin_header();
+		$theB = finnish_weather_wp_plugin_body();
 
-//	return "<H1>LJA FOOBAR</H1> <H4>BÄT</H4>";
-	echo $theB;
-}
+		echo $theB;
+	}
 
-// Now we set that function up to execute when the admin_notices action is called.
-add_action( 'wp_head', 'finnish_weather_wp_plugin_header' );
-add_action( 'wp',		     'finnish_weather_wp_plugin_body' );
+	// Now we set that function up to execute when the admin_notices action is called.
+	add_action( 'wp_head', 	'finnish_weather_wp_plugin_header' );
+	add_action( 'wp',		'finnish_weather_wp_plugin_body' );
 
-add_shortcode('finweather', 'finnish_weather_wp_plugin_shortcode');
+	add_shortcode('finweather', 'finnish_weather_wp_plugin_shortcode');
 
 ?>
