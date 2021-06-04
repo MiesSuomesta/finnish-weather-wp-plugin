@@ -31,7 +31,7 @@ function weather_do_mysql_query($query)
 	$mysqli->close();
 
 	return $result;
-}
+} 
 
 function weather_get_mysql_data_last_record_number()
 {
