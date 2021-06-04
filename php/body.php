@@ -1,4 +1,4 @@
-
+FOOBAR
 <?php
 
 	/* Login details */
@@ -76,7 +76,6 @@
 
 ?>
 
-<body>
 	<table>
 		<tr>
 			<td>
@@ -107,4 +106,3 @@
 			</td>
 		</tr>
 	</table>
-</body>
