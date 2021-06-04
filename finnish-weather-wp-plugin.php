@@ -45,6 +45,10 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
+		echo '<meta shortti="lja alkaa" />\n';
+		include_once($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
+		echo '<meta shortti="lja stoppaa" />\n';
+
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
