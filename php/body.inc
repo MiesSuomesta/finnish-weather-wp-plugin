@@ -17,10 +17,11 @@
 	function comment($txt)
 	{
 		$jsn = json_encode($obj);
-		$ss = "<!--- ";
+		$ssa = "<!";
+		$ssb = "--- ";
 		$se = " --->\n";
 
-		$stout = $ss . $txt . $se;
+		$stout = $ssa . $ssb . $txt . $se;
 
 		echo $stout;
 	}
