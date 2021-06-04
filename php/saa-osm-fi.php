@@ -6,7 +6,7 @@
 <body>
 	<?php include("body.inc"); ?>
 </body>
-</html>
+</html> 
 
 
 

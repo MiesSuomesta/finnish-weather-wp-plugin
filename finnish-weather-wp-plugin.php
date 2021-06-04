@@ -61,3 +61,4 @@
 	add_shortcode('finweather', 'finnish_weather_wp_plugin_shortcode');
 
 ?>
+ 
