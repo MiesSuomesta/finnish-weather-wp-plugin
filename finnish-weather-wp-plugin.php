@@ -25,8 +25,8 @@
 		ob_start();
 			include($f);
 			$content = ob_get_clean();
-			
 		ob_start();
+
 		return $content;
 	}
 
@@ -61,7 +61,7 @@
 
 	// Now we set that function up to execute when the admin_notices action is called.
 //	add_action( 'wp_head', 			'finnish_weather_wp_plugin_header' 	);
-//	add_action( 'wp_body_open',		'finnish_weather_wp_plugin_body' 	);
+	add_action( 'body_class',		'finnish_weather_wp_plugin_body' 	);
 
 	add_shortcode('finweather', 'finnish_weather_wp_plugin_shortcode'	);
 
