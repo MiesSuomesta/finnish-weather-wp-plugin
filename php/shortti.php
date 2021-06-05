@@ -6,7 +6,7 @@
 	/* SQL details */
 	include_once("mysql.inc");	
 
-	if (! function_exists('mkMarker') ) {
+	if (function_exists('mkMarker')) {
 		function mkMarker($obj)
 		{
 			$jsn = json_encode($obj);
