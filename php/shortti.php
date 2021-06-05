@@ -6,21 +6,19 @@
 	/* SQL details */
 	include_once("mysql.inc");	
 
-	if (function_exists('mkMarker')) {
-		function mkMarker($obj)
-		{
-			$jsn = json_encode($obj);
-			$quot= "'";
+	function mkMarker($obj)
+	{
+		$jsn = json_encode($obj);
+		$quot= "'";
 
-			$stout = "makeMarker(myMap," . $quot . $jsn . $quot . ");";
+		$stout = "makeMarker(myMap," . $quot . $jsn . $quot . ");";
 
-			echo $stout . "\n";
-		}
+		echo $stout . "\n";
+	}
 
-		function comment($txt)
-		{
+	function comment($txt)
+	{
 
-		}
 	}
 	
 	$LatestID = weather_get_mysql_data_last_record_number();
