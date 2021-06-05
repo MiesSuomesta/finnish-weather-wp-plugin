@@ -6,6 +6,21 @@
 	/* SQL details */
 	include_once("mysql.inc");	
 
+	function mkMarker($obj)
+	{
+		$jsn = json_encode($obj);
+		$quot= "'";
+
+		$stout = "makeMarker(myMap," . $quot . $jsn . $quot . ");";
+
+		echo $stout . "\n";
+	}
+
+	function comment($txt)
+	{
+
+	}
+
 	$LatestID = weather_get_mysql_data_last_record_number();
 
 	$stations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
