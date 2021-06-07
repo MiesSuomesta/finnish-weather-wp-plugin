@@ -28,6 +28,7 @@
 		
 		echo "<pre>";
 		print_r($_SERVER); 
+		phpinfo();
 		echo "</pre>";
 		
 		$mywproot=dirname(dirname($FINWEATHER_PLUGIN_DIR));
