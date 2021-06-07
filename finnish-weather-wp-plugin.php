@@ -51,32 +51,32 @@
 	require_once ($FINWEATHER_PLUGIN_DIR . "php/mysql.inc");
 
 
-	function evaluate_file($f)
+	function evaluate_file($f, $ft="text/javascript")
 	{
 		global $FINWEATHER_PLUGIN_URL;
 		
-		echo '<script src="' . $FINWEATHER_PLUGIN_URL . $f . '"></script>';
+		echo '<script src="' . $FINWEATHER_PLUGIN_URL . $f . '" type="' . $ft . '"></script>';
 	}
 
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_header()
 	{
 
-		evaluate_file("php/header.php"); 
+		evaluate_file("php/header.php", "text/php"); 
 
 	}
 
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_body()
 	{
-		evaluate_file("php/body.php"); 
+		evaluate_file("php/body.php", "text/php"); 
 	}
 
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_shortcode()
 	{
 
-		evaluate_file("php/shortti.php"); 
+		evaluate_file("php/shortti.php", "text/php"); 
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
