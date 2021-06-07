@@ -19,7 +19,10 @@
 					<select name="stations[]" id="stations" multiple size="10">
 					<br>
 					
-					<?php generate_station_selectiors($stations); ?>
+					<?php 
+						
+						generate_station_selectiors($stations);
+					?>
 
 					</select>
 					<br>
