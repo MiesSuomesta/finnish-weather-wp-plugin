@@ -39,7 +39,8 @@
 		$koodi  = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
 		$loppu  = '<meta stoppi="lja header" /> ';
 
-		return $startti . $koodi . $loppu;
+		echo $startti . $koodi . $loppu;
+	//	return $startti . $koodi . $loppu;
 
 	}
 
@@ -52,6 +53,7 @@
 		$koodi  = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
 		$loppu  = '<meta stoppi="lja body" /> ';
 
+		echo $startti . $koodi . $loppu;
 		return $startti . $koodi . $loppu;
 	}
 
