@@ -60,21 +60,21 @@
 	function finnish_weather_wp_plugin_header()
 	{
 
-		evaluate_file("php/header.php", "text/php"); 
+		evaluate_file("php/header.php", "text/html"); 
 
 	}
 
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_body()
 	{
-		evaluate_file("php/body.php", "text/php"); 
+		evaluate_file("php/body.php", "text/html"); 
 	}
 
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_shortcode()
 	{
 
-		evaluate_file("php/shortti.php", "text/php"); 
+		evaluate_file("php/shortti.php", "text/html"); 
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
