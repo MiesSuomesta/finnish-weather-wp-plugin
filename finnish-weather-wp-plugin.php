@@ -61,7 +61,6 @@
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_header()
 	{
-		global $FINWEATHER_PLUGIN_DIR;
 
 		evaluate_file("php/header.php"); 
 
@@ -70,15 +69,12 @@
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_body()
 	{
-		global $FINWEATHER_PLUGIN_DIR;
-
 		evaluate_file("php/body.php"); 
 	}
 
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_shortcode()
 	{
-		global $FINWEATHER_PLUGIN_DIR;
 
 		evaluate_file("php/shortti.php"); 
 	}
