@@ -43,9 +43,9 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		echo '<meta startti="lja body" />\n';
+		echo '<meta startti="lja body" />\n ';
 		evaluate_file($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-		echo '<meta stoppi="lja body" />\n';
+		echo '<meta stoppi="lja body" />\n ';
 
 	}
 
@@ -54,9 +54,9 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		$startti='<meta shortti="lja alkaa" />';
+		$startti='<meta shortti="lja alkaa" />\n ';
 		$koodi = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/shortti.php"); 
-		$loppu = '<meta shortti="lja stoppaa" />';
+		$loppu = '<meta shortti="lja stoppaa" />\n ';
 		
 		return $startti . $koodi . $loppu;
 	}
