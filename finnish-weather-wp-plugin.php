@@ -90,10 +90,10 @@
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_shortcode()
 	{
-		$fn1 = get_plugin_file_https_address("php/body_selection_generate.inc");
-		$fn2 = get_plugin_file_https_address("php/shortti.php");
-		$tagi1 = "<meta foofoo='shortti' fn='$fn1'/> ";
-		$tagi2 = "<meta foofoo='shortti' fn='$fn2'/> ";
+		$fn1 = get_plugin_file_https_address("php/body_selection_generate.inc", "type/html");
+		$fn2 = get_plugin_file_https_address("php/shortti.php", "type/html");
+		$tagi1 = "<meta foofoo='shortti 1' fn='$fn1'/> ";
+		$tagi2 = "<meta foofoo='shortti 2' fn='$fn2'/> ";
 		
 		$ret = "";
 		$ret = $ret . $tagi1 . file_get_contents($fn1);
