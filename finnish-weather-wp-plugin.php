@@ -14,6 +14,12 @@
 
 	$FINWEATHER_PLUGIN_DIR = dirname( __FILE__ ) . "/";
 
+	function java_logger($txt)
+	{
+		$js = 'console.log(' . $txt . ');';
+		echo $js;
+	}
+
 	function get_file_base_http_address() {
 		global $FINWEATHER_PLUGIN_DIR;
 
@@ -22,6 +28,10 @@
 		$mywproot=dirname(dirname(dirname($FINWEATHER_PLUGIN_DIR)));
 
 		$mydocstr = str_replace($mywproot, "", $FINWEATHER_PLUGIN_DIR);
+
+		java_logger("mydroot = $mydroot");
+		java_logger("myservername = $myservername");
+		java_logger("mydocstr = $mydocstr");
 		
 		$myret = "https://" . $myservername . "/" . $mydocstr . "/";
 
