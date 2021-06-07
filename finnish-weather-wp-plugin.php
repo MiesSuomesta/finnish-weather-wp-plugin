@@ -23,7 +23,7 @@
 	function evaluate_file($f)
 	{
 		ob_start();
-			include_once($f);
+			include($f);
 			$content = ob_get_clean();
 		ob_start();
 
