@@ -90,29 +90,16 @@
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_shortcode()
 	{
-		$fn1 = "./php/body_selection_generate.inc";
-		$fn2 = "./php/shortti.php";
 		$fn1 = get_plugin_file_https_address("php/body_selection_generate.inc");
 		$fn2 = get_plugin_file_https_address("php/shortti.php");
 
+		ob_start();
+			include($fn1);
+			include($fn2);
+			$ret = ob_get_clean();
+		ob_end_clean();
 		
-		$tagi1 = "<script nimi='shortti 1' fn='$fn1' src='$fn1' type='text/javascript'> ";
-		$tagi2 = "<script nimi='shortti 2' fn='$fn2' src='$fn2' type='text/php'> ";
-		
-		$st1 = "";
-		$st2 = "";
-
-/*		
-		$ret = "";
-		$ret = $ret . $tagi1 . $st1 . file_get_contents($fn1) . "</script>";
-		$ret = $ret . $tagi2 . $st2 . file_get_contents($fn2) . "</script>";
-*/
-
-		$ret = "";
-		$ret = $ret . $tagi1 . $st1 . "</script>";
-		$ret = $ret . $tagi2 . $st2 . "</script>";
-		
-		return $ret; 
+		return $ret;
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
