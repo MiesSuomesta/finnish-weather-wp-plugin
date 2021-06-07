@@ -99,8 +99,8 @@
 		$st2 = "<script src='$fn2' type='text/html'>";
 		
 		$ret = "";
-		$ret = $ret . $tagi1 . $st1 . file_get_contents($fn1) . "</script>";
-		$ret = $ret . $tagi2 . $st2 . file_get_contents($fn2) . "</script>";
+		$ret = $ret . $tagi1 . $st1 /* . file_get_contents($fn1) */ . "</script>";
+		$ret = $ret . $tagi2 . $st2 /* . file_get_contents($fn2) */ . "</script>";
 		
 		return $ret; 
 	}
