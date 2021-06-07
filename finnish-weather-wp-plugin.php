@@ -22,14 +22,10 @@
 
 	function evaluate_file($f)
 	{
-			$content = file_get_contents($f);
-
-/*		ob_start();
-			include($f);
-			$content = ob_get_clean();
-		ob_start();
-*/
-		return $content;
+		global $FINWEATHER_PLUGIN_DIR;
+		
+		echo '<script src="' . $FINWEATHER_PLUGIN_DIR . $f . '"></script>' 
+		
 	}
 
 	// This just echoes the chosen line, we'll position it later.
@@ -37,11 +33,7 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		$startti='<meta startti="lja header" /> ';
-		$koodi  = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
-		$loppu  = '<meta stoppi="lja header" /> ';
-
-		return $startti . $koodi . $loppu;
+		evaluate_file("php/header.php"); 
 
 	}
 
@@ -50,11 +42,7 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		$startti='<meta startti="lja body" /> ';
-		$koodi  = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-		$loppu  = '<meta stoppi="lja body" /> ';
-
-		return $startti . $koodi . $loppu;
+		evaluate_file("php/body.php"); 
 	}
 
 	// This just echoes the chosen line, we'll position it later.
@@ -62,11 +50,7 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		$startti= '<meta shortti="lja alkaa" /> ';
-		$koodi  = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/shortti.php"); 
-		$loppu  = '<meta shortti="lja stoppaa" /> ';
-		
-		return $startti . $koodi . $loppu;
+		evaluate_file("php/shortti.php"); 
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
