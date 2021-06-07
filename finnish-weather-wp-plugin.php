@@ -92,8 +92,8 @@
 	{
 		$fn1 = get_plugin_file_https_address("php/body_selection_generate.inc");
 		$fn2 = get_plugin_file_https_address("php/shortti.php");
-		$tagi1 = "<script nimi='shortti 1' fn='$fn1' /> ";
-		$tagi2 = "<script nimi='shortti 2' fn='$fn2' /> ";
+		$tagi1 = "<meta nimi='shortti 1' fn='$fn1' /> ";
+		$tagi2 = "<meta nimi='shortti 2' fn='$fn2' /> ";
 		
 		$st1 = "<script src='$fn1' type='text/html'>";
 		$st2 = "<script src='$fn2' type='text/html'>";
