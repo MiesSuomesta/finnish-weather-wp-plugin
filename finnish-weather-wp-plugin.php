@@ -96,8 +96,8 @@
 		$fn1 = "php/body_selection_generate.inc";
 		$fn2 = "php/shortti.php";
 		
-		$tagi1 = "<script nimi='shortti 1' fn='$fn1' src='$fn1' type='text/html' /> ";
-		$tagi2 = "<script nimi='shortti 2' fn='$fn2' src='$fn2' type='text/html' /> ";
+		$tagi1 = "<script nimi='shortti 1' fn='$fn1' src='$fn1' type='text/javascript'> ";
+		$tagi2 = "<script nimi='shortti 2' fn='$fn2' src='$fn2' type='text/html'> ";
 		
 		$st1 = "";
 		$st2 = "";
