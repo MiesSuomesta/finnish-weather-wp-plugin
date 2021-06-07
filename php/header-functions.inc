@@ -70,7 +70,4 @@
 		}
 	}
 
-	include("body_selection_generate.inc");
-
-
 ?>
