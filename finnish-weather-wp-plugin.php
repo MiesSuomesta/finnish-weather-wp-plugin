@@ -54,9 +54,11 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		echo '<meta shortti="lja alkaa" />';
-		echo evaluate_file($FINWEATHER_PLUGIN_DIR . "php/shortti.php"); 
-		echo '<meta shortti="lja stoppaa" />';
+		$startti='<meta shortti="lja alkaa" />';
+		$koodi = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/shortti.php"); 
+		$loppu = '<meta shortti="lja stoppaa" />';
+		
+		return $startti . $koodi . $loppu;
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
