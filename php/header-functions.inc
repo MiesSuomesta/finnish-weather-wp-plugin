@@ -1,10 +1,10 @@
 <?php 
 
 	/* Login details */
-	include_once("login.inc");
+	require_once("login.inc");
 
 	/* SQL details */
-	include_once("mysql.inc");	
+	require_once("mysql.inc");	
 
 	function mkMarker($obj)
 	{
