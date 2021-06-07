@@ -15,10 +15,10 @@
 	$FINWEATHER_PLUGIN_DIR = dirname( __FILE__ ) . "/";
 
 	/* Login details */
-	include_once ($FINWEATHER_PLUGIN_DIR . "php/login.inc");
+	require_once ($FINWEATHER_PLUGIN_DIR . "php/login.inc");
 
 	/* MYSQL stuff */
-	include_once ($FINWEATHER_PLUGIN_DIR . "php/mysql.inc");
+	require_once ($FINWEATHER_PLUGIN_DIR . "php/mysql.inc");
 
 	function evaluate_file($f)
 	{
