@@ -97,14 +97,20 @@
 
 		
 		$tagi1 = "<script nimi='shortti 1' fn='$fn1' src='$fn1' type='text/javascript'> ";
-		$tagi2 = "<script nimi='shortti 2' fn='$fn2' src='$fn2' type='text/html'> ";
+		$tagi2 = "<script nimi='shortti 2' fn='$fn2' src='$fn2' type='text/php'> ";
 		
 		$st1 = "";
 		$st2 = "";
-		
+
+/*		
 		$ret = "";
 		$ret = $ret . $tagi1 . $st1 . file_get_contents($fn1) . "</script>";
 		$ret = $ret . $tagi2 . $st2 . file_get_contents($fn2) . "</script>";
+*/
+
+		$ret = "";
+		$ret = $ret . $tagi1 . $st1 . "</script>";
+		$ret = $ret . $tagi2 . $st2 . "</script>";
 		
 		return $ret; 
 	}
