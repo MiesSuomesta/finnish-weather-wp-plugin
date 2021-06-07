@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 	/* Login details */
 	include_once("login.inc");
