@@ -14,21 +14,36 @@
 
 	$FINWEATHER_PLUGIN_DIR = dirname( __FILE__ ) . "/";
 
+	function get_file_base_http_address() {
+		global $FINWEATHER_PLUGIN_DIR;
+
+		$mydroot=$_SERVER['DOCUMENT_ROOT'];
+		$myservername=$_SERVER['SERVER_NAME'];
+		
+		$mydocstr = preg_replace($mydroot, "", $FINWEATHER_PLUGIN_DIR);
+		
+		$myret = "https://" . $myservername . "/" . $mydocstr);
+
+		return $myret;
+	}
+
+	$FINWEATHER_PLUGIN_DIR = dirname( __FILE__ ) . "/";
+
+
 	/* Login details */
 	require_once ($FINWEATHER_PLUGIN_DIR . "php/login.inc");
+
+
 
 	/* MYSQL stuff */
 	require_once ($FINWEATHER_PLUGIN_DIR . "php/mysql.inc");
 
-	function get_file_base_http_address() {
-		myserv=$_SERVER[''];
-	}
 
 	function evaluate_file($f)
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 		
-//		echo '<script src="' . $FINWEATHER_PLUGIN_DIR . $f . '"></script>';
+		echo '<script src="' . $FINWEATHER_PLUGIN_DIR . $f . '"></script>';
 
 		
 		
