@@ -14,7 +14,7 @@
 
 	//print_r($stations);
 
-	//require_once("header-functions.inc");
+	//
 
 ?>
 	<table>

@@ -35,7 +35,7 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		echo evaluate_file($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
+		//echo evaluate_file($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
 	}
 
 	// This just echoes the chosen line, we'll position it later.

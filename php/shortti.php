@@ -4,7 +4,6 @@
 
 	$stations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 
-
 ?>
 	<table>
 		<tr>
