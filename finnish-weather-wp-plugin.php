@@ -19,16 +19,17 @@
 
 		$mydroot=$_SERVER['DOCUMENT_ROOT'];
 		$myservername=$_SERVER['SERVER_NAME'];
+		$mywproot=dirname(dirname(dirname($FINWEATHER_PLUGIN_DIR)));
+
+		$mydocstr = preg_replace($mywproot, "", $FINWEATHER_PLUGIN_DIR);
 		
-		$mydocstr = preg_replace($mydroot, "", $FINWEATHER_PLUGIN_DIR);
-		
-		$myret = "https://" . $myservername . "/" . $mydocstr);
+		$myret = "https://" . $myservername . "/" . $mydocstr . "/");
 
 		return $myret;
 	}
 
 	$FINWEATHER_PLUGIN_DIR = dirname( __FILE__ ) . "/";
-
+	$FINWEATHER_PLUGIN_URL = get_file_base_http_address();
 
 	/* Login details */
 	require_once ($FINWEATHER_PLUGIN_DIR . "php/login.inc");
@@ -41,9 +42,9 @@
 
 	function evaluate_file($f)
 	{
-		global $FINWEATHER_PLUGIN_DIR;
+		global $FINWEATHER_PLUGIN_URL;
 		
-		echo '<script src="' . $FINWEATHER_PLUGIN_DIR . $f . '"></script>';
+		echo '<script src="' . $FINWEATHER_PLUGIN_URL . $f . '"></script>';
 
 		
 		
