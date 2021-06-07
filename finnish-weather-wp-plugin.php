@@ -24,7 +24,7 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 		
-		echo '<script src="' . $FINWEATHER_PLUGIN_DIR . $f . '"></script>' 
+		echo '<script src="' . $FINWEATHER_PLUGIN_DIR . $f . '"></script>';
 		
 	}
 
