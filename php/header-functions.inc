@@ -27,8 +27,9 @@
 
 	//print_r($stations);
 
-	function generate_markers($stations)
+	function generate_markers($foo)
 	{
+		global $stations;
 
 /*		
 		echo "Stations:";
@@ -56,7 +57,9 @@
 		}
 	}
 
-	function generate_station_selectiors($stations) {
+	function generate_station_selectiors($foo) {
+		global $stations;
+
 		$FID = 0;
 		$htmlEndln = "<br>\n";
 		foreach ($stations as $stationi) {
@@ -69,5 +72,6 @@
 			$FID++;
 		}
 	}
+
 
 ?>
