@@ -18,7 +18,7 @@
 
 	function comment($txt)
 	{
-
+		echo "<!---- $txt ---->";
 	}
 
 	$LatestID = weather_get_mysql_data_last_record_number();
