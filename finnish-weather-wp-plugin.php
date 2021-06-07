@@ -20,11 +20,17 @@
 	/* MYSQL stuff */
 	require_once ($FINWEATHER_PLUGIN_DIR . "php/mysql.inc");
 
+	function get_file_base_http_address() {
+		myserv=$_SERVER[''];
+	}
+
 	function evaluate_file($f)
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 		
-		echo '<script src="' . $FINWEATHER_PLUGIN_DIR . $f . '"></script>';
+//		echo '<script src="' . $FINWEATHER_PLUGIN_DIR . $f . '"></script>';
+
+		
 		
 	}
 
@@ -58,6 +64,8 @@
 	add_action( 'body_class',		'finnish_weather_wp_plugin_body' 		);
 
 	add_shortcode('finweather', 	'finnish_weather_wp_plugin_shortcode'	);
+
+	print_r($_SERVER);
 
 ?>
  
