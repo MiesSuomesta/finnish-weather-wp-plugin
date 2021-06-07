@@ -35,7 +35,12 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		echo evaluate_file($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
+		$startti='<meta startti="lja header" /> ';
+		$koodi  = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/header.php"); 
+		$loppu  = '<meta stoppi="lja header" /> ';
+
+		return $startti . $koodi . $loppu;
+
 	}
 
 	// This just echoes the chosen line, we'll position it later.
@@ -43,10 +48,11 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		echo '<meta startti="lja body" />\n ';
-		evaluate_file($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-		echo '<meta stoppi="lja body" />\n ';
+		$startti='<meta startti="lja body" /> ';
+		$koodi  = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
+		$loppu  = '<meta stoppi="lja body" /> ';
 
+		return $startti . $koodi . $loppu;
 	}
 
 	// This just echoes the chosen line, we'll position it later.
@@ -54,9 +60,9 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		$startti='<meta shortti="lja alkaa" />\n ';
+		$startti='<meta shortti="lja alkaa" /> ';
 		$koodi = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/shortti.php"); 
-		$loppu = '<meta shortti="lja stoppaa" />\n ';
+		$loppu = '<meta shortti="lja stoppaa" ';
 		
 		return $startti . $koodi . $loppu;
 	}
