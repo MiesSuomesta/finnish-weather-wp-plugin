@@ -90,15 +90,11 @@
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_shortcode()
 	{
-		$fn1 = get_plugin_file_https_address("php/body_selection_generate.inc");
-		$fn2 = get_plugin_file_https_address("php/shortti.php");
-
 		ob_start();
-			include($fn1);
-			include($fn2);
+			include("php/body_selection_generate.inc");
+			include("php/shortti.inc");
 			$ret = ob_get_clean();
 		ob_end_clean();
-		
 		return $ret;
 	}
 
