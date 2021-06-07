@@ -5,6 +5,11 @@
 
 	/* SQL details */
 	require_once("mysql.inc");	
+	
+	$LatestID = weather_get_mysql_data_last_record_number();
+
+	$stations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
+
 
 	require_once("header-functions.inc");
 
