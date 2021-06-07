@@ -44,6 +44,21 @@
 	$FINWEATHER_PLUGIN_DIR = dirname( __FILE__ ) . "/";
 	$FINWEATHER_PLUGIN_URL = get_file_base_http_address();
 
+	function get_plugin_file_https_address($pf) {
+		global $FINWEATHER_PLUGIN_URL;
+
+/*
+		java_logger("FINWEATHER_PLUGIN_DIR = $FINWEATHER_PLUGIN_DIR"); echo "\n";
+		java_logger("mydroot = $mydroot"); echo "\n";
+		java_logger("myservername = $myservername"); echo "\n";
+		java_logger("mydocstr = $mydocstr"); echo "\n";
+*/
+
+		$myret = $FINWEATHER_PLUGIN_URL . "/" . $pf;
+
+		return $myret;
+	}
+
 	/* Login details */
 	require_once ($FINWEATHER_PLUGIN_DIR . "php/login.inc");
 
@@ -75,8 +90,9 @@
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_shortcode()
 	{
-		$tagi = "<meta foofoo='shortti' /> ";
-		return $tagi . file_get_contents($FINWEATHER_PLUGIN_DIR . "php/shortti.php"); 
+		$fn = get_plugin_file_https_address("php/shortti.php");
+		$tagi = "<meta foofoo='shortti' fn='$fn'/> ";
+		return $tagi . file_get_contents($fn); 
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
