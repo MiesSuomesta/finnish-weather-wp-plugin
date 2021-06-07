@@ -92,15 +92,16 @@
 	{
 		$fn1 = get_plugin_file_https_address("php/body_selection_generate.inc");
 		$fn2 = get_plugin_file_https_address("php/shortti.php");
-		$tagi1 = "<meta nimi='shortti 1' fn='$fn1' /> ";
-		$tagi2 = "<meta nimi='shortti 2' fn='$fn2' /> ";
 		
-		$st1 = "<script src='$fn1' type='text/html'>";
-		$st2 = "<script src='$fn2' type='text/html'>";
+		$tagi1 = "<script nimi='shortti 1' fn='$fn1' src='$fn1' type='text/html' /> ";
+		$tagi2 = "<script nimi='shortti 2' fn='$fn2' src='$fn2' type='text/html' /> ";
+		
+		$st1 = "";
+		$st2 = "";
 		
 		$ret = "";
-		$ret = $ret . $tagi1 . $st1 /* . file_get_contents($fn1) */ . "</script>";
-		$ret = $ret . $tagi2 . $st2 /* . file_get_contents($fn2) */ . "</script>";
+		$ret = $ret . $tagi1 . $st1 . file_get_contents($fn1) . "</script>";
+		$ret = $ret . $tagi2 . $st2 . file_get_contents($fn2) . "</script>";
 		
 		return $ret; 
 	}
