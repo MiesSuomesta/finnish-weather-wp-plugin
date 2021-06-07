@@ -1,12 +1,12 @@
 <?php
 
 	/* Login details */
-	include_once("login.inc");
+	require_once("login.inc");
 
 	/* SQL details */
-	include_once("mysql.inc");	
+	require_once("mysql.inc");	
 
-	include_once("header-functions.inc");
+	require_once("header-functions.inc");
 
 ?>
 	<table>
