@@ -23,7 +23,7 @@
 	function evaluate_file($f)
 	{
 		ob_start();
-			include($f);
+			include_once($f);
 			$content = ob_get_clean();
 		ob_start();
 
@@ -48,10 +48,8 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		$startti='<meta startti="lja body" />';
 		$koodi = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/body.php"); 
-		$stoppaa='<meta stoppi="lja body" />';
-		return $startti . $koodi . $stoppaa;
+		return $koodi;
 	}
 
 	// This just echoes the chosen line, we'll position it later.
@@ -59,14 +57,8 @@
 	{
 		global $FINWEATHER_PLUGIN_DIR;
 
-		$startti='<meta shortti="lja alkaa" />';
-		
-		$koodiA = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/header-functions.inc"); 
-		$koodiB = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/shortti.php"); 
-		
-		$stoppaa = '<meta shortti="lja stoppaa" />';
-		
-		return $startti . $koodiA . $koodiB . $stoppaa;
+		$koodi = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/shortti.php"); 
+		return $koodi;
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
