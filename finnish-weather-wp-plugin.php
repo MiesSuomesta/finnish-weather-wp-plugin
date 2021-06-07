@@ -75,8 +75,8 @@
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_shortcode()
 	{
-
-		return file_get_contents("php/shortti.php"); 
+		$tagi="<meta foofoo="shortti" /> ";
+		return $tagi . file_get_contents("php/shortti.php"); 
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
