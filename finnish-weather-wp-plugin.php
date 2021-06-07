@@ -92,10 +92,14 @@
 	{
 		$fn1 = get_plugin_file_https_address("php/body_selection_generate.inc");
 		$fn2 = get_plugin_file_https_address("php/shortti.php");
-		$tagi = "<meta foofoo='shortti' fn='$fn1'/> ";
-		$tagi = "<meta foofoo='shortti' fn='$fn2'/> ";
+		$tagi1 = "<meta foofoo='shortti' fn='$fn1'/> ";
+		$tagi2 = "<meta foofoo='shortti' fn='$fn2'/> ";
 		
-		return $tagi . file_get_contents($fn1) . file_get_contents($fn2); 
+		$ret = "";
+		$ret = $ret . $tagi1 . file_get_contents($fn1);
+		$ret = $ret . $tagi2 . file_get_contents($fn2);
+		
+		return $ret; 
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
