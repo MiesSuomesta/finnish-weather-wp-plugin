@@ -21,11 +21,11 @@
 		$myservername=$_SERVER['SERVER_NAME'];
 		$mywproot=dirname(dirname(dirname($FINWEATHER_PLUGIN_DIR)));
 
-		$mydocstr = preg_replace(""$mywproot, "", $FINWEATHER_PLUGIN_DIR);
+		$mydocstr = str_replace($mywproot, "", $FINWEATHER_PLUGIN_DIR);
 		
 		$myret = "https://" . $myservername . "/" . $mydocstr . "/";
 
-		echo $myret;
+		echo "Hum" . $myret;
 		return $myret;
 	}
 
@@ -34,8 +34,6 @@
 
 	/* Login details */
 	require_once ($FINWEATHER_PLUGIN_DIR . "php/login.inc");
-
-
 
 	/* MYSQL stuff */
 	require_once ($FINWEATHER_PLUGIN_DIR . "php/mysql.inc");
