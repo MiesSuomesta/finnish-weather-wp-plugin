@@ -29,10 +29,12 @@
 
 		$mydocstr = str_replace($mydroot, "https://$myservername/", $FINWEATHER_PLUGIN_DIR);
 
+/*
 		java_logger("FINWEATHER_PLUGIN_DIR = $FINWEATHER_PLUGIN_DIR"); echo "\n";
 		java_logger("mydroot = $mydroot"); echo "\n";
 		java_logger("myservername = $myservername"); echo "\n";
 		java_logger("mydocstr = $mydocstr"); echo "\n";
+*/
 
 		$myret = $mydocstr;
 
@@ -74,7 +76,7 @@
 	function finnish_weather_wp_plugin_shortcode()
 	{
 
-		evaluate_file("php/shortti.php", "text/html"); 
+		return file_get_contents("php/shortti.php"); 
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
