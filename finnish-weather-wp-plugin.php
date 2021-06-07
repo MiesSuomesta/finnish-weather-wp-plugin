@@ -22,13 +22,13 @@
 
 	function evaluate_file($f)
 	{
-//			$content = file_get_contents($f);
+			$content = file_get_contents($f);
 
-		ob_start();
+/*		ob_start();
 			include($f);
 			$content = ob_get_clean();
 		ob_start();
-
+*/
 		return $content;
 	}
 
