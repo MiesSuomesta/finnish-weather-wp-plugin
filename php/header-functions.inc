@@ -31,16 +31,13 @@
 	{
 		global $stations;
 
-/*		
-		echo "Stations:";
+		echo "generate_markers Stations:";
 		print_r($stations);
 		echo "<br>";
 		comment("Stations got:");
 		echo "<!---\n";
 		print_r($_GET['stations']);
 		echo "--->\n";
-
-*/
 
 		if ( $fv = $_GET['stations'] )
 		{
@@ -59,6 +56,15 @@
 
 	function generate_station_selectiors($foo) {
 		global $stations;
+
+		echo "generate_station_selectiors:";
+		echo "Stations:";
+		print_r($stations);
+		echo "<br>";
+		comment("Stations got:");
+		echo "<!---\n";
+		print_r($_GET['stations']);
+		echo "--->\n";
 
 		$FID = 0;
 		$htmlEndln = "<br>\n";
