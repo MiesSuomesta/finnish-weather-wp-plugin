@@ -22,14 +22,13 @@
 
 	function evaluate_file($f)
 	{
-			$content = file_get_contents($f);
+//			$content = file_get_contents($f);
 
-/*
 		ob_start();
 			include($f);
 			$content = ob_get_clean();
 		ob_start();
-*/
+
 		return $content;
 	}
 
@@ -67,7 +66,7 @@
 
 		$startti='<meta shortti="lja alkaa" /> ';
 		$koodi = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/shortti.php"); 
-		$loppu = '<meta shortti="lja stoppaa" ';
+		$loppu = '<meta shortti="lja stoppaa" />';
 		
 		return $startti . $koodi . $loppu;
 	}
