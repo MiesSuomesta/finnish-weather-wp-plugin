@@ -29,11 +29,13 @@
 
 		$mydocstr = str_replace($mydroot, "https://$myservername/", $FINWEATHER_PLUGIN_DIR);
 
+/*
 		java_logger("FINWEATHER_PLUGIN_DIR = $FINWEATHER_PLUGIN_DIR");
 		java_logger("mydroot = $mydroot");
 		java_logger("myservername = $myservername");
 		java_logger("mydocstr = $mydocstr");
-		
+*/	
+
 		$myret = $mydocstr . "/";
 
 		return $myret;
