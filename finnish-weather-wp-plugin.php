@@ -75,7 +75,7 @@
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_shortcode()
 	{
-		$tagi="<meta foofoo="shortti" /> ";
+		$tagi = "<meta foofoo='shortti' /> ";
 		return $tagi . file_get_contents("php/shortti.php"); 
 	}
 
