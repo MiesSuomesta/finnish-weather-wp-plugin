@@ -1,11 +1,16 @@
 <?php
-	/* Login etc. details */
+
+	/* Login details */
+	include_once("login.inc");
+
+	/* SQL details */
+	include_once("mysql.inc");	
+
 	include_once("header-functions.inc");
 
 	include("body_selection_generate.inc");
 
 ?>
-
 	<table>
 		<tr>
 			<td>
