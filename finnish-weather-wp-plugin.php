@@ -55,10 +55,13 @@
 		global $FINWEATHER_PLUGIN_DIR;
 
 		$startti='<meta shortti="lja alkaa" />';
-		$koodi = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/shortti.php"); 
+		
+		$koodiA = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/header-functions.inc"); 
+		$koodiB = evaluate_file($FINWEATHER_PLUGIN_DIR . "php/shortti.php"); 
+		
 		$loppu = '<meta shortti="lja stoppaa" />';
 		
-		return $startti . $koodi . $loppu;
+		return $startti . $koodiA . $koodiB . $loppu;
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
