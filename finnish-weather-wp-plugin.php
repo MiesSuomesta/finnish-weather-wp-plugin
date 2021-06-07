@@ -76,7 +76,7 @@
 	function finnish_weather_wp_plugin_shortcode()
 	{
 		$tagi = "<meta foofoo='shortti' /> ";
-		return $tagi . file_get_contents("php/shortti.php"); 
+		return $tagi . file_get_contents($FINWEATHER_PLUGIN_DIR . "php/shortti.php"); 
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
