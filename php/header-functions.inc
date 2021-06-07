@@ -27,17 +27,19 @@
 
 	//print_r($stations);
 
-	function generate_markers($foo)
+	function generate_markers($stations)
 	{
-		global $stations;
 
-		echo "generate_markers Stations:";
+/*		
+		echo "Stations:";
 		print_r($stations);
 		echo "<br>";
 		comment("Stations got:");
 		echo "<!---\n";
 		print_r($_GET['stations']);
 		echo "--->\n";
+
+*/
 
 		if ( $fv = $_GET['stations'] )
 		{
@@ -54,18 +56,7 @@
 		}
 	}
 
-	function generate_station_selectiors($foo) {
-		global $stations;
-
-		echo "generate_station_selectiors:";
-		echo "Stations:";
-		print_r($stations);
-		echo "<br>";
-		comment("Stations got:");
-		echo "<!---\n";
-		print_r($_GET['stations']);
-		echo "--->\n";
-
+	function generate_station_selectiors($stations) {
 		$FID = 0;
 		$htmlEndln = "<br>\n";
 		foreach ($stations as $stationi) {
@@ -78,6 +69,8 @@
 			$FID++;
 		}
 	}
+
+	include("body_selection_generate.inc");
 
 
 ?>
