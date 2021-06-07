@@ -25,7 +25,6 @@
 		
 		$myret = "https://" . $myservername . "/" . $mydocstr . "/";
 
-		echo "Hum" . $myret;
 		return $myret;
 	}
 
