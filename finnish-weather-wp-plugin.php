@@ -25,7 +25,7 @@
 
 		$mydroot=$_SERVER['DOCUMENT_ROOT'];
 		$myservername=$_SERVER['SERVER_NAME'];
-		$mywproot=dirname(dirname(dirname($FINWEATHER_PLUGIN_DIR)));
+		$mywproot=dirname(dirname($FINWEATHER_PLUGIN_DIR));
 
 		$mydocstr = str_replace($mywproot, "", $FINWEATHER_PLUGIN_DIR);
 
