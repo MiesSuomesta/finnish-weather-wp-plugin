@@ -23,7 +23,7 @@
 
 		$mydocstr = preg_replace($mywproot, "", $FINWEATHER_PLUGIN_DIR);
 		
-		$myret = "https://" . $myservername . "/" . $mydocstr . "/");
+		$myret = "https://" . $myservername . "/" . $mydocstr . "/";
 
 		return $myret;
 	}
