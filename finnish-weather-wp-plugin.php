@@ -26,17 +26,15 @@
 		$mydroot=$_SERVER['DOCUMENT_ROOT'];
 		$myservername=$_SERVER['SERVER_NAME'];
 		
-		
-		$mywproot=dirname(dirname($FINWEATHER_PLUGIN_DIR));
 
-		$mydocstr = str_replace($mywproot, "", $FINWEATHER_PLUGIN_DIR);
+		$mydocstr = str_replace($mydroot, "https://$myservername/", $FINWEATHER_PLUGIN_DIR);
 
 		java_logger("FINWEATHER_PLUGIN_DIR = $FINWEATHER_PLUGIN_DIR");
 		java_logger("mydroot = $mydroot");
 		java_logger("myservername = $myservername");
 		java_logger("mydocstr = $mydocstr");
 		
-		$myret = "https://" . $myservername . "/" . $mydocstr . "/";
+		$myret = $mydocstr . "/";
 
 		return $myret;
 	}
