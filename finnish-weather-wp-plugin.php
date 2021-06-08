@@ -93,7 +93,7 @@
 		global $FINWEATHER_PLUGIN_URL;
 
 		$ret = null;
-		$fn = $FINWEATHER_PLUGIN_URL . "php/shortti.inc";
+		$fn = $FINWEATHER_PLUGIN_URL . "php/shortti.php";
 		ob_start();
 			include($fn);
 		$ret = ob_get_clean();
