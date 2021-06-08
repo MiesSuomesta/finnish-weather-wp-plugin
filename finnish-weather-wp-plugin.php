@@ -91,11 +91,11 @@
 	function finnish_weather_wp_plugin_shortcode()
 	{
 		$ret = null;
-		
+		$fn = $FINWEATHER_PLUGIN_DIR . "php/shortti.inc"
 		ob_start();
 
-			include($FINWEATHER_PLUGIN_DIR . "php/shortti.inc");
-			echo "HEP";
+			include($fn);
+			echo "HEP $fn";
 		$ret = ob_get_clean();
 		java_logger("'shortti" . $ret . " foo'");
 		return $ret;
