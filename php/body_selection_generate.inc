@@ -306,19 +306,17 @@
 		
 			function strbool($v) { if ($v) { return "true"; } else { return "false"; } }
 		
-			function onset($gvar)
+			function onset($garr, $gvar)
 			{
-				global $_POST;
-				
 				$rv = false;
-				if ( isset($_POST[$gvar]) )
+				if ( isset($garr[$gvar]) )
 				{
-					if ( (($_POST[$gvar] != null) &&
-						  ($_POST[$gvar] != "")) )
+					if ( (($garr[$gvar] != null) &&
+						  ($garr[$gvar] != "")) )
 								$rv = true;
 				}
 				
-				comment("POST: '$gvar' rv: ". strbool($rv) );
+				comment("garr: '$gvar' rv: ". strbool($rv) );
 				return $rv;
 			}
 			
@@ -328,12 +326,8 @@
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 			
 			$stats = $LatestStations;
-			
-			echo "<!---- POST: \n";
-			print_r($_POST);
-			echo "\n --->";
 
-			if ( onset('stations') )
+			if ( onset($_POST, 'stations') )
 			{
 				$tmp = [];
 				
@@ -342,11 +336,6 @@
 					comment("Station $getstationi: " . $stats[getstationi][1]);
 					$tmp.push($stats[getstationi]);
 				}
-
-				echo "<!---- Setting stations as: \n";
-				print_r($tmp);
-				echo "\n --->";
-
 				$stats = $tmp;
 			}
 			
