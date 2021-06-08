@@ -303,7 +303,9 @@
 
 		// Marker generation start
 		<?php 
-			global $LatestStations;
+			$LatestID = weather_get_mysql_data_last_record_number();
+
+			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 			
 			$stats = $LatestStations;
 			
