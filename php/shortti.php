@@ -6,7 +6,10 @@
 	/* SQL details */
 	require_once("mysql.inc");	
 
+	require_once("header.php");
 	require_once("header-functions.inc");
+
+	require_once("body_selection_generate.inc");
 
 ?>
 	<table>
