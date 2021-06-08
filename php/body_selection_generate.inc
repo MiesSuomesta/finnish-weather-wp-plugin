@@ -1,8 +1,5 @@
 <?php
 
-
-	setcookie("POST", "" . json_encode($_POST), time() + 1 * 60, "/");
-
 	print_r($_COOKIE);
 	print_r($_POST);
 	
@@ -313,17 +310,6 @@
 				
 	}
 
-	function get_post_cookie(everystation)
-	{
-	
-		stations = document.getElementById('stations');
-		
-		selStations = stations['stations'].value;
-		
-		console.log("Selected: " + selStations);
-	
-	}
-
 	function initMap() {
 		
 		myMap = new ol.Map({
@@ -367,7 +353,7 @@
 			$_POST = json_decode($post);
 			print_r($_POST);
 			
-			$pval = array_key_exists($_POST, 'stations');
+			$pval = array_key_exists($_POST, [ 'stations' ]);
 			$stat = "";
 
 			if ( $pval )
