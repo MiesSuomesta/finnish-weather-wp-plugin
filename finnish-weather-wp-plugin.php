@@ -91,8 +91,6 @@
 	function finnish_weather_wp_plugin_shortcode()
 	{
 		ob_start();
-			include("php/header.php");
-			include("php/body_selection_generate.inc");
 			include("php/shortti.inc");
 			$ret = ob_get_clean();
 		ob_end_clean();
