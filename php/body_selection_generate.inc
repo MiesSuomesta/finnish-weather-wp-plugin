@@ -325,9 +325,9 @@
 
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 			
-			$stats = $LatestStations;
+			$stats = $_POST['stations'] || unset($stats);
 
-			if ( onset($_POST, 'stations') )
+			if ( isset($stats) )
 			{
 				$tmp = [];
 				
@@ -337,6 +337,9 @@
 					$tmp.push($stats[getstationi]);
 				}
 				$stats = $tmp;
+			} else {
+				comment("Setting ALL stations .....");
+				$stats = $LatestStations;
 			}
 			
 			foreach ($stats as $stationi) {
