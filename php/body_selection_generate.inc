@@ -357,12 +357,13 @@
 
 			$post = $_COOKIE['POST'];
 			print_r($post);
-			comment("Setting POST from header cookie .....");
+			comment("Setting POST '$post' from header cookie .....");
 			comment("      " . $post);
 			$_POST = json_decode($post);
+			print_r($_POST);
 			
 			$pval = array_key_exists($_POST, 'stations');
-			$stats = null;
+			$stat = "";
 
 			if ( $pval )
 			{
