@@ -337,6 +337,9 @@
 					$tmp[] = $stats[getstationi];
 				}
 
+				echo "tmp: ";
+				print_r($tmp);
+
 				$stats = $tmp;
 			}
 			
