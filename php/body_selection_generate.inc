@@ -308,6 +308,8 @@
 		
 			function onset($gvar)
 			{
+				global $_GET;
+				
 				$rv = false;
 				if ( isset($_GET[$gvar]) )
 				{
@@ -315,6 +317,7 @@
 						  ($_GET[$gvar] != "")) )
 								$rv = true;
 				}
+				
 				comment("GET: '$gvar' == " . strbool($val) . "  rv: ". strbool($rv) );
 				return $rv;
 			}
@@ -326,8 +329,7 @@
 			
 			$stats = $LatestStations;
 			
-			if ( onset('submit') && 
-				 onset('stations') )
+			if ( onset('stations') )
 			{
 				$tmp = [];
 				
