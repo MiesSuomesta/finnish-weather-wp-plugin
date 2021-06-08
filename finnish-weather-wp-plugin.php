@@ -97,7 +97,7 @@
 		ob_start();
 			include($fn);
 		$ret = ob_get_clean();
-		java_logger("'shortti" . $ret . " foo'");
+		java_logger("'shortti" . $ret . " foo: $fn '");
 		return $ret;
 	}
 
