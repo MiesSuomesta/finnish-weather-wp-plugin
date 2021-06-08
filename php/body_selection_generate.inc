@@ -318,7 +318,7 @@
 								$rv = true;
 				}
 				
-				comment("GET: '$gvar' == " . strbool($val) . "  rv: ". strbool($rv) );
+				comment("POST: '$gvar' rv: ". strbool($rv) );
 				return $rv;
 			}
 			
@@ -333,11 +333,16 @@
 			{
 				$tmp = [];
 				
-				comment("Setting GET stations .....");
+				comment("Setting POST stations .....");
 				foreach ($_POST['stations'] as $getstationi) {
 					comment("Station $getstationi: " . $stats[getstationi][1]);
 					$tmp.push($stats[getstationi]);
 				}
+
+				echo "<!---- POST: \n";
+				print_r($_POST);
+				echo "\n --->";
+
 
 				echo "<!---- Setting stations as: \n";
 				print_r($tmp);
