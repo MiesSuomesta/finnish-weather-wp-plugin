@@ -17,7 +17,7 @@
 				c = c.substring(1);
 			}
 			if (c.indexOf(name) == 0) {
-				return json_encode(c.substring(name.length, c.length);
+				return json_encode(c.substring(name.length, c.length));
 			}
 		}
 		return "";
