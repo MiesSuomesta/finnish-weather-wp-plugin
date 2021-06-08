@@ -304,6 +304,8 @@
 		// Marker generation start
 		<?php 
 		
+			function strbool($v) { if ($v) { return "true"; } else { return "false"; } }
+		
 			function onset($gvar)
 			{
 				$rv = false;
@@ -313,7 +315,7 @@
 						  ($_GET[$gvar] != "")) )
 								$rv = true;
 				}
-				comment("GET: '$gvar' == " . $val . "  rv: ". $rv);
+				comment("GET: '$gvar' == " . strbool($val) . "  rv: ". strbool($rv) );
 				return $rv;
 			}
 			
