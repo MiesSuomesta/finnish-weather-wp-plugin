@@ -309,9 +309,12 @@
 				$rv = true;
 				$val = $_GET[$gvar];
 				if ( isset($_GET[$gvar]) )
+				{
 					if ($val == null)
-						rv = false;
-						
+					{
+						$rv = false;
+					}
+				}
 				comment("GET: $gvar == $rv ($val)");
 				return $rv;
 			}
