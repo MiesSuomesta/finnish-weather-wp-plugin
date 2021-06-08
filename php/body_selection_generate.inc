@@ -331,8 +331,8 @@
 			
 			comment("Sub: $sub station $stn");
 			
-			if ( onset($_GET['submit']) && 
-				 onset($_GET['stations']) )
+			if ( onset('submit') && 
+				 onset('stations') )
 			{
 				$stats = $_GET['stations'];
 			}
