@@ -23,38 +23,9 @@
 
 	$LatestID = weather_get_mysql_data_last_record_number();
 
-	$stations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
+	$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 
 	//print_r($stations);
-
-	function generate_markers($stations)
-	{
-
-/*		
-		echo "Stations:";
-		print_r($stations);
-		echo "<br>";
-		comment("Stations got:");
-		echo "<!---\n";
-		print_r($_GET['stations']);
-		echo "--->\n";
-
-*/
-
-		if ( $fv = $_GET['stations'] )
-		{
-			foreach ($fv as $selectedStation) {
-				$stationData = $stations[$selectedStation];
-			/*
-				comment("Marker $selectedStation");
-				echo "<!---\n";
-				print_r($stationData);
-				echo "--->\n";
-			*/
-				mkMarker($stationData);
-			}
-		}
-	}
 
 	function generate_station_selectiors($stations) {
 		$FID = 0;

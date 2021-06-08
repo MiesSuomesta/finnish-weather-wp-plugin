@@ -1,7 +1,6 @@
 <?php
 	function generate_markers($stations)
 	{
-
 /*		
 		echo "Stations:";
 		print_r($stations);
@@ -308,7 +307,12 @@
 
 		// Marker generation start
 		<?php 
-			generate_markers($stations);
+			$stats = $LatestStations;
+			
+			if ( isset($_GET['stations']) )
+				$stats = $_GET['stations'];
+				
+			generate_markers($stats);
 		?>
 		// Marker generation ends
 		
