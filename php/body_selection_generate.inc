@@ -323,9 +323,9 @@
 			}
 			
 		
-			$LatestID = weather_POST_mysql_data_last_record_number();
+			$LatestID = weather_get_mysql_data_last_record_number();
 
-			$LatestStations = weather_POST_mysql_record_number_datas($LatestID, "stationname ASC");
+			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 			
 			$stats = $LatestStations;
 			
