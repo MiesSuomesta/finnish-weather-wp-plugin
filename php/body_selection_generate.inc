@@ -309,9 +309,11 @@
 			
 			$stats = $LatestStations;
 			
-			if ( isset($_GET['stations']) )
+			if ( isset($_GET['submit'] && 
+				 isset($_GET['stations']) )
+			{
 				$stats = $_GET['stations'];
-			
+			}
 			foreach ($stats as $stationi) {
 				generate_marker($stationi);
 			}
