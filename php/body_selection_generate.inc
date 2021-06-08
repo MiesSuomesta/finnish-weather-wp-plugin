@@ -326,16 +326,20 @@
 			
 			$stats = $LatestStations;
 			
-			$sub = $_GET['submit'];
-			$stn = $_GET['stations'] || $stats;
-			
-			comment("Sub: $sub station $stn");
-			
 			if ( onset('submit') && 
 				 onset('stations') )
 			{
-				$stats = $_GET['stations'];
+				$tmp = [];
+				
+				comment("Setting GET stations .....");
+				foreach ($_GET['stations'] as $getstationi) {
+					comment("Station $getstationi: " . $stats[getstationi][1]);
+					tmp[] = $stats[getstationi];
+				}
+
+				$stats = $tmp;
 			}
+			
 			foreach ($stats as $stationi) {
 				generate_marker($stationi);
 			}
