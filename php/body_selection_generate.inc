@@ -306,13 +306,12 @@
 		
 			function onset($gvar)
 			{
-				$rv = true;
-				if ( ! isset($_GET[$gvar]) )
+				$rv = false;
+				if ( isset($_GET[$gvar]) )
 				{
-					if ( ! (($_GET[$gvar] != null) &&
-						    ($_GET[$gvar] != "")) )
-						 
-						$rv = false;
+					if ( (($_GET[$gvar] != null) &&
+						  ($_GET[$gvar] != "")) )
+								$rv = true;
 				}
 				comment("GET: '$gvar' == " . $val . "  rv: ". $rv);
 				return $rv;
