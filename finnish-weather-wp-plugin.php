@@ -95,6 +95,7 @@
 		ob_start();
 
 			include($FINWEATHER_PLUGIN_DIR . "php/shortti.inc");
+			echo "HEP";
 		$ret = ob_get_clean();
 		java_logger("'shortti" . $ret . " foo'");
 		return $ret;
