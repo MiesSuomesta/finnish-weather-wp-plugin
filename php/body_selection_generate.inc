@@ -358,7 +358,8 @@
 			$post = $_COOKIE['POST'];
 			print_r($post);
 			comment("Setting POST from header cookie .....");
-			$_POST = json_decode($post);
+			comment("      " . $post);
+			$stationData = json_decode($post);
 			
 			$pval = array_key_exists($_POST, 'stations');
 			$stats = null;

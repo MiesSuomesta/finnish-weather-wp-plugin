@@ -1,5 +1,7 @@
 <?php
 
+	setcookie("POST", "" . json_encode($_POST), time() + 1 * 60, "/");
+
 	/* Login details */
 	require_once("login.inc");
 
