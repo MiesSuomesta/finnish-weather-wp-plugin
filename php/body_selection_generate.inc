@@ -1,4 +1,27 @@
 <?php
+
+	setcookie("POST", json_encode($_POST), time() + 1 * 60, "/");
+	
+	<script type="text/javascript">
+	
+		function getcookie(cname) {
+			var name = cname + "=";
+			var decodedCookie = decodeURIComponent(document.cookie);
+			var ca = decodedCookie.split(';');
+			for(var i = 0; i <ca.length; i++) {
+				var c = ca[i];
+				while (c.charAt(0) == ' ') {
+					c = c.substring(1);
+				}
+				if (c.indexOf(name) == 0) {
+					return json_encode(c.substring(name.length, c.length);
+				}
+			}
+			return "";
+		}
+	
+	</script>
+
 	function generate_marker($station)
 	{
 /*		
@@ -282,6 +305,17 @@
 				
 	}
 
+	function get_post_cookie(everystation)
+	{
+	
+		stations = document.getElementById('stations');
+		
+		selStations = stations['stations'].value;
+		
+		console.log("Selected: " + selStations);
+	
+	}
+
 	function initMap() {
 		
 		myMap = new ol.Map({
@@ -317,9 +351,10 @@
 
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 
-			global $_POST;
-			
-			print_r($_POST);
+			$post = "?><script type="text/javascript">getcookie("POST");</script><?php"
+			print_r($post);
+
+			$_POST = json_decode($post);
 			
 			$pval = array_key_exists($_POST, 'stations');
 			$stats = null;
