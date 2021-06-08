@@ -307,18 +307,9 @@
 			function onset($gvar)
 			{
 				$rv = true;
-				$val = $_GET[$gvar];
-				if ( isset($_GET[$gvar]) )
+				if ( ! isset($_GET[$gvar]) )
 				{
-					if ($val == null)
-					{
-						$rv = false;
-					}
-					
-					if ($val == "")
-					{
-						$rv = false;
-					}
+					$rv = false;
 				}
 				comment("GET: '$gvar' == " . $val . "  rv: ". $rv);
 				return $rv;
@@ -344,7 +335,7 @@
 
 				echo "<!---- Setting stations as: \n";
 				print_r($tmp);
-				echo "\n ---->";
+				echo "\n --->";
 
 				$stats = $tmp;
 			}
