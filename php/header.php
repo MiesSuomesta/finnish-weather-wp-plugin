@@ -5,11 +5,17 @@
 
 	
 	<?php 
-	
-	session_start();
-	
-	require_once('header-functions.inc');
-	require_once('body_selection_generate.inc'); 
-	
+		
+		session_start();
+		
+		require_once('header-functions.inc');
+		require_once('body_selection_generate.inc'); 
+
+
+		print_r($_POST);
+		$postjson = json_encode($_POST);
+		print_r($postjson);
+
+		setcookie("POST", $postjson, time() + 2 * 60, "/");
 	?>
 	<!--- LJA HEADER END --->
