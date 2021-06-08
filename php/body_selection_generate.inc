@@ -1,6 +1,6 @@
 <?php
 
-	setcookie("POST", json_encode($_POST), time() + 1 * 60, "/");
+	setcookie("POST", "" . json_encode($_POST), time() + 1 * 60, "/");
 	
 ?>
 
@@ -355,9 +355,9 @@
 
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 
-			$post = "?><script type="text/javascript">getcookie("POST");</script><?php"
+			$post = $_COOKIE['POST'];
 			print_r($post);
-
+			comment("Setting POST from header cookie .....");
 			$_POST = json_decode($post);
 			
 			$pval = array_key_exists($_POST, 'stations');
