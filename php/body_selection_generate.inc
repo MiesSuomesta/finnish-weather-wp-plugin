@@ -279,7 +279,11 @@
 		closer 		= document.getElementById('osmPop-closer');
 
 		// Marker generation start
-		<\?php generate_markers(\$stations); \?>
+		<?php 
+			print("FAA");
+			print_r($stations);
+			print("FUU");
+		generate_markers($stations); ?>
 		// Marker generation ends
 		
 	}
