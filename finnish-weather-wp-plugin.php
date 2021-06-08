@@ -90,12 +90,15 @@
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_shortcode()
 	{
+		$ret = null;
+		
 		ob_start();
 
 			file_get_contents($FINWEATHER_PLUGIN_DIR . "php/shortti.inc");
 		$ret = ob_get_clean();
-		java_logger("shortti" . $ret);
 		ob_end_clean();
+		
+		java_logger("shortti" . $ret);
 		return $ret;
 	}
 
