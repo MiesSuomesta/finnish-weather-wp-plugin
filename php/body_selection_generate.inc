@@ -306,18 +306,10 @@
 		
 			function strbool($v) { if ($v) { return "true"; } else { return "false"; } }
 		
-			function onset($garr, $gvar)
+			function onset($gvar)
 			{
-				$rv = false;
-				if ( isset($garr[$gvar]) )
-				{
-					if ( (($garr[$gvar] != null) &&
-						  ($garr[$gvar] != "")) )
-								$rv = true;
-				}
-				
-				comment("garr: '$gvar' rv: ". strbool($rv) );
-				return $rv;
+				$tmp = get_defined_vars();
+				return array_key_exists($tmp, $gvar);
 			}
 			
 		
@@ -325,9 +317,9 @@
 
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 			
-			$stats = $_POST['stations'] || unset($stats);
+			$stats = $_POST['stations'] || $stats;
 
-			if ( isset($stats) )
+			if ( onset('stats') )
 			{
 				$tmp = [];
 				
