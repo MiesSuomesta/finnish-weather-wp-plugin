@@ -314,8 +314,13 @@
 					{
 						$rv = false;
 					}
+					
+					if ($val == "")
+					{
+						$rv = false;
+					}
 				}
-				comment("GET: $gvar == $rv ($val)");
+				comment("GET: '$gvar' == " . $val . "  rv: ". $rv);
 				return $rv;
 			}
 			
