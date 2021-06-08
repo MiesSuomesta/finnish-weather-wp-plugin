@@ -311,7 +311,6 @@
 				$stats = $_GET['stations'];
 			
 			foreach ($stats as $stationi) {
-				print_r($stationi);
 				generate_marker($stationi);
 			}
 		?>
