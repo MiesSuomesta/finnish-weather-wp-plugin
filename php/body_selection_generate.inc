@@ -1,3 +1,31 @@
+<?php
+	function generate_markers($stations)
+	{
+
+/*		
+		echo "Stations:";
+		print_r($stations);
+		echo "<br>";
+		comment("Stations got:");
+		echo "<!---\n";
+		print_r($_GET['stations']);
+		echo "--->\n";
+
+*/
+
+		foreach ($stations as $selectedStation) {
+			$stationData = $stations[$selectedStation];
+
+			comment("Marker $selectedStation");
+			echo "<!---\n";
+			print_r($stationData);
+			echo "--->\n";
+
+			mkMarker($stationData);
+		}
+	}
+?>
+
 <script type="text/javascript">
 	let myMap;
 	let firstOpeningWindow = true;
@@ -280,10 +308,8 @@
 
 		// Marker generation start
 		<?php 
-			print("FAA");
-			print_r($stations);
-			print("FUU");
-		generate_markers($stations); ?>
+			generate_markers($stations);
+		?>
 		// Marker generation ends
 		
 	}
