@@ -303,14 +303,33 @@
 
 		// Marker generation start
 		<?php 
+		
+			function onset($gvar)
+			{
+				$rv = true;
+				$val = $_GET[$gvar];
+				if ( isset($_GET[$gvar]) )
+					if ($val == null)
+						rv = false;
+						
+				comment("GET: $gvar == $rv ($val)");
+				return $rv;
+			}
+			
+		
 			$LatestID = weather_get_mysql_data_last_record_number();
 
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 			
 			$stats = $LatestStations;
 			
-			if ( isset($_GET['submit']) && 
-				 isset($_GET['stations']) )
+			$sub = $_GET['submit'];
+			$stn = $_GET['stations'] || $stats;
+			
+			comment("Sub: $sub station $stn");
+			
+			if ( onset($_GET['submit']) && 
+				 onset($_GET['stations']) )
 			{
 				$stats = $_GET['stations'];
 			}
