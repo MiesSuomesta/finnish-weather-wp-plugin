@@ -95,7 +95,7 @@
 		$ret = null;
 		$fn = $FINWEATHER_PLUGIN_URL . "php/shortti.php";
 		ob_start();
-			include($fn);
+			echo file_get_contents($fn);
 		$ret = ob_get_clean();
 		java_logger("'shortti" . $ret . " foo: $fn '");
 		return $ret;
