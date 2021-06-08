@@ -97,13 +97,12 @@
 		ob_start();
 			echo file_get_contents($fn);
 		$ret = ob_get_clean();
-		java_logger("'shortti" . $ret . " foo: $fn '");
 		return $ret;
 	}
 
 	// Now we set that function up to execute when the admin_notices action is called.
-	add_action( 'wp_head', 			'finnish_weather_wp_plugin_header' 		);
-	add_action( 'wp_body',		'finnish_weather_wp_plugin_body' 		);
+	//add_action( 'wp_head', 			'finnish_weather_wp_plugin_header' 		);
+	//add_action( 'wp_body',		'finnish_weather_wp_plugin_body' 		);
 
 	add_shortcode('finweather', 	'finnish_weather_wp_plugin_shortcode'	);
 
