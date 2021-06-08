@@ -309,7 +309,7 @@
 			
 			$stats = $LatestStations;
 			
-			if ( isset($_GET['submit'] && 
+			if ( isset($_GET['submit']) && 
 				 isset($_GET['stations']) )
 			{
 				$stats = $_GET['stations'];
