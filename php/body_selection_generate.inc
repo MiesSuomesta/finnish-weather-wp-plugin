@@ -316,6 +316,10 @@
 			$LatestID = weather_get_mysql_data_last_record_number();
 
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
+
+			global $_POST;
+			
+			print_r($_POST);
 			
 			$pval = array_key_exists($_POST, 'stations');
 			$stats = null;
