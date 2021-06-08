@@ -1,5 +1,5 @@
 <?php
-	function generate_markers($stations)
+	function generate_marker($station)
 	{
 /*		
 		echo "Stations:";
@@ -12,16 +12,12 @@
 
 */
 
-		foreach ($stations as $selectedStation) {
-			$stationData = $stations[$selectedStation];
+		comment("Marker start");
+		echo "<!---\n";
+		print_r($station);
+		echo "--->\n";
 
-			comment("Marker $selectedStation");
-			echo "<!---\n";
-			print_r($stationData);
-			echo "--->\n";
-
-			mkMarker($stationData);
-		}
+		mkMarker($station);
 	}
 ?>
 
@@ -311,8 +307,10 @@
 			
 			if ( isset($_GET['stations']) )
 				$stats = $_GET['stations'];
-				
-			generate_markers($stats);
+			
+			foreach ($stats as $stationi) {
+				generate_marker($stats[$stationi]);
+			}
 		?>
 		// Marker generation ends
 		
