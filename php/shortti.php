@@ -1,4 +1,11 @@
 <?php
+	session_start();
+
+	print_r($_POST);
+	$postjson = json_encode($_POST);
+	print_r($postjson);
+
+	setcookie("POST", $postjson, time() + 2 * 60, "/");
 
 	print_r($_POST);
 	$postjson = json_encode($_POST);
