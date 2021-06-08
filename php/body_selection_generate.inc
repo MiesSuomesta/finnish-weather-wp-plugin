@@ -353,7 +353,7 @@
 			$_POST = json_decode($post);
 			print_r($_POST);
 			
-			$pval = array_key_exists($_POST, [ 'stations' ]);
+			$pval = true; array_key_exists($_POST, [ 'stations' ]);
 			$stat = "";
 
 			if ( $pval )
