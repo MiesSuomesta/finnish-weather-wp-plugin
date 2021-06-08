@@ -354,7 +354,8 @@
 			$LatestID = weather_get_mysql_data_last_record_number();
 
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
-
+			
+			print_r($_COOKIE);
 			$post = $_COOKIE['POST'];
 			print_r($post);
 			comment("Setting POST '$post' from header cookie .....");
