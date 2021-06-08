@@ -1,6 +1,10 @@
 <?php
 
+
 	setcookie("POST", "" . json_encode($_POST), time() + 1 * 60, "/");
+
+	print_r($_COOKIE);
+	print_r($_POST);
 	
 ?>
 
