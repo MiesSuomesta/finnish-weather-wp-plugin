@@ -6,7 +6,7 @@
 	/* SQL details */
 	require_once("mysql.inc");	
 
-	require_once("header.inc");
+	require_once("header.php");
 	
 	require_once("header-functions.inc");
 	
