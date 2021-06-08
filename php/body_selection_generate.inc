@@ -334,11 +334,12 @@
 				comment("Setting GET stations .....");
 				foreach ($_GET['stations'] as $getstationi) {
 					comment("Station $getstationi: " . $stats[getstationi][1]);
-					$tmp[] = $stats[getstationi];
+					$tmp.push($stats[getstationi]);
 				}
 
-				echo "tmp: ";
+				echo "<!---- Setting stations as: \n";
 				print_r($tmp);
+				echo "\n ---->";
 
 				$stats = $tmp;
 			}
