@@ -7,7 +7,7 @@
 		echo "<br>";
 		comment("Stations got:");
 		echo "<!---\n";
-		print_r($_GET['stations']);
+		print_r($_POST['stations']);
 		echo "--->\n";
 
 
@@ -308,13 +308,13 @@
 		
 			function onset($gvar)
 			{
-				global $_GET;
+				global $_POST;
 				
 				$rv = false;
-				if ( isset($_GET[$gvar]) )
+				if ( isset($_POST[$gvar]) )
 				{
-					if ( (($_GET[$gvar] != null) &&
-						  ($_GET[$gvar] != "")) )
+					if ( (($_POST[$gvar] != null) &&
+						  ($_POST[$gvar] != "")) )
 								$rv = true;
 				}
 				
@@ -323,9 +323,9 @@
 			}
 			
 		
-			$LatestID = weather_get_mysql_data_last_record_number();
+			$LatestID = weather_POST_mysql_data_last_record_number();
 
-			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
+			$LatestStations = weather_POST_mysql_record_number_datas($LatestID, "stationname ASC");
 			
 			$stats = $LatestStations;
 			
@@ -334,7 +334,7 @@
 				$tmp = [];
 				
 				comment("Setting GET stations .....");
-				foreach ($_GET['stations'] as $getstationi) {
+				foreach ($_POST['stations'] as $getstationi) {
 					comment("Station $getstationi: " . $stats[getstationi][1]);
 					$tmp.push($stats[getstationi]);
 				}
