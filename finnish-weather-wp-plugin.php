@@ -91,7 +91,7 @@
 	function finnish_weather_wp_plugin_shortcode()
 	{
 		$ret = null;
-		$fn = $FINWEATHER_PLUGIN_DIR . "php/shortti.inc"
+		$fn = $FINWEATHER_PLUGIN_DIR . "php/shortti.inc";
 		ob_start();
 
 			include($fn);
