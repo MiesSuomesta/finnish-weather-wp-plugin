@@ -347,6 +347,7 @@
 			
 			$post = $_SESSION["FinnishWeartherPOSTargsJSON"];
 			print_r($post);
+			
 			comment("Setting POST '$post' from header cookie .....");
 			comment("      " . $post);
 			$_POST = json_decode($post);
