@@ -312,7 +312,7 @@
 			
 			foreach ($stats as $stationi) {
 				print_r($stationi);
-				generate_marker($stats[$stationi]);
+				generate_marker($stationi);
 			}
 		?>
 		// Marker generation ends
