@@ -94,11 +94,11 @@
 		
 		ob_start();
 
-			file_get_contents($FINWEATHER_PLUGIN_DIR . "php/shortti.inc");
+			include($FINWEATHER_PLUGIN_DIR . "php/shortti.inc");
 		$ret = ob_get_clean();
-		ob_end_clean();
 		
 		java_logger("shortti" . $ret);
+		ob_end_clean();
 		return $ret;
 	}
 
