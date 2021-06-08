@@ -11,7 +11,7 @@
 	$postjson = json_encode($_POST);
 	print_r($postjson);
 
-	setcookie("POST", $postjson, time() + 2 * 60, "/");
+	$_SESSION["FinnishWeartherPOSTargsJSON"] = $postjson;
 
 	/* Login details */
 	require_once("login.inc");
