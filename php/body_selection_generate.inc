@@ -329,6 +329,10 @@
 			
 			$stats = $LatestStations;
 			
+			echo "<!---- POST: \n";
+			print_r($_POST);
+			echo "\n --->";
+
 			if ( onset('stations') )
 			{
 				$tmp = [];
@@ -338,11 +342,6 @@
 					comment("Station $getstationi: " . $stats[getstationi][1]);
 					$tmp.push($stats[getstationi]);
 				}
-
-				echo "<!---- POST: \n";
-				print_r($_POST);
-				echo "\n --->";
-
 
 				echo "<!---- Setting stations as: \n";
 				print_r($tmp);
