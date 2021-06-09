@@ -1,7 +1,5 @@
 <?php
 
-	if (session_id() == '') { session_start(); }
-
 	/* Login details */
 	require_once("login.inc");
 

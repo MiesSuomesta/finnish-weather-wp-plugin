@@ -1,4 +1,6 @@
 <?php
+	if (session_id() == '') { session_start(); }
+
 	/**
 	 * @package finnish-weather-wp-plugin$
 	 * @version 0.0.1a
