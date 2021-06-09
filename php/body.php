@@ -16,7 +16,7 @@
 		<tr>
 			<td>
 
-				<form action="<?php echo $SELF; ?>" method="post">
+				<form action="" method="get">
 					<label for="stations">Valitse sääasemat</label>
 					<br>
 					<select name="stations[]" id="stations" multiple size="10">
