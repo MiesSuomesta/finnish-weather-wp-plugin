@@ -10,9 +10,9 @@
 			return $p;
 		}
 		
-		require(get_load_path());
-		require('header-functions.inc');
-		require('body_selection_generate.inc'); 
+		require_once(get_load_path());
+		require_once('header-functions.inc');
+		require_once('body_selection_generate.inc'); 
 
 	?>
 	<!--- LJA HEADER END --->

@@ -1,14 +1,14 @@
 <?php
 
 	/* Login details */
-	require("login.inc");
+	require_once("login.inc");
 
 	/* SQL details */
-	require("mysql.inc");	
+	require_once("mysql.inc");	
 
-	require("header.php");
+	require_once("header.php");
 	
-	require("body_selection_generate.inc");
+	require_once("body_selection_generate.inc");
 
 ?>
 	<table>
