@@ -132,7 +132,7 @@
 
 	function weather_get_mysql_memory_table_latest_rnro()
 	{
-		$q = "select max(rnro) from selections;
+		$q = "select max(rnro) from selections;";
 
 		$result = weather_do_mysql_query($q);
 
@@ -154,10 +154,14 @@
 		}
 	}
 
-	function weather_get_mysql_record_number_field($rnro)
+	function weather_get_mysql_record_number_field($rnro, $orderby = "")
 	{
 		$q = "select * from " . weather_get_weather_info_table_name();
 		$q = $q . " where recordnro = " . $rnro;	
+		
+		if ($orderby != "")
+			$q = $q . " order by $orderby ";
+		
  
 		$result = weather_do_mysql_query($q);
 
