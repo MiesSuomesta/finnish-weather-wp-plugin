@@ -316,7 +316,7 @@
 			
 			comment("LJA A");
 			$post = do_action('finweather_submit', "foo");
-			comment("LJA B: $post");
+			comment("LJA B: '$post'");
 			$postObj = json_decode($post);
 			
 			$pval = array_key_exists($postObj, [ 'stations' ]);

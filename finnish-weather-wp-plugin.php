@@ -107,6 +107,7 @@
 		global $_GET;
 		$post = $_GET;
 		$postjson = json_encode($post);
+		echo "POST: '$postjson' \n";
 		return $postjson; 
 	}
 
