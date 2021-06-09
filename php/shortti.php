@@ -1,8 +1,8 @@
 <?php
-	session_start();
 
-	print_r($_POST);
-	$postjson = json_encode($_POST);
+	$post = file_get_contents("php://input");
+	print_r($post);
+	$postjson = json_encode($post);
 	print_r($postjson);
 
 	setcookie("POST", $postjson, time() + 2 * 60, "/");

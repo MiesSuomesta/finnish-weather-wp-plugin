@@ -353,7 +353,10 @@
 
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 			
-			$post = json_encode($this->input->post());
+			$post = $_COOKIE['POST'];
+			print_r($post);
+			comment("Setting POST from header cookie .....");
+			$_POST = json_decode($post);
 			
 			comment("Setting POST '$post' from header cookie .....");
 			comment("      " . $post);
