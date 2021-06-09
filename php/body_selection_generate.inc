@@ -320,7 +320,7 @@
 			$post = do_action('finweather_submit', "foo");
 			
 			comment("Setting POST '$post'...");
-			comment($post);
+			comment("LJA" . $post);
 			$postObj = json_decode($post);
 			
 			$pval = array_key_exists($postObj, [ 'stations' ]);
