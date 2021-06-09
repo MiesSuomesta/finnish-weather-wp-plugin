@@ -343,7 +343,7 @@
 			}
 			
 			function getcookiephp() {
-				$rv = "?> getcookie(FinnishWeartherPOSTargsJSON); <?php ";
+				$rv = "?> getcookie("FinnishWeartherPOSTargsJSON"); <?php ";
 				
 				return $rv;
 			}
