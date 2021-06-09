@@ -5,9 +5,14 @@
 
 	
 	<?php 
+		function get_load_path() {
+			$p =  dirname(dirname( __FILE__ )) . "/wp-load.php";
+			return $p;
+		}
 		
-		require_once('header-functions.inc');
-		require_once('body_selection_generate.inc'); 
+		require(get_load_path());
+		require('header-functions.inc');
+		require('body_selection_generate.inc'); 
 
 	?>
 	<!--- LJA HEADER END --->
