@@ -17,7 +17,7 @@
 			<td>
 
 				<form action="" method="GET">
-					<input type="hidden" name="action" value="finweather_submit" />
+					<input type="hidden" name="action" value="finweather_submit">
 
 					<label for="stations">Valitse sääasemat</label>
 					<br>

@@ -1,10 +1,4 @@
 <?php
-	echo "<pre>";
-	var_dump($_REQUEST);
-	var_dump($_GET);
-	var_dump($_POST);
-	var_dump($_COOKIE);
-	echo "</pre>";
 
 	/* Login details */
 	require_once("login.inc");
@@ -24,7 +18,7 @@
 			<td>
 
 				<form method="GET">
-					<input type="hidden" name="action" value="finweather_submit" />
+					<input type="hidden" name="action" value="finweather_submit">
 					
 					<label for="stations">Valitse sääasemat</label>
 					<br>
