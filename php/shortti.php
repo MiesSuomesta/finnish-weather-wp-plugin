@@ -1,5 +1,4 @@
 <?php
-	$result = opcache_reset();
 
 	/* Login details */
 	require_once("login.inc");

@@ -6,6 +6,7 @@
 	
 	<?php 
 		$result = opcache_reset();
+		echo $result ? 'Cache reset' : 'Something went wrong';
 
 		function get_load_path() {
 			$p =  dirname(dirname(dirname(dirname(dirname( __FILE__ ))))) . "/wp-load.php";
