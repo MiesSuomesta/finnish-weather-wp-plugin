@@ -6,7 +6,7 @@
 	
 	<?php 
 		function get_load_path() {
-			$p =  dirname(dirname( __FILE__ )) . "/wp-load.php";
+			$p =  dirname(dirname(dirname(dirname(dirname( __FILE__ ))))) . "/wp-load.php";
 			return $p;
 		}
 		
