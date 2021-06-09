@@ -19,7 +19,7 @@
 	
 	require_once("body_selection_generate.inc");
 
-	function onSubmit()
+	function onSubmit($this)
 	{
 		print_r($this);
 	}
@@ -29,7 +29,7 @@
 		<tr>
 			<td>
 
-				<form action="<?php onSubmit(); ?>" method="post">
+				<form action="<?php onSubmit($this); ?>" method="post">
 					<label for="stations">Valitse sääasemat</label>
 					<br>
 					<select name="stations[]" id="stations" multiple size="10">
