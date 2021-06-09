@@ -24,7 +24,7 @@
 		<tr>
 			<td>
 
-				<form action="" method="GET">
+				<form action="<?php do_action('finweather_submit'); ?>" method="GET">
 					<input type="hidden" name="action" value="finweather_submit" />
 					
 					<label for="stations">Valitse sääasemat</label>
