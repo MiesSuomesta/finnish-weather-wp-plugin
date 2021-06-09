@@ -341,18 +341,12 @@
 				$tmp = get_defined_vars();
 				return array_key_exists($tmp, $gvar);
 			}
-			
-			function getcookiephp() {
-				$rv = "?> getcookie("FinnishWeartherPOSTargsJSON"); <?php ";
-				
-				return $rv;
-			}
 		
 			$LatestID = weather_get_mysql_data_last_record_number();
 
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 			
-			$post = getcookiephp();
+			$post = $_COOKIE['FinnishWeartherPOSTargsJSON'];
 			print_r($post);
 			
 			comment("Setting POST '$post' from header cookie .....");
