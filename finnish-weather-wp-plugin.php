@@ -100,9 +100,24 @@
 		return $ret;
 	}
 
+	function finweather_submit_func()
+	{
+		global $_GET;
+		global $_SESSION;
+		$post = $_GET;
+		var_dump($post);
+		$postjson = json_encode($post);
+		var_dump($postjson);
+
+		$_SESSION['FinnishWeartherPOSTargsJSON'] = $postjson;
+		setcookie("FinnishWeartherPOSTargsJSON", $postjson, time() + 5 * 60, "/");
+	}
+
+
 	// Now we set that function up to execute when the admin_notices action is called.
 	add_action( 'wp_head', 			'finnish_weather_wp_plugin_header' 		);
 	//add_action( 'wp_body',		'finnish_weather_wp_plugin_body' 		);
+	add_action('finweather_submit', finweather_submit_func);
 
 	add_shortcode('finweather', 	'finnish_weather_wp_plugin_shortcode'	);
 
