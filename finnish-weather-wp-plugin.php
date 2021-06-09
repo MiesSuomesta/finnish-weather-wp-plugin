@@ -108,6 +108,7 @@
 		global $_SESSION;
 		$post = $_GET;
 		$postjson = json_encode($post);
+		echo "finweather_submit";
 /*		echo "<pre>";
 		var_dump($_REQUEST);
 		var_dump($_GET);
