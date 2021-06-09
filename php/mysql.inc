@@ -85,25 +85,6 @@
 		return $rows;
 	}
 
-	function weather_get_mysql_memory_table_rnro($rnro)
-	{
-		$q = "select * from selections ";
-		$q = $q . " where rnro = " . $rnro;	
-
-		$result = weather_do_mysql_query($q);
-
-		$rows = array();
-
-		while ($row = $result->fetch_row())
-		{
-			$rows[] = $row[$field];
-		}
-
-		$result -> free();
-		
-		return $rows;
-	}
-
 	function __set_mysql_memory_table_rnro($rnro, $selID)
 	{
 		$q = "insert into selections (rnro, stationIndex) VALUES($rnro, $selID);";
