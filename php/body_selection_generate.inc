@@ -63,15 +63,9 @@
 	let saved_fea = Array();
 	let saved_layer = Array();
 	
-	<?php $post = json_encode($this->input->post()); ?>
-	
-	let POST = <?php echo $post; ?> ;
-	
 	let container;
 	let content;
 	let closer;
-	
-	console.log("POST:", $POST);
 	
 	function escapeHtml(usstr)
 	{
