@@ -23,6 +23,8 @@
 		return "";
 	}
 
+	
+
 </script>
 
 <?php
@@ -61,9 +63,15 @@
 	let saved_fea = Array();
 	let saved_layer = Array();
 	
+	<?php $post = json_encode($this->input->post()); ?>
+	
+	let POST = <?php echo $post; ?> ;
+	
 	let container;
 	let content;
 	let closer;
+	
+	console.log("POST:", $POST);
 	
 	function escapeHtml(usstr)
 	{
@@ -345,13 +353,13 @@
 
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 			
-			$post = $_SESSION["FinnishWeartherPOSTargsJSON"];
+			$post = json_encode($this->input->post());
 			
 			comment("Setting POST '$post' from header cookie .....");
 			comment("      " . $post);
-			$_POST = json_decode($post);
+			$postObj = json_decode($post);
 			
-			$pval = true; array_key_exists($_POST, [ 'stations' ]);
+			$pval = array_key_exists($postObj, [ 'stations' ]);
 			$stat = "";
 
 			if ( $pval )
@@ -359,7 +367,7 @@
 				$tmp = [];
 				
 				comment("Setting POST stations .....");
-				foreach ($_POST['stations'] as $getstationi) {
+				foreach ($postObj['stations'] as $getstationi) {
 					comment("Station $getstationi: " . $stats[getstationi][1]);
 					$tmp.push($stats[getstationi]);
 				}
