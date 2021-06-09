@@ -319,7 +319,7 @@
 			comment("LJA A2");
 			var_dump($_GET);
 			comment("LJA A3");
-			var_dump($SESSION);
+			var_dump($_SESSION);
 			$post = do_action('finweather_submit', $_GET);
 			comment("LJA B: '$post'");
 			$postObj = json_decode($post);
