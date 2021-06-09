@@ -329,12 +329,6 @@
 		
 			function strbool($v) { if ($v) { return "true"; } else { return "false"; } }
 		
-			function onset($gvar)
-			{
-				$tmp = get_defined_vars();
-				return array_key_exists($tmp, $gvar);
-			}
-		
 			$LatestID = weather_get_mysql_data_last_record_number();
 
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");

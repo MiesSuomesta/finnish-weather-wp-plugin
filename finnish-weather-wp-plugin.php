@@ -107,7 +107,7 @@
 		global $_GET;
 		$post = $_GET;
 		$postjson = json_encode($post);
-		return $postjson;
+		return $postjson; 
 	}
 
 
@@ -118,5 +118,5 @@
 
 	add_shortcode('finweather', 	'finnish_weather_wp_plugin_shortcode'	);
 
-?>
+?> 
  
