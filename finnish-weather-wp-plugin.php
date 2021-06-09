@@ -105,7 +105,7 @@
 	function finweather_submit_func()
 	{
 		global $_GET;
-		$post = $_GET;
+		$post = $_GET['stations'];
 		$postjson = json_encode($post);
 		echo "POST: '$postjson' \n";
 		return $postjson; 
