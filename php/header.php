@@ -5,6 +5,8 @@
 
 		function finweather_submit_func()
 		{
+			global $_GET;
+			global $_SESSION;
 			$post = $_GET;
 			var_dump($post);
 			$postjson = json_encode($post);
