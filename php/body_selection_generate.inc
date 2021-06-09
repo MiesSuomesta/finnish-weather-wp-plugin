@@ -339,7 +339,6 @@
 
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 			
-			global $_SESSION;
 			$post = do_action('finweather_submit', "foo");
 			
 			comment("Setting POST '$post'...");
@@ -347,24 +346,24 @@
 			$postObj = json_decode($post);
 			
 			$pval = array_key_exists($postObj, [ 'stations' ]);
-			$stat = "";
+			$statData = "";
 
 			if ( $pval )
 			{
 				$tmp = [];
 				
-				comment("Setting POST stations .....");
+				comment("Setting selected stations .....");
 				foreach ($postObj['stations'] as $getstationi) {
-					comment("Station $getstationi: " . $stats[getstationi][1]);
-					$tmp.push($stats[getstationi]);
+					comment("Station $getstationi: " . $statData[getstationi][1]);
+					$tmp.push($statData[getstationi]);
 				}
-				$stats = $tmp;
+				$statData = $tmp;
 			} else {
 				comment("Setting ALL stations .....");
-				$stats = $LatestStations;
+				$statData = $LatestStations;
 			}
 			
-			foreach ($stats as $stationi) {
+			foreach ($statData as $stationi) {
 				generate_marker($stationi);
 			}
 		?>
