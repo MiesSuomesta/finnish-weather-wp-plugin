@@ -29,7 +29,7 @@
 		<tr>
 			<td>
 
-				<form action="<?php onSubmit($this); ?>" method="post">
+				<form action="<?php echo "" . __FILE__; ?>" method="post">
 					<label for="stations">Valitse sääasemat</label>
 					<br>
 					<select name="stations[]" id="stations" multiple size="10">
