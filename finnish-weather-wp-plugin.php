@@ -104,6 +104,10 @@
 
 	function finweather_submit_func($foo)
 	{
+		echo "<p>VAR DUMPPI: \n";
+		var_dump($foo);
+		echo "</p>";
+		
 		$post = $foo['stations'];
 		$postjson = json_encode($post);
 		
