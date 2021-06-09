@@ -339,8 +339,7 @@
 
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 			
-			var_dump($_GET);
-			$post = json_encode($_GET); //$_COOKIE['FinnishWeartherPOSTargsJSON'];
+			$post = $_COOKIE['FinnishWeartherPOSTargsJSON'];
 			var_dump($post);
 			
 			comment("Setting POST '$post' from header cookie .....");

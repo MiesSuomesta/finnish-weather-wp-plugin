@@ -22,7 +22,7 @@
 					<br>
 					<select name="stations[]" id="stations" multiple size="10">
 					<br>
-					
+					<input type="hidden" name="action" value="finweather_submit">
 					<?php generate_station_selectiors($LatestStations); ?>
 
 					</select>
