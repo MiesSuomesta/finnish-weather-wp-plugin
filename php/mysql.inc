@@ -154,14 +154,10 @@
 		}
 	}
 
-	function weather_get_mysql_record_number_field($rnro, $field, $orderby = "")
+	function weather_get_mysql_record_number_field($rnro)
 	{
 		$q = "select * from " . weather_get_weather_info_table_name();
 		$q = $q . " where recordnro = " . $rnro;	
-		
-		if ($orderby != "")
-			$q = $q . " order by $orderby ";
-		
  
 		$result = weather_do_mysql_query($q);
 

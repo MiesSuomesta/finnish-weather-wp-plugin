@@ -16,7 +16,7 @@
 		<tr>
 			<td>
 
-				<form name="selectionmenu" method="GET">
+				<form action="handle_form.php" name="selectionmenu" method="GET">
 					<input type="hidden" name="action" value="finweather_submit">
 
 					<label for="stations">Valitse sääasemat</label>
