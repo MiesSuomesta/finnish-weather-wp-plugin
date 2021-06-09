@@ -22,6 +22,9 @@
 
 <?php
 
+	$result = opcache_reset();
+	echo $result ? 'Cache reset' : 'Something went wrong';
+
 	function generate_marker($station)
 	{
 		mkMarker($station);
