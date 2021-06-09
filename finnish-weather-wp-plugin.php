@@ -114,8 +114,7 @@
 		var_dump($_POST);
 		echo "</pre>";
 
-		$_SESSION['FinnishWeartherPOSTargsJSON'] = $postjson;
-		setcookie("FinnishWeartherPOSTargsJSON", $postjson, time() + 5 * 60, "/");
+		return $postjson;
 	}
 
 
