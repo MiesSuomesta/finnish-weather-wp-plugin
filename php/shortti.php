@@ -14,7 +14,7 @@
 	<table>
 		<tr>
 			<td>
-
+				<?php echo __DIR__ . ' LJA'; ?>
 				<form action="<?php echo __DIR__ . 'handle_form.php'; ?>" name="selectionmenu" method="GET">
 					<input type="hidden" name="action" value="finweather_submit">
 					
