@@ -1,4 +1,10 @@
 <?php
+	echo "<pre>";
+	var_dump($_REQUEST);
+	var_dump($_GET);
+	var_dump($_POST);
+	var_dump($_COOKIE);
+	echo "</pre>";
 
 	/* Login details */
 	require_once("login.inc");
@@ -12,19 +18,12 @@
 	
 	require_once("body_selection_generate.inc");
 
-	echo "<pre>";
-	var_dump($_REQUEST);
-	var_dump($_GET);
-	var_dump($_POST);
-	var_dump($_COOKIE);
-	echo "</pre>";
-
 ?>
 	<table>
 		<tr>
 			<td>
 
-				<form action="<?php do_action('finweather_submit'); ?>" method="GET">
+				<form method="GET">
 					<input type="hidden" name="action" value="finweather_submit" />
 					
 					<label for="stations">Valitse sääasemat</label>
