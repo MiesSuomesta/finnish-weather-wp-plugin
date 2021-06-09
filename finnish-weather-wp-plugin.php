@@ -109,6 +109,7 @@
 		$post = $_GET;
 		$postjson = json_encode($post);
 		echo "<pre>";
+		var_dump($_REQUEST);
 		var_dump($_GET);
 		var_dump($_POST);
 		echo "</pre>";
