@@ -19,11 +19,6 @@
 	
 	require_once("body_selection_generate.inc");
 
-	function onSubmit($t)
-	{
-		print_r($t);
-	}
-
 ?>
 	<table>
 		<tr>
