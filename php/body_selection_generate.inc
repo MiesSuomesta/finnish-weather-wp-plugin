@@ -1,10 +1,3 @@
-<?php
-
-	print_r($_COOKIE);
-	print_r($_POST);
-	
-?>
-
 <script type="text/javascript">
 
 	function getcookie(cname) {
