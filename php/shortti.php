@@ -19,9 +19,9 @@
 	
 	require_once("body_selection_generate.inc");
 
-	function onSubmit($this)
+	function onSubmit($t)
 	{
-		print_r($this);
+		print_r($t);
 	}
 
 ?>
