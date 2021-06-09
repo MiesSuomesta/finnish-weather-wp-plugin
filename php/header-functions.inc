@@ -18,7 +18,7 @@
 
 	function comment($txt)
 	{
-		echo "<!---- $txt ---->";
+		echo "<!---- $txt ---->\n";
 	}
 
 /*
