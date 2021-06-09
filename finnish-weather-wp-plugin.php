@@ -107,10 +107,10 @@
 		global $_GET;
 		global $_SESSION;
 		$post = $_GET;
-		echo "<pre>";
-		var_dump($post);
 		$postjson = json_encode($post);
-		var_dump($postjson);
+		echo "<pre>";
+		var_dump($_GET);
+		var_dump($_POST);
 		echo "</pre>";
 
 		$_SESSION['FinnishWeartherPOSTargsJSON'] = $postjson;

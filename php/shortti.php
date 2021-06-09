@@ -12,6 +12,12 @@
 	
 	require_once("body_selection_generate.inc");
 
+	echo "<pre>";
+	var_dump($_REQUEST);
+	var_dump($_GET);
+	var_dump($_POST);
+	echo "</pre>";
+
 ?>
 	<table>
 		<tr>
