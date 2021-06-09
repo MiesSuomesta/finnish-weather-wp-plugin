@@ -5,12 +5,14 @@
 
 		function finweather_submit_func()
 		{
-			$post = $_POST;
+			$post = $_GET;
 			var_dump($post);
 			$postjson = json_encode($post);
 			var_dump($postjson);
 
-			setcookie("FinnishWeartherPOSTargsJSON", $postjson, time() + 2 * 60, "/");
+			$_SESSION['FinnishWeartherPOSTargsJSON'] = $postjson;
+			
+			//setcookie("FinnishWeartherPOSTargsJSON", $postjson, time() + 2 * 60, "/");
 		}
 		
 	?>
