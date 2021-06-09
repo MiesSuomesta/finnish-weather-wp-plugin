@@ -1,20 +1,6 @@
 	<?php 
 
-		add_action('finweather_submit', finweather_submit_func);
 
-		function finweather_submit_func()
-		{
-			global $_GET;
-			global $_SESSION;
-			$post = $_GET;
-			var_dump($post);
-			$postjson = json_encode($post);
-			var_dump($postjson);
-
-			$_SESSION['FinnishWeartherPOSTargsJSON'] = $postjson;
-			
-			//setcookie("FinnishWeartherPOSTargsJSON", $postjson, time() + 2 * 60, "/");
-		}
 		
 	?>
 

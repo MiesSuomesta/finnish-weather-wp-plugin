@@ -19,6 +19,7 @@
 
 				<form action="" method="get">
 					<input type="hidden" name="action" value="finweather_submit" />
+					
 					<label for="stations">Valitse sääasemat</label>
 					<br>
 					<select name="stations[]" id="stations" multiple size="10">

@@ -105,9 +105,11 @@
 		global $_GET;
 		global $_SESSION;
 		$post = $_GET;
+		echo "<pre>";
 		var_dump($post);
 		$postjson = json_encode($post);
 		var_dump($postjson);
+		echo "</pre>";
 
 		$_SESSION['FinnishWeartherPOSTargsJSON'] = $postjson;
 		setcookie("FinnishWeartherPOSTargsJSON", $postjson, time() + 5 * 60, "/");
