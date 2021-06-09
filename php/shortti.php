@@ -14,8 +14,7 @@
 	<table>
 		<tr>
 			<td>
-				<?php echo __DIR__ . ' LJA'; ?>
-				<form action="<?php echo __DIR__ . 'handle_form.php'; ?>" name="selectionmenu" method="GET">
+				<form action="" name="selectionmenu" method="GET">
 					<input type="hidden" name="action" value="finweather_submit">
 					
 					<label for="stations">Valitse sääasemat</label>

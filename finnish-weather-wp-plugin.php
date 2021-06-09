@@ -102,12 +102,12 @@
 		return $ret;
 	}
 
-	function finweather_submit_func($foo)
+	function finweather_submit_func()
 	{
-		$post = $foo['stations'];
+		$post = $_GET;
 		$postjson = json_encode($post);
 		
-		echo "POST: '$postjson' $foo \n";
+		echo "POST: '$postjson' \n";
 		return $postjson; 
 	}
 
@@ -115,7 +115,12 @@
 	// Now we set that function up to execute when the admin_notices action is called.
 	add_action( 'wp_head', 			'finnish_weather_wp_plugin_header' 		);
 	//add_action( 'wp_body',		'finnish_weather_wp_plugin_body' 		);
-	add_action( 'finweather_submit','finweather_submit_func'				);
+
+	// Add actions for form -----------------------------
+	add_action( 'admin_post_nopriv',					'finweather_submit_func'	);
+	add_action( 'admin_post_nopriv_finweather_submit',	'finweather_submit_func'	);
+	add_action( 'admin_post',							'finweather_submit_func'	);
+	add_action( 'admin_post_finweather_submit',			'finweather_submit_func'	);
 
 	add_shortcode('finweather', 	'finnish_weather_wp_plugin_shortcode'	);
 
