@@ -24,22 +24,6 @@
 
 	function generate_marker($station)
 	{
-/*		
-		echo "Stations:";
-		print_r($stations);
-		echo "<br>";
-		comment("Stations got:");
-		echo "<!---\n";
-		print_r($_POST['stations']);
-		echo "--->\n";
-
-
-		comment("Marker start");
-		echo "<!---\n";
-		print_r($station);
-		echo "--->\n";
-*/
-
 		mkMarker($station);
 	}
 ?>
