@@ -310,16 +310,16 @@
 
 		// Marker generation start
 		<?php 
-			//$LatestID = weather_get_mysql_data_last_record_number();
+			$LatestID = weather_get_mysql_data_last_record_number();
 
-			//$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
+			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 			
 			comment("LJA A");
-			//$post = do_action('finweather_submit', "foo");
+			$post = do_action('finweather_submit', "foo");
 			comment("LJA B");
-			//$postObj = json_decode($post);
+			$postObj = json_decode($post);
 			
-			//$pval = array_key_exists($postObj, [ 'stations' ]);
+			$pval = array_key_exists($postObj, [ 'stations' ]);
 			$statData = "";
 
 			if ( $pval )
@@ -338,7 +338,7 @@
 			}
 			
 			foreach ($statData as $stationi) {
-				//generate_marker($stationi);
+				generate_marker($stationi);
 			}
 		?>
 		// Marker generation ends
