@@ -1,7 +1,6 @@
 	<?php 
 
-		if (function_exists('add_action'))
-			add_action('finweather_submit', finweather_submit_func);
+		add_action('finweather_submit', finweather_submit_func);
 
 		function finweather_submit_func()
 		{
