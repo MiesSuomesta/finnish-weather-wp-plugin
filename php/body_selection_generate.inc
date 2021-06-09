@@ -314,7 +314,17 @@
 
 			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 			
-			$pval = array_key_exists($postObj, [ 'stations' ]);
+			comment("LJA A1");
+			var_dump($_POST);
+			comment("LJA A2");
+			var_dump($_GET);
+			comment("LJA A3");
+			var_dump($_SESSION);
+			$post = do_action('finweather_submit', $_POST);
+			comment("LJA B: '$post'");
+			$postObj = json_decode($post);
+			
+			$pval = true; //array_key_exists($postObj, [ 'stations' ]);
 			$statData = "";
 
 			if ( $pval )
