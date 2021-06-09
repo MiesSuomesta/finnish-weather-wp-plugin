@@ -28,6 +28,7 @@
 			exit();
 		}
 
+		
 		$mysqli->close();
 
 	//	print_r($result);
@@ -71,6 +72,86 @@
 		$result -> free();
 		
 		return $rows;
+	}
+
+	function weather_init_mysql_memory_tables()
+	{
+		$q = "create table selections (rnro INT, stationIndex INT) ENGINE = MEMORY;";
+
+		$result = weather_do_mysql_query($q);
+
+		$result -> free();
+		
+		return $rows;
+	}
+
+	function weather_get_mysql_memory_table_rnro($rnro)
+	{
+		$q = "select * from selections ";
+		$q = $q . " where rnro = " . $rnro;	
+
+		$result = weather_do_mysql_query($q);
+
+		$rows = array();
+
+		while ($row = $result->fetch_row())
+		{
+			$rows[] = $row[$field];
+		}
+
+		$result -> free();
+		
+		return $rows;
+	}
+
+	function __set_mysql_memory_table_rnro($rnro, $selID)
+	{
+		$q = "insert into selections (rnro, stationIndex) VALUES($rnro, $selID);";
+
+		$result = weather_do_mysql_query($q);
+		
+	}
+
+	function weather_get_mysql_memory_table_rnro($rnro)
+	{
+		$q = "select * from selections where rnro = $rnro;";
+
+		$result = weather_do_mysql_query($q);
+
+		$rows = array();
+
+		while ($row = $result->fetch_row())
+		{
+			$rows[] = $row;
+		}
+
+		$result -> free();
+
+		return $rows;
+	}	
+
+	function weather_get_mysql_memory_table_latest_rnro()
+	{
+		$q = "select max(rnro) from selections;
+
+		$result = weather_do_mysql_query($q);
+
+		$row = $result->fetch_row();
+		$res = 0;
+		
+		if ($row)
+			$res = $row[0];
+
+		$result -> free();
+		
+		return $res;
+	}	
+
+	function weather_set_mysql_memory_table_rnro($rnro, $selArray)
+	{
+		foreach ($selArray as $slct) {
+			__set_mysql_memory_table_rnro($rnro, $slct);
+		}
 	}
 
 	function weather_get_mysql_record_number_field($rnro, $field, $orderby = "")
