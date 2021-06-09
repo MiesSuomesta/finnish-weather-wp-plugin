@@ -1,7 +1,7 @@
 	<?php 
 		
 
-		$post = file_get_contents("php://input");
+		$post = $_POST;
 		print_r($post);
 		$postjson = json_encode($post);
 		print_r($postjson);
