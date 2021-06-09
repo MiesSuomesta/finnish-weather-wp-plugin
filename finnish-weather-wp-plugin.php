@@ -107,6 +107,7 @@
 		global $_GET;
 		$post = $_GET['stations'];
 		$postjson = json_encode($post);
+		var_dump($this);
 		echo "POST: '$postjson' \n";
 		return $postjson; 
 	}
