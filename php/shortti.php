@@ -18,14 +18,18 @@
 	require_once("header-functions.inc");
 	
 	require_once("body_selection_generate.inc");
-	
+
+	function onSubmit()
+	{
+		print_r($this);
+	}
 
 ?>
 	<table>
 		<tr>
 			<td>
 
-				<form action="<?php echo $SELF; ?>" method="post">
+				<form action="<?php onSubmit(); ?>" method="post">
 					<label for="stations">Valitse sääasemat</label>
 					<br>
 					<select name="stations[]" id="stations" multiple size="10">
