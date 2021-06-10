@@ -97,7 +97,7 @@
 		$ret = null;
 		$fn = $FINWEATHER_PLUGIN_URL . "php/theMap.php";
 		ob_start();
-			echo "<iframe allowfullscreen='true' width='750' height='750' src='$fn'/>";
+			echo "<iframe allowfullscreen='true' width='900' height='850' src='$fn'/>";
 		$ret = ob_get_clean();
 		return $ret;
 	}
