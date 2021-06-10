@@ -182,7 +182,7 @@
 
 	function weather_get_mysql_memory_table_recordnro($recordnro)
 	{
-		$q = "select * from selections where recordnro = $recordnro;";
+		$q = "select * from selections where recordnro = $recordnro";
 
 		$result = weather_do_mysql_query($q);
 
@@ -200,7 +200,7 @@
 
 	function weather_get_mysql_memory_table_latest_recordnro()
 	{
-		$q = "select max(recordnro) from selections;";
+		$q = "select max(recordnro) from selections";
 
 		$result = weather_do_mysql_query($q);
 
