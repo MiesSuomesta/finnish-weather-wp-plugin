@@ -224,8 +224,14 @@
 		
 		$result = weather_do_mysql_query($q);
 
+		$row = false;
 		$rows = array();
-
+		
+		if ( ! is_object($result) ) {
+			echo "<!---- Not object ... $result --->";
+			return $rows;
+		}
+		
 		while ($row = $result->fetch_row())
 			$rows[] = __get_station_from_sql_row($row);
 
