@@ -22,7 +22,7 @@
 	<table>
 		<tr>
 			<td>
-				<form action="<?php admin_url('admin-post.php'); ?>" method="POST">
+				<form action="" method="POST">
 					<input type="hidden" name="action" value="finweather_submit">
 					
 					<label for="stations">Valitse sääasemat</label>

@@ -268,6 +268,23 @@
 				
 	}
 
+	function submitlistener(event, ssid, jsn)
+	{
+		var jObj = JSON.parse(jsn);
+		var stations = jObj['stations'];
+		var sid = jObj['SID'];
+
+		console.log("SUBMIT: " + event);
+		console.log("SUBMIT: " + sid);
+		console.log("SUBMIT: " + stations);
+		
+//		foreach ($statData as $stationi) {
+//				generate_marker($stationi);
+//		}
+			
+		return false;
+	}
+
 	function initMap() {
 		
 		myMap = new ol.Map({
@@ -282,10 +299,6 @@
 							zoom: 5
 						})
 				});
-
-		container 	= document.getElementById('osmPop');
-		content 	= document.getElementById('osmPop-content');
-		closer 		= document.getElementById('osmPop-closer');
 
 		// Marker generation start
 		<?php 
@@ -315,8 +328,20 @@
 			foreach ($statData as $stationi) {
 				generate_marker($stationi);
 			}
+			
+			$json['stations'] = $statData;
+			$json['SID'] = "<?php echo session_id(); ?>";
+			
+			$jsonStations = json_encode($json);
+			
 		?>
 		// Marker generation ends
+
+		container 	= document.getElementById('osmPop');
+		content 	= document.getElementById('osmPop-content');
+		closer 		= document.getElementById('osmPop-closer');
+
+		content.addListener("submit", submitlistener, "<?php echo $jsonStations; ?>" );
 		
 	}
 	
