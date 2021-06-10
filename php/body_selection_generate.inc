@@ -334,7 +334,7 @@
 			}
 			
 			$json['stations'] = $statData;
-			$json['SID'] = "<?php echo session_id(); ?>";
+			$json['SID'] = session_id();
 			
 			$jsonStations = json_encode($json);
 			
