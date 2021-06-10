@@ -341,7 +341,7 @@
 		?>
 		// Marker generation ends
 
-		content.addListener("submit", submitlistener, <?php echo "'" . $jsonStations. "'"; ?> );
+		content.addEventListener("submit", submitlistener, <?php echo "'" . $jsonStations. "'"; ?> );
 		
 	}
 	
