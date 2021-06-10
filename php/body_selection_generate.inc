@@ -314,7 +314,7 @@
 
 			global $LatestStations;
 			
-			$post = do_action('finweather_submit', $_POST);
+			$post = do_action('admin_post_nopriv_finweather_submit', $_POST);
 			comment("LJA B: '$post'");
 			$postObj = json_decode($post);
 			
