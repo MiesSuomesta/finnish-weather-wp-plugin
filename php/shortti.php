@@ -15,7 +15,7 @@
 		var_dump($_GET);
 		comment("LJA A3");
 		var_dump($_SESSION);
-		$post = do_action('finweather_submit');
+		$post = do_action('admin_post_nopriv_finweather_submit');
 	} else {
 		require_once("body_selection_generate.inc");
 	}
@@ -23,7 +23,7 @@
 	<table>
 		<tr>
 			<td>
-				<form action="" name="selectionmenu" method="post">
+				<form action="" name="selectionmenu" method="POST">
 					<input type="hidden" name="action" value="finweather_submit">
 					
 					<label for="stations">Valitse sääasemat</label>
