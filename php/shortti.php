@@ -14,15 +14,16 @@
 
 	function php_submit($sid)
 	{
+		
 		comment("PHP Submit " . $sid);
 		
 	}
-
 ?>
+
 	<table>
 		<tr>
 			<td>
-				<form action="php_submit(<?php echo "'" . session_id() . "'"; ?>)" method="POST">
+				<form action="php:php_submit(<?php echo "'" . session_id() . "'"; ?>)" method="POST">
 					<input type="hidden" name="action" value="finweather_submit">
 					
 					<label for="stations">Valitse sääasemat</label>
