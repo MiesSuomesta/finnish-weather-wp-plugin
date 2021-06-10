@@ -5,6 +5,8 @@
 
 	/* SQL details */
 	require_once("mysql.inc");	
+	
+	weather_init_mysql_memory_tables();
 
 	function mkMarker($obj)
 	{
@@ -18,7 +20,7 @@
 
 	function comment($txt)
 	{
-		echo "<!---- $txt ---->";
+		echo "<!---- $txt ---->\n";
 	}
 
 
@@ -28,9 +30,9 @@
 
 	comment("Session ID: " . session_id());
 
-	$selectedStationsSetNro = weather_get_mysql_memory_session_records(session_id());
+	$selectedStationsSetForSession = weather_get_mysql_memory_session_records(session_id());
 
-	//print_r($stations);
+	print_r($selectedStationsSetForSession);
 
 	function generate_station_selectiors($stations) {
 		$FID = 0;

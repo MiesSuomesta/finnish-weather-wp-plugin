@@ -1,24 +1,3 @@
-<script type="text/javascript">
-
-	function getcookie(cname) {
-		var name = cname + "=";
-		var decodedCookie = decodeURIComponent(document.cookie);
-		var ca = decodedCookie.split(';');
-		for(var i = 0; i <ca.length; i++) {
-			var c = ca[i];
-			while (c.charAt(0) == ' ') {
-				c = c.substring(1);
-			}
-			if (c.indexOf(name) == 0) {
-				return json_encode(c.substring(name.length, c.length));
-			}
-		}
-		return "";
-	}
-
-	
-
-</script>
 
 <?php
 
@@ -318,30 +297,17 @@
 			$statData = $LatestStations;
 			$pval = false;
 			
-			if ( 	isset($_POST) && 
-					isset($_POST['stations']) && 
-					($_POST['stations'] != null)
-				) 
+			if ( is_array($selectedStationsSetForSession) )
 			{
-				$postObj = $_POST;
 				$pval = true;
-				$statData = $LatestStations;
+				$statData = $selectedStationsSetForSession;
 			}
 
 			comment("Setting stations ..... POST:" . $pval);
 			
 			if ( $pval )
 			{
-				$tmp = Array();
-				
 				comment("Setting selected stations .....");
-				foreach ($postObj['stations'] as $getstationi) {
-					$st = $LatestStations[$getstationi];
-					comment("Station $getstationi: " . $st[1]);
-					//var_dump($st);
-					$tmp[] = $st;
-				}
-				$statData = $tmp;
 			} else {
 				comment("Setting ALL stations .....");
 			}
