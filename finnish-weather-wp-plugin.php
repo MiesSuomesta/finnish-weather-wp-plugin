@@ -95,7 +95,7 @@
 		global $FINWEATHER_PLUGIN_URL;
 
 		$ret = null;
-		$fn = $FINWEATHER_PLUGIN_URL . "php/shortti.php";
+		$fn = $FINWEATHER_PLUGIN_URL . "php/theMap.php";
 		ob_start();
 			echo file_get_contents($fn);
 		$ret = ob_get_clean();

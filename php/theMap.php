@@ -1,9 +1,58 @@
+<html>
+	<head>
+	<link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+	<script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
+	</head>
 
 <?php
+
+	/* Login details */
+	require_once("login.inc");
+
+	/* SQL details */
+	require_once("mysql.inc");	
+
+
+	function mkMarker($obj)
+	{
+		$jsn = json_encode($obj);
+		$quot= "'";
+
+		$stout = "makeMarker(myMap," . $quot . $jsn . $quot . ");";
+
+		echo $stout . "\n";
+	}
 
 	function generate_marker($station)
 	{
 		mkMarker($station);
+	}
+
+	function comment($txt)
+	{
+		echo "<!---- $txt ---->";
+	}
+
+
+	$LatestID = weather_get_mysql_data_last_record_number();
+
+	$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
+
+	function generate_station_selectiors($stations) {
+		$FID = 0;
+		$htmlEndln = "<br>\n";
+		$htmlVarS = '<?php $_POST[\'';
+		$htmlVarE = '\'] = ';
+		
+		foreach ($stations as $stationi) {
+			$station = $stationi[1];
+			$htmlIP = "<option value=";
+			$htmlIP = $htmlIP . $FID . ">";
+			$htmlIP = $htmlIP . $station;
+			$htmlIP = $htmlIP . "</option>";
+			echo $htmlIP . $htmlEndln;
+			$FID++;
+		}
 	}
 ?>
 
@@ -297,17 +346,26 @@
 			$statData = $LatestStations;
 			$pval = false;
 			
-			if ( is_array($selectedStationsSetForSession) )
-			{
+			if ( isset($_GET) && isset($_GET['stations']) ) {
+				$postObj = $_GET;
 				$pval = true;
-				$statData = $selectedStationsSetForSession;
+				$statData = $LatestStations;
 			}
 
 			comment("Setting stations ..... POST:" . $pval);
 			
 			if ( $pval )
 			{
+				$tmp = Array();
+				
 				comment("Setting selected stations .....");
+				foreach ($postObj['stations'] as $getstationi) {
+					$st = $LatestStations[$getstationi];
+					comment("Station $getstationi: " . $st[1]);
+					//var_dump($st);
+					$tmp[] = $st;
+				}
+				$statData = $tmp;
 			} else {
 				comment("Setting ALL stations .....");
 			}
@@ -315,12 +373,6 @@
 			foreach ($statData as $stationi) {
 				generate_marker($stationi);
 			}
-			
-			$json['stations'] = $statData;
-			$json['SID'] = session_id();
-			
-			$jsonStations = json_encode($json);
-			
 		?>
 		// Marker generation ends
 		
@@ -328,6 +380,7 @@
 	
 	function cb_onLoadDocument(event, after) 
 	{
+		console.log("Document loaded ... init: " + firstOpeningWindow);
 		if (firstOpeningWindow)
 		{
 				initMap();
@@ -339,3 +392,50 @@
 	function cb_after(){ firstOpeningWindow = false; }
 	
 </script>
+
+<?php
+
+	if ( isset($_POST) ) {
+		comment("LJA A1");
+		var_dump($_POST);
+		comment("LJA A2");
+		var_dump($_GET);
+		comment("LJA A3");
+		var_dump($_SESSION);
+	}
+?>
+	<table>
+		<tr>
+			<td>
+				<form action="" name="selectionmenu" method="GET">
+					<input type="hidden" name="action" value="finweather_submit">
+					
+					<label for="stations">Valitse sääasemat</label>
+					<br>
+					<select name="stations[]" id="stations" multiple size="10">
+					<br>
+					<?php generate_station_selectiors($LatestStations); ?>
+					</select>
+					<br>
+					<input type="submit" value="Valitse">
+				</form>
+			</td>
+			<td>
+				    <div id="osmMap" style="width:450px;height:550px;">
+						<div id="osmPop" style="visibility: visible; display: block;">
+							<a href="#" id="osmPop-closer"></a>
+							<div id="osmPop-content" style="visibility: visible; display: block;"></div>
+						</div>
+					</div> 
+
+					<script>
+						window.document.onload = cb_onLoadDocument(event, cb_after);
+					</script>
+
+			</td>
+		</tr>
+	</table>
+
+
+
+</html>
