@@ -394,7 +394,7 @@
 </script>
 
 <?php
-
+/*
 	if ( isset($_POST) ) {
 		comment("LJA A1");
 		var_dump($_POST);
@@ -403,6 +403,7 @@
 		comment("LJA A3");
 		var_dump($_SESSION);
 	}
+*/
 ?>
 	<table>
 		<tr>
