@@ -316,8 +316,13 @@
 
 			$postObj = Array();
 			$statData = $LatestStations;
+			$pval = false;
 			
-			if ( isset($_POST) ) {
+			if ( 	isset($_POST) && 
+					isset($_POST['stations']) && 
+					($_POST['stations'] != null)
+				) 
+			{
 				$postObj = $_POST;
 				$pval = true;
 				$statData = $LatestStations;
