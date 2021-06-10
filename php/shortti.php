@@ -8,7 +8,7 @@
 
 	require_once("header.php");
 
-	if ( isset($_POST) ) {
+	if ( ! isempty($_POST) ) {
 		comment("LJA A1");
 		var_dump($_POST);
 		comment("LJA A2");
@@ -17,8 +17,6 @@
 		var_dump($_SESSION);
 		$post = do_action('finweather_submit', $_GET);
 	} else {
-
-	
 		require_once("body_selection_generate.inc");
 	}
 ?>

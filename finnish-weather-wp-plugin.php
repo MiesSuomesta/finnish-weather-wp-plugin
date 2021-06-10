@@ -104,10 +104,10 @@
 
 	function finweather_submit_func()
 	{
-		$post = $_GET;
+		$post = $_POST;
 		$postjson = json_encode($post);
 		
-		echo "POST: '$postjson' \n";
+		echo "SUBMIT FUNC POST: '$postjson' \n";
 		return $postjson; 
 	}
 
