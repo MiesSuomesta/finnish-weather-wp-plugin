@@ -1,3 +1,24 @@
+<script type="text/javascript">
+
+	function getcookie(cname) {
+		var name = cname + "=";
+		var decodedCookie = decodeURIComponent(document.cookie);
+		var ca = decodedCookie.split(';');
+		for(var i = 0; i <ca.length; i++) {
+			var c = ca[i];
+			while (c.charAt(0) == ' ') {
+				c = c.substring(1);
+			}
+			if (c.indexOf(name) == 0) {
+				return json_encode(c.substring(name.length, c.length));
+			}
+		}
+		return "";
+	}
+
+	
+
+</script>
 
 <?php
 
@@ -297,9 +318,9 @@
 			$statData = $LatestStations;
 			$pval = false;
 			
-			if ( 	isset($_GET) && 
-					isset($_GET['stations']) && 
-					($_GET['stations'] != null)
+			if ( 	isset($_POST) && 
+					isset($_POST['stations']) && 
+					($_POST['stations'] != null)
 				) 
 			{
 				$postObj = $_POST;

@@ -16,7 +16,7 @@
 		<tr>
 			<td>
 
-				<form action="" name="selectionmenu" method="POST">
+				<form action="<?php admin_url('admin-post.php'); ?>" method="POST">
 					<input type="hidden" name="action" value="finweather_submit">
 
 					<label for="stations">Valitse sääasemat</label>

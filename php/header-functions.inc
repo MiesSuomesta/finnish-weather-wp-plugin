@@ -26,6 +26,10 @@
 
 	$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 
+	comment("Session ID: " . session_id());
+
+	$selectedStationsSetNro = weather_get_mysql_memory_table_latest_recordnro();
+
 	//print_r($stations);
 
 	function generate_station_selectiors($stations) {
