@@ -40,15 +40,22 @@
 		$q = "select max(recordnro) from " . weather_get_weather_info_table_name();	
 
 		$result = weather_do_mysql_query($q);
-
-		$row = $result->fetch_row();
+		$row = false;
+		
+		if ( is_object($result) )
+			$row = $result->fetch_row();
+		
 		$res = 0;
 		
-		if ($row)
-			$res = $row[0];
+		if ($row) {
+			if ( is_object($result) )
+				$res = $row[0];
+			
+		}
 
-		$result -> free();
-		
+		if ( is_object($result) )
+			$result -> free();
+
 		return $res;
 	}
 
@@ -203,14 +210,21 @@
 		$q = "select max(recordnro) from selections";
 
 		$result = weather_do_mysql_query($q);
-
-		$row = $result->fetch_row();
+		$row = false;
+		
+		if ( is_object($result) )
+			$row = $result->fetch_row();
+		
 		$res = 0;
 		
-		if ($row)
-			$res = $row[0];
+		if ($row) {
+			if ( is_object($result) )
+				$res = $row[0];
+			
+		}
 
-		$result -> free();
+		if ( is_object($result) )
+			$result -> free();
 		
 		return $res;
 	}	
