@@ -8,14 +8,13 @@
 
 	require_once("header.php");
 
-	if ( ! isset($_POST) ) {
+	if ( isset($_POST) ) {
 		comment("LJA A1");
 		var_dump($_POST);
 		comment("LJA A2");
 		var_dump($_GET);
 		comment("LJA A3");
 		var_dump($_SESSION);
-		$post = do_action('admin_post_nopriv_finweather_submit');
 	} else {
 		require_once("body_selection_generate.inc");
 	}
@@ -23,7 +22,7 @@
 	<table>
 		<tr>
 			<td>
-				<form action="" name="selectionmenu" method="POST">
+				<form action="" name="selectionmenu" method="GET">
 					<input type="hidden" name="action" value="finweather_submit">
 					
 					<label for="stations">Valitse sääasemat</label>

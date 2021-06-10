@@ -297,9 +297,9 @@
 			$statData = $LatestStations;
 			$pval = false;
 			
-			if ( 	isset($_POST) && 
-					isset($_POST['stations']) && 
-					($_POST['stations'] != null)
+			if ( 	isset($_GET) && 
+					isset($_GET['stations']) && 
+					($_GET['stations'] != null)
 				) 
 			{
 				$postObj = $_POST;
