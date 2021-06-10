@@ -12,11 +12,17 @@
 	
 	require_once("body_selection_generate.inc");
 
+	function php_submit($sid)
+	{
+		comment("PHP Submit " . $sid);
+		
+	}
+
 ?>
 	<table>
 		<tr>
 			<td>
-				<form action="submitlistener(<?php echo "'" . $jsonStations. "'"; ?>)" method="POST">
+				<form action="php_submit(<?php echo "'" . session_id() . "'"; ?>)" method="POST">
 					<input type="hidden" name="action" value="finweather_submit">
 					
 					<label for="stations">Valitse sääasemat</label>
