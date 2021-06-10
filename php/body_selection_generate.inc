@@ -300,6 +300,10 @@
 						})
 				});
 
+		container 	= document.getElementById('osmPop');
+		content 	= document.getElementById('osmPop-content');
+		closer 		= document.getElementById('osmPop-closer');
+
 		// Marker generation start
 		<?php 
 			global $LatestID;
@@ -336,10 +340,6 @@
 			
 		?>
 		// Marker generation ends
-
-		container 	= document.getElementById('osmPop');
-		content 	= document.getElementById('osmPop-content');
-		closer 		= document.getElementById('osmPop-closer');
 
 		content.addListener("submit", submitlistener, <?php echo '"' . $jsonStations. '"'; ?> );
 		
