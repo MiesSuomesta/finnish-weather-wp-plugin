@@ -8,7 +8,7 @@
 
 	require_once("header.php");
 
-	if ( ! isempty($_POST) ) {
+	if ( ! isset($_POST) ) {
 		comment("LJA A1");
 		var_dump($_POST);
 		comment("LJA A2");
