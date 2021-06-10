@@ -152,18 +152,20 @@
 		$cloudamountunits = $station["cloudamountunits"];
 		$recordnro = $station["recordnro"];
 		
-		return "$stationid,$stationname,$latitude,$longitude,$airtempvalue,$airtempunits,$windspeedvalue,$windspeedunits,$winddirectionvalue,$winddirectionunits,$gustspeedvalue,$gustspeedunits,$relhumvalue,$relhumunits,$dewpointvalue,$dewpointunits,$precipitationamountvalue,$precipitationamountunits,$precipitationintensityvalue,$precipitationintensityunits,$snowdepthvalue,$snowdepthunits,$pressurevalue,$pressureunits,$horizvisibvalue,$horizvisibunits,$cloudamountvalue,$cloudamountunits,$recordnro"
+		return "$stationid,$stationname,$latitude,$longitude,$airtempvalue,$airtempunits,$windspeedvalue,$windspeedunits,$winddirectionvalue,$winddirectionunits,$gustspeedvalue,$gustspeedunits,$relhumvalue,$relhumunits,$dewpointvalue,$dewpointunits,$precipitationamountvalue,$precipitationamountunits,$precipitationintensityvalue,$precipitationintensityunits,$snowdepthvalue,$snowdepthunits,$pressurevalue,$pressureunits,$horizvisibvalue,$horizvisibunits,$cloudamountvalue,$cloudamountunits,$recordnro";
 	}
 
 	function __get_station_from_sql_row($row)
 	{
 		$arg = 0;
-		weather_create_station_obj($row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++]);			/* ($row[$arg++],$row[$arg++],$latitude,$longitude,$airtempvalue,$airtempunits,$windspeedvalue,$windspeedunits,$winddirectionvalue,$winddirectionunits,$gustspeedvalue,$gustspeedunits,$relhumvalue,$relhumunits,$dewpointvalue,$dewpointunits,$precipitationamountvalue,$precipitationamountunits,$precipitationintensityvalue,$precipitationintensityunits,$snowdepthvalue,$snowdepthunits,$pressurevalue,$pressureunits,$horizvisibvalue,$horizvisibunits,$cloudamountvalue,$cloudamountunits,$recordnro) */
+		$obj = weather_create_station_obj($row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++]);
+		
+		return $obj;
 	}
 	
 	function __create_q_vname_string_from_station($station)
 	{
-		return " stationid, stationname, latitude, longitude, airtempvalue, airtempunits, windspeedvalue, windspeedunits, winddirectionvalue, winddirectionunits, gustspeedvalue, gustspeedunits, relhumvalue, relhumunits, dewpointvalue, dewpointunits, precipitationamountvalue, precipitationamountunits, precipitationintensityvalue, precipitationintensityunits, snowdepthvalue, snowdepthunits, pressurevalue, pressureunits, horizvisibvalue, horizvisibunits, cloudamountvalue, cloudamountunits, recordnro"
+		return " stationid, stationname, latitude, longitude, airtempvalue, airtempunits, windspeedvalue, windspeedunits, winddirectionvalue, winddirectionunits, gustspeedvalue, gustspeedunits, relhumvalue, relhumunits, dewpointvalue, dewpointunits, precipitationamountvalue, precipitationamountunits, precipitationintensityvalue, precipitationintensityunits, snowdepthvalue, snowdepthunits, pressurevalue, pressureunits, horizvisibvalue, horizvisibunits, cloudamountvalue, cloudamountunits, recordnro";
 	}
 	
 	function __set_mysql_memory_table_station($station)
@@ -174,7 +176,8 @@
 		$q = "insert into selections ($q_nam) VALUES($q_val);";
 
 		$result = weather_do_mysql_query($q);
-		
+
+		return $result;
 	}
 
 	function weather_get_mysql_memory_table_recordnro($recordnro)
