@@ -117,10 +117,10 @@
 	//add_action( 'wp_body',		'finnish_weather_wp_plugin_body' 		);
 
 	// Add actions for form -----------------------------
-	add_action( 'admin_post_nopriv',					'finweather_submit_func'	);
-	add_action( 'admin_post_nopriv_finweather_submit',	'finweather_submit_func'	);
-	add_action( 'admin_post',							'finweather_submit_func'	);
-	add_action( 'admin_post_finweather_submit',			'finweather_submit_func'	);
+	// add_action( 'admin_post_nopriv',					'finweather_submit_func'	);
+	// add_action( 'admin_post_nopriv_finweather_submit',	'finweather_submit_func'	);
+	// add_action( 'admin_post',							'finweather_submit_func'	);
+	// add_action( 'admin_post_finweather_submit',			'finweather_submit_func'	);
 
 	add_shortcode('finweather', 	'finnish_weather_wp_plugin_shortcode'	);
 

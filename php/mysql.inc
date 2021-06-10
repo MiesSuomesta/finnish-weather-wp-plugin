@@ -230,9 +230,6 @@
 		$q = "select * from selections";
 		$q = $q . " where sessionid = \"" . $sessionid . "\"";	
 		
-		if ($orderby != "")
-			$q = $q . " order by $orderby ";
-		
 		$result = weather_do_mysql_query($q);
 
 		$row = false;

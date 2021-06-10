@@ -30,13 +30,20 @@
 
 	function comment($txt)
 	{
-		echo "<!---- $txt ---->";
+		echo "<!---- $txt ---->\n";
 	}
 
 
 	$LatestID = weather_get_mysql_data_last_record_number();
 
 	$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
+
+	comment("Session ID: " . session_id());
+
+	$selectedStationsSetForSession = weather_get_mysql_memory_session_records(session_id());
+
+	print_r($selectedStationsSetForSession);
+
 
 	function generate_station_selectiors($stations) {
 		$FID = 0;
@@ -256,7 +263,7 @@
 		
 		pMap.on('singleclick', function (event) {
 					var cname 	= content.getAttribute("contname");
-					var nToO    = myMap.get("nameToOverlay");
+					var nToO    = myMap.get	("nameToOverlay");
 					var over    = nToO[cname];
 					
 					var feats = myMap.forEachFeatureAtPixel(
@@ -272,7 +279,9 @@
 					console.log("over  : ", over);
 					console.log("nToO  : ", nToO);
 					console.log("feats : ", feats);
+
 					var rv = true;
+
 					if (feats)
 					{
 						var coords = event.coordinate;
@@ -339,29 +348,34 @@
 		// Marker generation start
 		<?php 
 			global $LatestID;
-
 			global $LatestStations;
+			global $selectedStationsSetForSession;
+
 
 			$postObj = Array();
 			$statData = $LatestStations;
 			$pval = false;
 			
-			if ( isset($_GET) && isset($_GET['stations']) ) {
+			if ( isset($_GET) /* && isset($_GET['stations']) */ ) {
 				$postObj = $_GET;
 				$pval = true;
-				$statData = $LatestStations;
+				$statData = $selectedStationsSetForSession;
+				comment("Setting some stations .....");
 			}
 
 			comment("Setting stations ..... POST:" . $pval);
+			comment("Data:");
+			//var_dump($statData);
 			
 			if ( $pval )
 			{
 				$tmp = Array();
 				
 				comment("Setting selected stations .....");
+				
 				foreach ($postObj['stations'] as $getstationi) {
 					$st = $LatestStations[$getstationi];
-					comment("Station $getstationi: " . $st[1]);
+					comment("    Station $getstationi: " . $st[1]);
 					//var_dump($st);
 					$tmp[] = $st;
 				}
@@ -369,6 +383,9 @@
 			} else {
 				comment("Setting ALL stations .....");
 			}
+
+			comment("Setting theys stations:");
+			//var_dump($st);
 			
 			foreach ($statData as $stationi) {
 				generate_marker($stationi);
