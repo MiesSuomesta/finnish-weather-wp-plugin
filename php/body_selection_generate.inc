@@ -310,9 +310,9 @@
 
 		// Marker generation start
 		<?php 
-			$LatestID = weather_get_mysql_data_last_record_number();
+			global $LatestID;
 
-			$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
+			global $LatestStations;
 			
 			$post = do_action('finweather_submit', $_POST);
 			comment("LJA B: '$post'");

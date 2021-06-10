@@ -15,7 +15,7 @@
 		var_dump($_GET);
 		comment("LJA A3");
 		var_dump($_SESSION);
-		$post = do_action('finweather_submit', $_GET);
+		$post = do_action('finweather_submit');
 	} else {
 		require_once("body_selection_generate.inc");
 	}
