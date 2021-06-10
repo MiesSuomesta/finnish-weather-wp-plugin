@@ -70,12 +70,14 @@
 
 		$rows = array();
 
-		while ($row = $result->fetch_row())
-		{
-			$rows[] = $row;
-		}
+		if ( is_object($result) ) {
+			while ($row = $result->fetch_row())
+			{
+				$rows[] = $row;
+			}
 
-		$result -> free();
+			$result -> free();
+		}
 		
 		return $rows;
 	}
@@ -86,7 +88,16 @@
 
 		$result = weather_do_mysql_query($q);
 
-		$result -> free();
+		$rows = array();
+
+		if ( is_object($result) ) {
+			while ($row = $result->fetch_row())
+			{
+				$rows[] = $row;
+			}
+
+			$result -> free();
+		}
 		
 		return $rows;
 	}
