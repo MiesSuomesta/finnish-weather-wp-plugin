@@ -214,10 +214,10 @@
 		}
 	}
 
-	function weather_get_mysql_memory_record_number_field($sessionid)
+	function weather_get_mysql_memory_session_records($sessionid)
 	{
-		$q = "select * from " . weather_get_weather_info_table_name();
-		$q = $q . " where sessionid = " . $sessionid;	
+		$q = "select * from selections";
+		$q = $q . " where sessionid = \"" . $sessionid . "\"";	
 		
 		if ($orderby != "")
 			$q = $q . " order by $orderby ";
