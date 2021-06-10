@@ -130,7 +130,7 @@
 
 	function __create_q_value_string_from_station($station)
 	{
-		$sessionid = $station["sessionid"]
+		$sessionid = $station["sessionid"];
 		$stationid = $station["stationid"];
 		$stationname = $station["stationname"];
 		$latitude = $station["latitude"];
