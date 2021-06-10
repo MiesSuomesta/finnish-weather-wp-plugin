@@ -318,7 +318,7 @@
 			comment("LJA B: '$post'");
 			$postObj = json_decode($post);
 			
-			$pval = true; //array_key_exists($postObj, [ 'stations' ]);
+			$pval = array_key_exists($postObj, [ 'stations' ]);
 			$statData = "";
 
 			if ( $pval )
