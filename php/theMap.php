@@ -364,7 +364,6 @@
 			}
 
 			comment("Setting stations ..... POST:" . $pval);
-			comment("Data:");
 			//var_dump($statData);
 			
 			if ( $pval )
