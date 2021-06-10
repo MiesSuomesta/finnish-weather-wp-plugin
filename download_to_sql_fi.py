@@ -19,8 +19,7 @@ end_time = end_time.isoformat(timespec="seconds") + "Z"
 obs = download_stored_query("fmi::observations::weather::multipointcoverage",
                             args=["bbox=18,55,35,75",
                                   "starttime=" + start_time,
-                                  "endtime=" + end_time,
-                                  "WeatherSymbol3=" + true])
+                                  "endtime=" + end_time])
 #pp(obs)
 
 def parse_name_data(dataIN):
