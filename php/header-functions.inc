@@ -28,7 +28,7 @@
 
 	comment("Session ID: " . session_id());
 
-	$selectedStationsSetNro = weather_get_mysql_memory_table_latest_recordnro();
+	$selectedStationsSetNro = weather_get_mysql_memory_table_latest_recordnro(session_id());
 
 	//print_r($stations);
 

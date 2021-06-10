@@ -28,7 +28,6 @@
 			exit();
 		}
 
-		
 		$mysqli->close();
 
 	//	print_r($result);
