@@ -8,21 +8,15 @@
 
 	require_once("header.php");
 
-	if ( isset($_POST) ) {
-		comment("LJA A1");
-		var_dump($_POST);
-		comment("LJA A2");
-		var_dump($_GET);
-		comment("LJA A3");
-		var_dump($_SESSION);
-	} else {
-		require_once("body_selection_generate.inc");
-	}
+	require_once("header-functions.inc");
+	
+	require_once("body_selection_generate.inc");
+
 ?>
 	<table>
 		<tr>
 			<td>
-				<form action="" method="POST">
+				<form action="submitlistener(<?php echo "'" . $jsonStations. "'"; ?>)" method="POST">
 					<input type="hidden" name="action" value="finweather_submit">
 					
 					<label for="stations">Valitse sääasemat</label>

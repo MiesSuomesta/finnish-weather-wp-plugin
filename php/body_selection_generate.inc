@@ -340,8 +340,6 @@
 			
 		?>
 		// Marker generation ends
-
-		content.addEventListener("submit", submitlistener, <?php echo "'" . $jsonStations. "'"; ?> );
 		
 	}
 	
