@@ -313,27 +313,32 @@
 			global $LatestID;
 
 			global $LatestStations;
-			
-			$post = do_action('admin_post_nopriv_finweather_submit', $_POST);
-			comment("LJA B: '$post'");
-			$postObj = json_decode($post);
-			
-			$pval = array_key_exists($postObj, [ 'stations' ]);
-			$statData = "";
 
+			$postObj = Array();
+			$statData = $LatestStations;
+			
+			if ( isset($_POST) ) {
+				$postObj = $_POST;
+				$pval = true;
+				$statData = $LatestStations;
+			}
+
+			comment("Setting stations ..... POST:" . $pval);
+			
 			if ( $pval )
 			{
-				$tmp = [];
+				$tmp = Array();
 				
 				comment("Setting selected stations .....");
 				foreach ($postObj['stations'] as $getstationi) {
-					comment("Station $getstationi: " . $statData[getstationi][1]);
-					$tmp.push($statData[getstationi]);
+					$st = $LatestStations[$getstationi];
+					comment("Station $getstationi: " . $st[1]);
+					//var_dump($st);
+					$tmp[] = $st;
 				}
 				$statData = $tmp;
 			} else {
 				comment("Setting ALL stations .....");
-				$statData = $LatestStations;
 			}
 			
 			foreach ($statData as $stationi) {
