@@ -10,7 +10,7 @@
 	Plugin URI: http://paxsudos.fi/wp/finnish-weather-wp-plugin/
 	Description: weather information plugin, at alfa state
 	Author: Lauri Jakku
-	Version: 0.0.1a
+	Version: 0.1.0
 	Author URI: http://paxsudos.fi/
 	*/
 
