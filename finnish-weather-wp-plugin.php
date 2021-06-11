@@ -3,14 +3,14 @@
 
 	/**
 	 * @package finnish-weather-wp-plugin$
-	 * @version 0.0.1a
+	 * @version 0.1.3
 	 */
 	/*
 	Plugin Name: finnish_weather_wp_plugin
 	Plugin URI: http://paxsudos.fi/wp/finnish-weather-wp-plugin/
 	Description: weather information plugin, at alfa state
 	Author: Lauri Jakku
-	Version: 0.1.2
+	Version: 0.1.3
 	Author URI: http://paxsudos.fi/
 	*/
 

@@ -426,18 +426,6 @@
 	
 </script>
 
-<?php
-/*
-	if ( isset($_POST) ) {
-		comment("LJA A1");
-		var_dump($_POST);
-		comment("LJA A2");
-		var_dump($_GET);
-		comment("LJA A3");
-		var_dump($_SESSION);
-	}
-*/
-?>
 <center>
 	<table>
 		<tr>
@@ -456,7 +444,7 @@
 				</form>
 			</td>
 			<td>
-				    <div id="osmMap" style="width:450px;height:650px;">
+				    <div id="osmMap" style="width:450px;height:700px;">
 						<div id="osmPop" style="visibility: visible; display: block;">
 							<a href="#" id="osmPop-closer"></a>
 							<div id="osmPop-content" style="visibility: visible; display: block;"></div>
