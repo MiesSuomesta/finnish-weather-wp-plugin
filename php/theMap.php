@@ -356,7 +356,7 @@
 			$statData = $LatestStations;
 			$pval = false;
 			
-			if ( isset($_GET) /* && isset($_GET['stations']) */ ) {
+			if ( isset($_GET) && isset($_GET['stations'])) {
 				$postObj = $_GET;
 				$pval = true;
 				$statData = $selectedStationsSetForSession;
@@ -381,6 +381,7 @@
 				$statData = $tmp;
 			} else {
 				comment("Setting ALL stations .....");
+				$statData = $LatestStations;
 			}
 
 			comment("Setting theys stations:");
