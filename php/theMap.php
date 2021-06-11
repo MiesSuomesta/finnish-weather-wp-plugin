@@ -175,7 +175,7 @@
 		var outHDRarvotHTMLair  = makeTRSet(out, "Lämpötila", 		airtemp,	"Ilmankosteus",		relhumval);
 		var outHDRarvotHTMLwind = makeTRSet(out, "Tuulen nopeus",	windspeed,	"Tuulen suunta",	winddir);
 		
-		var suprise =  Math.round(5 * Math.random());
+		var suprise =  Math.floor(10 * Math.random());
 		
 
 		if ( suprise == 1 )
