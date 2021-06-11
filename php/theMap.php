@@ -42,7 +42,7 @@
 
 	$selectedStationsSetForSession = weather_get_mysql_memory_session_records(session_id());
 
-	print_r($selectedStationsSetForSession);
+//	print_r($selectedStationsSetForSession);
 
 
 	function generate_station_selectiors($stations) {
@@ -170,11 +170,25 @@
 
 		var outHDRpaikkaTD  = createTag(outHDRpaikkaTR,  "td", null, headertdattrs);
 
-		var outHDRpaikkaHTML  = createTag(outHDRpaikkaTD,  "h1", location, null);
+		var outHDRpaikkaHTML  = createTag(outHDRpaikkaTD,  "h3", location, null);
 
 		var outHDRarvotHTMLair  = makeTRSet(out, "Lämpötila", 		airtemp,	"Ilmankosteus",		relhumval);
 		var outHDRarvotHTMLwind = makeTRSet(out, "Tuulen nopeus",	windspeed,	"Tuulen suunta",	winddir);
 		
+		var suprise =  Math.round(5 * Math.random());
+		
+
+		if ( suprise == 1 )
+		{
+
+			suprisetxt = "<p color='red'>Yllätys!!!</p><br>30% ALE kupongilla SAAALE30";
+
+			var supriseHDRpaikkaTR    = createTag(out, "tr", null, null);
+			var supriseHDRpaikkaTD    = createTag(supriseHDRpaikkaTR,  "td", null, headertdattrs);
+			var supriseHDRpaikkaCENTER= createTag(supriseHDRpaikkaTD,  "center", null, null);
+			var supriseHDRpaikkaHTML  = createTag(supriseHDRpaikkaCENTER,  "h4", suprisetxt, null);
+			
+		}
 
 		
 		return out;
