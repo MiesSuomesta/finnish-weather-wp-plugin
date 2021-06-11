@@ -293,6 +293,8 @@
 					console.log("over  : ", over);
 					console.log("nToO  : ", nToO);
 					console.log("feats : ", feats);
+					console.log("pixel : ", event.pixel);
+					console.log("coords: ", event.coordinate);
 
 					var rv = true;
 
