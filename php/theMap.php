@@ -352,7 +352,7 @@
 						})
 					],
 					view: new ol.View({ 
-							center: new ol.proj.fromLonLat([26.876078, 64.280601]),
+							center: new ol.proj.fromLonLat([26.876078, 65.280601]),
 							zoom: 5
 						})
 				});
@@ -447,7 +447,7 @@
 					
 					<label for="stations">Valitse sääasemat</label>
 					<br>
-					<select name="stations[]" id="stations" multiple size="25">
+					<select name="stations[]" id="stations" multiple size="30">
 					<br>
 					<?php generate_station_selectiors($LatestStations); ?>
 					</select>
@@ -456,7 +456,7 @@
 				</form>
 			</td>
 			<td>
-				    <div id="osmMap" style="width:450px;height:550px;">
+				    <div id="osmMap" style="width:450px;height:650px;">
 						<div id="osmPop" style="visibility: visible; display: block;">
 							<a href="#" id="osmPop-closer"></a>
 							<div id="osmPop-content" style="visibility: visible; display: block;"></div>
