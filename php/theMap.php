@@ -16,6 +16,7 @@
 	function mkMarker($obj)
 	{
 		$jsn = json_encode($obj);
+		comment("mkMarker obj: ", $obj);
 		$quot= "'";
 
 		$stout = "makeMarker(myMap," . $quot . $jsn . $quot . ");";
@@ -81,12 +82,12 @@
 	
 	function escapeHtml(usstr)
 	{
-		if (usstr != null) 
-			usstr.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-		else
-			usstr = "";
+		rvstr = usstr;
 		
-		return usstr;
+		if (typeof(rvstr) == "string" )
+			rvstr.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+		
+		return rvstr;
 	}
 
 	function createTag(prnt, tag, pHtml, attr)
@@ -145,13 +146,15 @@
 
 	function makeMarkerContent(jObj)
 	{
+		
+		console.log("makeMarkerContent: ", jObj);
 		var location 	= jObj[1];
 
 		var airtemp 	= jObj[4];
 		var windspeed 	= jObj[6];
 		var winddir 	= jObj[8];
 
-		var gustspeed 	= jObj[6];
+		var gustspeed 	= jObj[10];
 		var relhumval	= jObj[12];
 
 		console.log("locat: ", location, "airtemp: ", airtemp, "windspeed: ", windspeed, "winddir: ", winddir, "gustspeed: ", gustspeed);
@@ -204,6 +207,8 @@
 	function makeMarker(pMap, jsn)
 	{
 		var jObj = JSON.parse(jsn);
+		console.log("makeMarker jsn: ", jsn);
+		console.log("makeMarker jObj: ", jObj);
 		var name = jObj[1];
 		var lat = parseFloat( jObj[2] );
 		var lng = parseFloat( jObj[3] );
@@ -257,13 +262,6 @@
 		console.log("overlay:", overlay);
 		console.log("fea    :", fea);
 		console.log("layer  :", layer);
-
-
-/*
-		var nToL  = myMap.get("nameToLayer") || nameToLayer;
-		nToL[name] = overlay;
-		myMap.set("nameToLayer", nToL);
-*/
 
 		nToO  = myMap.get("nameToOverlay") || nameToOverlay;
 		nToO[name] = overlay;
@@ -322,7 +320,6 @@
 						content.appendChild(htmlcontent);
 						
 						console.log("cont: ", content.innerHTML);
-						console.log("this: ", this);
 						overlay.setPosition(coords);
 	
 						rv = false; /* Stop propagation */

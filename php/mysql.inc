@@ -30,7 +30,7 @@
 
 		$mysqli->close();
 
-	//	print_r($result);
+//		print_r($result);
 		return $result;
 	}
 
@@ -78,7 +78,9 @@
 
 			$result -> free();
 		}
-		
+//		print("ROWS -------------------------------------\n");
+//		var_dump($rows);
+
 		return $rows;
 	}
 
@@ -102,7 +104,7 @@
 		return $rows;
 	}
 
-	function weather_create_station_obj($sessionid,$stationid,$stationname,$latitude,$longitude,$airtempvalue,$airtempunits,$windspeedvalue,$windspeedunits,$winddirectionvalue,$winddirectionunits,$gustspeedvalue,$gustspeedunits,$relhumvalue,$relhumunits,$dewpointvalue,$dewpointunits,$precipitationamountvalue,$precipitationamountunits,$precipitationintensityvalue,$precipitationintensityunits,$snowdepthvalue,$snowdepthunits,$pressurevalue,$pressureunits,$horizvisibvalue,$horizvisibunits,$cloudamountvalue,$cloudamountunits,$recordnro)
+	function weather_create_station_obj($sessionid,$stationid,$stationname,$latitude,$longitude,$airtempvalue,$airtempunits,$windspeedvalue,$windspeedunits,$winddirectionvalue,$winddirectionunits,$gustspeedvalue,$gustspeedunits,$relhumvalue,$relhumunits,$dewpointvalue,$dewpointunits,$precipitationamountvalue,$precipitationamountunits,$precipitationintensityvalue,$precipitationintensityunits,$snowdepthvalue,$snowdepthunits,$pressurevalue,$pressureunits,$horizvisibvalue,$horizvisibunits,$cloudamountvalue,$cloudamountunits,$recordnro,$recordts)
 	{
 		$station["sessionid"] = $sessionid;
 		$station["stationid"]=$stationid;
@@ -134,57 +136,61 @@
 		$station["cloudamountvalue"]=$cloudamountvalue;
 		$station["cloudamountunits"]=$cloudamountunits;
 		$station["recordnro"]=$recordnro;
+		$station["recordts"]=$recordts;
 
 		return $station;
 	}
 
+	function __create_quoted($s) { return '"' . $s . '"'; }
+
 	function __create_q_value_string_from_station($station)
 	{
-		$sessionid = $station["sessionid"];
-		$stationid = $station["stationid"];
-		$stationname = $station["stationname"];
-		$latitude = $station["latitude"];
-		$longitude = $station["longitude"];
-		$airtempvalue = $station["airtempvalue"];
-		$airtempunits = $station["airtempunits"];
-		$windspeedvalue = $station["windspeedvalue"];
-		$windspeedunits = $station["windspeedunits"];
-		$winddirectionvalue = $station["winddirectionvalue"];
-		$winddirectionunits = $station["winddirectionunits"];
-		$gustspeedvalue = $station["gustspeedvalue"];
-		$gustspeedunits = $station["gustspeedunits"];
-		$relhumvalue = $station["relhumvalue"];
-		$relhumunits = $station["relhumunits"];
-		$dewpointvalue = $station["dewpointvalue"];
-		$dewpointunits = $station["dewpointunits"];
-		$precipitationamountvalue = $station["precipitationamountvalue"];
-		$precipitationamountunits = $station["precipitationamountunits"];
-		$precipitationintensityvalue = $station["precipitationintensityvalue"];
-		$precipitationintensityunits = $station["precipitationintensityunits"];
-		$snowdepthvalue = $station["snowdepthvalue"];
-		$snowdepthunits = $station["snowdepthunits"];
-		$pressurevalue = $station["pressurevalue"];
-		$pressureunits = $station["pressureunits"];
-		$horizvisibvalue = $station["horizvisibvalue"];
-		$horizvisibunits = $station["horizvisibunits"];
-		$cloudamountvalue = $station["cloudamountvalue"];
-		$cloudamountunits = $station["cloudamountunits"];
-		$recordnro = $station["recordnro"];
+		$sessionid = __create_quoted($station["sessionid"]);
+		$stationid = __create_quoted($station["stationid"]);
+		$stationname = __create_quoted($station["stationname"]);
+		$latitude = __create_quoted($station["latitude"]);
+		$longitude = __create_quoted($station["longitude"]);
+		$airtempvalue = __create_quoted($station["airtempvalue"]);
+		$airtempunits = __create_quoted($station["airtempunits"]);
+		$windspeedvalue = __create_quoted($station["windspeedvalue"]);
+		$windspeedunits = __create_quoted($station["windspeedunits"]);
+		$winddirectionvalue = __create_quoted($station["winddirectionvalue"]);
+		$winddirectionunits = __create_quoted($station["winddirectionunits"]);
+		$gustspeedvalue = __create_quoted($station["gustspeedvalue"]);
+		$gustspeedunits = __create_quoted($station["gustspeedunits"]);
+		$relhumvalue = __create_quoted($station["relhumvalue"]);
+		$relhumunits = __create_quoted($station["relhumunits"]);
+		$dewpointvalue = __create_quoted($station["dewpointvalue"]);
+		$dewpointunits = __create_quoted($station["dewpointunits"]);
+		$precipitationamountvalue = __create_quoted($station["precipitationamountvalue"]);
+		$precipitationamountunits = __create_quoted($station["precipitationamountunits"]);
+		$precipitationintensityvalue = __create_quoted($station["precipitationintensityvalue"]);
+		$precipitationintensityunits = __create_quoted($station["precipitationintensityunits"]);
+		$snowdepthvalue = __create_quoted($station["snowdepthvalue"]);
+		$snowdepthunits = __create_quoted($station["snowdepthunits"]);
+		$pressurevalue = __create_quoted($station["pressurevalue"]);
+		$pressureunits = __create_quoted($station["pressureunits"]);
+		$horizvisibvalue = __create_quoted($station["horizvisibvalue"]);
+		$horizvisibunits = __create_quoted($station["horizvisibunits"]);
+		$cloudamountvalue = __create_quoted($station["cloudamountvalue"]);
+		$cloudamountunits = __create_quoted($station["cloudamountunits"]);
+		$recordnro = __create_quoted($station["recordnro"]);
+		$recordts = __create_quoted($station["recordts"]);
 		
-		return "$sessionid,$stationid,$stationname,$latitude,$longitude,$airtempvalue,$airtempunits,$windspeedvalue,$windspeedunits,$winddirectionvalue,$winddirectionunits,$gustspeedvalue,$gustspeedunits,$relhumvalue,$relhumunits,$dewpointvalue,$dewpointunits,$precipitationamountvalue,$precipitationamountunits,$precipitationintensityvalue,$precipitationintensityunits,$snowdepthvalue,$snowdepthunits,$pressurevalue,$pressureunits,$horizvisibvalue,$horizvisibunits,$cloudamountvalue,$cloudamountunits,$recordnro";
+		return "$sessionid,$stationid,$stationname,$latitude,$longitude,$airtempvalue,$airtempunits,$windspeedvalue,$windspeedunits,$winddirectionvalue,$winddirectionunits,$gustspeedvalue,$gustspeedunits,$relhumvalue,$relhumunits,$dewpointvalue,$dewpointunits,$precipitationamountvalue,$precipitationamountunits,$precipitationintensityvalue,$precipitationintensityunits,$snowdepthvalue,$snowdepthunits,$pressurevalue,$pressureunits,$horizvisibvalue,$horizvisibunits,$cloudamountvalue,$cloudamountunits,$recordnro,$recordts";
 	}
 
 	function __get_station_from_sql_row($row)
 	{
 		$arg = 0;
-		$obj = weather_create_station_obj($row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++]);
+		$obj = weather_create_station_obj($row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++], $row[$arg++]);
 		
 		return $obj;
 	}
 	
 	function __create_q_vname_string_from_station($station)
 	{
-		return "sessionid, stationid, stationname, latitude, longitude, airtempvalue, airtempunits, windspeedvalue, windspeedunits, winddirectionvalue, winddirectionunits, gustspeedvalue, gustspeedunits, relhumvalue, relhumunits, dewpointvalue, dewpointunits, precipitationamountvalue, precipitationamountunits, precipitationintensityvalue, precipitationintensityunits, snowdepthvalue, snowdepthunits, pressurevalue, pressureunits, horizvisibvalue, horizvisibunits, cloudamountvalue, cloudamountunits, recordnro";
+		return "sessionid, stationid, stationname, latitude, longitude, airtempvalue, airtempunits, windspeedvalue, windspeedunits, winddirectionvalue, winddirectionunits, gustspeedvalue, gustspeedunits, relhumvalue, relhumunits, dewpointvalue, dewpointunits, precipitationamountvalue, precipitationamountunits, precipitationintensityvalue, precipitationintensityunits, snowdepthvalue, snowdepthunits, pressurevalue, pressureunits, horizvisibvalue, horizvisibunits, cloudamountvalue, cloudamountunits, recordnro, recordts";
 	}
 	
 	function __set_mysql_memory_table_station($station)

@@ -18,7 +18,7 @@ class MySQLBackend:
 	def mysql_connect(self):
 		""" Connect to MySQL database """
 		self.mysql_conn = None
-		time.sleep(0.2)
+		time.sleep(0.01)
 		try:
 			self.mysql_conn = MYCN.connect( host=self.login['hostname'],
                                             database=self.login['databasename'],
@@ -128,7 +128,6 @@ class MySQLBackend:
 		record = cursor.fetchall()
 
 		self.post_mysql(cursor)
-
 		return record
 
 
@@ -147,71 +146,70 @@ class MySQLBackend:
 			# pressureunits,horizvisibvalue,horizvisibunits,cloudamountvalue,cloudamountunits,record_nro,record_ts
 
 			mysqlargs = (	
-					( 1, "%s", saatietue.get_str_stationid (), "stationid"),					# 1
-					( 1, "%s", saatietue.get_str_stationname (), "stationname"),					# 
-					( 1, "%s", saatietue.get_str_latitude (), "latitude"),						# 
-					( 1, "%s", saatietue.get_str_longitude (), "longitude"),					# 
-					( 1, "%s", saatietue.get_str_airtempvalue (), "airtempvalue"),					# 5
-					( 1, "%s", saatietue.get_str_airtempunits (), "airtempunits"),					# 
-					( 1, "%s", saatietue.get_str_windspeedvalue (), "windspeedvalue"),				# 
-					( 1, "%s", saatietue.get_str_windspeedunits (), "windspeedunits"),				# 
-					( 1, "%s", saatietue.get_str_winddirectionvalue (), "winddirectionvalue"),			# 
-					( 1, "%s", saatietue.get_str_winddirectionunits (), "winddirectionunits"),			# 10
-					( 1, "%s", saatietue.get_str_gustspeedvalue (), "gustspeedvalue"),				# 
-					( 1, "%s", saatietue.get_str_gustspeedunits (), "gustspeedunits"),				# 
-					( 1, "%s", saatietue.get_str_relhumvalue (), "relhumvalue"),					# 
-					( 1, "%s", saatietue.get_str_relhumunits (), "relhumunits"),					# 
-					( 1, "%s", saatietue.get_str_dewpointvalue (), "dewpointvalue"),				# 15
-					( 1, "%s", saatietue.get_str_dewpointunits (), "dewpointunits"),				# 
-					( 1, "%s", saatietue.get_str_precipitationamountvalue (), "precipitationamountvalue"),		# 
-					( 1, "%s", saatietue.get_str_precipitationamountunits (), "precipitationamountunits"),		# 
-					( 1, "%s", saatietue.get_str_precipitationintensityvalue (), "precipitationintensityvalue"),	# 
-					( 1, "%s", saatietue.get_str_precipitationintensityunits (), "precipitationintensityunits"),	# 20
-					( 1, "%s", saatietue.get_str_snowdepthvalue (), "snowdepthvalue"),				# 
-					( 1, "%s", saatietue.get_str_snowdepthunits (), "snowdepthunits"),				# 
-					( 1, "%s", saatietue.get_str_pressurevalue (), "pressurevalue"),				# 
-					( 1, "%s", saatietue.get_str_pressureunits (), "pressureunits"),				# 
-					( 1, "%s", saatietue.get_str_horizvisibvalue (), "horizvisibvalue"),				# 25
-					( 1, "%s", saatietue.get_str_horizvisibunits (), "horizvisibunits"),				# 
-					( 1, "%s", saatietue.get_str_cloudamountvalue (), "cloudamountvalue"),				# 
-					( 1, "%s", saatietue.get_str_cloudamountunits (), "cloudamountunits"),				# 
-					( 1, "%s", saatietue.get_str_rec_nro (), "recordnro"),						# 
-					( 0, "%s", saatietue.get_str_rec_ts (), "recordts"),						# 30
+					( 1, saatietue.get_str_stationid (), "stationid"),					# 1
+					( 1, saatietue.get_str_stationname (), "stationname"),					# 
+					( 1, saatietue.get_str_latitude (), "latitude"),						# 
+					( 1, saatietue.get_str_longitude (), "longitude"),					# 
+					( 1, saatietue.get_str_airtempvalue (), "airtempvalue"),					# 5
+					( 1, saatietue.get_str_airtempunits (), "airtempunits"),					# 
+					( 1, saatietue.get_str_windspeedvalue (), "windspeedvalue"),				# 
+					( 1, saatietue.get_str_windspeedunits (), "windspeedunits"),				# 
+					( 1, saatietue.get_str_winddirectionvalue (), "winddirectionvalue"),			# 
+					( 1, saatietue.get_str_winddirectionunits (), "winddirectionunits"),			# 10
+					( 1, saatietue.get_str_gustspeedvalue (), "gustspeedvalue"),				# 
+					( 1, saatietue.get_str_gustspeedunits (), "gustspeedunits"),				# 
+					( 1, saatietue.get_str_relhumvalue (), "relhumvalue"),					# 
+					( 1, saatietue.get_str_relhumunits (), "relhumunits"),					# 
+					( 1, saatietue.get_str_dewpointvalue (), "dewpointvalue"),				# 15
+					( 1, saatietue.get_str_dewpointunits (), "dewpointunits"),				# 
+					( 1, saatietue.get_str_precipitationamountvalue (), "precipitationamountvalue"),		# 
+					( 1, saatietue.get_str_precipitationamountunits (), "precipitationamountunits"),		# 
+					( 1, saatietue.get_str_precipitationintensityvalue (), "precipitationintensityvalue"),	# 
+					( 1, saatietue.get_str_precipitationintensityunits (), "precipitationintensityunits"),	# 20
+					( 1, saatietue.get_str_snowdepthvalue (), "snowdepthvalue"),				# 
+					( 1, saatietue.get_str_snowdepthunits (), "snowdepthunits"),				# 
+					( 1, saatietue.get_str_pressurevalue (), "pressurevalue"),				# 
+					( 1, saatietue.get_str_pressureunits (), "pressureunits"),				# 
+					( 1, saatietue.get_str_horizvisibvalue (), "horizvisibvalue"),				# 25
+					( 1, saatietue.get_str_horizvisibunits (), "horizvisibunits"),				# 
+					( 1, saatietue.get_str_cloudamountvalue (), "cloudamountvalue"),				# 
+					( 1, saatietue.get_str_cloudamountunits (), "cloudamountunits"),				# 
+					( 1, saatietue.get_str_rec_nro (), "recordnro"),						# 
+					( 0, saatietue.get_str_rec_ts (), "recordts"),						# 30
 				)
 
 			fields = "";
 			formats = "";
-			values = ();
+			values = "";
 			count = 0;
 			for msa in mysqlargs:
-			#	print("{} msa: ".format(count))
-			#	pp(msa)
+				#print("{} msa: ".format(count))
+				#pp(msa)
 
 				m  = msa[0]
-				fo = msa[1]
-				va = msa[2]
-				fi = msa[3]
+				va = msa[1]
+				fi = msa[2]
 
 				delim = ", "
 				if m == 0:
 					delim = ""
 
-				count += 1 
+				val = '"{}"'.format(va)
+
 				fields  = fields  + fi + delim
-				formats = formats + fo + delim
-				values  = values + (va,)
-			
+				values  = values  + val + delim
+				count+=1
+                
 			#print("Count: {}\n".format(count))
 			#print("Fields : {}\n".format(fields))
-			#print("Formats: {}\n".format(formats))
-			#print("Values : {} / {}\n".format(len(values),values))
-				
+			#print("Values : {}\n".format(values))
+
 			query_start = 'INSERT INTO {} '.format(self.login['weatherinfotable'])
-			query = query_start + "(" + fields + ') VALUES('+ formats +')'
+			query = query_start + "(" + fields + ') VALUES('+ values +');'
 
 			#print("Query  : " + query + "\n");
 
-			cursor.execute(query, values)
+			cursor.execute(query, ())
 
 			self.mysql_conn.commit()
 

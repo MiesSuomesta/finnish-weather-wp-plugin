@@ -269,86 +269,91 @@ class Saatietue:
 		return self.cloudamountunits
 
 
+	def getStr(self, val):
+		rv = str(val);
+		#print("GetStr {} -> {}\n".format(val, rv))
+		return rv
+
 	def get_str_rec_nro (self):
-		return str(self.rec_nro)
+		return self.getStr(self.rec_nro)
 	def get_str_rec_ts (self):
-		return str(self.rec_ts)
+		return self.getStr(self.rec_ts)
 
 	def get_str_latitude (self):
-		return str(self.latitude)
+		return self.getStr(self.latitude)
 	def get_str_longitude (self):
-		return str(self.longitude)
+		return self.getStr(self.longitude)
 
 	def get_str_airtempvalue (self):
-		return str(self.airtempvalue)
+		return self.getStr(self.airtempvalue)
 
 	def get_str_airtempunits (self):
-		return str(self.airtempunits)
+		return self.getStr(self.airtempunits)
 
 	def get_str_windspeedvalue (self):
-		return str(self.windspeedvalue)
+		return self.getStr(self.windspeedvalue)
 
 	def get_str_windspeedunits (self):
-		return str(self.windspeedunits)
+		return self.getStr(self.windspeedunits)
 
 	def get_str_winddirectionvalue (self):
-		return str(self.winddirectionvalue)
+		return self.getStr(self.winddirectionvalue)
 
 	def get_str_winddirectionunits (self):
-		return str(self.winddirectionunits)
+		return self.getStr(self.winddirectionunits)
 
 	def get_str_gustspeedvalue (self):
-		return str(self.gustspeedvalue)
+		return self.getStr(self.gustspeedvalue)
 
 	def get_str_gustspeedunits (self):
-		return str(self.gustspeedunits)
+		return self.getStr(self.gustspeedunits)
 
 	def get_str_relhumvalue (self):
-		return str(self.relhumvalue)
+		return self.getStr(self.relhumvalue)
 
 	def get_str_relhumunits (self):
-		return str(self.relhumunits)
+		return self.getStr(self.relhumunits)
 
 	def get_str_dewpointvalue (self):
-		return str(self.dewpointvalue)
+		return self.getStr(self.dewpointvalue)
 
 	def get_str_dewpointunits (self):
-		return str(self.dewpointunits)
+		return self.getStr(self.dewpointunits)
 
 	def get_str_precipitationamountvalue (self):
-		return str(self.precipitationamountvalue)
+		return self.getStr(self.precipitationamountvalue)
 
 	def get_str_precipitationamountunits (self):
-		return str(self.precipitationamountunits)
+		return self.getStr(self.precipitationamountunits)
 
 	def get_str_precipitationintensityvalue (self):
-		return str(self.precipitationintensityvalue)
+		return self.getStr(self.precipitationintensityvalue)
 
 	def get_str_precipitationintensityunits (self):
-		return str(self.precipitationintensityunits)
+		return self.getStr(self.precipitationintensityunits)
 
 	def get_str_snowdepthvalue (self):
-		return str(self.snowdepthvalue)
+		return self.getStr(self.snowdepthvalue)
 
 	def get_str_snowdepthunits (self):
-		return str(self.snowdepthunits)
+		return self.getStr(self.snowdepthunits)
 
 	def get_str_pressurevalue (self):
-		return str(self.pressurevalue)
+		return self.getStr(self.pressurevalue)
 
 	def get_str_pressureunits (self):
-		return str(self.pressureunits)
+		return self.getStr(self.pressureunits)
 
 	def get_str_horizvisibvalue (self):
-		return str(self.horizvisibvalue)
+		return self.getStr(self.horizvisibvalue)
 
 	def get_str_horizvisibunits (self):
-		return str(self.horizvisibunits)
+		return self.getStr(self.horizvisibunits)
 
 	def get_str_cloudamountvalue (self):
-		return str(self.cloudamountvalue)
+		return self.getStr(self.cloudamountvalue)
 
 	def get_str_cloudamountunits (self):
-		return str(self.cloudamountunits)
+		return self.getStr(self.cloudamountunits)
 
 

@@ -31,7 +31,7 @@ def parse_name_data(dataIN):
         for dataLoc in ddval:
             dataMeasurements = ddval[dataLoc]
             dataOUT[dataLoc] = dataMeasurements
-    #        print("Paikka: {} -> {}\n".format(dataLoc, dataMeasurements))
+            #print("Paikka: {} -> {}\n".format(dataLoc, dataMeasurements))
 
     return dataOUT
 
