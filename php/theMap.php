@@ -6,6 +6,9 @@
 
 <?php
 
+	require_once("referrer_allow.inc");
+	/* Referrer must be known */
+
 	/* Login details */
 	require_once("login.inc");
 
