@@ -12,6 +12,17 @@
 	/* SQL details */
 	require_once("mysql.inc");	
 
+	require_once("gdFunctions.php");
+
+	function mkImgTagFrom($imgsrc)
+	{
+		return '<image src="' . $imgsrc . '" /><br>';
+	}
+
+	function generateDirectionImage($dir) {
+		$imgsrc = createDirectionImage(30, 30, $dir,  3);
+		return mkImgTagFrom($imgsrc);
+	}
 
 	function mkMarker($obj)
 	{
@@ -26,6 +37,14 @@
 
 	function generate_marker($station)
 	{
+		$di = "N/A";
+		
+		if (! ($station[8] == 'nan') )
+			$di = generateDirectionImage($station[8]);
+		
+		comment("IMG: $di");
+		
+		$station[] = base64_encode($di);
 		mkMarker($station);
 	}
 
@@ -156,6 +175,7 @@
 
 		var gustspeed 	= jObj[10];
 		var relhumval	= jObj[12];
+		var winddirimg	= atob(jObj[30]);
 
 		console.log("locat: ", location, "airtemp: ", airtemp, "windspeed: ", windspeed, "winddir: ", winddir, "gustspeed: ", gustspeed);
 		var tableattrs=	[
@@ -176,7 +196,7 @@
 		var outHDRpaikkaHTML  = createTag(outHDRpaikkaTD,  "h3", location, null);
 
 		var outHDRarvotHTMLair  = makeTRSet(out, "Lämpötila", 		airtemp,	"Ilmankosteus",		relhumval);
-		var outHDRarvotHTMLwind = makeTRSet(out, "Tuulen nopeus",	windspeed,	"Tuulen suunta",	winddir);
+		var outHDRarvotHTMLwind = makeTRSet(out, "Tuulen nopeus",	windspeed,	"Tuulen suunta",	winddirimg);
 		
 		var suprise =  Math.floor(10 * Math.random());
 		
@@ -207,8 +227,8 @@
 	function makeMarker(pMap, jsn)
 	{
 		var jObj = JSON.parse(jsn);
-		console.log("makeMarker jsn: ", jsn);
-		console.log("makeMarker jObj: ", jObj);
+//		console.log("makeMarker jsn: ", jsn);
+//		console.log("makeMarker jObj: ", jObj);
 		var name = jObj[1];
 		var lat = parseFloat( jObj[2] );
 		var lng = parseFloat( jObj[3] );
@@ -224,7 +244,7 @@
 
 			saved_overlay[name] = o;
 			
-			console.log("Init ", name, " overlay: ", o);
+//			console.log("Init ", name, " overlay: ", o);
 										
 		} 
 
@@ -240,7 +260,7 @@
 
 			saved_fea[name] = sfea;
 
-			console.log("Init ", name, " sfea: ", sfea);
+//			console.log("Init ", name, " sfea: ", sfea);
 		} 
 
 		fea 		= saved_fea[name];
@@ -254,15 +274,16 @@
 						});
 
 			saved_layer[name] = o;
-			console.log("Init ", name, " layer: ", o);
+//			console.log("Init ", name, " layer: ", o);
 		} 
 		
 		layer = saved_layer[name];
 
+/*
 		console.log("overlay:", overlay);
 		console.log("fea    :", fea);
 		console.log("layer  :", layer);
-
+*/
 		nToO  = myMap.get("nameToOverlay") || nameToOverlay;
 		nToO[name] = overlay;
 		myMap.set("nameToOverlay", nToO);
@@ -285,7 +306,7 @@
 												return f;
 											}
 										);
-			
+/*			
 					console.log("singleclick start -----------------------------------------");
 					console.log("cname : ", cname);
 					console.log("over  : ", over);
@@ -293,7 +314,7 @@
 					console.log("feats : ", feats);
 					console.log("pixel : ", event.pixel);
 					console.log("coords: ", event.coordinate);
-
+*/
 					var rv = true;
 
 					if (feats)
@@ -306,13 +327,13 @@
 						var jObj 	= feats.get("json");
 						var nToO    = myMap.get("nameToOverlay");
 						var over    = nToO[name];
-
+/*
 						console.log("name:", 		name);
 						console.log("json:", 		jObj);
 						console.log("over:", 		overlay);
 						console.log("cont ID:", 	content.id);
 						console.log("cont:", 		content);
-						
+*/						
 						
 						htmlcontent = makeMarkerContent(jObj);
 
