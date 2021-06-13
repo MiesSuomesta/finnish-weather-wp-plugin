@@ -1,8 +1,20 @@
 <?php
 
+	phpinfo();
 
-	$allowed_referrers = [ "paxsudos.fi", "192.168.1.7" ];
-	$ref = $_SERVER['HTTP_REFERER'];
+	function getRemoteStr($rr, $rm)
+	{
+		$rv = $rr;
+		if ( $rv == "" )
+			$rv = $rm;
+	}
+
+	$allowed_referrers = [ "paxsudos.fi", "paxsudos.com", "192.168." ];
+
+	$referrer = $_SERVER['HTTP_REFERER'];
+	$remote = $_SERVER['REMOTE_ADDR'];
+
+	$ref = getRemoteStr($referrer, $remote);
 
 	$cont = False;
 	foreach ($allowed_referrers as $allowed) {
@@ -10,15 +22,16 @@
 		$is= strpos($ref, $allowed);
 		//echo "$allowed .... " . $is;
 		
-		if ($is > 0)
+		if ($is >= 0)
 			$cont = True;
 			
 	}
 
 	if ( ! $cont )
 	{
-		echo "Hot linking to this content is restricted. Contact lauri.jakku@paxsudos.fi to gain access.";
+		echo "Hot linking to this content from $ref is restricted. Contact lauri.jakku@paxsudos.fi to gain access.";
 		exit(1);
 	}
+
 ?>
  

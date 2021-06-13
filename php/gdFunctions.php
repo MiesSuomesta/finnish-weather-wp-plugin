@@ -81,7 +81,7 @@
 		$color_transparent = imagecolorallocatealpha($img, 0, 0, 0, 127);
 		imageFill($img, 0,0, $color_transparent);
 		
-		$color_red_bg = imagecolorallocatealpha($img, 256/4, 0, 0, 0);
+		$color_red_bg = imagecolorallocatealpha($img, 0, 0, 0, 127);
 
 		$color_red_fg = imagecolorallocatealpha($img, 255, 0, 0, 0);
 
