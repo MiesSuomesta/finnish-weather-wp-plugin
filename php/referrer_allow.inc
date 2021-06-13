@@ -12,7 +12,7 @@
 	$allowed_referrers = [ "paxsudos.fi", "paxsudos.com", "192.168." ];
 
 	$referrer = $_SERVER['HTTP_REFERER'];
-	$remote = $_SERVER['REMOTE_ADDR'];
+	$remote   = $_SERVER['REMOTE_ADDR'];
 
 	$ref = getRemoteStr($referrer, $remote);
 
@@ -29,7 +29,7 @@
 
 	if ( ! $cont )
 	{
-		echo "Hot linking to this content from $ref is restricted. Contact lauri.jakku@paxsudos.fi to gain access.";
+		echo "Hot linking to this content (from $ref) is restricted. Contact lauri.jakku@paxsudos.fi to gain access.";
 		exit(1);
 	}
 
