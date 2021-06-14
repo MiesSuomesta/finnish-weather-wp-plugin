@@ -498,6 +498,19 @@ $imgsrc = generateBarsGrowCenterAnimation( $frameMax, 100,
 	<table>
 		<tr>
 			<td>
+				    <div id="osmMap" style="width:450px;height:700px;">
+						<div id="osmPop" style="visibility: visible; display: block;">
+							<a href="#" id="osmPop-closer"></a>
+							<div id="osmPop-content" style="visibility: visible; display: block;"></div>
+						</div>
+					</div> 
+
+					<script>
+						window.document.onload = cb_onLoadDocument(event, cb_after);
+					</script>
+
+			</td>
+			<td>
 				<form action="" name="selectionmenu" method="GET">
 					<input type="hidden" name="action" value="finweather_submit">
 					
@@ -510,19 +523,6 @@ $imgsrc = generateBarsGrowCenterAnimation( $frameMax, 100,
 					<br>
 					<input type="submit" value="Valitse">
 				</form>
-			</td>
-			<td>
-				    <div id="osmMap" style="width:450px;height:700px;">
-						<div id="osmPop" style="visibility: visible; display: block;">
-							<a href="#" id="osmPop-closer"></a>
-							<div id="osmPop-content" style="visibility: visible; display: block;"></div>
-						</div>
-					</div> 
-
-					<script>
-						window.document.onload = cb_onLoadDocument(event, cb_after);
-					</script>
-
 			</td>
 		</tr>
 	</table>
