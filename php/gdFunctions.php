@@ -305,7 +305,11 @@
 		$anim->outputWidth = $width;
 		$anim->outputHeight = $height;
 		$img = $anim->generate_webp_image_rawdata($loopcnt);
-		$rv = generate_webp($img, 3);
+		
+		if ($tag > 0)
+			$tag = 3;
+
+		$rv = generate_webp($img, $tag);
 		return $rv;
 		
 	}

@@ -168,6 +168,34 @@
 
 		return pParent;
 	}
+	
+	function mkBackgroundFrom(imgsrc, w, h)
+	{
+
+		ssw =  'width: ' + w + '; ';
+		ssh = 'height: ' + h + '; ';
+
+		return ssw + ssh + "background-image:url('" + imgsrc + "');";
+	
+	}
+
+	async function generate_style_for_marker_bg(oElement, w, h)
+	{
+		var imageUrl = 'https://paxsudos.fi/~superbrick/finnish-weather-wp-plugin/php/generate_saatietotausta_image.php';
+
+		console.log("generate_style_for_marker_bg Fetch from: ", imageUrl);
+
+		const resp = await fetch(imageUrl);
+
+		console.log("URL Fetch resp: ", resp);
+
+		await resp.text().then(function (text) {
+				styletag = mkBackgroundFrom(text, w, h);
+				oElement.style = styletag;
+				console.log("generate_style_for_marker_bg for: ", oElement.style);
+				console.log("generate_style_for_marker_bg as : ", styletag);
+			});;
+	}
 
 	function makeMarkerContent(jObj)
 	{
@@ -185,47 +213,15 @@
 
 		console.log("locat: ", location, "airtemp: ", airtemp, "windspeed: ", windspeed, "winddir: ", winddir, "gustspeed: ", gustspeed);
 
-		var genstyle = "<?php	
-
-function mkBackgroundFrom($imgsrc, $w, $h)
-{
-
-	$ssw = 'width: ' . $w .'; ';
-	$ssh = 'height: ' . $h .'; ';
-	
-	echo "$ssw $ssh background-image:url('" . $imgsrc . "');";
-	
-}
-
-$w = 260;
-$h = 200;
-$fg['r'] = 0;
-$fg['g'] = 200;
-$fg['b'] = 0;
-$fg['a'] = 0;
-
-$bg['r'] = 2;
-$bg['g'] = 50;
-$bg['b'] = 2;
-$bg['a'] = 0;
+		var popup_width = 180;
+		var popup_height = 220;
 
 
-$frameMax = 30;
-	
-$imgsrc = generateBarsGrowCenterAnimation( $frameMax, 100,
-											$w, $h,
-											10, 150, 100,
-											$fg, $bg, 1, 1, 1);
-
-	mkBackgroundFrom($imgsrc, $w, $h);	
-?>"
-
-		var textstyle = "color: #FFFFFF;"
+		var textstyle = "color: #ddddFF;"
 
 		var tableattrs=	[
-							["style", genstyle ],
-							["width", '160px'],
-							["height", '200px'],
+							["width", popup_width + 'px'],
+							["height", popup_height + 'px'],
 							["onclick", 'close_popup();']
 						];
 
@@ -239,6 +235,9 @@ $imgsrc = generateBarsGrowCenterAnimation( $frameMax, 100,
 							];
 		
 		var out=createTag(null, "table", null, tableattrs);
+
+			generate_style_for_marker_bg(out, popup_width, popup_height);
+
 		var outHDRpaikkaTR = createTag(out, "tr", null, null);
 
 		var outHDRpaikkaTD  = createTag(outHDRpaikkaTR,  "td", null, headertdattrs);
@@ -504,6 +503,7 @@ $imgsrc = generateBarsGrowCenterAnimation( $frameMax, 100,
 							<div id="osmPop-content" style="visibility: visible; display: block;"></div>
 						</div>
 					</div> 
+
 			</td>
 			<td>
 				<form action="" name="selectionmenu" method="GET">
