@@ -2,12 +2,12 @@
 
 	require_once("animatedwebp.php");
 
-
+/*
 	function comment($txt)
 	{
 		echo "<!---- $txt ---->\n";
 	}
-
+*/
 	function createImgTag($type, $from)
 	{
 		$tag = "data:image/". $type .";base64," . base64_encode($from) . "";

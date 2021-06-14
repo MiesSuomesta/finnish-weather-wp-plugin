@@ -142,23 +142,26 @@
 		return out;
 	}
 
-	function makeTRSet(pParent, varAT, varAV, varBT, varBV)
+	function makeTRSet(pParent, valuetdattrs, varAT, varAV, varBT, varBV)
 	{
+		
+		valuetdattrs.push([ "colspan",	2]);
+		
 		var outH   = createTag(null, "tr", null, null);
-		var outEAH = createTag(outH, "td", escapeHtml(varAT), 	[ [ "colspan",	2 ]		]);
+		var outEAH = createTag(outH, "td", escapeHtml(varAT), 	valuetdattrs);
 		var outEBH = createTag(outH, "td", "&nbsp;",			[ [ "width",	"5px"] 	]);
-		var outECH = createTag(outH, "td", escapeHtml(varBT), 	[ [ "colspan",	2 ]		]);
+		var outECH = createTag(outH, "td", escapeHtml(varBT), 	valuetdattrs);
 		
 
 		var outC   = createTag(null, "tr", null, null);
-		var outEAC = createTag(outC, "td", escapeHtml(varAV), 	[ [ "colspan",	2 ]		]);
+		var outEAC = createTag(outC, "td", escapeHtml(varAV), 	valuetdattrs);
 		var outEBC = createTag(outC, "td", "&nbsp;",			[ [ "width",	"5px"] 	]);
-		var outECC = createTag(outC, "td", escapeHtml(varBV), 	[ [ "colspan",	2 ]		]);
+		var outECC = createTag(outC, "td", escapeHtml(varBV), 	valuetdattrs);
 
 		var outC   = createTag(null, "tr", null, null);
-		var outEAC = createTag(outC, "td", escapeHtml(varAV),   [ [ "colspan",	2]		]);
+		var outEAC = createTag(outC, "td", escapeHtml(varAV),   valuetdattrs);
 		var outEBC = createTag(outC, "td", "&nbsp;", 			[ [ "width",	"5px"] 	]);
-		var outECC = createTag(outC, "td", escapeHtml(varBV),   [ [ "colspan",	2]		]);
+		var outECC = createTag(outC, "td", escapeHtml(varBV),   valuetdattrs);
 		
 		pParent.appendChild(outH);
 		pParent.appendChild(outC);
@@ -181,14 +184,57 @@
 		var winddirimg	= atob(jObj[30]);
 
 		console.log("locat: ", location, "airtemp: ", airtemp, "windspeed: ", windspeed, "winddir: ", winddir, "gustspeed: ", gustspeed);
+
+		var genstyle = "<?php	
+
+function mkBackgroundFrom($imgsrc, $w, $h)
+{
+
+	$ssw = 'width: ' . $w .'; ';
+	$ssh = 'height: ' . $h .'; ';
+	
+	echo "$ssw $ssh background-image:url('" . $imgsrc . "');";
+	
+}
+$w = 260;
+$h = 200;
+$fg['r'] = 0;
+$fg['g'] = 200;
+$fg['b'] = 0;
+$fg['a'] = 0;
+
+$bg['r'] = 2;
+$bg['g'] = 50;
+$bg['b'] = 2;
+$bg['a'] = 0;
+
+
+$frameMax = 150;
+	
+$imgsrc = generateBarsGrowCenterAnimation( $frameMax, 100,
+											$w, $h,
+											10, 150, 100,
+											$fg, $bg, 1, 1, 1);
+
+	mkBackgroundFrom($imgsrc, $w, $h);	
+?>"
+
+		var textstyle = "color: #FFFFFF;"
+
 		var tableattrs=	[
-							["bgcolor",'#AAAAFF'],
+							["style", genstyle ],
 							["width", '160px'],
+							["height", '200px'],
 							["onclick", 'close_popup();']
 						];
 
 		var headertdattrs=	[
+								["style", textstyle ],
 								["colspan", 5]
+							];
+
+		var valuetdattrs=	[
+								["style", textstyle ]
 							];
 		
 		var out=createTag(null, "table", null, tableattrs);
@@ -196,10 +242,10 @@
 
 		var outHDRpaikkaTD  = createTag(outHDRpaikkaTR,  "td", null, headertdattrs);
 
-		var outHDRpaikkaHTML  = createTag(outHDRpaikkaTD,  "h3", location, null);
+		var outHDRpaikkaHTML  = createTag(outHDRpaikkaTD,  "h3", location, valuetdattrs);
 
-		var outHDRarvotHTMLair  = makeTRSet(out, "Lämpötila", 		airtemp,	"Ilmankosteus",		relhumval);
-		var outHDRarvotHTMLwind = makeTRSet(out, "Tuulen nopeus",	windspeed,	"Tuulen suunta",	winddirimg);
+		var outHDRarvotHTMLair  = makeTRSet(out, valuetdattrs, "Lämpötila", 		airtemp,	"Ilmankosteus",		relhumval);
+		var outHDRarvotHTMLwind = makeTRSet(out, valuetdattrs, "Tuulen nopeus",		windspeed,	"Tuulen suunta",	winddirimg);
 		
 		var suprise =  Math.floor(10 * Math.random());
 		
@@ -211,8 +257,8 @@
 
 			var supriseHDRpaikkaTR    = createTag(out, "tr", null, null);
 			var supriseHDRpaikkaTD    = createTag(supriseHDRpaikkaTR,  "td", null, headertdattrs);
-			var supriseHDRpaikkaCENTER= createTag(supriseHDRpaikkaTD,  "center", null, null);
-			var supriseHDRpaikkaHTML  = createTag(supriseHDRpaikkaCENTER,  "h4", suprisetxt, null);
+			var supriseHDRpaikkaCENTER= createTag(supriseHDRpaikkaTD,  "center", null, valuetdattrs);
+			var supriseHDRpaikkaHTML  = createTag(supriseHDRpaikkaCENTER,  "h4", suprisetxt, valuetdattrs);
 			
 		}
 
