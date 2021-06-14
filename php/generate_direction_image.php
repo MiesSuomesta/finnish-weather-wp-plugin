@@ -19,16 +19,16 @@ $fg['a'] = 0;
 
 $bg['r'] = 0;
 $bg['g'] = 0;
-$bg['b'] = 255;
+$bg['b'] = 0;
 $bg['a'] = 127;
 
 
-$frameMax = 5;
+$frameMax = 50;
 	
-$imgsrc3 = generateBarsGrowCenterAnimation( $frameMax, 150,
+$imgsrc3 = generateBarsGrowCenterAnimation( $frameMax, 100,
 											900, 300,
 											30, 300, 100,
-											$fg, $bg, 1);
+											$fg, $bg, 1, 1);
 
 ?>
 

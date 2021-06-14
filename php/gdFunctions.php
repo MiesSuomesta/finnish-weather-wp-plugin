@@ -186,7 +186,7 @@
 
 	function var_dump_with_title($t, $v)
 	{
-		
+/*
 		ob_start();
 
 		var_dump($v);
@@ -195,6 +195,7 @@
 		
 		comment("$t");
 		comment($dumpData);
+*/
 
 	}
 	
@@ -284,7 +285,7 @@
 	function generateBarsGrowCenterAnimation($framecnt, $duration = 100,
 										$width, $height,
 										$barWidth, $barHeight, $barHeightMaxRand,
-										$fgColor, $bgColor, $tag)
+										$fgColor, $bgColor, $tag, $loopcnt=0)
 	{
 		$anim = new animatedwebp();
 		$frame = $frameMax = $framecnt;
@@ -302,7 +303,7 @@
 		/* Animate --------------------------------- */
 		$anim->outputWidth = $width;
 		$anim->outputHeight = $height;
-		$img = $anim->generate_webp_image_rawdata();
+		$img = $anim->generate_webp_image_rawdata($loopcnt);
 		$rv = generate_webp($img, 3);
 		return $rv;
 		
