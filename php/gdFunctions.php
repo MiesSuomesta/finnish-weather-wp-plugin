@@ -31,7 +31,7 @@
 		{
 			$x += $mdx;
 			$y += $mdy;
-			imageellipse($img, $x, $y, $s, $s, $c);
+			imagefilledellipse($img, $x, $y, $s, $s, $c);
 			$length--;
 		}
 	}

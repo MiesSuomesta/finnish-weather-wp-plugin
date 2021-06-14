@@ -23,7 +23,7 @@
 	}
 
 	function generateDirectionImage($dir) {
-		$imgsrc = createDirectionImage(30, 30, $dir,  3);
+		$imgsrc = createDirectionImage(40, 40, $dir,  4);
 		return mkImgTagFrom($imgsrc);
 	}
 
@@ -319,6 +319,16 @@
 			var o = new ol.layer.Vector({
 							source: new ol.source.Vector({
 								features: [ fea ]
+							}),
+							style: new ol.style.Style({
+								image: new ol.style.Icon({
+									anchor: [0.5, 0.5],
+									anchorXUnits: "fraction",
+									anchorYUnits: "fraction",
+									opacity: 0.4,
+									scale: 2.5,
+									src: "https://upload.wikimedia.org/wikipedia/commons/e/ec/RedDot.svg"
+								})
 							})
 						});
 
