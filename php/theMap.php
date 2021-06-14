@@ -504,11 +504,6 @@ $imgsrc = generateBarsGrowCenterAnimation( $frameMax, 100,
 							<div id="osmPop-content" style="visibility: visible; display: block;"></div>
 						</div>
 					</div> 
-
-					<script>
-						window.document.onload = cb_onLoadDocument(event, cb_after);
-					</script>
-
 			</td>
 			<td>
 				<form action="" name="selectionmenu" method="GET">
@@ -527,6 +522,10 @@ $imgsrc = generateBarsGrowCenterAnimation( $frameMax, 100,
 		</tr>
 	</table>
 </center>
+
+<script>
+	window.document.onload = cb_onLoadDocument(event, cb_after);
+</script>
 
 
 
