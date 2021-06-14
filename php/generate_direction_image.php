@@ -11,7 +11,24 @@ function mkImgTagFrom($imgsrc)
 $imgsrc1 = createDirectionImage(100, 100, 30,  4);
 //$imgsrc1 = createDirectionImage(100, 100, -45,  3);
 $imgsrc2 = createDirectionImage(100, 100, 145, 3);
-$imgsrc3 = createDirectionImage(300, 250, 80, 10);
+
+$fg['r'] = 0;
+$fg['g'] = 255;
+$fg['b'] = 0;
+$fg['a'] = 0;
+
+$bg['r'] = 0;
+$bg['g'] = 0;
+$bg['b'] = 255;
+$bg['a'] = 127;
+
+
+$frameMax = 5;
+	
+$imgsrc3 = generateBarsGrowCenterAnimation( $frameMax, 150,
+											900, 300,
+											30, 300, 100,
+											$fg, $bg, 1);
 
 ?>
 
