@@ -260,7 +260,6 @@
 		$now = $fgColor;
 
 		$loop = 0;
-	//	$loop = $loops - 1;
 
 		while ( $loop < $loops )
 		{

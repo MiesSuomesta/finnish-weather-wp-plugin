@@ -79,7 +79,7 @@ class animatedwebp {
 		$fileContents .="ANIM";
 		$animChunkSize = $this->bytesToString($this->toUint32(6));
 		// loop count 16bits, 0 = infinito
-		// bytesToString(toUint16(0));
+		// bytesToString(toUint16(0)); 
 		$oLoopCount = $this->bytesToString($this->toUint16($loopcnt)); //str_repeat(chr($loopcnt), 1);
 		// 32bits BGRA, Blue Green Red Alpha (0,0,0,0)
 		$oBackGround = str_repeat(chr(0), 4);
