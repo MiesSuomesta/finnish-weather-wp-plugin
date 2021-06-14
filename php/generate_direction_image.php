@@ -19,14 +19,14 @@ $imgsrc1 = createDirectionImage(100, 100, 30,  4);
 $imgsrc2 = createDirectionImage(100, 100, 145, 3);
 
 $fg['r'] = 0;
-$fg['g'] = 0;
+$fg['g'] = 127;
 $fg['b'] = 0;
 $fg['a'] = 0;
 
 $bg['r'] = 0;
-$bg['g'] = 127;
+$bg['g'] = 0;
 $bg['b'] = 0;
-$bg['a'] = 0;
+$bg['a'] = 255;
 
 
 $frameMax = 50;
