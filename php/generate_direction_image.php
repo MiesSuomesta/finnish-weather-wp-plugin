@@ -8,9 +8,13 @@ function mkImgTagFrom($imgsrc)
 	
 }
 
-function mkBackgroundFrom($imgsrc)
+function mkBackgroundFrom($imgsrc, $w, $h)
 {
-	echo "background-image:url('" . $imgsrc . "');";
+
+	$ssw = 'width: ' . $w .'; ';
+	$ssh = 'height: ' . $h .'; ';
+	
+	echo "$ssw $ssh background-image:url('" . $imgsrc . "');";
 	
 }
 
@@ -34,12 +38,12 @@ $frameMax = 50;
 $imgsrc3 = generateBarsGrowCenterAnimation( $frameMax, 100,
 											900, 200,
 											10, 150, 100,
-											$fg, $bg, 1, 1, 1);
+											$fg, $bg, 1, 0, 0);
 
 $imgsrc2 = generateBarsGrowCenterAnimation( $frameMax, 100,
 											900, 200,
 											10, 150, 100,
-											$fg, $bg, 1, 0, 0);
+											$fg, $bg, 1, 1, 1);
 
 ?>
 
@@ -54,9 +58,15 @@ $imgsrc2 = generateBarsGrowCenterAnimation( $frameMax, 100,
 
 <table>
 	<tr>
-		<td style="<?php mkBackgroundFrom($imgsrc3); ?>"  width="900">jeppajees</td>
+		<td style="<?php mkBackgroundFrom($imgsrc3, 900, 200); ?>">
+			<center>jeppajees</center>
+		</td>
 	</tr>
 	<tr>
-		<td style="<?php mkBackgroundFrom($imgsrc2); ?>"><H1 style="fgcolor='#FFFFFF';">jeppajees2</H1></td>
+		<td style="<?php mkBackgroundFrom($imgsrc2, 900, 200); ?>">
+			<center>
+				<div style="color: red;"><H1>Tervetuloa!</H1></div>
+			</center>
+		</td>
 	</tr>
 </table>
