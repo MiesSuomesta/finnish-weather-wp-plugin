@@ -236,7 +236,7 @@
 	function generateBarsGrowCenter(	$frameNro, $frameNroMax,
 										$width, $height,
 										$barWidth, $barHeight, $barHeightMaxRand,
-										$fgColor, $bgColor)
+										$fgColor, $bgColor, $fade)
 	{
 		$wc = $width  /2;
 		$hc = $height /2;
@@ -265,9 +265,11 @@
 		while ( $loop < $loops )
 		{
 			$xtop = ($loop * $barWidth);
-
-			$now = calc_random_color_with_delta($frameNro, $startColor, $colorDelta);
-		
+			if ( $fade ) {
+				$now = calc_random_color_with_delta($frameNro, $startColor, $colorDelta);
+			} else {
+				$now = calc_random_color_with_delta($frameNroMax - 1, $startColor, $colorDelta);
+			}
 			$barImg = makeBarGrowFromCenter($barWidth, $height, $barHeightMaxRand, $now);
 			
 			$fgImgHeight = imagesy($barImg);
@@ -285,7 +287,7 @@
 	function generateBarsGrowCenterAnimation($framecnt, $duration = 100,
 										$width, $height,
 										$barWidth, $barHeight, $barHeightMaxRand,
-										$fgColor, $bgColor, $tag, $loopcnt=0)
+										$fgColor, $bgColor, $tag, $loopcnt=0, $fade=1)
 	{
 		$anim = new animatedwebp();
 		$frame = $frameMax = $framecnt;
@@ -295,7 +297,7 @@
 			$imgframe = generateBarsGrowCenter(	$frame, $frameMax,
 												$width, $height,
 												$barWidth, $barHeight, $barHeightMaxRand,
-												$fgColor, $bgColor);
+												$fgColor, $bgColor, $fade);
 
 			$anim->insert_image_frame($imgframe, $duration);
 		}

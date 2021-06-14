@@ -13,22 +13,22 @@ $imgsrc1 = createDirectionImage(100, 100, 30,  4);
 $imgsrc2 = createDirectionImage(100, 100, 145, 3);
 
 $fg['r'] = 0;
-$fg['g'] = 255;
+$fg['g'] = 0;
 $fg['b'] = 0;
 $fg['a'] = 0;
 
 $bg['r'] = 0;
 $bg['g'] = 0;
-$bg['b'] = 0;
-$bg['a'] = 127;
+$bg['b'] = 255;
+$bg['a'] = 0;
 
 
 $frameMax = 50;
 	
 $imgsrc3 = generateBarsGrowCenterAnimation( $frameMax, 100,
-											900, 300,
-											30, 300, 100,
-											$fg, $bg, 1, 1);
+											900, 200,
+											30, 200, 100,
+											$fg, $bg, 1, 0, 1);
 
 ?>
 
