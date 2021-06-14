@@ -209,7 +209,7 @@ $bg['b'] = 2;
 $bg['a'] = 0;
 
 
-$frameMax = 150;
+$frameMax = 30;
 	
 $imgsrc = generateBarsGrowCenterAnimation( $frameMax, 100,
 											$w, $h,
