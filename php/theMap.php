@@ -196,6 +196,7 @@ function mkBackgroundFrom($imgsrc, $w, $h)
 	echo "$ssw $ssh background-image:url('" . $imgsrc . "');";
 	
 }
+
 $w = 260;
 $h = 200;
 $fg['r'] = 0;
