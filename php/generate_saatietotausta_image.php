@@ -31,7 +31,7 @@ function var_title_dump($t, $v)
 $animationconfig = [
 	"fg" => [
 		"r" => 0,
-		"g" => 60 + rand(0,30),
+		"g" => 100 + rand(0,70),
 		"b" => 0,
 		"a" => 0,
 	],
