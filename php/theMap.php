@@ -400,6 +400,8 @@
 						content.appendChild(htmlcontent);
 						
 						console.log("cont: ", content.innerHTML);
+						console.log("coords Bef: ", coords);
+						pMap.getView().setCenter(coords);
 						overlay.setPosition(coords);
 	
 						rv = false; /* Stop propagation */
