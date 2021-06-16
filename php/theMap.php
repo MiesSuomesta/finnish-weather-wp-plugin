@@ -117,14 +117,14 @@
 		
 		var html = document.createElement(tag);
 
-		console.log("Attr: ", attr);
+		// console.log("Attr: ", attr);
 		if (attr != null) {
 			for (var a in attr)
 			{
 
 				var an = attr[a][0];
 				var av = attr[a][1];
-				console.log("A: ", a, "T: ", an, "V: ", av);
+				// console.log("A: ", a, "T: ", an, "V: ", av);
 				html.setAttribute(an, av);
 			}
 		}
@@ -134,7 +134,7 @@
 		}
 		
 		var out = html;
-		console.log("html out: ", out.toString());
+		// console.log("html out: ", out.toString());
 		
 		if (prnt != null)
 			prnt.appendChild(out);
@@ -183,24 +183,24 @@
 	{
 		var imageUrl = 'https://paxsudos.fi/~superbrick/finnish-weather-wp-plugin/php/generate_saatietotausta_image.php';
 
-		console.log("generate_style_for_marker_bg Fetch from: ", imageUrl);
+		// console.log("generate_style_for_marker_bg Fetch from: ", imageUrl);
 
 		const resp = await fetch(imageUrl);
 
-		console.log("URL Fetch resp: ", resp);
+		// console.log("URL Fetch resp: ", resp);
 
 		await resp.text().then(function (text) {
 				styletag = mkBackgroundFrom(text, w, h);
 				oElement.style = styletag;
-				console.log("generate_style_for_marker_bg for: ", oElement.style);
-				console.log("generate_style_for_marker_bg as : ", styletag);
+				// console.log("generate_style_for_marker_bg for: ", oElement.style);
+				// console.log("generate_style_for_marker_bg as : ", styletag);
 			});;
 	}
 
 	function makeMarkerContent(jObj)
 	{
 		
-		console.log("makeMarkerContent: ", jObj);
+		// console.log("makeMarkerContent: ", jObj);
 		var location 	= jObj[1];
 
 		var airtemp 	= jObj[4];
@@ -211,7 +211,7 @@
 		var relhumval	= jObj[12];
 		var winddirimg	= atob(jObj[30]);
 
-		console.log("locat: ", location, "airtemp: ", airtemp, "windspeed: ", windspeed, "winddir: ", winddir, "gustspeed: ", gustspeed);
+		// console.log("locat: ", location, "airtemp: ", airtemp, "windspeed: ", windspeed, "winddir: ", winddir, "gustspeed: ", gustspeed);
 
 		var popup_width = 180;
 		var popup_height = 220;
@@ -276,8 +276,8 @@
 	function makeMarker(pMap, jsn)
 	{
 		var jObj = JSON.parse(jsn);
-//		console.log("makeMarker jsn: ", jsn);
-//		console.log("makeMarker jObj: ", jObj);
+//		// console.log("makeMarker jsn: ", jsn);
+//		// console.log("makeMarker jObj: ", jObj);
 		var name = jObj[1];
 		var lat = parseFloat( jObj[2] );
 		var lng = parseFloat( jObj[3] );
@@ -293,7 +293,7 @@
 
 			saved_overlay[name] = o;
 			
-//			console.log("Init ", name, " overlay: ", o);
+//			// console.log("Init ", name, " overlay: ", o);
 										
 		} 
 
@@ -309,7 +309,7 @@
 
 			saved_fea[name] = sfea;
 
-//			console.log("Init ", name, " sfea: ", sfea);
+//			// console.log("Init ", name, " sfea: ", sfea);
 		} 
 
 		fea 		= saved_fea[name];
@@ -333,15 +333,15 @@
 						});
 
 			saved_layer[name] = o;
-//			console.log("Init ", name, " layer: ", o);
+//			// console.log("Init ", name, " layer: ", o);
 		} 
 		
 		layer = saved_layer[name];
 
 /*
-		console.log("overlay:", overlay);
-		console.log("fea    :", fea);
-		console.log("layer  :", layer);
+		// console.log("overlay:", overlay);
+		// console.log("fea    :", fea);
+		// console.log("layer  :", layer);
 */
 		nToO  = myMap.get("nameToOverlay") || nameToOverlay;
 		nToO[name] = overlay;
@@ -351,7 +351,7 @@
 		myMap.addLayer(layer);
 		myMap.addOverlay(overlay);
 	
-		console.log("name: ", name, "set jsn: ", jObj);
+		// console.log("name: ", name, "set jsn: ", jObj);
 		
 		pMap.on('singleclick', function (event) {
 					var cname 	= content.getAttribute("contname");
@@ -361,25 +361,25 @@
 					var feats = myMap.forEachFeatureAtPixel(
 											event.pixel,
 											function(f) { 
-												console.log("Feature: ", f);
+												// console.log("Feature: ", f);
 												return f;
 											}
 										);
 /*			
-					console.log("singleclick start -----------------------------------------");
-					console.log("cname : ", cname);
-					console.log("over  : ", over);
-					console.log("nToO  : ", nToO);
-					console.log("feats : ", feats);
-					console.log("pixel : ", event.pixel);
-					console.log("coords: ", event.coordinate);
+					// console.log("singleclick start -----------------------------------------");
+					// console.log("cname : ", cname);
+					// console.log("over  : ", over);
+					// console.log("nToO  : ", nToO);
+					// console.log("feats : ", feats);
+					// console.log("pixel : ", event.pixel);
+					// console.log("coords: ", event.coordinate);
 */
 					var rv = true;
 
 					if (feats)
 					{
 						var coords = event.coordinate;
-						console.log("Found event: ", event);
+						// console.log("Found event: ", event);
 						
 						/* get data from feature */
 						var name 	= cname;
@@ -387,11 +387,11 @@
 						var nToO    = myMap.get("nameToOverlay");
 						var over    = nToO[name];
 /*
-						console.log("name:", 		name);
-						console.log("json:", 		jObj);
-						console.log("over:", 		overlay);
-						console.log("cont ID:", 	content.id);
-						console.log("cont:", 		content);
+						// console.log("name:", 		name);
+						// console.log("json:", 		jObj);
+						// console.log("over:", 		overlay);
+						// console.log("cont ID:", 	content.id);
+						// console.log("cont:", 		content);
 */						
 						
 						htmlcontent = makeMarkerContent(jObj);
@@ -399,8 +399,8 @@
 						content.innerHTML = "";
 						content.appendChild(htmlcontent);
 						
-						console.log("cont: ", content.innerHTML);
-						console.log("coords Bef: ", coords);
+						// console.log("cont: ", content.innerHTML);
+						// console.log("coords Bef: ", coords);
 						pMap.getView().setCenter(coords);
 						overlay.setPosition(coords);
 	
@@ -409,7 +409,7 @@
 						overlay.setPosition(undefined);
 						closer.blur();
 					}		
-					console.log("singleclick end -----------------------------------------");
+					// console.log("singleclick end -----------------------------------------");
 					return rv;
 				});
 
@@ -492,7 +492,7 @@
 	
 	function cb_onLoadDocument(event, after) 
 	{
-		console.log("Document loaded ... init: " + firstOpeningWindow);
+		// console.log("Document loaded ... init: " + firstOpeningWindow);
 		if (firstOpeningWindow)
 		{
 				initMap();
