@@ -197,19 +197,31 @@
 			});;
 	}
 
+	function mkElementData(v,u)
+	{
+		if (u == 'degC')
+			u = '°C';
+		
+		return v + " " + u;
+		
+	}
+
 	function makeMarkerContent(jObj)
 	{
 		
 		// console.log("makeMarkerContent: ", jObj);
 		var location 	= jObj[1];
 
-		var airtemp 	= jObj[4];
-		var windspeed 	= jObj[6];
-		var winddir 	= jObj[8];
+		var airtemp 		= jObj[4];
+		var airtempunit		= jObj[5];
+		var windspeed 		= jObj[6];
+		var windspeedunit 	= jObj[7];
+		var winddir 		= jObj[8];
 
-		var gustspeed 	= jObj[10];
-		var relhumval	= jObj[12];
-		var winddirimg	= atob(jObj[30]);
+		var gustspeed 		= jObj[10];
+		var relhumval		= jObj[12];
+		var relhumvalunit	= jObj[13];
+		var winddirimg		= atob(jObj[30]);
 
 		// console.log("locat: ", location, "airtemp: ", airtemp, "windspeed: ", windspeed, "winddir: ", winddir, "gustspeed: ", gustspeed);
 
@@ -244,8 +256,12 @@
 
 		var outHDRpaikkaHTML  = createTag(outHDRpaikkaTD,  "h3", location, valuetdattrs);
 
-		var outHDRarvotHTMLair  = makeTRSet(out, valuetdattrs, "Lämpötila", 		airtemp,	"Ilmankosteus",		relhumval);
-		var outHDRarvotHTMLwind = makeTRSet(out, valuetdattrs, "Tuulen nopeus",		windspeed,	"Tuulen suunta",	winddirimg);
+		var outHDRarvotHTMLair  = makeTRSet(out, valuetdattrs,
+												"Lämpötila", 		mkElementData(airtemp,airtempunit),	
+												"Ilmankosteus",		mkElementData(relhumval,relhumvalunit));
+		var outHDRarvotHTMLwind = makeTRSet(out, valuetdattrs,
+												"Tuulen nopeus",	mkElementData(windspeed,windspeedunit),
+												"Tuulen suunta",	winddirimg);
 		
 		var suprise =  Math.floor(10 * Math.random());
 		
