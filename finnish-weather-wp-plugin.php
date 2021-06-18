@@ -14,37 +14,15 @@
 	Author URI: http://paxsudos.fi/
 	*/
 
-	$FINWEATHER_PLUGIN_DIR = dirname( __FILE__ ) . "/";
-	$FINWEATHER_PLUGIN_URL = get_file_base_http_address();
-	$FINWEATHER_PLUGIN_MAIN_URL = get_file_base_http_address() . basename( __FILE__ );
-	$FINWEATHER_CONFIG_FILE = $FINWEATHER_PLUGIN_DIR . "finnish_weather_wp_plugin_config.json";
-	
+	/* common details */
+	require_once("master_include.inc");
+
 	function java_logger($txt)
 	{
-		$js = '<script>console.log(' . $txt . ');</script>';
+		$js = ' ?><script>console.log(' . $txt . ');</script><?php ';
 		echo $js;
 	}
 
-	function get_file_base_http_address() {
-		global $FINWEATHER_PLUGIN_DIR;
-
-		$mydroot=$_SERVER['DOCUMENT_ROOT'];
-		$myservername=$_SERVER['SERVER_NAME'];
-		
-
-		$mydocstr = str_replace($mydroot, "https://$myservername/", $FINWEATHER_PLUGIN_DIR);
-
-/*
-		java_logger("FINWEATHER_PLUGIN_DIR = $FINWEATHER_PLUGIN_DIR"); echo "\n";
-		java_logger("mydroot = $mydroot"); echo "\n";
-		java_logger("myservername = $myservername"); echo "\n";
-		java_logger("mydocstr = $mydocstr"); echo "\n";
-*/
-
-		$myret = $mydocstr;
-
-		return $myret;
-	}
 
 
 	function get_plugin_file_https_address($pf) {
@@ -115,14 +93,26 @@
 	function startup()
 	{
 		global $FINWEATHER_CONFIG_FILE;
+		global $FINWEATHER_MYSQL_CONFIG;
+		
 		if (! file_exists($FINWEATHER_CONFIG_FILE) )
 		{
 			// Installation helper 
 			include_once("startup.php");
 
 		} else {
+			
+			$config = load_db_config($FINWEATHER_CONFIG_FILE);
 
-			load_db_config($FINWEATHER_CONFIG_FILE);
+			//var_dump($config);
+
+			$h   = $config['hostname'];
+			$dbn = $config['databasename'];
+			$dbt = $config['databasetable'];
+			$u   = $config['username'];
+			$p   = $config['password'];
+
+			//echo "<br>[Main] Loaded MySQL config ${u}@${h}/${dbn}.${dbt}";
 
 
 			// Now we set that function up to execute when the admin_notices action is called.

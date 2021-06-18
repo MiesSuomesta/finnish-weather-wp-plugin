@@ -26,14 +26,15 @@
 		global $FINWEATHER_CONFIG_FILE;
 		global $FINWEATHER_PLUGIN_MAIN_URL;
 		
-		$config['mysql']['$hostname'] 		= $_POST['hostname'];
-		$config['mysql']['$databasename'] 	= $_POST['databasename'];
-		$config['mysql']['$databasetable'] 	= $_POST['databasetable'];
-		$config['mysql']['$username'] 		= $_POST['username'];
-		$config['mysql']['$password'] 		= $_POST['password'];
+		$config['mysql']['hostname'] 		= $_POST['hostname'];
+		$config['mysql']['databasename'] 	= $_POST['databasename'];
+		$config['mysql']['databasetable'] 	= $_POST['databasetable'];
+		$config['mysql']['username'] 		= $_POST['username'];
+		$config['mysql']['password'] 		= $_POST['password'];
+		
 		create_db_config($FINWEATHER_CONFIG_FILE, $config, 1);
-		load_db_config($FINWEATHER_CONFIG_FILE);
-		initialize_tables($config);
+		$cnf = load_db_config($FINWEATHER_CONFIG_FILE);
+		initialize_tables($cnf);
 		
 		$locateto = $FINWEATHER_PLUGIN_MAIN_URL;
 		

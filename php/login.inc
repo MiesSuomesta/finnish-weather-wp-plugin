@@ -1,10 +1,8 @@
 <?php
- 
-	$mysql_hostname         = "";
-	$mysql_databasename     = "";
-	$mysql_databasetable    = "";
-	$mysql_username         = "";
-	$mysql_password         = "";
+
+	/* common details */
+	$master_inc_path = dirname(__DIR__);
+	require_once($master_inc_path . "/master_include.inc");
 
 
 	function create_db_config($fname, $config, $verbose = 0)
@@ -32,49 +30,42 @@
 
 	function load_db_config($fname, $verbose = 0)
 	{
-
-		global $mysql_hostname;
-		global $mysql_databasename;
-		global $mysql_databasetable;
-		global $mysql_username;
-		global $mysql_password;
-		
    		$jsonstr = "";
 		
 		if ( file_exists($fname) )
 		{
-			if ($verbose)
+			if ($verbose > 0)
 				echo "<br>Parsing DB config ..........";
 			
 			$jsonstr = file_get_contents($fname);
 
-			if ($verbose)
+			if ($verbose > 0)
 				echo "<br>Parsed DB config..";
 		}
 
 		$config = json_decode($jsonstr, true);
 		
+		$h   = "N/A";
+		$u   = "N/A";
+		$p   = "N/A";
+		$dbn = "N/A";
+		$dbt = "N/A";
+
 		if ($config != null) {
-		
-			$mysql_hostname 		= $config['mysql']['$hostname'];
-			$mysql_databasename		= $config['mysql']['$databasename'];
-			$mysql_databasetable	= $config['mysql']['$databasetable'];
-			$mysql_username			= $config['mysql']['$username'];
-			$mysql_password			= $config['mysql']['$password'];
-
+			$h   = $config['mysql']['hostname'];
+			$dbn = $config['mysql']['databasename'];
+			$dbt = $config['mysql']['databasetable'];
+			$u   = $config['mysql']['username'];
+			$p   = $config['mysql']['password'];
 		}
 		
-		$h = $GLOBALS['mysql_hostname'];
-		$u = $GLOBALS['mysql_username'];
-		$p = $GLOBALS['mysql_password'];
-		$dbn = $GLOBALS['mysql_databasename'];
-		$dbt = $GLOBALS['mysql_databasetable'];
-
-		if ($verbose)
+		if ($verbose > 0)
 		{
-			echo "<br>Got MySQL config ${u}@${h}/${dbn} . ${dbt}";
+			echo "<br>login: Loaded MySQL config ${u}@${h}/${dbn}.${dbt}";
+			var_dump($FINWEATHER_MYSQL_CONFIG);
 		}
-		return $config;
+		
+		return $config['mysql'];
 	}
 
 ?>

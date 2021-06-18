@@ -1,27 +1,47 @@
 <?php
 
+	/* common details */
+	$master_inc_path = dirname(__DIR__);
+	require_once($master_inc_path . "/master_include.inc");
+
+
+	function mysql_config_get()
+	{
+		$config = load_db_config(get_master_config_file());
+		return $config;
+	}
+
 	/* MYSQL stuff */
 	function weather_get_weather_info_table_name()
 	{
-		return $GLOBALS['mysql_databasetable'];
+		$cnf = mysql_config_get();
+		return $cnf['databasetable'];
 	}
 
 	function weather_do_mysql_query($query, $verbose = 0)
 	{
-		global $GLOBALS;
-		
+		$cnf = mysql_config_get();
+
+		$h   = $cnf['hostname'];
+		$dbn = $cnf['databasename'];
+		$dbt = $cnf['databasetable'];
+		$u   = $cnf['username'];
+		$p   = $cnf['password'];
+
 		$q = $query . ';';
 
-		$h = $GLOBALS['mysql_hostname'];
-		$u = $GLOBALS['mysql_username'];
-		$p = $GLOBALS['mysql_password'];
-		$d = $GLOBALS['mysql_databasename'];
-
-		$mysqli = new mysqli($h, $u, $p, $d);
-
-		if ($verbose)
+		if ($verbose > 0)
 		{
-			echo "MySQL $u@$h/$d => " . (($mysqli != null) ? "OK" : "NOK");
+			echo "<br>MySQL config for query ${u}@${h}/${dbn}.${dbt}";
+			echo "<br>MySQL query  $query";
+		}
+
+
+		$mysqli = new mysqli($h, $u, $p, $dbn);
+
+		if ($verbose > 0)
+		{
+			echo "<br>MySQL ${u}@${h}/${d} => " . (($mysqli != null) ? "OK" : "NOK");
 		}
 
 		// Check connection
@@ -45,10 +65,13 @@
 
 	function initialize_tables($config)
 	{
+		$cnf = mysql_config_get();
 		
-		$dbtable = $config['mysql']['$databasetable'];
+		var_dump($cnf);
+
+		$dbt = $cnf['databasetable'];
 		
-		$q_dbtable = "CREATE TABLE IF NOT EXISTS $dbtable ( stationid VARCHAR(250), stationname VARCHAR(250), latitude VARCHAR(250), longitude VARCHAR(250), airtempvalue VARCHAR(150), airtempunits VARCHAR(150),  windspeedvalue VARCHAR(150), windspeedunits VARCHAR(150),  winddirectionvalue VARCHAR(150), winddirectionunits VARCHAR(150),  gustspeedvalue VARCHAR(150), gustspeedunits VARCHAR(150),  relhumvalue VARCHAR(150), relhumunits VARCHAR(150),  dewpointvalue VARCHAR(150), dewpointunits VARCHAR(150),  precipitationamountvalue VARCHAR(150), precipitationamountunits VARCHAR(150),  precipitationintensityvalue VARCHAR(150), precipitationintensityunits VARCHAR(150),  snowdepthvalue VARCHAR(150), snowdepthunits VARCHAR(150),  pressurevalue VARCHAR(150), pressureunits VARCHAR(150),  horizvisibvalue VARCHAR(150), horizvisibunits VARCHAR(150),  cloudamountvalue VARCHAR(150), cloudamountunits VARCHAR(150), recordnro VARCHAR(150), recordts TIMESTAMP DEFAULT CURRENT_TIMESTAMP )";
+		$q_dbtable = "CREATE TABLE IF NOT EXISTS $dbt ( stationid VARCHAR(250), stationname VARCHAR(250), latitude VARCHAR(250), longitude VARCHAR(250), airtempvalue VARCHAR(150), airtempunits VARCHAR(150),  windspeedvalue VARCHAR(150), windspeedunits VARCHAR(150),  winddirectionvalue VARCHAR(150), winddirectionunits VARCHAR(150),  gustspeedvalue VARCHAR(150), gustspeedunits VARCHAR(150),  relhumvalue VARCHAR(150), relhumunits VARCHAR(150),  dewpointvalue VARCHAR(150), dewpointunits VARCHAR(150),  precipitationamountvalue VARCHAR(150), precipitationamountunits VARCHAR(150),  precipitationintensityvalue VARCHAR(150), precipitationintensityunits VARCHAR(150),  snowdepthvalue VARCHAR(150), snowdepthunits VARCHAR(150),  pressurevalue VARCHAR(150), pressureunits VARCHAR(150),  horizvisibvalue VARCHAR(150), horizvisibunits VARCHAR(150),  cloudamountvalue VARCHAR(150), cloudamountunits VARCHAR(150), recordnro VARCHAR(150), recordts TIMESTAMP DEFAULT CURRENT_TIMESTAMP )";
 
 		weather_do_mysql_query($q_dbtable, 1);
 		
