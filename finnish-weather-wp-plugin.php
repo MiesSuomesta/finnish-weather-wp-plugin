@@ -2,8 +2,8 @@
 	if (session_id() == '') { session_start(); }
 
 	/**
-	 * @package finnish-weather-wp-plugin$
-	 * @version 0.1.3
+	 * @package finnish-weather-wp-plugin
+	 * @version 0.1.4
 	 */
 	/*
 	Plugin Name: Finnish Weather WP Plugin
@@ -16,6 +16,7 @@
 
 	$FINWEATHER_PLUGIN_DIR = dirname( __FILE__ ) . "/";
 	$FINWEATHER_PLUGIN_URL = get_file_base_http_address();
+	$FINWEATHER_PLUGIN_MAIN_URL = get_file_base_http_address() . basename( __FILE__ );
 	$FINWEATHER_CONFIG_FILE = $FINWEATHER_PLUGIN_DIR . "finnish_weather_wp_plugin_config.json";
 	
 	function java_logger($txt)
@@ -125,8 +126,7 @@
 
 
 			// Now we set that function up to execute when the admin_notices action is called.
-			if ( function_exists('add_action') )
-				add_action( 'wp_head', 			'finnish_weather_wp_plugin_header' 		);
+			add_action( 'wp_head', 			'finnish_weather_wp_plugin_header' 		);
 
 			//add_action( 'wp_body',		'finnish_weather_wp_plugin_body' 		);
 
@@ -136,8 +136,7 @@
 			// add_action( 'admin_post',							'finweather_submit_func'	);
 			// add_action( 'admin_post_finweather_submit',			'finweather_submit_func'	);
 
-			if ( function_exists('add_shortcode') )
-				add_shortcode('finweather', 	'finnish_weather_wp_plugin_shortcode'	);
+			add_shortcode('finweather', 	'finnish_weather_wp_plugin_shortcode'	);
 		}
 	}
 

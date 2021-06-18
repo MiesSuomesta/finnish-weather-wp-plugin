@@ -2,7 +2,7 @@
  
 	$mysql_hostname         = "";
 	$mysql_databasename     = "";
-	$mysql_weatherinfotable = "";
+	$mysql_databasetable    = "";
 	$mysql_username         = "";
 	$mysql_password         = "";
 
@@ -35,7 +35,7 @@
 
 		global $mysql_hostname;
 		global $mysql_databasename;
-		global $mysql_infotable;
+		global $mysql_databasetable;
 		global $mysql_username;
 		global $mysql_password;
 		
@@ -58,7 +58,7 @@
 		
 			$mysql_hostname 		= $config['mysql']['$hostname'];
 			$mysql_databasename		= $config['mysql']['$databasename'];
-			$mysql_infotable		= $config['mysql']['$databasetable'];
+			$mysql_databasetable	= $config['mysql']['$databasetable'];
 			$mysql_username			= $config['mysql']['$username'];
 			$mysql_password			= $config['mysql']['$password'];
 
@@ -67,11 +67,12 @@
 		$h = $GLOBALS['mysql_hostname'];
 		$u = $GLOBALS['mysql_username'];
 		$p = $GLOBALS['mysql_password'];
-		$d = $GLOBALS['mysql_databasename'];
+		$dbn = $GLOBALS['mysql_databasename'];
+		$dbt = $GLOBALS['mysql_databasetable'];
 
 		if ($verbose)
 		{
-			echo "<br>Got MySQL config ${u}@${h}/${d}";
+			echo "<br>Got MySQL config ${u}@${h}/${dbn} . ${dbt}";
 		}
 		return $config;
 	}

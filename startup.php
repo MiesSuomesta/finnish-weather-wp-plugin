@@ -24,19 +24,20 @@
 	if (isset($_POST['submit']))
 	{
 		global $FINWEATHER_CONFIG_FILE;
-		echo "<br>Doing setup......";
-
-			$config['mysql']['$hostname'] 		= $_POST['hostname'];
-			$config['mysql']['$databasename'] 	= $_POST['databasename'];
-			$config['mysql']['$databasetable'] 	= $_POST['databasetable'];
-			$config['mysql']['$username'] 		= $_POST['username'];
-			$config['mysql']['$password'] 		= $_POST['password'];
-			create_db_config($FINWEATHER_CONFIG_FILE, $config, 1);
-			load_db_config($FINWEATHER_CONFIG_FILE);
-			initialize_tables($config);
-
-		echo "<br>Done setup......";
+		global $FINWEATHER_PLUGIN_MAIN_URL;
 		
+		$config['mysql']['$hostname'] 		= $_POST['hostname'];
+		$config['mysql']['$databasename'] 	= $_POST['databasename'];
+		$config['mysql']['$databasetable'] 	= $_POST['databasetable'];
+		$config['mysql']['$username'] 		= $_POST['username'];
+		$config['mysql']['$password'] 		= $_POST['password'];
+		create_db_config($FINWEATHER_CONFIG_FILE, $config, 1);
+		load_db_config($FINWEATHER_CONFIG_FILE);
+		initialize_tables($config);
+		
+		$locateto = $FINWEATHER_PLUGIN_MAIN_URL;
+		
+		header("location:$locateto");
 	}
 	
 ?> 
@@ -120,8 +121,24 @@
 	</center>
 	
 	<br>
-	<center>
-	<p>Setup database update process: <br> echo "<?php echo " 17   * * * *  sudo -u www-data -- python3 $FINWEATHER_PLUGIN_DIR/download_to_sql_fi.py ";?>" &gt;&gt; /etc/crontab</p>
-	</center>
+	<pre>
+	    Do theys:
+			Setup database update process:
+
+			  run as root:
+				 echo "<?php echo " 17   * * * *  sudo -u www-data -- python3 $FINWEATHER_PLUGIN_DIR/download_to_sql_fi.py ";?>" &gt;&gt; /etc/crontab</p>
+
+			Setup database MySQL table:
+			  CREATE USER "&lt;database username&gt;"@"%" identified by "&lt;password&gt";
+			  CREATE DATABASE &lt;database name&gt;
+			  CREATE TABLE &lt;database tablen name&gt;
+			  
+			  GRANT ALL PRIVILEGES ON &lt;databasename&gt;.* TO "&lt;database username&gt;"@"%";
+			  
+															OR
+															
+			  GRANT ALL PRIVILEGES ON &lt;databasename&gt;.&lt;database tablen name&gt TO "&lt;database username&gt;"@"%";
+	</pre>
 </html>
 
+ 

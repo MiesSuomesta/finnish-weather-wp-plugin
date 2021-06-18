@@ -3,7 +3,7 @@
 	/* MYSQL stuff */
 	function weather_get_weather_info_table_name()
 	{
-		return $GLOBALS['mysql_weatherinfotable'];
+		return $GLOBALS['mysql_databasetable'];
 	}
 
 	function weather_do_mysql_query($query, $verbose = 0)
