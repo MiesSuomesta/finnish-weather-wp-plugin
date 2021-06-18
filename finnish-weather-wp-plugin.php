@@ -10,7 +10,7 @@
 	Plugin URI: wordpress.org/plugins/finnish-weather-wp-plugin/
 	Description: Finnish weather information map plugin
 	Author: Lauri Jakku
-	Version: 0.1.4
+	Version: 1.0.0
 	Author URI: http://paxsudos.fi/
 	*/
 
@@ -76,7 +76,7 @@
 		$ret = null;
 		$fn = $FINWEATHER_PLUGIN_URL . "php/theMap.php";
 		ob_start();
-			echo "<iframe allowfullscreen='true' style='width:850px;height:730px;' src='$fn'/>";
+			echo "<iframe allowfullscreen='true' style='width:850px; height:730px;' src='$fn'/>";
 		$ret = ob_get_clean();
 		return $ret;
 	}

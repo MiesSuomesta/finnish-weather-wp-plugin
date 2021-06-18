@@ -3,23 +3,15 @@ import json, os, sys
 FILEPATH_SHOWN = False
 
 def config_get_config_file_path():
+	global FILEPATH_SHOWN
 
-	datafilename=".fmidb.json"
-	datasAt=""
-	if sys.platform == "win32":
-		HOME = "c:\\"
-		datasAt=HOME
-		datasAt = os.path.join(datasAt, "kauppalehti-notifier")
-		datasAt = os.path.join(datasAt, datafilename)
-	else:
-		HOME = os.getenv('HOME', None)
-		datasAt=HOME
+	datafilename="finnish_weather_wp_plugin_config.json"
+	datasAt=os.path.realpath(__file__)
 		datasAt = os.path.join(datasAt, datafilename)
 
-#	global FILEPATH_SHOWN
-#	if not FILEPATH_SHOWN:
-#		print("login datas at: {}".format(datasAt))
-#		FILEPATH_SHOWN=True
+	if not FILEPATH_SHOWN:
+		print("login datas at: {}".format(datasAt))
+		FILEPATH_SHOWN=True
 
 	return datasAt
 

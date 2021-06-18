@@ -4,9 +4,6 @@ import mysql.connector as MYCN
 from loginmanager import *
 import time
 
-# db initti:
-# create table saatieto ( stationid VARCHAR(250), stationname VARCHAR(250), latitude VARCHAR(250), longitude VARCHAR(250), airtempvalue VARCHAR(150), airtempunits VARCHAR(150),  windspeedvalue VARCHAR(150), windspeedunits VARCHAR(150),  winddirectionvalue VARCHAR(150), winddirectionunits VARCHAR(150),  gustspeedvalue VARCHAR(150), gustspeedunits VARCHAR(150),  relhumvalue VARCHAR(150), relhumunits VARCHAR(150),  dewpointvalue VARCHAR(150), dewpointunits VARCHAR(150),  precipitationamountvalue VARCHAR(150), precipitationamountunits VARCHAR(150),  precipitationintensityvalue VARCHAR(150), precipitationintensityunits VARCHAR(150), snowdepthvalue VARCHAR(150), snowdepthunits VARCHAR(150),  pressurevalue VARCHAR(150), pressureunits VARCHAR(150),  horizvisibvalue VARCHAR(150), horizvisibunits VARCHAR(150),  cloudamountvalue VARCHAR(150), cloudamountunits VARCHAR(150), recordnro VARCHAR(150), recordts TIMESTAMP DEFAULT CURRENT_TIMESTAMP );
-
 class MySQLBackend:
 
 	def __init__(self):
@@ -41,7 +38,7 @@ class MySQLBackend:
 
 			cursor = self.pre_mysql()
 
-			query = 'select * from {} where recordnro = {}'.format(self.login['weatherinfotable'], record)
+			query = 'select * from {} where recordnro = {}'.format(self.login['databasetable'], record)
 			
 			cursor.execute(query, ())
 			record = cursor.fetchall()
@@ -67,7 +64,7 @@ class MySQLBackend:
 
 		cursor = self.pre_mysql()
 
-		query = 'SELECT max(recordnro) FROM {};'.format(self.login['weatherinfotable'])
+		query = 'SELECT max(recordnro) FROM {};'.format(self.login['databasetable'])
 		cursor.execute(query, ())
 		record = cursor.fetchall()
 
@@ -123,7 +120,7 @@ class MySQLBackend:
 
 		cursor = self.pre_mysql(cursor)
 
-		query = 'select * from {}'.format(self.login['weatherinfotable'])
+		query = 'select * from {}'.format(self.login['databasetable'])
 		cursor.execute(query, ())
 		record = cursor.fetchall()
 
@@ -204,7 +201,7 @@ class MySQLBackend:
 			#print("Fields : {}\n".format(fields))
 			#print("Values : {}\n".format(values))
 
-			query_start = 'INSERT INTO {} '.format(self.login['weatherinfotable'])
+			query_start = 'INSERT INTO {} '.format(self.login['databasetable'])
 			query = query_start + "(" + fields + ') VALUES('+ values +');'
 
 			#print("Query  : " + query + "\n");
