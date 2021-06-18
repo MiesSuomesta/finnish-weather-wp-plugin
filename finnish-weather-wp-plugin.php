@@ -6,16 +6,18 @@
 	 * @version 0.1.3
 	 */
 	/*
-	Plugin Name: finnish_weather_wp_plugin
-	Plugin URI: http://paxsudos.fi/wp/finnish-weather-wp-plugin/
-	Description: weather information plugin, at alfa state
+	Plugin Name: Finnish Weather WP Plugin
+	Plugin URI: wordpress.org/plugins/finnish-weather-wp-plugin/
+	Description: Finnish weather information map plugin
 	Author: Lauri Jakku
 	Version: 0.1.4
 	Author URI: http://paxsudos.fi/
 	*/
 
 	$FINWEATHER_PLUGIN_DIR = dirname( __FILE__ ) . "/";
-
+	$FINWEATHER_PLUGIN_URL = get_file_base_http_address();
+	$FINWEATHER_CONFIG_FILE = $FINWEATHER_PLUGIN_DIR . "finnish_weather_wp_plugin_config.json";
+	
 	function java_logger($txt)
 	{
 		$js = '<script>console.log(' . $txt . ');</script>';
@@ -43,8 +45,6 @@
 		return $myret;
 	}
 
-	$FINWEATHER_PLUGIN_DIR = dirname( __FILE__ ) . "/";
-	$FINWEATHER_PLUGIN_URL = get_file_base_http_address();
 
 	function get_plugin_file_https_address($pf) {
 		global $FINWEATHER_PLUGIN_URL;
@@ -111,18 +111,37 @@
 		return $postjson; 
 	}
 
+	function startup()
+	{
+		global $FINWEATHER_CONFIG_FILE;
+		if (! file_exists($FINWEATHER_CONFIG_FILE) )
+		{
+			// Installation helper 
+			include_once("startup.php");
 
-	// Now we set that function up to execute when the admin_notices action is called.
-	add_action( 'wp_head', 			'finnish_weather_wp_plugin_header' 		);
-	//add_action( 'wp_body',		'finnish_weather_wp_plugin_body' 		);
+		} else {
 
-	// Add actions for form -----------------------------
-	// add_action( 'admin_post_nopriv',					'finweather_submit_func'	);
-	// add_action( 'admin_post_nopriv_finweather_submit',	'finweather_submit_func'	);
-	// add_action( 'admin_post',							'finweather_submit_func'	);
-	// add_action( 'admin_post_finweather_submit',			'finweather_submit_func'	);
+			load_db_config($FINWEATHER_CONFIG_FILE);
 
-	add_shortcode('finweather', 	'finnish_weather_wp_plugin_shortcode'	);
+
+			// Now we set that function up to execute when the admin_notices action is called.
+			if ( function_exists('add_action') )
+				add_action( 'wp_head', 			'finnish_weather_wp_plugin_header' 		);
+
+			//add_action( 'wp_body',		'finnish_weather_wp_plugin_body' 		);
+
+			// Add actions for form -----------------------------
+			// add_action( 'admin_post_nopriv',						'finweather_submit_func'	);
+			// add_action( 'admin_post_nopriv_finweather_submit',	'finweather_submit_func'	);
+			// add_action( 'admin_post',							'finweather_submit_func'	);
+			// add_action( 'admin_post_finweather_submit',			'finweather_submit_func'	);
+
+			if ( function_exists('add_shortcode') )
+				add_shortcode('finweather', 	'finnish_weather_wp_plugin_shortcode'	);
+		}
+	}
+
+	startup();
 
 ?> 
  

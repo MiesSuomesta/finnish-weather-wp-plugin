@@ -6,14 +6,23 @@
 		return $GLOBALS['mysql_weatherinfotable'];
 	}
 
-	function weather_do_mysql_query($query)
+	function weather_do_mysql_query($query, $verbose = 0)
 	{
+		global $GLOBALS;
+		
 		$q = $query . ';';
 
-		$mysqli = new mysqli(	$GLOBALS['mysql_hostname'],
-								$GLOBALS['mysql_username'],
-								$GLOBALS['mysql_password'],
-								$GLOBALS['mysql_databasename']);
+		$h = $GLOBALS['mysql_hostname'];
+		$u = $GLOBALS['mysql_username'];
+		$p = $GLOBALS['mysql_password'];
+		$d = $GLOBALS['mysql_databasename'];
+
+		$mysqli = new mysqli($h, $u, $p, $d);
+
+		if ($verbose)
+		{
+			echo "MySQL $u@$h/$d => " . (($mysqli != null) ? "OK" : "NOK");
+		}
 
 		// Check connection
 		if ($mysqli -> connect_errno) {
@@ -32,6 +41,18 @@
 
 //		print_r($result);
 		return $result;
+	}
+
+	function initialize_tables($config)
+	{
+		
+		$dbtable = $config['mysql']['$databasetable'];
+		
+		$q_dbtable = "CREATE TABLE IF NOT EXISTS $dbtable ( stationid VARCHAR(250), stationname VARCHAR(250), latitude VARCHAR(250), longitude VARCHAR(250), airtempvalue VARCHAR(150), airtempunits VARCHAR(150),  windspeedvalue VARCHAR(150), windspeedunits VARCHAR(150),  winddirectionvalue VARCHAR(150), winddirectionunits VARCHAR(150),  gustspeedvalue VARCHAR(150), gustspeedunits VARCHAR(150),  relhumvalue VARCHAR(150), relhumunits VARCHAR(150),  dewpointvalue VARCHAR(150), dewpointunits VARCHAR(150),  precipitationamountvalue VARCHAR(150), precipitationamountunits VARCHAR(150),  precipitationintensityvalue VARCHAR(150), precipitationintensityunits VARCHAR(150),  snowdepthvalue VARCHAR(150), snowdepthunits VARCHAR(150),  pressurevalue VARCHAR(150), pressureunits VARCHAR(150),  horizvisibvalue VARCHAR(150), horizvisibunits VARCHAR(150),  cloudamountvalue VARCHAR(150), cloudamountunits VARCHAR(150), recordnro VARCHAR(150), recordts TIMESTAMP DEFAULT CURRENT_TIMESTAMP )";
+
+		weather_do_mysql_query($q_dbtable, 1);
+		
+		
 	}
 
 	function weather_get_mysql_data_last_record_number()
