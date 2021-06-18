@@ -14,7 +14,7 @@
 	Author URI: http://paxsudos.fi/
 	*/
 
-	/* common details */
+	/* common details (database config name etc. ) */
 	require_once("master_include.inc");
 
 	function java_logger($txt)
