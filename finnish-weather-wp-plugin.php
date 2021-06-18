@@ -3,7 +3,7 @@
 
 	/**
 	 * @package finnish-weather-wp-plugin
-	 * @version 0.1.4
+	 * @version 1.0.0
 	 */
 	/*
 	Plugin Name: Finnish Weather WP Plugin
