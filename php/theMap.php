@@ -263,13 +263,13 @@
 												"Tuulen nopeus",	mkElementData(windspeed,windspeedunit),
 												"Tuulen suunta",	winddirimg);
 		
-		var suprise =  Math.floor(10 * Math.random());
+		var suprise =  Math.floor(1 * Math.random());
 		
 
 		if ( suprise == 1 )
 		{
 
-			suprisetxt = "<p color='red'>Yllätys!!!</p><br>30% ALE kupongilla FINWEATHER30<br>Kaupoille <a href='https://paxsudos.fi/'>Paxsudossiin</a>";
+			suprisetxt = "<p color='red'>Yllätys!!!</p><br>30% ALE kupongilla FINWEATHER30<br>Kaupoille <a href='https://paxsudos.fi/' target='_blank'>Paxsudossiin</a>";
 
 			var supriseHDRpaikkaTR    = createTag(out, "tr", null, null);
 			var supriseHDRpaikkaTD    = createTag(supriseHDRpaikkaTR,  "td", null, headertdattrs);
