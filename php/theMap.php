@@ -263,7 +263,7 @@
 												"Tuulen nopeus",	mkElementData(windspeed,windspeedunit),
 												"Tuulen suunta",	winddirimg);
 		
-		var suprise =  Math.floor(1 * Math.random());
+		var suprise =  Math.floor(10 * Math.random());
 		
 
 		if ( suprise == 1 )
