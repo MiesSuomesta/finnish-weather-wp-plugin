@@ -9,7 +9,7 @@
 	Version: 2.2
 	Plugin Name: Finnish Weather WP Plugin
 	Plugin URI: wordpress.org/plugins/finnish-weather-wp-plugin/
-	Description: Finnish weather information map plugin that is very lightwheight. Donate if you like: https://gofund.me/0403326f
+	Description: Finnish weather information map plugin that is very lightwheight. Donate if you like the plugin: https://gofund.me/0403326f
 	Author: Lauri Jakku
 	Author URI: https://paxsudos.fi/
 	*/
