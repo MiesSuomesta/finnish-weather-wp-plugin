@@ -269,7 +269,7 @@
 		if ( suprise == 1 )
 		{
 
-			suprisetxt = "<p color='red'>Yllätys!!!</p><br>30% ALE kupongilla FINWEATHER30<br>Kaupoille <href src='https://paxsudos.fi/'>Paxsudossiin</href>";
+			suprisetxt = "<p color='red'>Yllätys!!!</p><br>30% ALE kupongilla FINWEATHER30<br>Kaupoille <a href='https://paxsudos.fi/'>Paxsudossiin</a>";
 
 			var supriseHDRpaikkaTR    = createTag(out, "tr", null, null);
 			var supriseHDRpaikkaTD    = createTag(supriseHDRpaikkaTR,  "td", null, headertdattrs);
