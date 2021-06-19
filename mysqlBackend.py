@@ -8,7 +8,10 @@ class MySQLBackend:
 
 	def __init__(self):
 
-		self.login = config_get_data("fmidb")
+		self.login = config_get_data("mysql")
+
+		#print("login info", self.login )
+
 
 		self.mysql_conn = None
 

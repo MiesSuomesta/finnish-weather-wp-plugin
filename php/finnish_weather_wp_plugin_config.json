@@ -1,0 +1,9 @@
+{
+    "mysql": {
+        "hostname": "db",
+        "databasename": "fmidb",
+        "databasetable": "saatieto",
+        "username": "saajamppa",
+        "password": "fmidatasalasana12345"
+    }
+}

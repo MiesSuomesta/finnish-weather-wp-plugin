@@ -6,6 +6,8 @@
 
 <?php
 
+	require_once("master_include.inc");
+
 	require_once("referrer_allow.inc");
 	/* Referrer must be known */
 
@@ -181,7 +183,8 @@
 
 	async function generate_style_for_marker_bg(oElement, w, h)
 	{
-		var imageUrl = 'https://paxsudos.fi/~superbrick/finnish-weather-wp-plugin/php/generate_saatietotausta_image.php';
+		global $FINWEATHER_PLUGIN_URL;
+		var imageUrl = $FINWEATHER_PLUGIN_URL . '/php/generate_saatietotausta_image.php';
 
 		// console.log("generate_style_for_marker_bg Fetch from: ", imageUrl);
 
@@ -269,7 +272,7 @@
 		if ( suprise == 1 )
 		{
 
-			suprisetxt = "<p color='red'>Yllätys!!!</p><br>30% ALE kupongilla FINWEATHER30";
+			suprisetxt = "<p color='red'>Yllätys!!!</p><br>30% ALE kupongilla FINWEATHER30<br>Kaupoille <a href='https://paxsudos.fi/' target='_blank'>Paxsudossiin</a>";
 
 			var supriseHDRpaikkaTR    = createTag(out, "tr", null, null);
 			var supriseHDRpaikkaTD    = createTag(supriseHDRpaikkaTR,  "td", null, headertdattrs);
