@@ -7,10 +7,11 @@ tmp=/tmp/finnish-weather-wp-plugin
 	mkdir $tmp
 	cp -a * $tmp/
 	cd $tmp
+	$VERSION=$(grep Versio finnish-weather-wp-plugin.php | awk '{print $2 }')
 	rm -f __*
 	cd ..
-	rm -f finnish-weather-wp-plugin.zip
-	zip -r finnish-weather-wp-plugin.zip finnish-weather-wp-plugin
+	rm -f finnish-weather-wp-plugin.*.zip
+	zip -r finnish-weather-wp-plugin.$VERSION.zip finnish-weather-wp-plugin
 )
 
 echo $tmp.zip done.
