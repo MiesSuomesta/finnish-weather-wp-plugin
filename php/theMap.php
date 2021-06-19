@@ -183,7 +183,7 @@
 
 	async function generate_style_for_marker_bg(oElement, w, h)
 	{
-		var imageUrl = "<?php echo $FINWEATHER_PLUGIN_URL . '/php/generate_saatietotausta_image.php'; ?>";
+		var imageUrl = "<?php echo $FINWEATHER_PLUGIN_URL . '/generate_saatietotausta_image.php'; ?>";
 
 		console.log("generate_style_for_marker_bg Fetch from: ", imageUrl);
 
@@ -232,23 +232,19 @@
 
 
 		var textstyle = "color: #ddddFF;";
-		var bgstyle = "bgcolor: #204020;";
 
 		var tableattrs=	[
-							["bgcolor", bgstyle           ],
 							["width", popup_width + 'px'  ],
 							["height", popup_height + 'px'],
 							["onclick", 'close_popup();'  ],
 						];
 
 		var headertdattrs=	[
-								["bgcolor", bgstyle ],
 								["style", textstyle ],
 								["colspan", 5],
 							];
 
 		var valuetdattrs=	[
-								["bgcolor", bgstyle ],
 								["style", textstyle ],
 							];
 		

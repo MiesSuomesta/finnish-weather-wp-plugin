@@ -31,6 +31,9 @@ License: GPL-3.0
 
 
 == Changelog ==
+2.5
+     Rendering ok now
+
 2.4
      cleanups and init done better.
 
