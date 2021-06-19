@@ -32,7 +32,7 @@
 		$config['mysql']['username'] 		= $_POST['username'];
 		$config['mysql']['password'] 		= $_POST['password'];
 		
-		create_db_config($FINWEATHER_CONFIG_FILE, $config, 1);
+		create_db_config($FINWEATHER_CONFIG_FILE, $config, 0);
 		$cnf = load_db_config($FINWEATHER_CONFIG_FILE);
 		initialize_tables($cnf);
 		
