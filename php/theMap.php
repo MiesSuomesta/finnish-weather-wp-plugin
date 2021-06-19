@@ -183,10 +183,9 @@
 
 	async function generate_style_for_marker_bg(oElement, w, h)
 	{
-		global $FINWEATHER_PLUGIN_URL;
-		var imageUrl = $FINWEATHER_PLUGIN_URL . '/php/generate_saatietotausta_image.php';
+		var imageUrl = "<?php echo $FINWEATHER_PLUGIN_URL . '/php/generate_saatietotausta_image.php'; ?>";
 
-		// console.log("generate_style_for_marker_bg Fetch from: ", imageUrl);
+		console.log("generate_style_for_marker_bg Fetch from: ", imageUrl);
 
 		const resp = await fetch(imageUrl);
 
