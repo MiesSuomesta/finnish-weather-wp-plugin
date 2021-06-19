@@ -2,7 +2,7 @@
 Tags: sää,weather,suomi,finland,map
 License: GPL-3.0
 
- Finnish weather information map plugin that is very lightwheight
+ Finnish weather information map plugin that is very lightwheight. Donate if you like the plugin: https://gofund.me/0403326f
 
 == Installation ==
   Setup database MySQL table:
@@ -27,6 +27,9 @@ License: GPL-3.0
 
 
 == Changelog ==
+2.2
+     Donation link set up.
+
 2.1
      Documented better the installation process.
 
