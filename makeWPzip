@@ -1,0 +1,16 @@
+#!/bin/sh
+
+tmp=/tmp/finnish-weather-wp-plugin
+
+(
+	rm -rf $tmp
+	mkdir $tmp
+	cp -a * $tmp/
+	cd $tmp
+	rm -f __*
+	cd ..
+	rm -f finnish-weather-wp-plugin.zip
+	zip -r finnish-weather-wp-plugin.zip finnish-weather-wp-plugin
+)
+
+echo $tmp.zip done.
