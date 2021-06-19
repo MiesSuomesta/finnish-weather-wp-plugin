@@ -6,6 +6,8 @@
 
 <?php
 
+	require_once("master_include.inc");
+
 	require_once("referrer_allow.inc");
 	/* Referrer must be known */
 
@@ -181,9 +183,9 @@
 
 	async function generate_style_for_marker_bg(oElement, w, h)
 	{
-		var imageUrl = 'https://paxsudos.fi/~superbrick/finnish-weather-wp-plugin/php/generate_saatietotausta_image.php';
+		var imageUrl = "<?php echo $FINWEATHER_PLUGIN_URL . '/php/generate_saatietotausta_image.php'; ?>";
 
-		// console.log("generate_style_for_marker_bg Fetch from: ", imageUrl);
+		console.log("generate_style_for_marker_bg Fetch from: ", imageUrl);
 
 		const resp = await fetch(imageUrl);
 
@@ -229,21 +231,25 @@
 		var popup_height = 220;
 
 
-		var textstyle = "color: #ddddFF;"
+		var textstyle = "color: #ddddFF;";
+		var bgstyle = "bgcolor: #204020;";
 
 		var tableattrs=	[
-							["width", popup_width + 'px'],
+							["bgcolor", bgstyle           ],
+							["width", popup_width + 'px'  ],
 							["height", popup_height + 'px'],
-							["onclick", 'close_popup();']
+							["onclick", 'close_popup();'  ],
 						];
 
 		var headertdattrs=	[
+								["bgcolor", bgstyle ],
 								["style", textstyle ],
-								["colspan", 5]
+								["colspan", 5],
 							];
 
 		var valuetdattrs=	[
-								["style", textstyle ]
+								["bgcolor", bgstyle ],
+								["style", textstyle ],
 							];
 		
 		var out=createTag(null, "table", null, tableattrs);
@@ -269,7 +275,7 @@
 		if ( suprise == 1 )
 		{
 
-			suprisetxt = "<p color='red'>Yllätys!!!</p><br>30% ALE kupongilla FINWEATHER30";
+			suprisetxt = "<p color='red'>Yllätys!!!</p><br>30% ALE kupongilla FINWEATHER30<br>Kaupoille <a href='https://paxsudos.fi/' target='_blank'>Paxsudossiin</a>";
 
 			var supriseHDRpaikkaTR    = createTag(out, "tr", null, null);
 			var supriseHDRpaikkaTD    = createTag(supriseHDRpaikkaTR,  "td", null, headertdattrs);
