@@ -1,4 +1,4 @@
-<?php
+q<?php
 
 	/* common details */
 	require_once("master_include.inc");
