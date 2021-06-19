@@ -6,8 +6,9 @@ def config_get_config_file_path():
 	global FILEPATH_SHOWN
 
 	datafilename="finnish_weather_wp_plugin_config.json"
-	datasAt=os.path.realpath(__file__)
-		datasAt = os.path.join(datasAt, datafilename)
+	datasAt=os.path.dirname(os.path.realpath(__file__))
+	datasAt = os.path.join(datasAt, "php")
+	datasAt = os.path.join(datasAt, datafilename)
 
 	if not FILEPATH_SHOWN:
 		print("login datas at: {}".format(datasAt))
@@ -30,7 +31,7 @@ def config_get_data(mainUse):
 		traceback.print_exc(file=sys.stdout)
 
 
-#	print("Login data: {} ".format(data))
+	#print("Login data: {} ".format(data))
 	return data
 
 

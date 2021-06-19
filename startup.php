@@ -16,35 +16,34 @@
 		$FINWEATHER_CONFIG_FILE = $FINWEATHER_PLUGIN_DIR . "finnish_weather_wp_plugin_config.json";
 
 	/* Login details */
-	require_once ($FINWEATHER_PLUGIN_DIR . "php/login.inc");
+	require_once ("php/login.inc");
 
 	/* MYSQL stuff */
-	require_once ($FINWEATHER_PLUGIN_DIR . "php/mysql.inc");
+	require_once ("php/mysql.inc");
 	
 	if (isset($_POST['submit']))
 	{
-		global $FINWEATHER_CONFIG_FILE;
-		global $FINWEATHER_PLUGIN_MAIN_URL;
-		
+
 		$config['mysql']['hostname'] 		= $_POST['hostname'];
 		$config['mysql']['databasename'] 	= $_POST['databasename'];
 		$config['mysql']['databasetable'] 	= $_POST['databasetable'];
 		$config['mysql']['username'] 		= $_POST['username'];
 		$config['mysql']['password'] 		= $_POST['password'];
 		
-		create_db_config($FINWEATHER_CONFIG_FILE, $config, 1);
+		create_db_config($FINWEATHER_CONFIG_FILE, $config, 0);
 		$cnf = load_db_config($FINWEATHER_CONFIG_FILE);
 		initialize_tables($cnf);
 		
 		$locateto = $FINWEATHER_PLUGIN_MAIN_URL;
 		
 		header("location:$locateto");
+		exit();
 	}
 	
 ?> 
 <html>
 	<center>
-		<form action="#" method="post">
+		<form action="" method="post">
 		<table>
 			<tr clospan="3">
 				<td clospan="3">

@@ -1,9 +1,7 @@
 <?php
 
 	/* common details */
-	$master_inc_path = dirname(__DIR__);
-	require_once($master_inc_path . "/master_include.inc");
-
+	require_once("master_include.inc");
 
 	function mysql_config_get()
 	{
@@ -73,7 +71,7 @@
 		
 		$q_dbtable = "CREATE TABLE IF NOT EXISTS $dbt ( stationid VARCHAR(250), stationname VARCHAR(250), latitude VARCHAR(250), longitude VARCHAR(250), airtempvalue VARCHAR(150), airtempunits VARCHAR(150),  windspeedvalue VARCHAR(150), windspeedunits VARCHAR(150),  winddirectionvalue VARCHAR(150), winddirectionunits VARCHAR(150),  gustspeedvalue VARCHAR(150), gustspeedunits VARCHAR(150),  relhumvalue VARCHAR(150), relhumunits VARCHAR(150),  dewpointvalue VARCHAR(150), dewpointunits VARCHAR(150),  precipitationamountvalue VARCHAR(150), precipitationamountunits VARCHAR(150),  precipitationintensityvalue VARCHAR(150), precipitationintensityunits VARCHAR(150),  snowdepthvalue VARCHAR(150), snowdepthunits VARCHAR(150),  pressurevalue VARCHAR(150), pressureunits VARCHAR(150),  horizvisibvalue VARCHAR(150), horizvisibunits VARCHAR(150),  cloudamountvalue VARCHAR(150), cloudamountunits VARCHAR(150), recordnro VARCHAR(150), recordts TIMESTAMP DEFAULT CURRENT_TIMESTAMP )";
 
-		weather_do_mysql_query($q_dbtable, 1);
+		weather_do_mysql_query($q_dbtable, 0);
 		
 		
 	}

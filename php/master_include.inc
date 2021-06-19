@@ -12,7 +12,7 @@
 		return $FINWEATHER_CONFIG_FILE;
 	}
 	
-		function get_file_base_http_address() {
+	function get_file_base_http_address() {
 		global $FINWEATHER_PLUGIN_DIR;
 
 		$mydroot=$_SERVER['DOCUMENT_ROOT'];
@@ -21,12 +21,12 @@
 
 		$mydocstr = str_replace($mydroot, "https://$myservername/", $FINWEATHER_PLUGIN_DIR);
 
-/*
+	/*
 		java_logger("FINWEATHER_PLUGIN_DIR = $FINWEATHER_PLUGIN_DIR"); echo "\n";
 		java_logger("mydroot = $mydroot"); echo "\n";
 		java_logger("myservername = $myservername"); echo "\n";
 		java_logger("mydocstr = $mydocstr"); echo "\n";
-*/
+	*/
 
 		$myret = $mydocstr;
 

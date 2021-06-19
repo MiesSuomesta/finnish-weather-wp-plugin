@@ -3,19 +3,19 @@
 
 	/**
 	 * @package finnish-weather-wp-plugin
-	 * @version 2.0
+	 * @version 2.3
 	 */
 	/*
 	Plugin Name: Finnish Weather WP Plugin
 	Plugin URI: wordpress.org/plugins/finnish-weather-wp-plugin/
-	Description: Finnish weather information map plugin that is very lightwheight
+	Description: Finnish weather information map plugin that is very lightwheight. Donate if you like the plugin: https://gofund.me/0403326f
 	Author: Lauri Jakku
-	Version: 2.0
+	Version: 2.3
 	Author URI: http://paxsudos.fi/
 	*/
 
 	/* common details (database config name etc. ) */
-	require_once("master_include.inc");
+	require_once("php/master_include.inc");
 
 	function java_logger($txt)
 	{
@@ -27,24 +27,15 @@
 
 	function get_plugin_file_https_address($pf) {
 		global $FINWEATHER_PLUGIN_URL;
-
-/*
-		java_logger("FINWEATHER_PLUGIN_DIR = $FINWEATHER_PLUGIN_DIR"); echo "\n";
-		java_logger("mydroot = $mydroot"); echo "\n";
-		java_logger("myservername = $myservername"); echo "\n";
-		java_logger("mydocstr = $mydocstr"); echo "\n";
-*/
-
 		$myret = $FINWEATHER_PLUGIN_URL . "/" . $pf;
-
 		return $myret;
 	}
 
 	/* Login details */
-	require_once ($FINWEATHER_PLUGIN_DIR . "php/login.inc");
+	require_once ("php/login.inc");
 
 	/* MYSQL stuff */
-	require_once ($FINWEATHER_PLUGIN_DIR . "php/mysql.inc");
+	require_once ("php/mysql.inc");
 
 
 	function evaluate_file($f, $ft="text/javascript")
@@ -74,7 +65,7 @@
 		global $FINWEATHER_PLUGIN_URL;
 
 		$ret = null;
-		$fn = $FINWEATHER_PLUGIN_URL . "php/theMap.php";
+		$fn = $FINWEATHER_PLUGIN_URL . "/theMap.php";
 		ob_start();
 			echo "<iframe allowfullscreen='true' style='width:850px; height:730px;' src='$fn'/>";
 		$ret = ob_get_clean();

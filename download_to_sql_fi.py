@@ -1,8 +1,7 @@
 import os
-import gmaps
 import datetime as dt
 from pprint import pprint as pp
-from mysqlBackend import * 
+from mysqlBackend import *
 
 from fmiopendata.wfs import download_stored_query
 import saatietue
@@ -41,37 +40,6 @@ loc2name = obs._location2name
 name2data = parse_name_data(obs.data)
 
 #pp(name2data)
-
-
-def plot(fig, latlon, info, zoom=10, map_type='ROADMAP'):
-    information_box_template = """
-<table>
-    <tr>
-        <td colspan="3">{name}</td>
-    </tr>
-    <tr>
-        <td>{temp} C</td>
-        <td>;nbsp&</td>
-        <td>{windSpeed} m/s ({windDirection} deg)</td>
-    </tr>
-    <tr>
-        <td><img src="{tempUrl}" /></td>
-        <td>;nbsp&</td>
-        <td><img src="{windDirectionUrl}" /></td>
-    </tr>
-</table>
-"""
-    marker_info = information_box_template.format(**info)
-
-    loc = [ info['location'], ]
-
-#    pp(loc)
-
-    marker_layer = gmaps.marker_layer(loc, info_box_content=marker_info)
-
-    fig.add_layer(marker_layer)
-
-gmaps.configure(api_key=os.environ["GMAPS_API_KEY"])
 
 sql = MySQLBackend()
 
