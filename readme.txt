@@ -5,22 +5,30 @@ License: GPL-3.0
  Finnish weather information map plugin that is very lightwheight
 
 == Installation ==
-run as root:
-     echo "<?php echo " 17   * * * *  sudo -u www-data -- python3 /download_to_sql_fi.py ";?>" >> /etc/crontab
+  Setup database MySQL table:
+     CREATE USER "exampleuser"@"%" identified by "example password";
+     CREATE DATABASE databasename
+     CREATE TABLE databasetable
 
- Setup database MySQL table:
-       CREATE USER ""@"%" identified by "";
-       CREATE DATABASE 
-       CREATE TABLE 
+     GRANT ALL PRIVILEGES ON databasename.* TO ""exampleuser""@"%";
 
-        GRANT ALL PRIVILEGES ON .* TO ";"@"%";
+                                    OR
 
-                                                                                       OR
+     GRANT ALL PRIVILEGES ON databasename.databasetable TO ""exampleuser""@"%";
 
-        GRANT ALL PRIVILEGES ON . TO ";"@"%";
+  run as www-data:
+     mkdir -p ~/bin/
+     cp download_to_sql_fi.py ~/bin/
+
+  run as root:
+     # setup cron to run every 20min the backend database update
+     echo " 0,20 * * * *  sudo -u www-data -- python3 /var/www/bin/download_to_sql_fi.py" >> /etc/crontab
 
 
 
 == Changelog ==
+2.1
+     Documented better the installation process.
+
 2.0
      Initial public version.
