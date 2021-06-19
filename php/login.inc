@@ -1,9 +1,7 @@
 <?php
 
 	/* common details */
-	$master_inc_path = dirname(__DIR__);
-	require_once($master_inc_path . "/master_include.inc");
-
+	require_once("master_include.inc");
 
 	function create_db_config($fname, $config, $verbose = 0)
 	{
