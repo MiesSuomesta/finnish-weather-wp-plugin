@@ -15,7 +15,7 @@
 	*/
 
 	/* common details (database config name etc. ) */
-	require_once("master_include.inc");
+	require_once("php/master_include.inc");
 
 	function java_logger($txt)
 	{
@@ -23,28 +23,11 @@
 		echo $js;
 	}
 
-
-
-	function get_plugin_file_https_address($pf) {
-		global $FINWEATHER_PLUGIN_URL;
-
-/*
-		java_logger("FINWEATHER_PLUGIN_DIR = $FINWEATHER_PLUGIN_DIR"); echo "\n";
-		java_logger("mydroot = $mydroot"); echo "\n";
-		java_logger("myservername = $myservername"); echo "\n";
-		java_logger("mydocstr = $mydocstr"); echo "\n";
-*/
-
-		$myret = $FINWEATHER_PLUGIN_URL . "/" . $pf;
-
-		return $myret;
-	}
-
 	/* Login details */
-	require_once ($FINWEATHER_PLUGIN_DIR . "php/login.inc");
+	require_once ("php/login.inc");
 
 	/* MYSQL stuff */
-	require_once ($FINWEATHER_PLUGIN_DIR . "php/mysql.inc");
+	require_once ("php/mysql.inc");
 
 
 	function evaluate_file($f, $ft="text/javascript")

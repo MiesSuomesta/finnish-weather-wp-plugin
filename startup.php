@@ -1,6 +1,7 @@
 
 <?php
 	if (session_id() == '') { session_start(); }
+
 ?>
 
 <html>
@@ -16,10 +17,10 @@
 		$FINWEATHER_CONFIG_FILE = $FINWEATHER_PLUGIN_DIR . "finnish_weather_wp_plugin_config.json";
 
 	/* Login details */
-	require_once ($FINWEATHER_PLUGIN_DIR . "php/login.inc");
+	require_once ("php/login.inc");
 
 	/* MYSQL stuff */
-	require_once ($FINWEATHER_PLUGIN_DIR . "php/mysql.inc");
+	require_once ("php/mysql.inc");
 	
 	if (isset($_POST['submit']))
 	{
