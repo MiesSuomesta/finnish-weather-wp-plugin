@@ -9,6 +9,7 @@
 			$rv = $rm;
 	}
 
+	/* Update with your site/allowed referrers */
 	$allowed_referrers = [ "paxsudos.fi", "paxsudos.com", "192.168." ];
 
 	$referrer = $_SERVER['HTTP_REFERER'];
@@ -17,6 +18,7 @@
 	$ref = getRemoteStr($referrer, $remote);
 
 	$cont = False;
+	$cont = True; // Allow by default if no modifications are done
 	foreach ($allowed_referrers as $allowed) {
 	
 		$is= strpos($ref, $allowed);
