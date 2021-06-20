@@ -86,7 +86,7 @@ $timeperframe = $config['timeperframe'];
 $fade = $config['fade'];
 $frames = $config['frames'];
 
-var_title_dump("loop", $loop);
+var_title_dump("loopcount", $loopcount);
 var_title_dump("width", $width);
 var_title_dump("height", $height);
 var_title_dump("barstaticheight", $barstaticheight);
