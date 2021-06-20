@@ -53,20 +53,19 @@
 
 	}
 
-	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_body()
 	{
 		evaluate_file("php/body.php", "text/html"); 
+		the_content();
 	}
 
-	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_shortcode()
 	{
 		global $FINWEATHER_PLUGIN_URL;
 
 		$ret = null;
 		$fn = $FINWEATHER_PLUGIN_URL . "/theMap.php";
-		$ret = "<iframe allowfullscreen='true' style='width:850px; height:730px;' src='$fn'/>";
+		$ret = "<iframe allowfullscreen='true' style='width:850px; height:730px;' src='$fn'></iframe>";
 		//echo $ret;
 		return $ret;
 	}
