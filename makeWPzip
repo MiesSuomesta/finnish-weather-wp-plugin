@@ -9,6 +9,9 @@ tmp=/tmp/finnish-weather-wp-plugin
 	cd $tmp
 	VERSION=$(grep Versio finnish-weather-wp-plugin.php | awk '{print $2 }')
 	rm -f __*
+	cd php
+	rm -f finnish_*.json
+	cd ..
 	cd ..
 	rm -f finnish-weather-wp-plugin.*.zip
 	zip -r finnish-weather-wp-plugin.$VERSION.zip finnish-weather-wp-plugin
