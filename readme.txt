@@ -31,6 +31,9 @@ License: GPL-3.0
 
 
 == Changelog ==
+2.6
+     rain volume and cloudiness added.
+
 2.5
      Rendering ok now
 

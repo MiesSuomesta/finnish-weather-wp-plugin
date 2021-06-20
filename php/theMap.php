@@ -201,10 +201,24 @@
 
 	function mkElementData(v,u)
 	{
+
+		if (v == 'nan')
+			return "Nada";
+		
 		if (u == 'degC')
 			u = '°C';
 		
 		return v + " " + u;
+		
+	}
+	
+	function mkElementDataClouds(v)
+	{
+		
+	}
+	
+	function mkElementDataRain(v) {
+		
 		
 	}
 
@@ -212,20 +226,60 @@
 	{
 		
 		// console.log("makeMarkerContent: ", jObj);
-		var location 	= jObj[1];
+		var stationid							= jObj[0 ];
+		var stationname							= jObj[1 ];
+		var latitude							= jObj[2 ];
+		var longitude							= jObj[3 ];
+		var airtemp								= jObj[4 ];
+		var airtempunit							= jObj[5 ];
+		var windspeed							= jObj[6 ];
+		var windspeedunit						= jObj[7 ];
+		var winddirection						= jObj[8 ];
+		var winddirectionunit					= jObj[9 ];
+		var gustspeed							= jObj[10];
+		var gustspeedunit						= jObj[11];
+		var relhumval							= jObj[12];
+		var relhumvalunit						= jObj[13];
+		var dewpoint							= jObj[14];
+		var dewpointunit						= jObj[15];
+		var precipitationamount					= jObj[16];
+		var precipitationamountunit				= jObj[17];
+		var precipitationintensity				= jObj[18];
+		var precipitationintensityunit			= jObj[19];
+		var snowdepth							= jObj[20];
+		var snowdepthunit						= jObj[21];
+		var pressure							= jObj[22];
+		var pressureunit						= jObj[23];
+		var horizvisib							= jObj[24];
+		var horizvisibunit						= jObj[25];
+		var cloudamount							= jObj[26];
+		var cloudamountunit						= jObj[27];
+		var recordnro							= jObj[28];
+		var recordts							= jObj[29];
+		var winddirimg							= atob(jObj[30]);
 
-		var airtemp 		= jObj[4];
-		var airtempunit		= jObj[5];
-		var windspeed 		= jObj[6];
-		var windspeedunit 	= jObj[7];
-		var winddir 		= jObj[8];
+		var location 	= stationname;
 
-		var gustspeed 		= jObj[10];
-		var relhumval		= jObj[12];
-		var relhumvalunit	= jObj[13];
-		var winddirimg		= atob(jObj[30]);
+		 console.log("locat: ", location, "airtemp: ", airtemp, "windspeed: ", windspeed, "gustspeed: ", gustspeed, "cloudamount:", cloudamount);
+		 console.log("cloudamount:", cloudamount);
+		 console.log("cloudamountunit:", cloudamountunit);
 
-		// console.log("locat: ", location, "airtemp: ", airtemp, "windspeed: ", windspeed, "winddir: ", winddir, "gustspeed: ", gustspeed);
+		 console.log("snowdepth:", snowdepth);
+		 console.log("snowdepthunit:", snowdepthunit);
+
+		 console.log("horizvisib:", horizvisib);
+		 console.log("horizvisibunit:", horizvisibunit);
+
+precipitationamount
+
+		 console.log("pressure:", pressure);
+		 console.log("pressureunit:", pressureunit);
+
+		 console.log("precipitationamount:", precipitationamount);
+		 console.log("precipitationamountunit:", precipitationamountunit);
+
+		 console.log("precipitationintensity:", precipitationintensity);
+		 console.log("precipitationintensityunit:", precipitationintensityunit);
 
 		var popup_width = 180;
 		var popup_height = 220;
@@ -264,6 +318,10 @@
 		var outHDRarvotHTMLwind = makeTRSet(out, valuetdattrs,
 												"Tuulen nopeus",	mkElementData(windspeed,windspeedunit),
 												"Tuulen suunta",	winddirimg);
+
+		var outHDRarvotHTMLpilvisyysJasademäärä = makeTRSet(out, valuetdattrs,
+												"Pilvisyys",	mkElementData(cloudamount,cloudamountunit),
+												"Sademäärä",	mkElementData(precipitationamount, precipitationamountunit));
 		
 		var suprise =  Math.floor(10 * Math.random());
 		
@@ -383,7 +441,7 @@
 												return f;
 											}
 										);
-/*			
+			
 					// console.log("singleclick start -----------------------------------------");
 					// console.log("cname : ", cname);
 					// console.log("over  : ", over);
@@ -391,7 +449,6 @@
 					// console.log("feats : ", feats);
 					// console.log("pixel : ", event.pixel);
 					// console.log("coords: ", event.coordinate);
-*/
 					var rv = true;
 
 					if (feats)
@@ -404,14 +461,13 @@
 						var jObj 	= feats.get("json");
 						var nToO    = myMap.get("nameToOverlay");
 						var over    = nToO[name];
-/*
+
 						// console.log("name:", 		name);
 						// console.log("json:", 		jObj);
 						// console.log("over:", 		overlay);
 						// console.log("cont ID:", 	content.id);
 						// console.log("cont:", 		content);
-*/						
-						
+
 						htmlcontent = makeMarkerContent(jObj);
 
 						content.innerHTML = "";
