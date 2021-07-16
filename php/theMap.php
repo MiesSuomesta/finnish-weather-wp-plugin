@@ -225,27 +225,27 @@
 	function makeMarkerContent(jObj)
 	{
 		
-		// console.log("makeMarkerContent: ", jObj);
+		console.log("makeMarkerContent: ", jObj);
 		var stationid							= jObj[0 ];
 		var stationname							= jObj[1 ];
 		var latitude							= jObj[2 ];
 		var longitude							= jObj[3 ];
-		var airtemp								= jObj[4 ];
+		var airtemp							= jObj[4 ];
 		var airtempunit							= jObj[5 ];
 		var windspeed							= jObj[6 ];
 		var windspeedunit						= jObj[7 ];
 		var winddirection						= jObj[8 ];
-		var winddirectionunit					= jObj[9 ];
+		var winddirectionunit						= jObj[9 ];
 		var gustspeed							= jObj[10];
 		var gustspeedunit						= jObj[11];
 		var relhumval							= jObj[12];
 		var relhumvalunit						= jObj[13];
 		var dewpoint							= jObj[14];
 		var dewpointunit						= jObj[15];
-		var precipitationamount					= jObj[16];
-		var precipitationamountunit				= jObj[17];
-		var precipitationintensity				= jObj[18];
-		var precipitationintensityunit			= jObj[19];
+		var precipitationamount						= jObj[16];
+		var precipitationamountunit					= jObj[17];
+		var precipitationintensity					= jObj[18];
+		var precipitationintensityunit					= jObj[19];
 		var snowdepth							= jObj[20];
 		var snowdepthunit						= jObj[21];
 		var pressure							= jObj[22];

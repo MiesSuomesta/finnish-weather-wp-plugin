@@ -89,6 +89,8 @@
 
 	function makeMarkerContent(jObj)
 	{
+
+
 		var location 	= jObj[1];
 
 		var airtemp 	= jObj[4];
@@ -97,6 +99,8 @@
 
 		var gustspeed 	= jObj[6];
 		var relhumval	= jObj[12];
+
+		console.log("FOO: ", jObj);
 
 		console.log("locat: ", location, "airtemp: ", airtemp, "windspeed: ", windspeed, "winddir: ", winddir, "gustspeed: ", gustspeed);
 		var tableattrs=	[
