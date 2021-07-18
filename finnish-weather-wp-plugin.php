@@ -1,11 +1,11 @@
 <?php
-	if (session_id() == '') { session_start(); }
 
 /*
 	Plugin Name: Finnish Weather
 	Plugin URI: wordpress.org/plugins/finnish-weather/
 	Description: Finnish weather information map plugin that is very lightwheight. Donate if you like the plugin: https://gofund.me/0403326f
-	Version: 2.6.0
+	Version: 2.6.1
+	Stable version: 2.6.1
 	Tested up to: 5.7.2
 	Author: Lauri Jakku
 	Author URI: http://paxsudos.fi/
@@ -13,14 +13,6 @@
 
 	/* common details (database config name etc. ) */
 	require_once("php/master_include.inc");
-
-	function java_logger($txt)
-	{
-		$js = ' ?><script>console.log(' . $txt . ');</script><?php ';
-		echo $js;
-	}
-
-
 
 	function get_plugin_file_https_address($pf) {
 		global $FINWEATHER_PLUGIN_URL;
@@ -35,25 +27,13 @@
 	require_once ("php/mysql.inc");
 
 
-	function evaluate_file($f, $ft="text/javascript")
-	{
-		global $FINWEATHER_PLUGIN_URL;
-		
-		echo '<script src="' . $FINWEATHER_PLUGIN_URL . $f . '" type="' . $ft . '"></script>';
-	}
-
 	// This just echoes the chosen line, we'll position it later.
 	function finnish_weather_wp_plugin_header()
 	{
-
-		evaluate_file("php/header.php", "text/html"); 
-
 	}
 
 	function finnish_weather_wp_plugin_body()
 	{
-		evaluate_file("php/body.php", "text/html"); 
-		the_content();
 	}
 
 	function finnish_weather_wp_plugin_shortcode()
@@ -63,16 +43,39 @@
 		$ret = null;
 		$fn = $FINWEATHER_PLUGIN_URL . "/theMap.php";
 		$ret = "<iframe allowfullscreen='true' style='width:850px; height:730px;' src='$fn'></iframe>";
-		//echo $ret;
 		return $ret;
+	}
+
+	function finweather_validate_submission($pPostArray)
+	{
+		$rv = false;
+		
+		if ( is_array($pPostArray) )
+		{
+			$arrv = true;
+			$idx = len($pPostArray);
+			while ( $idx > 0 )
+			{
+				$inx--;
+				$arrv &= is_integer($pPostArray[$idx]);
+			}
+
+			$rv = $arrv;
+		}
+
+		return $rv;
 	}
 
 	function finweather_submit_func()
 	{
+		// Validate here
+		if ( ! finweather_validate_submission($_POST['stations']) )
+			return False;
+		
 		$post = $_POST['stations'];
 		$postjson = json_encode($post);
 		
-		echo "SUBMIT FUNC POST: '$postjson' \n";
+		//echo "SUBMIT FUNC POST: '$postjson' \n";
 		return $postjson; 
 	}
 

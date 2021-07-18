@@ -1,11 +1,32 @@
 <html>
-	<head>
-	<link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
-	<script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
-	</head>
+       <head>
+			<link rel="stylesheet" href="https://openlayers.org/en/v4.6.5/css/ol.css" type="text/css">
+			<script src="https://openlayers.org/en/v4.6.5/build/ol.js" type="text/javascript"></script>
+       </head>
 
 <?php
+/*
+	This does not work for some reason ... and the map is not rendering at all with this.
+	
+	function finnish_weather_load_src_script($n, $src)
+	{
+		wp_register_script($n, $src);
+		wp_enqueue_script($n);
+	}
 
+	function finnish_weather_load_src_style($n, $src)
+	{
+		wp_register_style($n, $src);
+		wp_enqueue_style($n);
+	}
+
+	finnish_weather_load_src_script("finnish_weather_openlayers_ol_script",
+									"https://openlayers.org/en/v4.6.5/build/ol.js");
+									
+	finnish_weather_load_src_style ("finnish_weather_openlayers_ol_style",
+									"https://openlayers.org/en/v4.6.5/css/ol.css");
+	
+*/
 	require_once("master_include.inc");
 
 	require_once("referrer_allow.inc");
@@ -73,8 +94,6 @@
 	function generate_station_selectiors($stations) {
 		$FID = 0;
 		$htmlEndln = "<br>\n";
-		$htmlVarS = '<?php $_POST[\'';
-		$htmlVarE = '\'] = ';
 		
 		foreach ($stations as $stationi) {
 			$station = $stationi[1];
@@ -87,6 +106,8 @@
 		}
 	}
 ?>
+
+<html>
 
 <script type="text/javascript">
 	let myMap;
@@ -107,10 +128,15 @@
 	function escapeHtml(usstr)
 	{
 		rvstr = usstr;
-		
+
 		if (typeof(rvstr) == "string" )
-			rvstr.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
-		
+				rvstr.replace(/&/g, "&amp;")
+					 .replace(/</g, "&lt;")
+					 .replace(/>/g, "&gt;")
+					 .replace(/"/g, "&quot;")
+					 .replace(/'/g, "&#039;");
+//					 .replace(/ /g, "&nbsp;");
+					 
 		return rvstr;
 	}
 
@@ -132,7 +158,7 @@
 		}
 		
 		if (pHtml != null) {
-			html.innerHTML = pHtml;
+			html.innerHTML = escapeHtml(pHtml);
 		}
 		
 		var out = html;
@@ -226,26 +252,26 @@
 	{
 		
 		console.log("makeMarkerContent: ", jObj);
-		var stationid							= jObj[0 ];
-		var stationname							= jObj[1 ];
-		var latitude							= jObj[2 ];
-		var longitude							= jObj[3 ];
-		var airtemp							= jObj[4 ];
-		var airtempunit							= jObj[5 ];
-		var windspeed							= jObj[6 ];
-		var windspeedunit						= jObj[7 ];
-		var winddirection						= jObj[8 ];
-		var winddirectionunit						= jObj[9 ];
+		var stationid							= jObj[00];
+		var stationname							= jObj[01];
+		var latitude							= jObj[02];
+		var longitude							= jObj[03];
+		var airtemp								= jObj[04];
+		var airtempunit							= jObj[05];
+		var windspeed							= jObj[06];
+		var windspeedunit						= jObj[07];
+		var winddirection						= jObj[08];
+		var winddirectionunit					= jObj[09];
 		var gustspeed							= jObj[10];
 		var gustspeedunit						= jObj[11];
 		var relhumval							= jObj[12];
 		var relhumvalunit						= jObj[13];
 		var dewpoint							= jObj[14];
 		var dewpointunit						= jObj[15];
-		var precipitationamount						= jObj[16];
-		var precipitationamountunit					= jObj[17];
-		var precipitationintensity					= jObj[18];
-		var precipitationintensityunit					= jObj[19];
+		var precipitationamount					= jObj[16];
+		var precipitationamountunit				= jObj[17];
+		var precipitationintensity				= jObj[18];
+		var precipitationintensityunit			= jObj[19];
 		var snowdepth							= jObj[20];
 		var snowdepthunit						= jObj[21];
 		var pressure							= jObj[22];
@@ -269,8 +295,6 @@
 
 		 console.log("horizvisib:", horizvisib);
 		 console.log("horizvisibunit:", horizvisibunit);
-
-precipitationamount
 
 		 console.log("pressure:", pressure);
 		 console.log("pressureunit:", pressureunit);

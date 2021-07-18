@@ -1,8 +1,4 @@
 
-<?php
-	if (session_id() == '') { session_start(); }
-?>
-
 <html>
 
 <?php
@@ -24,11 +20,11 @@
 	if (isset($_POST['submit']))
 	{
 
-		$config['mysql']['hostname'] 		= $_POST['hostname'];
-		$config['mysql']['databasename'] 	= $_POST['databasename'];
-		$config['mysql']['databasetable'] 	= $_POST['databasetable'];
-		$config['mysql']['username'] 		= $_POST['username'];
-		$config['mysql']['password'] 		= $_POST['password'];
+		$config['mysql']['hostname'] 		= sanitize_text_field($_POST['hostname']);
+		$config['mysql']['databasename'] 	= sanitize_text_field($_POST['databasename']);
+		$config['mysql']['databasetable'] 	= sanitize_text_field($_POST['databasetable']);
+		$config['mysql']['username'] 		= sanitize_text_field($_POST['username']);
+		$config['mysql']['password'] 		= sanitize_text_field($_POST['password']);
 		
 		create_db_config($FINWEATHER_CONFIG_FILE, $config, 0);
 		$cnf = load_db_config($FINWEATHER_CONFIG_FILE);

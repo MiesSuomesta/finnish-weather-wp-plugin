@@ -1,6 +1,7 @@
 === Finnish Weather ===
 Tags: sää,weather,suomi,finland,map
 License: GPL-3.0
+Stable version: 2.6.1
 
  Finnish weather information map plugin that is very lightwheight. Donate if you like the plugin: https://gofund.me/0403326f
 
@@ -31,6 +32,15 @@ License: GPL-3.0
 
 
 == Changelog ==
+2.6.1:
+
+  * Made more WP compliant, not used stuff cleaned up a bit
+
+  * Functionality ok.
+
+  * theMap's stylesheet can not be setup the WP way for somereason.
+    investigating that when I'have time.
+
 2.6
      rain volume and cloudiness added.
 
