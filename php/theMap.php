@@ -63,9 +63,9 @@
 
 	$LatestStations = weather_get_mysql_record_number_datas($LatestID, "stationname ASC");
 
-	comment("Session ID: " . session_id());
+	comment("Session ID: " . my_session_id());
 
-	$selectedStationsSetForSession = weather_get_mysql_memory_session_records(session_id());
+	$selectedStationsSetForSession = weather_get_mysql_memory_session_records(my_session_id());
 
 //	print_r($selectedStationsSetForSession);
 

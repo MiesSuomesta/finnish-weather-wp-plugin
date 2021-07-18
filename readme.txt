@@ -1,4 +1,4 @@
-=== Finnish Weather WP Plugin ===
+=== Finnish Weather ===
 Tags: sää,weather,suomi,finland,map
 License: GPL-3.0
 

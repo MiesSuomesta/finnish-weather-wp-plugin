@@ -4,7 +4,14 @@
 	$FINWEATHER_PLUGIN_URL = get_file_base_http_address();
 	$FINWEATHER_PLUGIN_MAIN_URL = get_file_base_http_address() . basename( __FILE__ );
 	$FINWEATHER_CONFIG_FILE = $FINWEATHER_PLUGIN_DIR . "finnish_weather_wp_plugin_config.json";
-	
+
+	$FINWEATHER_ID = base64_encode( "" + ( rand(1,999) * rand(1,999) ) );
+
+	function my_session_id() 
+	{
+		return $FINWEATHER_ID;
+	}
+
 	function get_master_config_file()
 	{
 		global $FINWEATHER_CONFIG_FILE;
