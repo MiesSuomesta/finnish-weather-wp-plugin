@@ -310,6 +310,7 @@
 
 
 		var textstyle = "color: #ddddFF;";
+		var datetextstyle = "size: 20px; color: #ddddFF;";
 
 		var tableattrs=	[
 							["width", popup_width + 'px'  ],
@@ -325,6 +326,11 @@
 		var valuetdattrs=	[
 								["style", textstyle ],
 							];
+
+		var datestamptdattrs=	[
+									["style", datetextstyle ],
+									["colspan", 5],
+								];
 		
 		var out=createTag(null, "table", null, tableattrs);
 
@@ -346,6 +352,19 @@
 		var outHDRarvotHTMLpilvisyysJasademäärä = makeTRSet(out, valuetdattrs,
 												"Pilvisyys",	mkElementData(cloudamount,cloudamountunit),
 												"Sademäärä",	mkElementData(precipitationamount, precipitationamountunit));
+
+
+		{
+
+			var daystamp = Date(recordts)
+			var txt = "" + daystamp.toString();
+
+			var datestrHDRpaikkaTR    = createTag(out, "tr", null, null);
+			var datestrHDRpaikkaTD    = createTag(datestrHDRpaikkaTR,  "td", null, headertdattrs);
+			var datestrHDRpaikkaCENTER= createTag(datestrHDRpaikkaTD,  "center", null, datestamptdattrs);
+			var datestrHDRpaikkaHTML  = createTag(datestrHDRpaikkaCENTER, "p", txt, datestamptdattrs);
+			
+		}
 		
 		var suprise =  Math.floor(10 * Math.random());
 		
@@ -353,7 +372,7 @@
 		if ( suprise == 1 )
 		{
 
-			suprisetxt = "<p color='red'>Yllätys!!!</p><br>30% ALE kupongilla FINWEATHER30<br>Kaupoille <a href='https://paxsudos.fi/' target='_blank'>Paxsudossiin</a>";
+			var suprisetxt = "<p color='red'>Yllätys!!!</p><br>30% ALE kupongilla FINWEATHER30<br>Kaupoille <a href='https://paxsudos.fi/' target='_blank'>Paxsudossiin</a>";
 
 			var supriseHDRpaikkaTR    = createTag(out, "tr", null, null);
 			var supriseHDRpaikkaTD    = createTag(supriseHDRpaikkaTR,  "td", null, headertdattrs);
@@ -361,7 +380,6 @@
 			var supriseHDRpaikkaHTML  = createTag(supriseHDRpaikkaCENTER,  "h4", suprisetxt, valuetdattrs);
 			
 		}
-
 		
 		return out;
 	}
